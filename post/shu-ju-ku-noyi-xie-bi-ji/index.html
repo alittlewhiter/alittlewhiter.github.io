@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>数据库の一些笔记 | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583151142498">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583157269642">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -162,19 +162,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-count">8</span>
         <span class="site-item-stat-name">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">14</span>
+        <span class="site-item-stat-count">28</span>
         <span class="site-item-stat-name">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">14</span>
+        <span class="site-item-stat-count">28</span>
         <span class="site-item-stat-name">标签</span>
       </a>
     </div>
@@ -238,6 +238,7 @@
 </li>
 <li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7database-integrity">数据库完整性（Database Integrity）</a></li>
 <li><a href="#%E5%88%A4%E6%96%AD%E5%85%B3%E7%B3%BB%E5%88%86%E8%A7%A3%E6%98%AF%E5%90%A6%E4%BF%9D%E6%8C%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96">判断关系分解是否保持函数依赖？</a></li>
+<li><a href="#exists-not-exists">exists / not exists</a></li>
 <li><a href="#and-next">And next</a></li>
 </ul>
 </li>
@@ -534,12 +535,12 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>8分钟</span>
+      <span>10分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>2137<span class="pc-show">字数</span></span>
+      <span>2743<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
@@ -579,9 +580,15 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 ③ 数据库模式以某一种数据模型为基础；<br>
 ④ 定义模式时不仅要定义数据的逻辑结构（如数据记录由哪些数据项构成，数据项的名字、类型、取值范围等），而且要定义与数据有关的安全性、完整性要求，定义这些数据之间的联系。</p>
 <h3 id="外模式external-schema">外模式(external schema)</h3>
-<p>外模式是用户与数据库系统的接口。　单个用户的视图称为外部视图。一个用户往往只用到数据库的一部分。外部视图由若干外 部记录类型组成，这些外部记录类型和概念记录类型、内部记录类型可能不一样。用户使用数据操纵语言语句对数据库进行操作.实际上是对外部视图的外部记录进行操作。例如GET操作是读一个外部记录值(实际上是逻辑记录值)，而不是数据库的内部记录值。每个外部视图用 DDL描述后得到的是外模式。描述外部视图的DDL称为“外模式DDL”。外模式是外部视图 中每个外部记录类型的定义，因此它是面向一个或多个用户需要的那部分数据的描述。在外模 式中还必须定义外模式和概念模式间数据结构的差异。<br>
-外模式与概念模式的分离，使数据库系统的灵活性大大增加。外模式是从模式导出的，它 必须是导出它的模式的逻辑子集但在外模式里，不仅那些与用户无关的数据可以略去，而且 数据项可以按照用户使用的习惯重新命名，记录类型也可以重新组合和命名。应用程序员不必 再关心整个数据库的全局逻辑结构，他只与外模式发生直接联系，按照外模式存储和操纵数据.<br>
-　　一个数据库可以有多个外模式。由于它是各个用户的数据视图，如果不同用户在应用需求，看待数据的方式，对数据保密的要求等方面存在差异，则其外模式描述就是不同的。即使对模式中同一数据，在外模式中的结构，类型，长度，保密级别等都可以是不同的。对于一个数据库系统而言，同一外模式也可以为某一用户的多个应用所应用，但任何一个应用程序都必须使用而且只能使用一个外模式，才能对数据库中的数据进行操作。一个模式可以支持若干个外模式，但每一个外模式只能属于一个模式。</p>
+<ul>
+<li>外模式是用户与数据库系统的接口。</li>
+<li>单个用户的视图称为外部视图。一个用户往往只用到数据库的一部分。外部视图由若干外 部记录类型组成，这些外部记录类型和概念记录类型、内部记录类型可能不一样。</li>
+<li>用户使用数据操纵语言语句对数据库进行操作.实际上是对外部视图的外部记录进行操作。例如GET操作是读一个外部记录值(实际上是逻辑记录值)，而不是数据库的内部记录值。每个外部视图用 DDL描述后得到的是外模式。描述外部视图的DDL称为“外模式DDL”。</li>
+<li>外模式是外部视图 中每个外部记录类型的定义，因此它是面向一个或多个用户需要的那部分数据的描述。在外模 式中还必须定义外模式和概念模式间数据结构的差异。</li>
+<li>外模式与概念模式的分离，使数据库系统的灵活性大大增加。外模式是从模式导出的，它必须是导出它的模式的逻辑子集但在外模式里，不仅那些与用户无关的数据可以略去，而且 数据项可以按照用户使用的习惯重新命名，记录类型也可以重新组合和命名。应用程序员不必 再关心整个数据库的全局逻辑结构，他只与外模式发生直接联系，按照外模式存储和操纵数据.</li>
+<li>一个数据库可以有多个外模式。由于它是各个用户的数据视图，如果不同用户在应用需求，看待数据的方式，对数据保密的要求等方面存在差异，则其外模式描述就是不同的。即使对模式中同一数据，在外模式中的结构，类型，长度，保密级别等都可以是不同的。</li>
+<li>对于一个数据库系统而言，同一外模式也可以为某一用户的多个应用所应用，但任何一个应用程序都必须使用而且只能使用一个外模式，才能对数据库中的数据进行操作。一个模式可以支持若干个外模式，但每一个外模式只能属于一个模式。</li>
+</ul>
 <h2 id="数据库完整性database-integrity">数据库完整性（Database Integrity）</h2>
 <pre><code>  指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。
   
@@ -599,6 +606,15 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 </ul>
 <h2 id="判断关系分解是否保持函数依赖">判断关系分解是否保持函数依赖？</h2>
 <p>设有属性集 {ABCDEF}，存在这样的函数依赖集{A-&gt;BC , CD-&gt;E , B-&gt;D , BE-&gt;F , EF-&gt;A},然后有这样的分解{ABC , BD , BEF}。设U1=ABC，A-&gt;BC，U2=BD，B-&gt;D ，U3=BEF，BE-&gt;F ，即我们不能推出 CD-&gt;E ，EF-&gt;A，所以也不具有保持函数依赖的特性。</p>
+<h2 id="exists-not-exists">exists / not exists</h2>
+<ul>
+<li>EXISTS(包括 NOT EXISTS )子句的返回值是一个BOOL值。 EXISTS内部有一个子查询语句(SELECT ... FROM...)， 我将其称为EXIST的内查询语句。其内查询语句返回一个结果集。 EXISTS子句根据其内查询语句的结果集空或者非空，返回一个布尔值。</li>
+<li>一种通俗的可以理解为：将外查询表的每一行，代入内查询作为检验，如果内查询返回的结果取非空值，则EXISTS子句返回TRUE，这一行行可作为外查询的结果行，否则不能作为结果。</li>
+<li>分析器会先看语句的第一个词，当它发现第一个词是SELECT关键字的时候，它会跳到FROM关键字，然后通过FROM关键字找到表名并把表装入内存。接着是找WHERE关键字，如果找不到则返回到SELECT找字段解析，如果找到WHERE，则分析其中的条件，完成后再回到SELECT分析字段。最后形成一张我们要的虚表。</li>
+<li>WHERE关键字后面的是条件表达式。条件表达式计算完成后，会有一个返回值，即非0或0，非0即为真(true)，0即为假(false)。同理EXISTS后面的条件也有一个返回值，真或假，来确定接下来执不执行SELECT。</li>
+<li>分析器先找到关键字SELECT，然后跳到FROM关键字将STUDENT表导入内存，并通过指针找到第一条记录，接着找到WHERE关键字计算它的条件表达式，如果为真那么把这条记录装到一个虚表当中，指针再指向下一条记录。如果为假那么指针直接指向下一条记录，而不进行其它操作。一直检索完整个表，并把检索出来的虚拟表返回给用户。EXISTS是条件表达式的一部分，它也有一个返回值(true或false)。</li>
+<li>exists 与 in 最大的区别在于 in引导的子句只能返回一个字段，exists子句是允许的，但in只允许有一个字段返回。EXISTS与IN的使用效率的问题，通常情况下采用exists要比in效率高，因为IN不走索引，但要看实际情况具体使用：IN适合于外表大而内表小的情况；EXISTS适合于外表小而内表大的情况。</li>
+</ul>
 <h2 id="and-next">And next</h2>
 <p>。。。</p>
 

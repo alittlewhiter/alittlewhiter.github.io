@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-02T12:12:28.684Z</updated>
+    <updated>2020-03-02T13:54:43.234Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -10,6 +10,281 @@
     <logo>https://alittlewhiter.github.io/images/avatar.png</logo>
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
+    <entry>
+        <title type="html"><![CDATA[C++ 板子]]></title>
+        <id>https://alittlewhiter.github.io/post/c-ban-zi/</id>
+        <link href="https://alittlewhiter.github.io/post/c-ban-zi/">
+        </link>
+        <updated>2020-03-02T13:42:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>Keywords：代码块、函数、语法 for C++<br>
+{ 这 xx 竟 这 该 死 的 甜 美 ...  不要停下来啊~🤙🤙🤙}</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Keywords：代码块、函数、语法 for C++<br>
+{ 这 xx 竟 这 该 死 的 甜 美 ...  不要停下来啊~🤙🤙🤙}</p>
+<!-- more -->
+<h2 id="321开始你的表演">321开始你的表演</h2>
+<p>1、设想要使用new建立一个rows行，cols列的矩阵:</p>
+<pre><code>int rows, cols ;
+int **array = new int*[rows] ; 
+for (int i = 0 ; i &lt; rows ; i++) {
+    array[i] = new int[cols] ; 
+    memset(*array, 0, sizeof(int)*cols) ;    // memset()是按字节填充，值一般只为0或-1。
+}  
+</code></pre>
+<p>2、结构体重载操作符模板：</p>
+<pre><code>Point operator + (const Point&amp; A, const Point&amp; B) {  
+     return Point(A.x+B.x, A.y+B.y); 
+}
+ostream&amp; operator &lt;&lt; (ostream &amp;out, const Point&amp; p) {
+    out &lt;&lt; &quot;(&quot; &lt;&lt; p.x &lt;&lt; &quot;,&quot; &lt;&lt; p.y &lt;&lt; &quot;)&quot;;  
+    return out; 
+}
+Point a, b;
+cout &lt;&lt; a+b &lt;&lt; endl; 
+</code></pre>
+<p>3、求和函数模板sum()：</p>
+<pre><code>template&lt;typename T&gt; T sum(T* begin, T* end) {  
+    T *p = begin;  
+    T ans = 0;  
+    for(T *p = begin; p != end; p++)   
+        ans = ans + *p;   
+    return ans; 
+}
+</code></pre>
+<p>4、结构体和类也可以是带模板的，如Point中x，y可以为int或double等多种类型：</p>
+<pre><code>template &lt;typename T&gt; struct Point {  
+    T x, y;  
+    Point(T x=0, T y=0) : x(x),y(y) { } 
+}; 
+</code></pre>
+<p>5、重载转换运算符 ：<br>
+对于类X的成员函数 X::operator T()<br>
+T是类型名 ，定义了一个X到T的转换。</p>
+<pre><code>operator bool() const {
+   return p;
+} 
+Handle h; 
+bool b=h;       //在这里调用  
+</code></pre>
+<p>6、C++中const 引用的是对象时只能访问该对象的const 函数，因为其他函数有可能会修改该对象的成员，编译器为了避免该类事情发生，会认为调用非const函数是错误的，error：…discards qualifiers 的意思就是缺少限定符。<br>
+因此：** 类似getter函数一般需要在后面加const限定符 **</p>
+<p>7、求gcd最大公约数</p>
+<ul>
+<li>最快算法：</li>
+</ul>
+<pre><code>int gcd(int a, int b){
+    while(b^=a^=b^=a%=b) ;
+    return a;
+}
+</code></pre>
+<ul>
+<li>一般算法：</li>
+</ul>
+<pre><code>int gcd(int a,  int b)  {          // 要求
+     return b ? gcd(b, a%b) : a ;
+}
+</code></pre>
+<p>8、普通快速幂的模板：</p>
+<pre><code>int fastpow(int base, int n, int mod){
+	int ans=1; 
+	while(n){
+		if(n&amp;1) 
+                    ans *= base % mod ;
+		base *= base;
+		n &gt;&gt;= 1;
+	}
+	return ans%mod;
+}
+</code></pre>
+<p>9、快速读入整数（ 远快于 scanf () 与 cin ）</p>
+<pre><code>inline int read() {
+    int x = 0, f = 1; char ch = getchar();
+    while(ch &lt; '0' || ch &gt; '9') { if(ch == '-') f = -1; ch = getchar(); }
+    while(ch &gt;= '0' &amp;&amp; ch &lt;= '9') { x = x * 10 + ch - '0'; ch = getchar(); }
+    return x * f;
+}
+</code></pre>
+<p>10、</p>
+<p>11、</p>
+<p>Final、一道大杂烩~真香</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+#define maxn 500005
+#define maxm 200005
+#define INF 1234567890
+#define p 1000000007
+template&lt;class T&gt;inline bool read(T &amp;x)
+{
+    x=0;register char c=getchar();register bool f=0;
+    while(!isdigit(c)){if(c==EOF)return false;f^=c=='-',c=getchar();}
+    while(isdigit(c))x=(x&lt;&lt;3)+(x&lt;&lt;1)+(c^48),c=getchar();
+    if(f)x=-x;
+    return true;
+}
+template&lt;class T&gt;inline bool readd(T &amp;x)
+{
+    register ll X=0;register double y=1.0;register char c=getchar();register bool f=0;
+    while(!isdigit(c)){if(c==EOF)return false;f^=c=='-',c=getchar();}
+    while(isdigit(c))X=(X&lt;&lt;3)+(X&lt;&lt;1)+(c^48),c=getchar();
+    x=X;
+    if(c!='.')return true;
+    c=getchar();
+    while(isdigit(c))x+=(y/=10)*(c^48),c=getchar();
+    if(f)x=-x;
+    return true;
+}
+template&lt;class T&gt;inline bool readc(T &amp;x)
+{
+    register char c=getchar();
+    while(c==' '||c=='\n'||c=='\r'||c=='\t')c=getchar();
+    if(c==EOF)return false;
+    x=c;
+    return true;
+}
+template&lt;class T&gt;inline bool readc(T *x)
+{
+    register char c=getchar();
+    while(c==' '||c=='\n'||c=='\r'||c=='\t')c=getchar();
+    if(c==EOF)return false;
+    while(c!=' '&amp;&amp;c!='\n'&amp;&amp;c!='\r'&amp;&amp;c!='\t'&amp;&amp;c!=EOF)*x++=c,c=getchar();
+    *x=0;
+    return true;
+}
+template&lt;class T&gt;inline bool reads(T &amp;x)
+{
+    x=&quot;&quot;;register char c=getchar();
+    while(c==' '||c=='\n'||c=='\r'||c=='\t')c=getchar();
+    if(c==EOF)return false;
+    while(c!=' '&amp;&amp;c!='\n'&amp;&amp;c!='\r'&amp;&amp;c!='\t'&amp;&amp;c!=EOF)x+=c,c=getchar();
+    return true;
+}
+template&lt;class T&gt;inline void print(T x)
+{
+    if(x&lt;0)putchar('-'),x=-x;
+    if(x&gt;9)print(x/10);
+    putchar(x%10^48);
+}
+template&lt;class T&gt;inline void printd(T x,ll y)
+{
+    static ll mul[]={1};
+    for(register ll i=1;i&lt;=18;i++)
+        mul[i]=(mul[i-1]&lt;&lt;3)+(mul[i-1]&lt;&lt;1);
+    if(x&lt;-1e-12)putchar('-'),x=-x;
+    x*=mul[y];
+    register ll x1=(ll)round(x),x2=x1/mul[y],x3=x1-x2*mul[y];
+    print(x2);
+    if(y&gt;0)
+    {
+        putchar('.');
+        for(register ll i=1;i&lt;y&amp;&amp;x3*mul[i]&lt;mul[y];putchar('0'),i++);
+        print(x3);
+    }
+}
+template&lt;class T&gt;inline void printc(T x){putchar(x);}
+template&lt;class T&gt;inline void printc(T *x){while(*x)putchar(*x++);}
+template&lt;class T&gt;inline void prints(T x){for(register ll i=0;x[i]!='\0';i++)putchar(x[i]);}
+template&lt;class T&gt;inline T maxd(T a,T b){if(b&gt;a)return b;return a;}
+template&lt;class T&gt;inline T mind(T a,T b){if(b&lt;a)return b;return a;}
+template&lt;class T&gt;inline T gcd(T a,T b){while(a^=b^=a^=b%=a);return b;}
+template&lt;class T&gt;inline T lcm(T a,T b){return a/gcd(a,b)*b;}
+template&lt;class T&gt;inline T absd(const T &amp;a){if(a&lt;0)return -a;return a;}
+template&lt;class T&gt;inline void print(T x,char c){print(x),putchar(c);}
+template&lt;class T&gt;inline void printd(T x,ll y,char c){printd(x,y),putchar(c);}
+template&lt;class T&gt;inline void printc(T x,T c){printc(x),putchar(c);}
+template&lt;class T&gt;inline void printc(T *x,T c){printc(x),putchar(c);}
+template&lt;class T&gt;inline void prints(T x,char c){prints(x),putchar(c);}
+
+</code></pre>
+<p>mua~</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Web：前 前 后 后  ]]></title>
+        <id>https://alittlewhiter.github.io/post/webqian-qian-hou-hou/</id>
+        <link href="https://alittlewhiter.github.io/post/webqian-qian-hou-hou/">
+        </link>
+        <updated>2020-03-02T13:07:17.000Z</updated>
+        <summary type="html"><![CDATA[<p>Keywords：html, css, javascript, 标签，布局...<br>
+【奥里给 ~hetui！！</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Keywords：html, css, javascript, 标签，布局...<br>
+【奥里给 ~hetui！！</p>
+<!-- more -->
+<h2 id="position绝对和相对">Position：绝对和相对</h2>
+<h3 id="主要区别">主要区别</h3>
+<ul>
+<li>Absolution：元素会脱离文档流，定位是相对于离它最近的且不是static定位的父元素而言，若该元素没有设置宽度，则宽度由元素里面的内容决定，且宽度不会影响父元素，定位为absolution后，原来的位置相当于是空的，下面的的元素会来占据。</li>
+<li>Relative：元素仍处于文档流中，定位是相对于原本自身的位置，若没有设置宽度，则宽度为父元素的宽度，该元素的大小会影响父元素的大小。</li>
+</ul>
+<h3 id="position扩展">position扩展</h3>
+<ol>
+<li>Absolute：绝对定位，是相对于最近的且不是static定位的父元素来定位</li>
+<li>Fixed：绝对定位，是相对于浏览器窗口来定位的，是固定的，不会跟屏幕一起滚动。</li>
+<li>Relative：相对定位，是相对于其原本的位置来定位的。</li>
+<li>Static：默认值，没有定位。</li>
+<li>Inherit：继承父元素的position值。</li>
+</ol>
+<p>** 一、absolute：绝对定位，CSS 写法“ position: absolute; ”**<br>
+1. 没有设定 Top、Right、Bottom、Left 的情况，默认依据父级的“内容区域原始点”为原始点，上面例子红色部分(父级黄色区域有 Padding 属性，“坐标原始点”和“内容区域原始点”不一样)， 基于绝对定位的元素不会占据空间。<br>
+2. 有设定 Top、Right、Bottom、Left 的情况，这里又分了两种情况如下：<br>
+(1). 父级没 position 属性，浏览器左上角(即 Body)为“坐标原始点”进行定位，位置由 Top、Right、Bottom、Left 属性决定。<br>
+(2). 父级有 position属性，父级的“坐标原始点”为原始点，此时可以忽略父级元素padding的作用。</p>
+<p>** 二、relative：相对定位，CSS 写法“ position: relative; ”**<br>
+父级元素第一个relative子元素参照父级的“内容区域原始点”为原始点，无父级则以 Body 的“内容区域原始点”为原始点，其余依各元素次序顺延下来获得其位置，再受Top、Right、Bottom、Left 属性值影响，且有“撑开或占据高度”的作用。<br>
+相对定位与绝对定位的区别在于它的参照点不是左上角的原点，而是该元素本身原先的起点位置。并且即使该元素偏移到了新的位置，也仍然从原始的起点处占据空间。</p>
+<p>** 注 **：Absolute定位的子元素宽度不会影响父元素的宽度，而relative定位的子元素可能会撑大父元素。在没有独立设置宽度时，absolute定位的子元素的宽度会自动缩小为内部元素的布局应有的宽度，而relative定位的元素会继承父元素的宽度（甚至超出父元素范围产生覆盖），但不包括边界宽度。</p>
+<h2 id="超链接-aa">超链接 <a></a></h2>
+<ul>
+<li>超链接虽然在网页中占有不可替代的地位, 但是在HTML中创建超链接非常简单, 只需用&lt;a&gt; &lt;/a&gt;标记环绕需要被链接的对象即可。<br>
+<code>基本语法格式: &lt;a href-&quot;跳转目标&quot; target=&quot;目标窗口的弹出方式”&gt;文本或图像&lt;/a&gt;</code></li>
+<li>在上面的语法中, &lt;a&gt;标记是一个行内标记,用于定义超链接, href和target为其常用属性，具体解释如下:<br>
+-- href :用于指定链接目标的url地址。当为&lt;a&gt;标记应用href属性时，它就具有了超链接的功能。<br>
+-- target :用于指定链接页面的打开方式，其取值有self和blank两种，其中self为默认值。意为在原窗口中打开，blank为在新窗口中打开。</li>
+</ul>
+<h2 id="文本居中">文本居中</h2>
+<ul>
+<li>在将&lt;span&gt;标签style属性设置为vertical-align: middle 后，元素内容并没有垂直居中，在W3C官方中对 vertical-align做了下面的解释：This property affects the vertical positioning inside a line box of the boxes generated by an inline-level element.</li>
+<li>事实上，一个Box中由很多行很多元素组成，vertical-align只作用于在同一行内的元素，它的垂直并不是相对于整个Box而言的。如果把 vertical-align:middle 放到一个单元格元素，即table的td元素中，它的垂直居中显示是没任何问题的，因为它表示相对于该行的垂直高度居中显示。</li>
+<li>可以设置&lt;span&gt;元素style中的 line-heght 值为其父元素&lt;div&gt;的height值，这样 vertical-align:middle 就会使&lt;span&gt;元素内容垂直居中。</li>
+</ul>
+<h2 id="more">More...</h2>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Computer Network 默 · 示 · 录]]></title>
+        <id>https://alittlewhiter.github.io/post/computer-network-mo-shi-lu/</id>
+        <link href="https://alittlewhiter.github.io/post/computer-network-mo-shi-lu/">
+        </link>
+        <updated>2020-03-02T12:47:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>Keywords： WIFI、WLAN、跃点、RJ45、and so on<br>
+bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
+#- 丢你王忠，你好！🕷 -#</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Keywords： WIFI、WLAN、跃点、RJ45、and so on<br>
+bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
+#- 丢你王忠，你好！🕷 -#</p>
+<!-- more -->
+<h2 id="wlan-和wifi-的区别">WLAN 和WIFI 的区别？</h2>
+<pre><code>WIFI包含于WLAN中，主要采用802.11b协议的一项技术，是WLAN的一个标准，子集的关系。它们发射信号的功率不同，覆盖范围不同。
+WIFI就是一种无线联网的技术，一般都是小范围的， 距离发射器远了就会收不到网络，而wlan覆盖范围就广泛的多
+</code></pre>
+<h2 id="跃点">跃点：</h2>
+<pre><code>即路由。一个路由为一个跃点。传输过程中需要经过多个网络，每个被经过的网络设备点（有能力路由的）叫做一个跃点，地址就是它的ip。跃点数是经过了多少个跃点的累加器，为了防止无用的数据包在网上流散。 为路由指定所需跃点数的整数值（范围是 1 ~ 9999），它用来在路由表里的多个路由中选择与转发包中的目标地址最为匹配的路由, 所选的路由具有最少的跃点数。自动跃点修改方法如下：
+</code></pre>
+<ul>
+<li>进入相关设备的网络设置，再进入internet TCP/IP的属性设置，再进入高级属性设置；</li>
+<li>默认情况下是勾选的“自动跃点”，不要选择它，手动输入“接口跃点数”，输入的数字越小，优先级越高，这样可以手动控制哪个路由的优先级了。</li>
+</ul>
+<h2 id="rj45接口">RJ45接口</h2>
+<pre><code>有两类：用于以太网网卡(网卡接口)、路由器以太网接口等的DTE类型，还有用于交换机等的DCE类型。DTE我们可以称做“数据终端设备”，DCE我们可以称做“数据通信设备”。从某种意义来说，DTE设备称为“主动通信设备”，DCE设备称为“被动通信设备”。当两个类型一样的设备使用RJ45接口连接通信时，必须使用交叉线连接。
+</code></pre>
+<h2 id="ip分配">IP分配</h2>
+<pre><code>169.254.0.0/16这样的IP是一个本地链接地址段。RFC3927指出，在IP网络里，每台主机都需要一个IP地址，通常情况下是通过DHCP服务器自动分配，但某些特殊情况下，DHCP分配失败或者没有DHCP服务器时，机器可以自己分配一个IP来完成这个工作。
+169.254.X.X是 Windows操作系统 在 DHCP 信息租用失败时自动给客户机分配的IP地址。由于网络连接问题、网线问题,DHCP服务器(其实就是Modem, 路由器, 或提供共享上网的主机)问题等，而令DHCP信息租用失败, 而IP169.254.X.X 的分配可能会令客户机(你自己的计算机,设置了&quot;自动获取IP&quot;)与所处局域网网关(Modem, 路由器, 或提供共享上网的主机) 位于不同的网段中, 而无法与网关通信,而导致无法接入Internet的情况。
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[那一天，人类终于回想起曾一度被Ucore支配的恐惧...]]></title>
         <id>https://alittlewhiter.github.io/post/na-yi-tian-ren-lei-zhong-yu-hui-xiang-qi-ceng-yi-du-bei-ucore-zhi-pei-de-kong-ju/</id>
@@ -30,11 +305,11 @@
         <updated>2020-03-02T11:47:06.000Z</updated>
         <summary type="html"><![CDATA[<p>Keywords：OS管理功能、分类</p>
 <p>学啥忘啥、学到老&amp;忘到老...<br>
-~（Ko no OS da !）</p>
+~（Ko no OS da !）~</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>Keywords：OS管理功能、分类</p>
 <p>学啥忘啥、学到老&amp;忘到老...<br>
-~（Ko no OS da !）</p>
+~（Ko no OS da !）~</p>
 <!-- more -->
 <h1 id="操作系统可以分为五大管理功能部分">操作系统可以分为五大管理功能部分：</h1>
 <p>1）设备管理：主要是负责内核与外围设备的数据交互，实质是对硬件设备的管理，包括对输入输出设备的分配，初始化，维护与回收等。例如管理音频输入输出。<br>
@@ -100,9 +375,15 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 ③ 数据库模式以某一种数据模型为基础；<br>
 ④ 定义模式时不仅要定义数据的逻辑结构（如数据记录由哪些数据项构成，数据项的名字、类型、取值范围等），而且要定义与数据有关的安全性、完整性要求，定义这些数据之间的联系。</p>
 <h3 id="外模式external-schema">外模式(external schema)</h3>
-<p>外模式是用户与数据库系统的接口。　单个用户的视图称为外部视图。一个用户往往只用到数据库的一部分。外部视图由若干外 部记录类型组成，这些外部记录类型和概念记录类型、内部记录类型可能不一样。用户使用数据操纵语言语句对数据库进行操作.实际上是对外部视图的外部记录进行操作。例如GET操作是读一个外部记录值(实际上是逻辑记录值)，而不是数据库的内部记录值。每个外部视图用 DDL描述后得到的是外模式。描述外部视图的DDL称为“外模式DDL”。外模式是外部视图 中每个外部记录类型的定义，因此它是面向一个或多个用户需要的那部分数据的描述。在外模 式中还必须定义外模式和概念模式间数据结构的差异。<br>
-外模式与概念模式的分离，使数据库系统的灵活性大大增加。外模式是从模式导出的，它 必须是导出它的模式的逻辑子集但在外模式里，不仅那些与用户无关的数据可以略去，而且 数据项可以按照用户使用的习惯重新命名，记录类型也可以重新组合和命名。应用程序员不必 再关心整个数据库的全局逻辑结构，他只与外模式发生直接联系，按照外模式存储和操纵数据.<br>
-　　一个数据库可以有多个外模式。由于它是各个用户的数据视图，如果不同用户在应用需求，看待数据的方式，对数据保密的要求等方面存在差异，则其外模式描述就是不同的。即使对模式中同一数据，在外模式中的结构，类型，长度，保密级别等都可以是不同的。对于一个数据库系统而言，同一外模式也可以为某一用户的多个应用所应用，但任何一个应用程序都必须使用而且只能使用一个外模式，才能对数据库中的数据进行操作。一个模式可以支持若干个外模式，但每一个外模式只能属于一个模式。</p>
+<ul>
+<li>外模式是用户与数据库系统的接口。</li>
+<li>单个用户的视图称为外部视图。一个用户往往只用到数据库的一部分。外部视图由若干外 部记录类型组成，这些外部记录类型和概念记录类型、内部记录类型可能不一样。</li>
+<li>用户使用数据操纵语言语句对数据库进行操作.实际上是对外部视图的外部记录进行操作。例如GET操作是读一个外部记录值(实际上是逻辑记录值)，而不是数据库的内部记录值。每个外部视图用 DDL描述后得到的是外模式。描述外部视图的DDL称为“外模式DDL”。</li>
+<li>外模式是外部视图 中每个外部记录类型的定义，因此它是面向一个或多个用户需要的那部分数据的描述。在外模 式中还必须定义外模式和概念模式间数据结构的差异。</li>
+<li>外模式与概念模式的分离，使数据库系统的灵活性大大增加。外模式是从模式导出的，它必须是导出它的模式的逻辑子集但在外模式里，不仅那些与用户无关的数据可以略去，而且 数据项可以按照用户使用的习惯重新命名，记录类型也可以重新组合和命名。应用程序员不必 再关心整个数据库的全局逻辑结构，他只与外模式发生直接联系，按照外模式存储和操纵数据.</li>
+<li>一个数据库可以有多个外模式。由于它是各个用户的数据视图，如果不同用户在应用需求，看待数据的方式，对数据保密的要求等方面存在差异，则其外模式描述就是不同的。即使对模式中同一数据，在外模式中的结构，类型，长度，保密级别等都可以是不同的。</li>
+<li>对于一个数据库系统而言，同一外模式也可以为某一用户的多个应用所应用，但任何一个应用程序都必须使用而且只能使用一个外模式，才能对数据库中的数据进行操作。一个模式可以支持若干个外模式，但每一个外模式只能属于一个模式。</li>
+</ul>
 <h2 id="数据库完整性database-integrity">数据库完整性（Database Integrity）</h2>
 <pre><code>  指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。
   
@@ -120,6 +401,15 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 </ul>
 <h2 id="判断关系分解是否保持函数依赖">判断关系分解是否保持函数依赖？</h2>
 <p>设有属性集 {ABCDEF}，存在这样的函数依赖集{A-&gt;BC , CD-&gt;E , B-&gt;D , BE-&gt;F , EF-&gt;A},然后有这样的分解{ABC , BD , BEF}。设U1=ABC，A-&gt;BC，U2=BD，B-&gt;D ，U3=BEF，BE-&gt;F ，即我们不能推出 CD-&gt;E ，EF-&gt;A，所以也不具有保持函数依赖的特性。</p>
+<h2 id="exists-not-exists">exists / not exists</h2>
+<ul>
+<li>EXISTS(包括 NOT EXISTS )子句的返回值是一个BOOL值。 EXISTS内部有一个子查询语句(SELECT ... FROM...)， 我将其称为EXIST的内查询语句。其内查询语句返回一个结果集。 EXISTS子句根据其内查询语句的结果集空或者非空，返回一个布尔值。</li>
+<li>一种通俗的可以理解为：将外查询表的每一行，代入内查询作为检验，如果内查询返回的结果取非空值，则EXISTS子句返回TRUE，这一行行可作为外查询的结果行，否则不能作为结果。</li>
+<li>分析器会先看语句的第一个词，当它发现第一个词是SELECT关键字的时候，它会跳到FROM关键字，然后通过FROM关键字找到表名并把表装入内存。接着是找WHERE关键字，如果找不到则返回到SELECT找字段解析，如果找到WHERE，则分析其中的条件，完成后再回到SELECT分析字段。最后形成一张我们要的虚表。</li>
+<li>WHERE关键字后面的是条件表达式。条件表达式计算完成后，会有一个返回值，即非0或0，非0即为真(true)，0即为假(false)。同理EXISTS后面的条件也有一个返回值，真或假，来确定接下来执不执行SELECT。</li>
+<li>分析器先找到关键字SELECT，然后跳到FROM关键字将STUDENT表导入内存，并通过指针找到第一条记录，接着找到WHERE关键字计算它的条件表达式，如果为真那么把这条记录装到一个虚表当中，指针再指向下一条记录。如果为假那么指针直接指向下一条记录，而不进行其它操作。一直检索完整个表，并把检索出来的虚拟表返回给用户。EXISTS是条件表达式的一部分，它也有一个返回值(true或false)。</li>
+<li>exists 与 in 最大的区别在于 in引导的子句只能返回一个字段，exists子句是允许的，但in只允许有一个字段返回。EXISTS与IN的使用效率的问题，通常情况下采用exists要比in效率高，因为IN不走索引，但要看实际情况具体使用：IN适合于外表大而内表小的情况；EXISTS适合于外表小而内表大的情况。</li>
+</ul>
 <h2 id="and-next">And next</h2>
 <p>。。。</p>
 ]]></content>
