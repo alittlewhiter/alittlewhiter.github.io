@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-02T10:27:40.286Z</updated>
+    <updated>2020-03-02T11:08:19.019Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -11,16 +11,29 @@
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
     <entry>
+        <title type="html"><![CDATA[关于Python 爬虫 - 小记]]></title>
+        <id>https://alittlewhiter.github.io/post/guan-yu-python-pa-chong-xiao-ji/</id>
+        <link href="https://alittlewhiter.github.io/post/guan-yu-python-pa-chong-xiao-ji/">
+        </link>
+        <updated>2020-03-02T10:51:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>于中国大学MOOC有关<strong>爬虫</strong>网课学习记录<br>
+<s>学这玩意儿也不是一次两次了、没一次学进去过的。。。😓</s></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>于中国大学MOOC有关<strong>爬虫</strong>网课学习记录<br>
+<s>学这玩意儿也不是一次两次了、没一次学进去过的。。。😓</s></p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://alittlewhiter.github.io/post/hello-gridea/</id>
         <link href="https://alittlewhiter.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意...</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意...</p>
 ]]></content>
     </entry>
 </feed>

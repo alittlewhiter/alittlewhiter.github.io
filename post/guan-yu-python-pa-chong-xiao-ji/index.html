@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
-<title>About | 君の知らない物语</title>
+<title>关于Python 爬虫 - 小记 | 君の知らない物语</title>
 <link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583147294060">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
@@ -26,7 +26,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
     onload="renderMathInElement(document.body);"></script>
 
-    <meta name="description" content="About" />
+    <meta name="description" content="关于Python 爬虫 - 小记" />
     <meta name="keywords" content="" />
 
     <!--载入js，在</body>之前插入即可-->
@@ -224,10 +224,9 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AA%9D">🏠 关于本窝</a></li>
-<li><a href="#%E9%82%A3%E4%BD%8D%E5%A4%A7%E4%BA%BA">👨‍💻 那位大人</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li><a href="#1-requests%E5%BA%93%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95">1. requests库的常用方法：</a></li>
+<li><a href="#2-%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF">2. 通用代码模板：</a></li>
+<li><a href="#3-%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F">3. 信息标记的三种形式：</a></li>
 </ul>
 </li>
 </ul>
@@ -483,8 +482,8 @@ window.addEventListener('load', function() {
               <div class="article-box">
     <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alittlewhiter.github.io/post/about/">
-      About
+    <a class="post-title-link" href="https://alittlewhiter.github.io/post/guan-yu-python-pa-chong-xiao-ji/">
+      关于Python 爬虫 - 小记
     </a>
   </h1>
   <div class="post-meta">
@@ -492,43 +491,92 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2019-01-25</span>
+      <span>2020-03-02</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
+      <span>3分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>62<span class="pc-show">字数</span></span>
+      <span>568<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
 </div>
               <div class="post-body next-md-body" id="post_body">
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本窝">🏠 关于本窝</h2>
+                <p>于中国大学MOOC有关<strong>爬虫</strong>网课学习记录<br>
+<s>学这玩意儿也不是一次两次了、没一次学进去过的。。。😓</s></p>
+<!-- more -->
+<h2 id="1-requests库的常用方法">1. requests库的常用方法：</h2>
+<p>requests.request(method, url, **kwargs);   method具体方法，url访问链接，kwargs控制访问参数（可选）<br>
+get(url, params=None, **)<br>
+head(url, **)<br>
+post(url, data, json, **)<br>
+put(url, data, **)<br>
+patch(url, data, **)<br>
+delete(url,  **)</p>
+<p>可选访问参数有：params，data，json，headers，cookies，auth，files，timeout，proxies，allow_redirects，stream，verify，cert</p>
+<h2 id="2-通用代码模板">2. 通用代码模板：</h2>
+<p>import requests</p>
+<p>def getHTMLText(url):<br>
+try:<br>
+r = requests.get(url, timeout=100)<br>
+r.raise_for_status()             # 对状态码不是200的错误状态抛出一个HTTP异常<br>
+r.encoding = r.apparent_encoding<br>
+return r.text<br>
+except:<br>
+print(r.status_code)<br>
+return &quot;产生异常&quot;<br>
+---------------------------分割线--------------------------<br>
+#-  爬虫尺寸：</p>
 <ul>
-<li>我也不知道干点啥。。。</li>
+<li>小规模 --Requests库，数据量小，爬取小型网页数据</li>
+<li>中规模 --Scrapy库，数据规模较大，速度敏感，爬取系列网站</li>
+<li>大规模 --定制开发库，搜索引擎，爬取速度关键，全网爬取<br>
+#- Robots协议<br>
+各个网站主页根目录下，给出网站对于各种用户代理访问的反爬规则</li>
 </ul>
-<h2 id="那位大人">👨‍💻 那位大人</h2>
+<p>#- BeautifulSoup库的使用<br>
+pip install beautifulsoup4</p>
+<p>#- 对HTML页面内容的遍历方法：（构建标签树）<br>
+<code>from bs4 import BeautifulSoup</code><br>
+<code>soup = BeautifulSoup(aRespaonse.text, 'html.parser')</code><br>
+<code>data = soup.prettify()</code><br>
+<code>with open('F:/py123.html;, 'wb') as f:</code><br>
+<code>f.write(data.encode('utf-8'))</code><br>
+<code>f.close()</code><br>
+<code>tag = soup.title/a/p/head/body/....</code><br>
+<code>tag.attrs // 获取标签内属性，字典</code><br>
+<code>tag(.parent)*.name // 标签名，父级标签名</code><br>
+<code>tag.string // 标签内字符串</code></p>
+<p>#- bs4库的基本元素：<br>
+Tag，Name，Attributes，NavigabString，Comment<br>
+#- bs4库的遍历功能<br>
+.contents,  .parent,  .parents,  .children,   .descendants, .next_sibling,   .previous_sibling,  .next_siblings,  .previous_siblings</p>
+<h2 id="3-信息标记的三种形式">3. 信息标记的三种形式：</h2>
 <ul>
-<li>无名小卒 - Liu Jac</li>
+<li>1、XML    &lt;<em>&gt;&lt;/</em>&gt;标签类型<br>
+Internet上信息交互与传递</li>
+<li>2、JSON    &quot;<em>&quot;: [&quot;</em>&quot;, &quot;*&quot;, ..]  有类型的键值对，字符串形式<br>
+移动应用云端和节点的信息通信，适于js等，无注释</li>
+<li>3、YAML    无类型键值对，缩进表达所属关系<br>
+Name:   #comment<br>
+name1<br>
+name2<br>
+各类系统的配置文件，有注释易读</li>
 </ul>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
+<p><code>{soup/&lt;..&gt;}(..) .find_all(name, attrs, recursive, string, **kwargs) :</code><br>
+<code>返回一个列表类型，存储查找的结果。</code></p>
 <ul>
-<li>Acfun、Bilibili、Coding、Music、Movies、And Technologies ...</li>
-</ul>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<ul>
-<li>Email：ljch1201@vip.qq.com</li>
-<li>QQ：1207501466</li>
-<li>Phone：158****9364 （😝）</li>
+<li>name：对标签名称检索字符串</li>
+<li>attrs：对标签属性值检索字符串，可标注属性检索</li>
+<li>recursive：是否对子孙全部检索，默认True</li>
+<li>string：对&lt;&gt;...&lt;/&gt;中间的内容进行检索</li>
+<li>**kwargs:</li>
 </ul>
 
               </div>
@@ -540,7 +588,7 @@ window.addEventListener('load', function() {
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alittlewhiter.github.io/post/about/" title="About">About</a>
+      <a href="https://alittlewhiter.github.io/post/guan-yu-python-pa-chong-xiao-ji/" title="关于Python 爬虫 - 小记">关于Python 爬虫 - 小记</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -555,6 +603,10 @@ window.addEventListener('load', function() {
       
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Hello Gridea" href="https://alittlewhiter.github.io/post/hello-gridea/">Hello Gridea</a>
+        <a class="nav-mobile-next" title="Hello Gridea" href="https://alittlewhiter.github.io/post/hello-gridea/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>
