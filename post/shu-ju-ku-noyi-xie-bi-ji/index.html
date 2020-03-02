@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
-<title>关于Python 爬虫 - 小记 | 君の知らない物语</title>
+<title>数据库の一些笔记 | 君の知らない物语</title>
 <link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583149146788">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
@@ -26,8 +26,8 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
     onload="renderMathInElement(document.body);"></script>
 
-    <meta name="description" content="关于Python 爬虫 - 小记" />
-    <meta name="keywords" content="python,爬虫,中国大学MOOC,课外笔记" />
+    <meta name="description" content="数据库の一些笔记" />
+    <meta name="keywords" content="数据库,课内笔记,知识点" />
 
     <!--载入js，在</body>之前插入即可-->
     <!--Leancloud 操作库:-->
@@ -224,15 +224,21 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#requests%E5%BA%93%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95">requests库的常用方法：</a></li>
-<li><a href="#%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF">通用代码模板：</a></li>
+<li><a href="#%E6%9C%89%E5%85%B3-%E9%94%AE">有关 键</a>
+<ul>
+<li><a href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB">主要区别：</a></li>
 </ul>
 </li>
-<li><a href="#%E7%88%AC%E8%99%AB%E5%B0%BA%E5%AF%B8">爬虫尺寸：</a></li>
-<li><a href="#robots%E5%8D%8F%E8%AE%AE">Robots协议</a></li>
-<li><a href="#beautifulsoup%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8">BeautifulSoup库的使用</a>
+<li><a href="#%E6%AD%A4%E5%A4%96%E8%BF%98%E6%9C%89">此外还有：</a></li>
+<li><a href="#%E6%A8%A1%E5%BC%8Fschema">模式（Schema）：</a>
 <ul>
-<li><a href="#%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F">信息标记的三种形式：</a></li>
+<li><a href="#%E7%90%86%E8%A7%A3">理解：</a></li>
+<li><a href="#%E5%A4%96%E6%A8%A1%E5%BC%8Fexternal-schema">外模式(external schema)</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7database-integrity">数据库完整性（Database Integrity）</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E5%85%B3%E7%B3%BB%E5%88%86%E8%A7%A3%E6%98%AF%E5%90%A6%E4%BF%9D%E6%8C%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96">判断关系分解是否保持函数依赖？</a></li>
+<li><a href="#and-next">And next</a></li>
 </ul>
 </li>
 </ul>
@@ -488,8 +494,8 @@ window.addEventListener('load', function() {
               <div class="article-box">
     <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alittlewhiter.github.io/post/guan-yu-python-pa-chong-xiao-ji/">
-      关于Python 爬虫 - 小记
+    <a class="post-title-link" href="https://alittlewhiter.github.io/post/shu-ju-ku-noyi-xie-bi-ji/">
+      数据库の一些笔记
     </a>
   </h1>
   <div class="post-meta">
@@ -506,26 +512,20 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alittlewhiter.github.io/tag/xA0ynUcda/">
-              <span>python</span>
+            <a href="https://alittlewhiter.github.io/tag/Y8YpuRT0u/">
+              <span>数据库</span>
             </a>、
           
         
           
-            <a href="https://alittlewhiter.github.io/tag/T4HYgZ0dJa/">
-              <span>爬虫</span>
+            <a href="https://alittlewhiter.github.io/tag/e_q7qpct-k/">
+              <span>课内笔记</span>
             </a>、
           
         
           
-            <a href="https://alittlewhiter.github.io/tag/0soickijap/">
-              <span>中国大学MOOC</span>
-            </a>、
-          
-        
-          
-            <a href="https://alittlewhiter.github.io/tag/m71_UCZBGX/">
-              <span>课外笔记</span>
+            <a href="https://alittlewhiter.github.io/tag/0yyq63M4V_/">
+              <span>知识点</span>
             </a>
           
         
@@ -534,91 +534,67 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3分钟</span>
+      <span>8分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>577<span class="pc-show">字数</span></span>
+      <span>2096<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
 </div>
               <div class="post-body next-md-body" id="post_body">
-                <p>于中国大学MOOC有关<strong>爬虫</strong>网课学习记录<br>
-<s>学这玩意儿也不是一次两次了、没一次学进去过的。。。😓</s></p>
-<!-- more -->
-<h2 id="requests库的常用方法">requests库的常用方法：</h2>
-<p>requests.request(method, url, **kwargs);   method具体方法，url访问链接，kwargs控制访问参数（可选）<br>
-get(url, params=None, **)<br>
-head(url, **)<br>
-post(url, data, json, **)<br>
-put(url, data, **)<br>
-patch(url, data, **)<br>
-delete(url,  **)</p>
-<p>可选访问参数有：params，data，json，headers，cookies，auth，files，timeout，proxies，allow_redirects，stream，verify，cert</p>
-<h2 id="通用代码模板">通用代码模板：</h2>
-<p>import requests</p>
-<p>def getHTMLText(url):<br>
-try:<br>
-r = requests.get(url, timeout=100)<br>
-r.raise_for_status()             # 对状态码不是200的错误状态抛出一个HTTP异常<br>
-r.encoding = r.apparent_encoding<br>
-return r.text<br>
-except:<br>
-print(r.status_code)<br>
-return &quot;产生异常&quot;</p>
-<h1 id="爬虫尺寸">爬虫尺寸：</h1>
+                <!-- more -->
+<h2 id="有关-键">有关 键</h2>
+<p><strong>超键（super key， SK）</strong><br>
+<code>又称“超码”，是在数据库关系模式设计中能唯一标识一个元组的属性或属性集。 包含所有属性的集叫做明显（平凡）超键。</code><br>
+<strong>候选键（candidate key， CK）</strong><br>
+<code>又称“候选键“、”极小码“，是在数据库关系模式设计中能能唯一标识一个元组，且其真子集不能唯一标识一个元组的属性或属性集。</code><br>
+<strong>主键（primary key， PK）</strong><br>
+<code>又称“主码“，既从候选键中挑选出来的能唯一标识一个元组的属性或属性集。一张表中有且只能有一个主键。</code><br>
+<em>外键（foreign key， FK）</em><br>
+<code>又称“外码“，若一个关系中的一个属性或属性集是另外一个关系中的主码，则该属性或属性集为这个关系引用另外一个关系的外码。一张表中可以没有外码。</code></p>
 <ul>
-<li>小规模 --Requests库，数据量小，爬取小型网页数据</li>
-<li>中规模 --Scrapy库，数据规模较大，速度敏感，爬取系列网站</li>
-<li>大规模 --定制开发库，搜索引擎，爬取速度关键，全网爬取</li>
+<li>DML(Data Manipulation Language)数据操纵语言：*<br>
+<code>适用范围：对数据库中的数据进行一些简单操作，数据库表的增删改查，如insert, delete, update, select，call 等（select 可以划分到 DQL，）</code></li>
+<li>DDL(Data Definition Language)数据定义语言：*<br>
+<code>适用范围：对数据库中的某些对象(例如，database,table)进行管理，如建库、建表、更改表结构，删库、删表，建索引，设置约束等：Create, Alter 和 Drop.</code><br>
+- Create语句：可以创建数据库和数据库的一些对象。<br>
+- Drop语句：可以删除数据表、索引、触发程序、条件约束以及数据表的权限等。<br>
+- Alter语句：修改数据表定义及属性。</li>
 </ul>
-<h1 id="robots协议">Robots协议</h1>
-<p>各个网站主页根目录下，给出网站对于各种用户代理访问的反爬规则</p>
-<h1 id="beautifulsoup库的使用">BeautifulSoup库的使用</h1>
-<p>pip install beautifulsoup4</p>
-<p>#- 对HTML页面内容的遍历方法：（构建标签树）<br>
-<code>from bs4 import BeautifulSoup</code><br>
-<code>soup = BeautifulSoup(aRespaonse.text, 'html.parser')</code><br>
-<code>data = soup.prettify()</code><br>
-<code>with open('F:/py123.html;, 'wb') as f:</code><br>
-<code>f.write(data.encode('utf-8'))</code><br>
-<code>f.close()</code><br>
-<code>tag = soup.title/a/p/head/body/....</code><br>
-<code>tag.attrs // 获取标签内属性，字典</code><br>
-<code>tag(.parent)*.name // 标签名，父级标签名</code><br>
-<code>tag.string // 标签内字符串</code></p>
-<p>#- bs4库的基本元素：<br>
-Tag，Name，Attributes，NavigabString，Comment<br>
-#- bs4库的遍历功能<br>
-.contents,  .parent,  .parents,  .children,   .descendants, .next_sibling,   .previous_sibling,  .next_siblings,  .previous_siblings</p>
-<h2 id="信息标记的三种形式">信息标记的三种形式：</h2>
+<h3 id="主要区别">主要区别：</h3>
+<p>1.DML操作是可以手动控制事务的开启、提交和回滚的。<br>
+2.DDL操作是隐性提交的，不能rollback！</p>
+<h2 id="此外还有">此外还有：</h2>
+<p>DCL（DataControl Language）是数据库控制语言。是用来设置或更改数据库用户或角色权限的语句，包括（grant,deny,revoke等）语句。在默认状态下，只有sysadmin, dbcreator, db_owner或db_securityadmin等人员才有权力执行DCL<br>
+DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
+<h2 id="模式schema">模式（Schema）：</h2>
+<pre><code>   也称逻辑模式，是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图。
+</code></pre>
+<h3 id="理解">理解：</h3>
+<p>① 一个数据库只有一个模式；<br>
+② 是数据库数据在逻辑级上的视图；<br>
+③ 数据库模式以某一种数据模型为基础；<br>
+④ 定义模式时不仅要定义数据的逻辑结构（如数据记录由哪些数据项构成，数据项的名字、类型、取值范围等），而且要定义与数据有关的安全性、完整性要求，定义这些数据之间的联系。</p>
+<h3 id="外模式external-schema">外模式(external schema)</h3>
+<p>外模式是用户与数据库系统的接口。　单个用户的视图称为外部视图。一个用户往往只用到数据库的一部分。外部视图由若干外 部记录类型组成，这些外部记录类型和概念记录类型、内部记录类型可能不一样。用户使用数据操纵语言语句对数据库进行操作.实际上是对外部视图的外部记录进行操作。例如GET操作是读一个外部记录值(实际上是逻辑记录值)，而不是数据库的内部记录值。每个外部视图用 DDL描述后得到的是外模式。描述外部视图的DDL称为“外模式DDL”。外模式是外部视图 中每个外部记录类型的定义，因此它是面向一个或多个用户需要的那部分数据的描述。在外模 式中还必须定义外模式和概念模式间数据结构的差异。<br>
+外模式与概念模式的分离，使数据库系统的灵活性大大增加。外模式是从模式导出的，它 必须是导出它的模式的逻辑子集但在外模式里，不仅那些与用户无关的数据可以略去，而且 数据项可以按照用户使用的习惯重新命名，记录类型也可以重新组合和命名。应用程序员不必 再关心整个数据库的全局逻辑结构，他只与外模式发生直接联系，按照外模式存储和操纵数据.<br>
+　　一个数据库可以有多个外模式。由于它是各个用户的数据视图，如果不同用户在应用需求，看待数据的方式，对数据保密的要求等方面存在差异，则其外模式描述就是不同的。即使对模式中同一数据，在外模式中的结构，类型，长度，保密级别等都可以是不同的。对于一个数据库系统而言，同一外模式也可以为某一用户的多个应用所应用，但任何一个应用程序都必须使用而且只能使用一个外模式，才能对数据库中的数据进行操作。一个模式可以支持若干个外模式，但每一个外模式只能属于一个模式。</p>
+<h2 id="数据库完整性database-integrity">数据库完整性（Database Integrity）</h2>
+<pre><code>  指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。      数据库完整性约束可分为6类：列级静态约束、元组级静态约束、关系级静态约束、列级动态约束、元组级动态约束、关系级动态约束。动态约束通常由应用软件来实现。
+  关系完整性的用于保证数据库中数据的正确性。系统在进行更新、插入或删除等操作时都要检查数据的完整性，核实其约束条件，即关系模型的完整性规则。在关系模型中有四类完整性约束：实体完整性、域完整性、参照完整性和用户定义的完整性，其中实体完整性和参照完整性约束条件, 称为关系的两个不变性。
+</code></pre>
 <ul>
-<li>1、XML    &lt;<em>&gt;&lt;/</em>&gt;标签类型<br>
-Internet上信息交互与传递</li>
-<li>2、JSON    &quot;<em>&quot;: [&quot;</em>&quot;, &quot;*&quot;, ..]  有类型的键值对，字符串形式<br>
-移动应用云端和节点的信息通信，适于js等，无注释</li>
-<li>3、YAML    无类型键值对，缩进表达所属关系<br>
-Name:   #comment<br>
-name1<br>
-name2<br>
-各类系统的配置文件，有注释易读</li>
+<li>1、实体完整性（Entity Integrity）。实体完整性指表中行的完整性。主要用于保证操作的数据（记录）非空、唯一且不重复。即实体完整性要求每个关系（表）有且仅有一个主键，每一个主键值必须唯一，而且不允许为“空”（NULL）或重复。</li>
+<li>2、域完整性（Domain Integrity）是指数据库表中的列必须满足某种特定的数据类型或约束。其中约束又包括取值范围、精度等规定。表中的CHECK、FOREIGN KEY 约束和DEFAULT、 NOT NULL定义都属于域完整性的范畴。</li>
+<li>3、参照完整性（Referential Integrity）属于表间规则。对于永久关系的相关表，在更新、插入或删除记录时，如果只改其一，就会影响数据的完整性。如删除父表的某记录后，子表的相应记录未删除，致使这些记录称为孤立记录。对于更新、插入或删除表间数据的完整性，统称为参照完整性。通常，在客观现实中的实体之间存在一定联系，在关系模型中实体及实体间的联系都是以关系进行描述，因此，操作时就可能存在着关系与关系间的关联和引用。</li>
+<li>4、用户定义完整性（User-defined Integrity）是对数据表中字段属性的约束，用户定义完整性规则（User-defined integrity）也称域完整性规则。包括字段的值域、字段的类型和字段的有效规则（如小数位数）等约束，是由确定关系结构时所定义的字段的属性决定的。</li>
 </ul>
-<p><code>{soup/&lt;..&gt;}(..) .find_all(name, attrs, recursive, string, **kwargs) :</code><br>
-<code>返回一个列表类型，存储查找的结果。</code></p>
-<ul>
-<li>name：对标签名称检索字符串</li>
-<li>attrs：对标签属性值检索字符串，可标注属性检索</li>
-<li>recursive：是否对子孙全部检索，默认True</li>
-<li>string：对&lt;&gt;...&lt;/&gt;中间的内容进行检索</li>
-<li>**kwargs:</li>
-<li>···</li>
-</ul>
-<p>⏳<br>
-⏳<br>
-⏳<br>
-。。。算啦、本辣鸡写不下去了，有缘再见吧 😇</p>
+<h2 id="判断关系分解是否保持函数依赖">判断关系分解是否保持函数依赖？</h2>
+<p>设有属性集 {ABCDEF}，存在这样的函数依赖集{A-&gt;BC , CD-&gt;E , B-&gt;D , BE-&gt;F , EF-&gt;A},然后有这样的分解{ABC , BD , BEF}。设U1=ABC，A-&gt;BC，U2=BD，B-&gt;D ，U3=BEF，BE-&gt;F ，即我们不能推出 CD-&gt;E ，EF-&gt;A，所以也不具有保持函数依赖的特性。</p>
+<h2 id="and-next">And next</h2>
 
               </div>
               <div class="post-footer">
@@ -629,7 +605,7 @@ name2<br>
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alittlewhiter.github.io/post/guan-yu-python-pa-chong-xiao-ji/" title="关于Python 爬虫 - 小记">关于Python 爬虫 - 小记</a>
+      <a href="https://alittlewhiter.github.io/post/shu-ju-ku-noyi-xie-bi-ji/" title="数据库の一些笔记">数据库の一些笔记</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -638,27 +614,21 @@ name2<br>
   </ul>
   <div class="tags">
     
-      <a href="https://alittlewhiter.github.io/tag/xA0ynUcda/"># python</a>
+      <a href="https://alittlewhiter.github.io/tag/Y8YpuRT0u/"># 数据库</a>
     
-      <a href="https://alittlewhiter.github.io/tag/T4HYgZ0dJa/"># 爬虫</a>
+      <a href="https://alittlewhiter.github.io/tag/e_q7qpct-k/"># 课内笔记</a>
     
-      <a href="https://alittlewhiter.github.io/tag/0soickijap/"># 中国大学MOOC</a>
-    
-      <a href="https://alittlewhiter.github.io/tag/m71_UCZBGX/"># 课外笔记</a>
+      <a href="https://alittlewhiter.github.io/tag/0yyq63M4V_/"># 知识点</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="数据库の一些笔记" href="https://alittlewhiter.github.io/post/shu-ju-ku-noyi-xie-bi-ji/">数据库の一些笔记</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="数据库の一些笔记" href="https://alittlewhiter.github.io/post/shu-ju-ku-noyi-xie-bi-ji/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Hello Gridea" href="https://alittlewhiter.github.io/post/hello-gridea/">Hello Gridea</a>
-        <a class="nav-mobile-next" title="Hello Gridea" href="https://alittlewhiter.github.io/post/hello-gridea/">下一篇</a>
+        <a class="nav-pc-next" title="关于Python 爬虫 - 小记" href="https://alittlewhiter.github.io/post/guan-yu-python-pa-chong-xiao-ji/">关于Python 爬虫 - 小记</a>
+        <a class="nav-mobile-next" title="关于Python 爬虫 - 小记" href="https://alittlewhiter.github.io/post/guan-yu-python-pa-chong-xiao-ji/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
