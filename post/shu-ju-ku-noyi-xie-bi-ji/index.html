@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>数据库の一些笔记 | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583149146788">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583151142498">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -162,19 +162,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-count">5</span>
         <span class="site-item-stat-name">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-count">14</span>
         <span class="site-item-stat-name">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-count">14</span>
         <span class="site-item-stat-name">标签</span>
       </a>
     </div>
@@ -227,9 +227,9 @@
 <li><a href="#%E6%9C%89%E5%85%B3-%E9%94%AE">有关 键</a>
 <ul>
 <li><a href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB">主要区别：</a></li>
+<li><a href="#%E6%AD%A4%E5%A4%96%E8%BF%98%E6%9C%89">此外还有：</a></li>
 </ul>
 </li>
-<li><a href="#%E6%AD%A4%E5%A4%96%E8%BF%98%E6%9C%89">此外还有：</a></li>
 <li><a href="#%E6%A8%A1%E5%BC%8Fschema">模式（Schema）：</a>
 <ul>
 <li><a href="#%E7%90%86%E8%A7%A3">理解：</a></li>
@@ -539,35 +539,35 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>2096<span class="pc-show">字数</span></span>
+      <span>2137<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
 </div>
               <div class="post-body next-md-body" id="post_body">
-                <!-- more -->
+                <p>Keywords：关系的键、DML &amp; DDL、模式、数据库完整性、FD</p>
+<p>新冠肺炎宅在家，学习效率那是超像想地low哇<sub>（唉、搬点旧货</sub></p>
+<!-- more -->
 <h2 id="有关-键">有关 键</h2>
-<p><strong>超键（super key， SK）</strong><br>
+<p><em>超键（super key， SK）</em><br>
 <code>又称“超码”，是在数据库关系模式设计中能唯一标识一个元组的属性或属性集。 包含所有属性的集叫做明显（平凡）超键。</code><br>
-<strong>候选键（candidate key， CK）</strong><br>
+<em>候选键（candidate key， CK）</em><br>
 <code>又称“候选键“、”极小码“，是在数据库关系模式设计中能能唯一标识一个元组，且其真子集不能唯一标识一个元组的属性或属性集。</code><br>
-<strong>主键（primary key， PK）</strong><br>
+<em>主键（primary key， PK）</em><br>
 <code>又称“主码“，既从候选键中挑选出来的能唯一标识一个元组的属性或属性集。一张表中有且只能有一个主键。</code><br>
 <em>外键（foreign key， FK）</em><br>
 <code>又称“外码“，若一个关系中的一个属性或属性集是另外一个关系中的主码，则该属性或属性集为这个关系引用另外一个关系的外码。一张表中可以没有外码。</code></p>
-<ul>
-<li>DML(Data Manipulation Language)数据操纵语言：*<br>
-<code>适用范围：对数据库中的数据进行一些简单操作，数据库表的增删改查，如insert, delete, update, select，call 等（select 可以划分到 DQL，）</code></li>
-<li>DDL(Data Definition Language)数据定义语言：*<br>
+<p><em>DML(Data Manipulation Language)数据操纵语言：</em><br>
+<code>适用范围：对数据库中的数据进行一些简单操作，数据库表的增删改查，如insert, delete, update, select，call 等（select 可以划分到 DQL，）</code><br>
+<em>DDL(Data Definition Language)数据定义语言：</em><br>
 <code>适用范围：对数据库中的某些对象(例如，database,table)进行管理，如建库、建表、更改表结构，删库、删表，建索引，设置约束等：Create, Alter 和 Drop.</code><br>
 - Create语句：可以创建数据库和数据库的一些对象。<br>
 - Drop语句：可以删除数据表、索引、触发程序、条件约束以及数据表的权限等。<br>
-- Alter语句：修改数据表定义及属性。</li>
-</ul>
+- Alter语句：修改数据表定义及属性。</p>
 <h3 id="主要区别">主要区别：</h3>
 <p>1.DML操作是可以手动控制事务的开启、提交和回滚的。<br>
 2.DDL操作是隐性提交的，不能rollback！</p>
-<h2 id="此外还有">此外还有：</h2>
+<h3 id="此外还有">此外还有：</h3>
 <p>DCL（DataControl Language）是数据库控制语言。是用来设置或更改数据库用户或角色权限的语句，包括（grant,deny,revoke等）语句。在默认状态下，只有sysadmin, dbcreator, db_owner或db_securityadmin等人员才有权力执行DCL<br>
 DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 <h2 id="模式schema">模式（Schema）：</h2>
@@ -583,8 +583,13 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 外模式与概念模式的分离，使数据库系统的灵活性大大增加。外模式是从模式导出的，它 必须是导出它的模式的逻辑子集但在外模式里，不仅那些与用户无关的数据可以略去，而且 数据项可以按照用户使用的习惯重新命名，记录类型也可以重新组合和命名。应用程序员不必 再关心整个数据库的全局逻辑结构，他只与外模式发生直接联系，按照外模式存储和操纵数据.<br>
 　　一个数据库可以有多个外模式。由于它是各个用户的数据视图，如果不同用户在应用需求，看待数据的方式，对数据保密的要求等方面存在差异，则其外模式描述就是不同的。即使对模式中同一数据，在外模式中的结构，类型，长度，保密级别等都可以是不同的。对于一个数据库系统而言，同一外模式也可以为某一用户的多个应用所应用，但任何一个应用程序都必须使用而且只能使用一个外模式，才能对数据库中的数据进行操作。一个模式可以支持若干个外模式，但每一个外模式只能属于一个模式。</p>
 <h2 id="数据库完整性database-integrity">数据库完整性（Database Integrity）</h2>
-<pre><code>  指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。      数据库完整性约束可分为6类：列级静态约束、元组级静态约束、关系级静态约束、列级动态约束、元组级动态约束、关系级动态约束。动态约束通常由应用软件来实现。
-  关系完整性的用于保证数据库中数据的正确性。系统在进行更新、插入或删除等操作时都要检查数据的完整性，核实其约束条件，即关系模型的完整性规则。在关系模型中有四类完整性约束：实体完整性、域完整性、参照完整性和用户定义的完整性，其中实体完整性和参照完整性约束条件, 称为关系的两个不变性。
+<pre><code>  指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。
+  
+  数据库完整性约束可分为6类：列级静态约束、元组级静态约束、关系级静态约束、列级动态约束、元组级动态约束、关系级动态约束。动态约束通常由应用软件来实现。
+  
+  关系完整性的用于保证数据库中数据的正确性。系统在进行更新、插入或删除等操作时都要检查数据的完整性，核实其约束条件，即关系模型的完整性规则。
+  
+  在关系模型中有四类完整性约束：实体完整性、域完整性、参照完整性和用户定义的完整性，其中实体完整性和参照完整性约束条件, 称为关系的两个不变性。
 </code></pre>
 <ul>
 <li>1、实体完整性（Entity Integrity）。实体完整性指表中行的完整性。主要用于保证操作的数据（记录）非空、唯一且不重复。即实体完整性要求每个关系（表）有且仅有一个主键，每一个主键值必须唯一，而且不允许为“空”（NULL）或重复。</li>
@@ -595,6 +600,7 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 <h2 id="判断关系分解是否保持函数依赖">判断关系分解是否保持函数依赖？</h2>
 <p>设有属性集 {ABCDEF}，存在这样的函数依赖集{A-&gt;BC , CD-&gt;E , B-&gt;D , BE-&gt;F , EF-&gt;A},然后有这样的分解{ABC , BD , BEF}。设U1=ABC，A-&gt;BC，U2=BD，B-&gt;D ，U3=BEF，BE-&gt;F ，即我们不能推出 CD-&gt;E ，EF-&gt;A，所以也不具有保持函数依赖的特性。</p>
 <h2 id="and-next">And next</h2>
+<p>。。。</p>
 
               </div>
               <div class="post-footer">
@@ -623,6 +629,10 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
   </div>
   <div class="nav">
     <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="搬点之前的《操作系统》" href="https://alittlewhiter.github.io/post/ban-dian-zhi-qian-de-lesslesscao-zuo-xi-tong-greatergreater-huan-you-wo-os-da-jpg/">搬点之前的《操作系统》</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="搬点之前的《操作系统》" href="https://alittlewhiter.github.io/post/ban-dian-zhi-qian-de-lesslesscao-zuo-xi-tong-greatergreater-huan-you-wo-os-da-jpg/">上一篇</a>
       
     </div>
     <div class="nav-next">

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-02T11:39:15.278Z</updated>
+    <updated>2020-03-02T12:12:28.684Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -11,34 +11,84 @@
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
     <entry>
+        <title type="html"><![CDATA[那一天，人类终于回想起曾一度被Ucore支配的恐惧...]]></title>
+        <id>https://alittlewhiter.github.io/post/na-yi-tian-ren-lei-zhong-yu-hui-xiang-qi-ceng-yi-du-bei-ucore-zhi-pei-de-kong-ju/</id>
+        <link href="https://alittlewhiter.github.io/post/na-yi-tian-ren-lei-zhong-yu-hui-xiang-qi-ceng-yi-du-bei-ucore-zhi-pei-de-kong-ju/">
+        </link>
+        <updated>2020-03-02T12:02:31.000Z</updated>
+        <summary type="html"><![CDATA[<p>Keywords：Ucore lab0、lab1、lab2实验分析、报告</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Keywords：Ucore lab0、lab1、lab2实验分析、报告</p>
+<!-- more -->
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[搬点之前的《操作系统》]]></title>
+        <id>https://alittlewhiter.github.io/post/ban-dian-zhi-qian-de-lesslesscao-zuo-xi-tong-greatergreater-huan-you-wo-os-da-jpg/</id>
+        <link href="https://alittlewhiter.github.io/post/ban-dian-zhi-qian-de-lesslesscao-zuo-xi-tong-greatergreater-huan-you-wo-os-da-jpg/">
+        </link>
+        <updated>2020-03-02T11:47:06.000Z</updated>
+        <summary type="html"><![CDATA[<p>Keywords：OS管理功能、分类</p>
+<p>学啥忘啥、学到老&amp;忘到老...<br>
+~（Ko no OS da !）</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Keywords：OS管理功能、分类</p>
+<p>学啥忘啥、学到老&amp;忘到老...<br>
+~（Ko no OS da !）</p>
+<!-- more -->
+<h1 id="操作系统可以分为五大管理功能部分">操作系统可以分为五大管理功能部分：</h1>
+<p>1）设备管理：主要是负责内核与外围设备的数据交互，实质是对硬件设备的管理，包括对输入输出设备的分配，初始化，维护与回收等。例如管理音频输入输出。<br>
+2）作业管理：这部分功能主要是负责人机交互，图形界面或者系统任务的管理。<br>
+3）文件管理：这部分功能涉及文件的逻辑组织和物理组织，目录结构和管理等。从操作系统的角度来看，文件系统是系统对文件存储器的存储空间进行分配，维护和回收，同时负责文件的索引，共享和权限保护。而从用户的角度来说，文件系统是按照文件目录和文件名来进行存取的。<br>
+4）进程管理：说明一个进程存在的唯一标志是pcb（进程控制块），负责维护进程的信息和状态。进程管理实质上是系统采取某些进程调度算法来使处理合理的分配给每个任务使用。<br>
+5）存储管理：数据的存储方式和组织结构。</p>
+<h1 id="os的分类">OS的分类</h1>
+<h3 id="操作系统的类型也可以分为几种批处理系统分时操作系统实时操作系统网络操作系统等-下面将简单的介绍他们各自的特点">操作系统的类型也可以分为几种：批处理系统，分时操作系统，实时操作系统，网络操作系统等。下面将简单的介绍他们各自的特点：</h3>
+<p>1）批处理系统：首先，用户提交完作业后并在获得结果之前不会再与操作系统进行数据交互，用户提交的作业由系统外存储存为后备作业；数据是成批处理的，有操作系统负责作业的自动完成；支持多道程序运行。<br>
+2）分时操作系统：首先交互性方面，用户可以对程序动态运行时对其加以控制；支持多个用户登录终端，并且每个用户共享CPU和其他系统资源。<br>
+3）实时操作系统：会有时钟管理，包括定时处理和延迟处理。实时性要求比较高，某些任务必须优先处理，而有些任务则会被延迟调度完成。<br>
+4）网络操作系统：网络操作系统主要有几种基本功能<br>
+（1）网络通信：负责在源主机与目标主机之间的数据的可靠通信，这是最基本的功能。<br>
+（2）网络服务：系统支持一些电子邮件服务，文件传输，数据共享，设备共享等。<br>
+（3）资源管理：对网络中共享的资源进行管理，例如设置权限以保证数据源的安全性。<br>
+（4）网络管理：主要任务是实现安全管理，例如通过“存取控制”来确保数据的存取安全性，通过“容错性”来保障服务器故障时数据的安全性。<br>
+（5）支持交互操作：在客户/服务器模型的LAN环境下，多种客户机和主机不仅能与服务器进行数据连接通信，并且可以访问服务器的文件系统</p>
+<h1 id="下一个">下一个</h1>
+<p>。。</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[数据库の一些笔记]]></title>
         <id>https://alittlewhiter.github.io/post/shu-ju-ku-noyi-xie-bi-ji/</id>
         <link href="https://alittlewhiter.github.io/post/shu-ju-ku-noyi-xie-bi-ji/">
         </link>
         <updated>2020-03-02T11:25:57.000Z</updated>
-        <content type="html"><![CDATA[<!-- more -->
+        <summary type="html"><![CDATA[<p>Keywords：关系的键、DML &amp; DDL、模式、数据库完整性、FD</p>
+<p>新冠肺炎宅在家，学习效率那是超像想地low哇<sub>（唉、搬点旧货</sub></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Keywords：关系的键、DML &amp; DDL、模式、数据库完整性、FD</p>
+<p>新冠肺炎宅在家，学习效率那是超像想地low哇<sub>（唉、搬点旧货</sub></p>
+<!-- more -->
 <h2 id="有关-键">有关 键</h2>
-<p><strong>超键（super key， SK）</strong><br>
+<p><em>超键（super key， SK）</em><br>
 <code>又称“超码”，是在数据库关系模式设计中能唯一标识一个元组的属性或属性集。 包含所有属性的集叫做明显（平凡）超键。</code><br>
-<strong>候选键（candidate key， CK）</strong><br>
+<em>候选键（candidate key， CK）</em><br>
 <code>又称“候选键“、”极小码“，是在数据库关系模式设计中能能唯一标识一个元组，且其真子集不能唯一标识一个元组的属性或属性集。</code><br>
-<strong>主键（primary key， PK）</strong><br>
+<em>主键（primary key， PK）</em><br>
 <code>又称“主码“，既从候选键中挑选出来的能唯一标识一个元组的属性或属性集。一张表中有且只能有一个主键。</code><br>
 <em>外键（foreign key， FK）</em><br>
 <code>又称“外码“，若一个关系中的一个属性或属性集是另外一个关系中的主码，则该属性或属性集为这个关系引用另外一个关系的外码。一张表中可以没有外码。</code></p>
-<ul>
-<li>DML(Data Manipulation Language)数据操纵语言：*<br>
-<code>适用范围：对数据库中的数据进行一些简单操作，数据库表的增删改查，如insert, delete, update, select，call 等（select 可以划分到 DQL，）</code></li>
-<li>DDL(Data Definition Language)数据定义语言：*<br>
+<p><em>DML(Data Manipulation Language)数据操纵语言：</em><br>
+<code>适用范围：对数据库中的数据进行一些简单操作，数据库表的增删改查，如insert, delete, update, select，call 等（select 可以划分到 DQL，）</code><br>
+<em>DDL(Data Definition Language)数据定义语言：</em><br>
 <code>适用范围：对数据库中的某些对象(例如，database,table)进行管理，如建库、建表、更改表结构，删库、删表，建索引，设置约束等：Create, Alter 和 Drop.</code><br>
 - Create语句：可以创建数据库和数据库的一些对象。<br>
 - Drop语句：可以删除数据表、索引、触发程序、条件约束以及数据表的权限等。<br>
-- Alter语句：修改数据表定义及属性。</li>
-</ul>
+- Alter语句：修改数据表定义及属性。</p>
 <h3 id="主要区别">主要区别：</h3>
 <p>1.DML操作是可以手动控制事务的开启、提交和回滚的。<br>
 2.DDL操作是隐性提交的，不能rollback！</p>
-<h2 id="此外还有">此外还有：</h2>
+<h3 id="此外还有">此外还有：</h3>
 <p>DCL（DataControl Language）是数据库控制语言。是用来设置或更改数据库用户或角色权限的语句，包括（grant,deny,revoke等）语句。在默认状态下，只有sysadmin, dbcreator, db_owner或db_securityadmin等人员才有权力执行DCL<br>
 DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 <h2 id="模式schema">模式（Schema）：</h2>
@@ -54,8 +104,13 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 外模式与概念模式的分离，使数据库系统的灵活性大大增加。外模式是从模式导出的，它 必须是导出它的模式的逻辑子集但在外模式里，不仅那些与用户无关的数据可以略去，而且 数据项可以按照用户使用的习惯重新命名，记录类型也可以重新组合和命名。应用程序员不必 再关心整个数据库的全局逻辑结构，他只与外模式发生直接联系，按照外模式存储和操纵数据.<br>
 　　一个数据库可以有多个外模式。由于它是各个用户的数据视图，如果不同用户在应用需求，看待数据的方式，对数据保密的要求等方面存在差异，则其外模式描述就是不同的。即使对模式中同一数据，在外模式中的结构，类型，长度，保密级别等都可以是不同的。对于一个数据库系统而言，同一外模式也可以为某一用户的多个应用所应用，但任何一个应用程序都必须使用而且只能使用一个外模式，才能对数据库中的数据进行操作。一个模式可以支持若干个外模式，但每一个外模式只能属于一个模式。</p>
 <h2 id="数据库完整性database-integrity">数据库完整性（Database Integrity）</h2>
-<pre><code>  指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。      数据库完整性约束可分为6类：列级静态约束、元组级静态约束、关系级静态约束、列级动态约束、元组级动态约束、关系级动态约束。动态约束通常由应用软件来实现。
-  关系完整性的用于保证数据库中数据的正确性。系统在进行更新、插入或删除等操作时都要检查数据的完整性，核实其约束条件，即关系模型的完整性规则。在关系模型中有四类完整性约束：实体完整性、域完整性、参照完整性和用户定义的完整性，其中实体完整性和参照完整性约束条件, 称为关系的两个不变性。
+<pre><code>  指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。
+  
+  数据库完整性约束可分为6类：列级静态约束、元组级静态约束、关系级静态约束、列级动态约束、元组级动态约束、关系级动态约束。动态约束通常由应用软件来实现。
+  
+  关系完整性的用于保证数据库中数据的正确性。系统在进行更新、插入或删除等操作时都要检查数据的完整性，核实其约束条件，即关系模型的完整性规则。
+  
+  在关系模型中有四类完整性约束：实体完整性、域完整性、参照完整性和用户定义的完整性，其中实体完整性和参照完整性约束条件, 称为关系的两个不变性。
 </code></pre>
 <ul>
 <li>1、实体完整性（Entity Integrity）。实体完整性指表中行的完整性。主要用于保证操作的数据（记录）非空、唯一且不重复。即实体完整性要求每个关系（表）有且仅有一个主键，每一个主键值必须唯一，而且不允许为“空”（NULL）或重复。</li>
@@ -66,6 +121,7 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 <h2 id="判断关系分解是否保持函数依赖">判断关系分解是否保持函数依赖？</h2>
 <p>设有属性集 {ABCDEF}，存在这样的函数依赖集{A-&gt;BC , CD-&gt;E , B-&gt;D , BE-&gt;F , EF-&gt;A},然后有这样的分解{ABC , BD , BEF}。设U1=ABC，A-&gt;BC，U2=BD，B-&gt;D ，U3=BEF，BE-&gt;F ，即我们不能推出 CD-&gt;E ，EF-&gt;A，所以也不具有保持函数依赖的特性。</p>
 <h2 id="and-next">And next</h2>
+<p>。。。</p>
 ]]></content>
     </entry>
     <entry>
@@ -154,35 +210,35 @@ name2<br>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <title type="html"><![CDATA[Hello Gridea - 梦开始的地方]]></title>
         <id>https://alittlewhiter.github.io/post/hello-gridea/</id>
         <link href="https://alittlewhiter.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意...</p>
+✍️  <strong>Gridea</strong> 是一个静态博客写作客户端，可以用来记录你的生活、心情、知识、笔记、创意...</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意...</p>
+✍️  <strong>Gridea</strong> 是一个静态博客写作客户端，可以用来记录你的生活、心情、知识、笔记、创意...</p>
 <!-- more -->
 <p><a href="https://github.com/getgridea/gridea">Github</a><br>
 <a href="https://gridea.dev/">Gridea 主页</a><br>
 <a href="http://fehey.com/">示例网站</a></p>
 <h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作<br>
+🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片<br>
+🏷️  你可以对文章进行标签分组<br>
+📋  你可以自定义菜单，甚至可以创建外部链接菜单<br>
+💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端<br>
+🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台<br>
+💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统<br>
+🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong><br>
+🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力<br>
+🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步<br>
+🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴（maybe</p>
 <p>😘 Enjoy~</p>
+<p>What ？怎么会就这样结束呢，好戏正式开始😁</p>
 ]]></content>
     </entry>
 </feed>
