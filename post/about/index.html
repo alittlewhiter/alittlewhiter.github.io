@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>About | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583142307538">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583144800342">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -28,11 +28,13 @@
 
     <meta name="description" content="About" />
     <meta name="keywords" content="" />
+
     <!--载入js，在</body>之前插入即可-->
     <!--Leancloud 操作库:-->
     <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--Valine 的核心代码库-->
-    <script src="/media/js/Valine.min.js"></script>
+    <script src="/media/js/Valine.min.js"></script>    
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -558,6 +560,11 @@ window.addEventListener('load', function() {
   </div>
 </div>
               
+
+    <!-- 评论模块 -->
+	<div class="comment"></div>
+
+
             </div>
           </div>
         </div>
@@ -759,8 +766,6 @@ var apiKey = landlord.dataset.key;
 </script>
     </div>
 
-    <!-- 评论模块 -->
-	<div class="comment"></div>
 	<script>
     	new Valine({
         	// AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
