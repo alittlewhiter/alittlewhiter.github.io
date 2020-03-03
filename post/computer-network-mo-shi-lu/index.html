@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>Computer Network 默 · 示 · 录 | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583206250196">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583226004420">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -175,19 +175,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">9</span>
+        <span class="site-item-stat-count">11</span>
         <span class="site-item-stat-name">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">30</span>
+        <span class="site-item-stat-count">34</span>
         <span class="site-item-stat-name">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">30</span>
+        <span class="site-item-stat-count">34</span>
         <span class="site-item-stat-name">标签</span>
       </a>
     </div>
@@ -564,23 +564,28 @@ bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
 #- 丢你王忠，你好！🕷 -#</p>
 <!-- more -->
 <h2 id="wlan-和wifi-的区别">WLAN 和WIFI 的区别？</h2>
-<pre><code>WIFI包含于WLAN中，主要采用802.11b协议的一项技术，是WLAN的一个标准，子集的关系。它们发射信号的功率不同，覆盖范围不同。
-WIFI就是一种无线联网的技术，一般都是小范围的， 距离发射器远了就会收不到网络，而wlan覆盖范围就广泛的多
-</code></pre>
+<ul>
+<li>WIFI包含于WLAN中，主要采用802.11b协议的一项技术，是WLAN的一个标准，子集的关系。它们发射信号的功率不同，覆盖范围不同。</li>
+<li>WIFI就是一种无线联网的技术，一般都是小范围的， 距离发射器远了就会收不到网络，而wlan覆盖范围就广泛的多</li>
+</ul>
 <h2 id="跃点">跃点：</h2>
-<pre><code>即路由。一个路由为一个跃点。传输过程中需要经过多个网络，每个被经过的网络设备点（有能力路由的）叫做一个跃点，地址就是它的ip。跃点数是经过了多少个跃点的累加器，为了防止无用的数据包在网上流散。 为路由指定所需跃点数的整数值（范围是 1 ~ 9999），它用来在路由表里的多个路由中选择与转发包中的目标地址最为匹配的路由, 所选的路由具有最少的跃点数。自动跃点修改方法如下：
-</code></pre>
+<ul>
+<li>即路由。一个路由为一个跃点。传输过程中需要经过多个网络，每个被经过的网络设备点（有能力路由的）叫做一个跃点，地址就是它的ip。跃点数是经过了多少个跃点的累加器，为了防止无用的数据包在网上流散。 为路由指定所需跃点数的整数值（范围是 1 ~ 9999），它用来在路由表里的多个路由中选择与转发包中的目标地址最为匹配的路由, 所选的路由具有最少的跃点数。自动跃点修改方法如下：
 <ul>
 <li>进入相关设备的网络设置，再进入internet TCP/IP的属性设置，再进入高级属性设置；</li>
 <li>默认情况下是勾选的“自动跃点”，不要选择它，手动输入“接口跃点数”，输入的数字越小，优先级越高，这样可以手动控制哪个路由的优先级了。</li>
 </ul>
+</li>
+</ul>
 <h2 id="rj45接口">RJ45接口</h2>
-<pre><code>有两类：用于以太网网卡(网卡接口)、路由器以太网接口等的DTE类型，还有用于交换机等的DCE类型。DTE我们可以称做“数据终端设备”，DCE我们可以称做“数据通信设备”。从某种意义来说，DTE设备称为“主动通信设备”，DCE设备称为“被动通信设备”。当两个类型一样的设备使用RJ45接口连接通信时，必须使用交叉线连接。
-</code></pre>
+<ul>
+<li>有两类：用于以太网网卡(网卡接口)、路由器以太网接口等的DTE类型，还有用于交换机等的DCE类型。DTE我们可以称做“数据终端设备”，DCE我们可以称做“数据通信设备”。从某种意义来说，DTE设备称为“主动通信设备”，DCE设备称为“被动通信设备”。当两个类型一样的设备使用RJ45接口连接通信时，必须使用交叉线连接。</li>
+</ul>
 <h2 id="ip分配">IP分配</h2>
-<pre><code>169.254.0.0/16这样的IP是一个本地链接地址段。RFC3927指出，在IP网络里，每台主机都需要一个IP地址，通常情况下是通过DHCP服务器自动分配，但某些特殊情况下，DHCP分配失败或者没有DHCP服务器时，机器可以自己分配一个IP来完成这个工作。
-169.254.X.X是 Windows操作系统 在 DHCP 信息租用失败时自动给客户机分配的IP地址。由于网络连接问题、网线问题,DHCP服务器(其实就是Modem, 路由器, 或提供共享上网的主机)问题等，而令DHCP信息租用失败, 而IP169.254.X.X 的分配可能会令客户机(你自己的计算机,设置了&quot;自动获取IP&quot;)与所处局域网网关(Modem, 路由器, 或提供共享上网的主机) 位于不同的网段中, 而无法与网关通信,而导致无法接入Internet的情况。
-</code></pre>
+<ul>
+<li>169.254.0.0/16这样的IP是一个本地链接地址段。RFC3927指出，在IP网络里，每台主机都需要一个IP地址，通常情况下是通过DHCP服务器自动分配，但某些特殊情况下，DHCP分配失败或者没有DHCP服务器时，机器可以自己分配一个IP来完成这个工作。<br>
+169.254.X.X是 Windows操作系统 在 DHCP 信息租用失败时自动给客户机分配的IP地址。由于网络连接问题、网线问题,DHCP服务器(其实就是Modem, 路由器, 或提供共享上网的主机)问题等，而令DHCP信息租用失败, 而IP169.254.X.X 的分配可能会令客户机(你自己的计算机,设置了&quot;自动获取IP&quot;)与所处局域网网关(Modem, 路由器, 或提供共享上网的主机) 位于不同的网段中, 而无法与网关通信,而导致无法接入Internet的情况。</li>
+</ul>
 
               </div>
               <div class="post-footer">

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-03T03:33:41.166Z</updated>
+    <updated>2020-03-03T09:03:05.441Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -10,6 +10,52 @@
     <logo>https://alittlewhiter.github.io/images/avatar.png</logo>
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
+    <entry>
+        <title type="html"><![CDATA[关于CDN这回事儿]]></title>
+        <id>https://alittlewhiter.github.io/post/guan-yu-cdn-zhe-hui-shi-er/</id>
+        <link href="https://alittlewhiter.github.io/post/guan-yu-cdn-zhe-hui-shi-er/">
+        </link>
+        <updated>2020-03-03T08:54:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>也就那回事儿~</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>也就那回事儿~</p>
+<!-- more -->
+<h3 id="介绍">介绍</h3>
+<p>CDN，Content Distribute Network，可以直译成内容分发网络，CDN解决的是如何将数据快速可靠从源站传递到用户的问题。用户获取数据时，不需要直接从源站获取，通过CDN对于数据的分发，用户可以从一个较优的服务器获取数据，从而达到快速访问，并减少源站负载压力的目的。</p>
+<h3 id="为什么不进行数据的直接交付即让用户直接从源站获取数据呢">为什么不进行数据的直接交付，即让用户直接从源站获取数据呢？</h3>
+<p>我们常说的互联网实际上由两层组成，一层是以TCP/IP为核心的网络层即Internet（因特网），另一层则是以万维网WWW为代表的应用层。数据从服务器端交付到用户端，至少有4个地方可能会造成网络拥堵。</p>
+<ol>
+<li>“第一公里”，这是指万维网流量向用户传送的第一个出口，是网站服务器接入互联网的链路。这个出口带宽决定了一个网站能为用户提供的访问速度和并发访问量。当用户请求量超出网站的出口带宽，就会在出口处造成拥塞。</li>
+<li>“最后一公里”，万维网流量向用户传送的最后一段链路，即用户接入互联网的链路。用户接入的带宽影响用户接收流量的能力。随着电信运营商的大力发展，用户的接入带宽得到了很大改善，“最后一公里”问题基本得到解决。</li>
+<li>ISP互联，即因特网服务提供商之间的互联，比如中国电信和中国联通两个网络运营商之间的互联互通。当某个网站服务器部署在运营商A的机房，运营商B的用户要访问该网站，那就必须经过A、B之间的互联互通点进行跨网访问。从互联网的架构来看，不同运营商之间的互联互通带宽，对任何一个运营商网络流量来说，占比都非常小。因此，这里也通常是网络传输的拥堵点。</li>
+<li>长途骨干传输。首先是长距离传输时延问题，其次是骨干网络的拥塞问题，这些问题都会造成万维网流量传输的拥堵。<br>
+从以上对于网络拥堵的情况分析，如果网络上的数据都使用从源站直接交付到用户的方法，那么将极有可能会出现访问拥塞的情况。<br>
+如果能有一种技术方案，将数据缓存在离用户最近的地方，使用户以最快的速度获取，那这对于减少网站的出口带宽压力，减少网络传输的拥堵情况，将起到很大的作用。CDN正是这样一种技术方案。</li>
+</ol>
+<p>转载如下：<br>
+————————————————<br>
+版权声明：本文为CSDN博主「haozlee」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：https://blog.csdn.net/lihao21/article/details/52808747</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[来了来了、Markdown入坟系列]]></title>
+        <id>https://alittlewhiter.github.io/post/lai-liao-lai-liao-markdown-ru-fen-xi-lie/</id>
+        <link href="https://alittlewhiter.github.io/post/lai-liao-lai-liao-markdown-ru-fen-xi-lie/">
+        </link>
+        <updated>2020-03-03T04:09:36.000Z</updated>
+        <summary type="html"><![CDATA[<p>** Keywords：markdown，md语法，笔记 **</p>
+<h6 id="typora大法好">Typora大法好！</h6>
+<h5 id="typora大法好-2">Typora大法好！!</h5>
+<h4 id="typora大法好-3">Typora大法好！！！</h4>
+]]></summary>
+        <content type="html"><![CDATA[<p>** Keywords：markdown，md语法，笔记 **</p>
+<h6 id="typora大法好">Typora大法好！</h6>
+<h5 id="typora大法好-2">Typora大法好！!</h5>
+<h4 id="typora大法好-3">Typora大法好！！！</h4>
+<!-- more -->
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[X86寄存器详解]]></title>
         <id>https://alittlewhiter.github.io/post/x86-ji-cun-qi-xiang-jie/</id>
@@ -486,23 +532,28 @@ bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
 #- 丢你王忠，你好！🕷 -#</p>
 <!-- more -->
 <h2 id="wlan-和wifi-的区别">WLAN 和WIFI 的区别？</h2>
-<pre><code>WIFI包含于WLAN中，主要采用802.11b协议的一项技术，是WLAN的一个标准，子集的关系。它们发射信号的功率不同，覆盖范围不同。
-WIFI就是一种无线联网的技术，一般都是小范围的， 距离发射器远了就会收不到网络，而wlan覆盖范围就广泛的多
-</code></pre>
+<ul>
+<li>WIFI包含于WLAN中，主要采用802.11b协议的一项技术，是WLAN的一个标准，子集的关系。它们发射信号的功率不同，覆盖范围不同。</li>
+<li>WIFI就是一种无线联网的技术，一般都是小范围的， 距离发射器远了就会收不到网络，而wlan覆盖范围就广泛的多</li>
+</ul>
 <h2 id="跃点">跃点：</h2>
-<pre><code>即路由。一个路由为一个跃点。传输过程中需要经过多个网络，每个被经过的网络设备点（有能力路由的）叫做一个跃点，地址就是它的ip。跃点数是经过了多少个跃点的累加器，为了防止无用的数据包在网上流散。 为路由指定所需跃点数的整数值（范围是 1 ~ 9999），它用来在路由表里的多个路由中选择与转发包中的目标地址最为匹配的路由, 所选的路由具有最少的跃点数。自动跃点修改方法如下：
-</code></pre>
+<ul>
+<li>即路由。一个路由为一个跃点。传输过程中需要经过多个网络，每个被经过的网络设备点（有能力路由的）叫做一个跃点，地址就是它的ip。跃点数是经过了多少个跃点的累加器，为了防止无用的数据包在网上流散。 为路由指定所需跃点数的整数值（范围是 1 ~ 9999），它用来在路由表里的多个路由中选择与转发包中的目标地址最为匹配的路由, 所选的路由具有最少的跃点数。自动跃点修改方法如下：
 <ul>
 <li>进入相关设备的网络设置，再进入internet TCP/IP的属性设置，再进入高级属性设置；</li>
 <li>默认情况下是勾选的“自动跃点”，不要选择它，手动输入“接口跃点数”，输入的数字越小，优先级越高，这样可以手动控制哪个路由的优先级了。</li>
 </ul>
+</li>
+</ul>
 <h2 id="rj45接口">RJ45接口</h2>
-<pre><code>有两类：用于以太网网卡(网卡接口)、路由器以太网接口等的DTE类型，还有用于交换机等的DCE类型。DTE我们可以称做“数据终端设备”，DCE我们可以称做“数据通信设备”。从某种意义来说，DTE设备称为“主动通信设备”，DCE设备称为“被动通信设备”。当两个类型一样的设备使用RJ45接口连接通信时，必须使用交叉线连接。
-</code></pre>
+<ul>
+<li>有两类：用于以太网网卡(网卡接口)、路由器以太网接口等的DTE类型，还有用于交换机等的DCE类型。DTE我们可以称做“数据终端设备”，DCE我们可以称做“数据通信设备”。从某种意义来说，DTE设备称为“主动通信设备”，DCE设备称为“被动通信设备”。当两个类型一样的设备使用RJ45接口连接通信时，必须使用交叉线连接。</li>
+</ul>
 <h2 id="ip分配">IP分配</h2>
-<pre><code>169.254.0.0/16这样的IP是一个本地链接地址段。RFC3927指出，在IP网络里，每台主机都需要一个IP地址，通常情况下是通过DHCP服务器自动分配，但某些特殊情况下，DHCP分配失败或者没有DHCP服务器时，机器可以自己分配一个IP来完成这个工作。
-169.254.X.X是 Windows操作系统 在 DHCP 信息租用失败时自动给客户机分配的IP地址。由于网络连接问题、网线问题,DHCP服务器(其实就是Modem, 路由器, 或提供共享上网的主机)问题等，而令DHCP信息租用失败, 而IP169.254.X.X 的分配可能会令客户机(你自己的计算机,设置了&quot;自动获取IP&quot;)与所处局域网网关(Modem, 路由器, 或提供共享上网的主机) 位于不同的网段中, 而无法与网关通信,而导致无法接入Internet的情况。
-</code></pre>
+<ul>
+<li>169.254.0.0/16这样的IP是一个本地链接地址段。RFC3927指出，在IP网络里，每台主机都需要一个IP地址，通常情况下是通过DHCP服务器自动分配，但某些特殊情况下，DHCP分配失败或者没有DHCP服务器时，机器可以自己分配一个IP来完成这个工作。<br>
+169.254.X.X是 Windows操作系统 在 DHCP 信息租用失败时自动给客户机分配的IP地址。由于网络连接问题、网线问题,DHCP服务器(其实就是Modem, 路由器, 或提供共享上网的主机)问题等，而令DHCP信息租用失败, 而IP169.254.X.X 的分配可能会令客户机(你自己的计算机,设置了&quot;自动获取IP&quot;)与所处局域网网关(Modem, 路由器, 或提供共享上网的主机) 位于不同的网段中, 而无法与网关通信,而导致无法接入Internet的情况。</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
@@ -717,38 +768,6 @@ name2<br>
 ⏳<br>
 ⏳<br>
 。。。算啦、本辣鸡写不下去了，有缘再见吧 😇</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea - 梦开始的地方]]></title>
-        <id>https://alittlewhiter.github.io/post/hello-gridea/</id>
-        <link href="https://alittlewhiter.github.io/post/hello-gridea/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 是一个静态博客写作客户端，可以用来记录你的生活、心情、知识、笔记、创意...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 是一个静态博客写作客户端，可以用来记录你的生活、心情、知识、笔记、创意...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作<br>
-🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片<br>
-🏷️  你可以对文章进行标签分组<br>
-📋  你可以自定义菜单，甚至可以创建外部链接菜单<br>
-💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端<br>
-🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台<br>
-💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统<br>
-🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong><br>
-🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力<br>
-🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步<br>
-🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴（maybe</p>
-<p>😘 Enjoy~</p>
-<p>What ？怎么会就这样结束呢，好戏正式开始😁</p>
 ]]></content>
     </entry>
 </feed>
