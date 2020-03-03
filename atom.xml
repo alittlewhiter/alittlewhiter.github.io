@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-03T02:01:04.362Z</updated>
+    <updated>2020-03-03T02:05:09.583Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -89,8 +89,7 @@
 <li>OF(bit 11) [Overflow flag]   如果整型结果是较大的正数或较小的负数，并且无法匹配目的操作数时将该位置1，反之清零。这个标志为带符号整型运算指示溢出状态。</li>
 </ul>
 <h4 id="系统标志以及iopl域system-flags-and-iopl-field">系统标志以及IOPL域(System Flags and IOPL Field)，</h4>
-<pre><code> EFLAGS寄存器中的这部分标志用于控制操作系统或是执行操作，它们不允许被应用程序所修改。这些标志的作用如下：
-</code></pre>
+<p>EFLAGS寄存器中的这部分标志用于控制操作系统或是执行操作，它们不允许被应用程序所修改。这些标志的作用如下：</p>
 <ul>
 <li>TF(bit 8) [Trap flag]   将该位设置为1以允许单步调试模式，清零则禁用该模式。</li>
 <li>IF(bit 9) [Interrupt enable flag]   该标志用于控制处理器对可屏蔽中断请求(maskable interrupt requests)的响应。置1以响应可屏蔽中断，反之则禁止可屏蔽中断。</li>
