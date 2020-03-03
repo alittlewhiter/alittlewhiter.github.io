@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>来了来了、Markdown入坟系列 | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583251151063">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583253993364">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -524,12 +524,12 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
+      <span>2分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>219<span class="pc-show">字数</span></span>
+      <span>353<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
@@ -542,14 +542,35 @@ window.addEventListener('load', function() {
 <!-- more -->
 <h2 id="markdown基本撰写和格式语法">Markdown基本撰写和格式语法</h2>
 <ol>
-<li>
-<p>标题<br>
-要创建标题，请在标题文本前添加一至六个 <code>#</code> 符号，使用的 <code>#</code> 数量（1 - 6）将决定标题的大小。</p>
-<pre><code class="language-git">#    最大标题    1级
-##   第二大标题   2级
-######   最小标题  6级
+<li>标题<br>
+要创建标题，请在标题文本前添加一至六个 <code>#</code> 符号，使用的 <code>#</code> 数量（1 - 6）将决定标题的大小。<pre><code class="language-git">#    一级标题
+##   二级标题
+###  三级标题
+#### 四级标题
+#### 五级标题
+######   六级标题
+</code></pre>
+<strong>补充</strong>
+<ul>
+<li>对标题进行封闭处理(类似于html中的自闭合标签加个/标注),那么你可以对应的在标题后面加上 相应数量的&quot;#&quot;。</li>
+<li>一级标题和二级标题还支持另外的使用方式，就是在一级标题下面加<code>=</code>，二级标题下面加<code>-</code>（最少加一个）：</li>
+</ul>
+<pre><code class="language-html">一级标题
+===
+二级标题
+---
 </code></pre>
 </li>
+</ol>
+<p><strong>分隔线</strong><br>
+连续的三个以上的*或-或_, 你也可以在连字符或星号之间使用空格。</p>
+<pre><code>ggg
+</code></pre>
+<hr>
+<hr>
+<hr>
+<hr>
+<ol start="2">
 <li>
 <p>样式文本<br>
 可以使用粗体、斜体或删除线文本来表示强调。粗体和斜体能够嵌套，</p>
