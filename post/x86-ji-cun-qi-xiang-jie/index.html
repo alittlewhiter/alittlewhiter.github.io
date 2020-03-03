@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>X86寄存器详解 | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583201317602">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583201630898">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -578,7 +578,7 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>5145<span class="pc-show">字数</span></span>
+      <span>5163<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
@@ -716,42 +716,34 @@ window.addEventListener('load', function() {
 <img src="https://alittlewhiter.github.io/post-images/1583200462908.png" alt="" loading="lazy"></li>
 </ul>
 <h4 id="调试地址寄存器debug-address-registersdr0-dr3">调试地址寄存器（Debug Address Registers）DR0-DR3：</h4>
-<pre><code> 保留4个32位断点的线性地址
-</code></pre>
+<p>保留4个32位断点的线性地址</p>
 <h4 id="调试寄存器debug-registersdr4dr5">调试寄存器（Debug Registers）DR4，DR5：</h4>
-<pre><code> 启用调试扩展时（控制寄存器CR4中的DE标志已置位时）保留调试寄存器DR4和DR5（）并尝试引用DR4和DR5寄存器会导致无效操作码异常
-</code></pre>
+<p>启用调试扩展时（控制寄存器CR4中的DE标志已置位时）保留调试寄存器DR4和DR5（）并尝试引用DR4和DR5寄存器会导致无效操作码异常</p>
 <h4 id="调试状态寄存器debug-status-registerdr6">调试状态寄存器（Debug Status Register）DR6：</h4>
-<pre><code> 报告在上次调试异常时采样的调试条件生成，且仅在生成异常时才会更新此寄存器。该寄存器中的标志显示以下信息：
-- B0—B3: 断点状态的监测
-- BD: 调试寄存器访问监测.置位,表明在指令流中,下一条指令将访问其中的一个调试寄存器
-- BS: 单步执行标志位
-- BT: 任务转换标志位
-</code></pre>
+<p>报告在上次调试异常时采样的调试条件生成，且仅在生成异常时才会更新此寄存器。该寄存器中的标志显示以下信息：<br>
+- B0—B3: 断点状态的监测<br>
+- BD: 调试寄存器访问监测.置位,表明在指令流中,下一条指令将访问其中的一个调试寄存器<br>
+- BS: 单步执行标志位<br>
+- BT: 任务转换标志位</p>
 <h4 id="调试控制寄存器debug-control-registerdr7">调试控制寄存器（Debug Control Register）DR7：</h4>
-<pre><code>- L0—L3: 局部断点使能标志位
-- G0--G3: 全局断点使能标志位
-- LE AND GE: 置位表明处理器可以监测导致数据断点的指令，一般置位
-- GD: 通用监测使能标志位.表明是否开启调试寄存器保护.
-- LEN0 through LEN3 : 用来表明相应断点地址寄存器内存位置的大小.
-- R/W0 through R/W3: 相应断点的状态
-</code></pre>
+<p>该寄存器中的标志信息如下：<br>
+- L0—L3: 局部断点使能标志位<br>
+- G0--G3: 全局断点使能标志位<br>
+- LE AND GE: 置位表明处理器可以监测导致数据断点的指令，一般置位<br>
+- GD: 通用监测使能标志位.表明是否开启调试寄存器保护.<br>
+- LEN0 through LEN3 : 用来表明相应断点地址寄存器内存位置的大小.<br>
+- R/W0 through R/W3: 相应断点的状态</p>
 <h3 id="系统地址寄存器memory-management-registers">系统地址寄存器（Memory Management Registers）：</h3>
 <ul>
-<li>
-<p>80386中含有4个系统地址寄存器，包括全局描述符表寄存器GDTR(Global Descriptor Table Register)、中断描述符表寄存器 IDTR(Interrupt Descriptor Table Register)、局部描述表 寄存器LDTR(Local Descriptor Table Register)和任务寄存器TR(Task Register)。</p>
-</li>
-<li>
-<p>主要用来在保护模式下，管理用于生成线性地址和物理地址的4个系统管理描述符表，GDTR、IDTR和LDTR用于寻址存放描述符表的段。TR用于寻址一个特殊的任务状态段(Task State Segment，TSS)。TSS中包含着当前执行任务的重要信息。<br>
-<img src="https://alittlewhiter.github.io/post-images/1583200761420.png" alt="" loading="lazy"></p>
-<ul>
-<li>全局描述符表寄存器GDTR：是一个48位寄存器，用来存放全局描述符表GDT的32位线性基地址和16位的界限值。在全局描述符表中不仅包括有操作系统使用的描述符，而且还有所有任务使用的公用描述符。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成0xFFFF，在保护模式初始化过程中必须给GDTR加载一个新值。</li>
-<li>中断描述符表寄存器IDTR：是一个48位寄存器，用来存放中断描述符表IDT的32位线性基地址和16位的界限值。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成 0xFFFF。<br>
-局部描述符表寄存器LDTR：是一个16位寄存器，用来存放局部描述符表 LDT 的 32 位线性基地址、16 位段限长和描述符属性值。另外还有一个隐含的描述符高速缓冲寄存器，用来存放LDT表描述符。在机器加电或处理器复位后，段选择符和基地址被默认地设置为 0，而段长度被设置成 0xFFFF。</li>
-<li>任务状态寄存器TR：是一个16位寄存器，用来存放当前任务状态段TSS的16位段选择符、32位基地址、16位段长度和描述符属性值。与之相应，也有一个隐含的描述符高速缓冲寄存器，用来存放任务状态段TSS的描述符。当执行任务切换时，处理器会把新任务的 TSS 的段选择符和段描述符自动加载进任务寄存器TR中。</li>
+<li>80386中含有4个系统地址寄存器，包括全局描述符表寄存器GDTR(Global Descriptor Table Register)、中断描述符表寄存器 IDTR(Interrupt Descriptor Table Register)、局部描述表 寄存器LDTR(Local Descriptor Table Register)和任务寄存器TR(Task Register)。</li>
+<li>主要用来在保护模式下，管理用于生成线性地址和物理地址的4个系统管理描述符表，GDTR、IDTR和LDTR用于寻址存放描述符表的段。TR用于寻址一个特殊的任务状态段(Task State Segment，TSS)。TSS中包含着当前执行任务的重要信息。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200761420.png" alt="" loading="lazy"></li>
 </ul>
-</li>
-</ul>
+<p>具体情况如下：<br>
+- 全局描述符表寄存器GDTR：是一个48位寄存器，用来存放全局描述符表GDT的32位线性基地址和16位的界限值。在全局描述符表中不仅包括有操作系统使用的描述符，而且还有所有任务使用的公用描述符。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成0xFFFF，在保护模式初始化过程中必须给GDTR加载一个新值。<br>
+- 中断描述符表寄存器IDTR：是一个48位寄存器，用来存放中断描述符表IDT的32位线性基地址和16位的界限值。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成 0xFFFF。<br>
+局部描述符表寄存器LDTR：是一个16位寄存器，用来存放局部描述符表 LDT 的 32 位线性基地址、16 位段限长和描述符属性值。另外还有一个隐含的描述符高速缓冲寄存器，用来存放LDT表描述符。在机器加电或处理器复位后，段选择符和基地址被默认地设置为 0，而段长度被设置成 0xFFFF。<br>
+- 任务状态寄存器TR：是一个16位寄存器，用来存放当前任务状态段TSS的16位段选择符、32位基地址、16位段长度和描述符属性值。与之相应，也有一个隐含的描述符高速缓冲寄存器，用来存放任务状态段TSS的描述符。当执行任务切换时，处理器会把新任务的 TSS 的段选择符和段描述符自动加载进任务寄存器TR中。</p>
 <h3 id="段寄存器">段寄存器：</h3>
 <ul>
 <li>段寄存器是根据内存分段的管理模式而设置的，用于保存16位段选择器（一种特殊指针，用于标识内存中的段）。内存单元的物理地址由段寄存器的值和一个偏移量组合而成的，这样可用两个较少位数的值组合成一个可访问较大物理空间的内存地址。DS，ES，FS和GS寄存器指向四个数据段，四个数据段的可用性允许有效和安全地访问不同类型的数据结构。
