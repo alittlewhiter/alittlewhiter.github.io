@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>Web：前 前 后 后   | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583157269642">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583194825847">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -35,6 +35,20 @@
     <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--Valine 的核心代码库-->
     <script src="/media/js/Valine.min.js"></script>    
+    <script>
+    	new Valine({
+        	// AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+        	av: AV, 
+        	el: '.comment',
+	      	lang: 'zh-cn',//设置评论语言
+        	emoticon_url: 'https://cloud.panjunwen.com/alu',
+  			emoticon_list: ["狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","暗地观察.png"],
+  			app_id: 'NiMhbI5HfafpUeqfua7lr6u6-gzGzoHsz',
+  			app_key: 'rn5LDD2SJRIlfy7jvtskcRUF',
+  			placeholder: '评论留言'
+    	});
+	</script>  
+    
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -651,7 +665,7 @@ window.addEventListener('load', function() {
 
     <!-- 评论模块 -->
 	<div class="comment"></div>
-
+	
 
             </div>
           </div>
@@ -854,19 +868,7 @@ var apiKey = landlord.dataset.key;
 </script>
     </div>
 
-	<script>
-    	new Valine({
-        	// AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
-        	av: AV, 
-        	el: '.comment',
-	      	lang: 'zh-cn',//设置评论语言
-        	emoticon_url: 'https://cloud.panjunwen.com/alu',
-  			emoticon_list: ["狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","暗地观察.png"],
-  			app_id: 'NiMhbI5HfafpUeqfua7lr6u6-gzGzoHsz',
-  			app_key: 'rn5LDD2SJRIlfy7jvtskcRUF',
-  			placeholder: '评论留言'
-    	});
-	</script>  
+	
 
   </body>
   <script src="/media/js/motion.js"></script>

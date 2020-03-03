@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-02T14:03:01.490Z</updated>
+    <updated>2020-03-03T00:25:41.258Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -22,7 +22,7 @@
         <content type="html"><![CDATA[<p>Keywords：代码块、函数、语法 for C++<br>
 { 这 xx 竟 这 该 死 的 甜 美 ...  不要停下来啊~🤙🤙🤙}</p>
 <!-- more -->
-<h2 id="321开始你的表演">321开始你的表演</h2>
+<h2 id="开始你的表演">开始你的表演</h2>
 <p>1、设想要使用new建立一个rows行，cols列的矩阵:</p>
 <pre><code>int rows, cols ;
 int **array = new int*[rows] ; 
@@ -298,17 +298,17 @@ WIFI就是一种无线联网的技术，一般都是小范围的， 距离发射
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[搬点之前的《操作系统》]]></title>
+        <title type="html"><![CDATA[搬点之前的《操♂作 系 统》]]></title>
         <id>https://alittlewhiter.github.io/post/ban-dian-zhi-qian-de-lesslesscao-zuo-xi-tong-greatergreater-huan-you-wo-os-da-jpg/</id>
         <link href="https://alittlewhiter.github.io/post/ban-dian-zhi-qian-de-lesslesscao-zuo-xi-tong-greatergreater-huan-you-wo-os-da-jpg/">
         </link>
         <updated>2020-03-02T11:47:06.000Z</updated>
-        <summary type="html"><![CDATA[<p>Keywords：OS管理功能、分类</p>
-<p>学啥忘啥、学到老&amp;忘到老...<br>
+        <summary type="html"><![CDATA[<p>Keywords：OS管理功能、分类、进程</p>
+<p>就学啥忘啥呗、学到老 &amp; 忘到老...<br>
 ~（Ko no OS da !）~</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>Keywords：OS管理功能、分类</p>
-<p>学啥忘啥、学到老&amp;忘到老...<br>
+        <content type="html"><![CDATA[<p>Keywords：OS管理功能、分类、进程</p>
+<p>就学啥忘啥呗、学到老 &amp; 忘到老...<br>
 ~（Ko no OS da !）~</p>
 <!-- more -->
 <h1 id="操作系统可以分为五大管理功能部分">操作系统可以分为五大管理功能部分：</h1>
