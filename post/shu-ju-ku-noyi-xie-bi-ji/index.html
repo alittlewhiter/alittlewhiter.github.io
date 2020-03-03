@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>数据库の一些笔记 | 君の知らない物语</title>
-<link rel="shortcut icon" href="http://ey3un0.coding-pages.com/favicon.ico?v=1583233296022">
+<link rel="shortcut icon" href="http://ey3un0.coding-pages.com/favicon.ico?v=1583241600245">
 <link rel="stylesheet" href="http://ey3un0.coding-pages.com/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -249,8 +249,12 @@
 <li><a href="#%E5%A4%96%E6%A8%A1%E5%BC%8Fexternal-schema">外模式(external schema)</a></li>
 </ul>
 </li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7database-integrity">数据库完整性（Database Integrity）</a></li>
-<li><a href="#%E5%88%A4%E6%96%AD%E5%85%B3%E7%B3%BB%E5%88%86%E8%A7%A3%E6%98%AF%E5%90%A6%E4%BF%9D%E6%8C%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96">判断关系分解是否保持函数依赖？</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7database-integrity">数据库完整性（Database Integrity）</a>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E5%88%86%E7%B1%BB">数据库完整性约束分类</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BF%9D%E6%8C%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96">判断是否保持函数依赖？</a></li>
 <li><a href="#exists-not-exists">exists / not exists</a></li>
 <li><a href="#and-next">And next</a></li>
 </ul>
@@ -553,7 +557,7 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>2743<span class="pc-show">字数</span></span>
+      <span>2765<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
@@ -563,17 +567,17 @@ window.addEventListener('load', function() {
 <p>新冠肺炎宅在家，学习效率那是超像想地low哇<sub>（唉、搬点旧货</sub></p>
 <!-- more -->
 <h2 id="有关-键">有关 键</h2>
-<p><em>超键（super key， SK）</em><br>
+<p><strong>超键（super key， SK）</strong><br>
 <code>又称“超码”，是在数据库关系模式设计中能唯一标识一个元组的属性或属性集。 包含所有属性的集叫做明显（平凡）超键。</code><br>
-<em>候选键（candidate key， CK）</em><br>
+<strong>候选键（candidate key， CK）</strong><br>
 <code>又称“候选键“、”极小码“，是在数据库关系模式设计中能能唯一标识一个元组，且其真子集不能唯一标识一个元组的属性或属性集。</code><br>
-<em>主键（primary key， PK）</em><br>
+<strong>主键（primary key， PK）</strong><br>
 <code>又称“主码“，既从候选键中挑选出来的能唯一标识一个元组的属性或属性集。一张表中有且只能有一个主键。</code><br>
-<em>外键（foreign key， FK）</em><br>
+<strong>外键（foreign key， FK）</strong><br>
 <code>又称“外码“，若一个关系中的一个属性或属性集是另外一个关系中的主码，则该属性或属性集为这个关系引用另外一个关系的外码。一张表中可以没有外码。</code></p>
-<p><em>DML(Data Manipulation Language)数据操纵语言：</em><br>
+<p><strong>DML(Data Manipulation Language)数据操纵语言：</strong><br>
 <code>适用范围：对数据库中的数据进行一些简单操作，数据库表的增删改查，如insert, delete, update, select，call 等（select 可以划分到 DQL，）</code><br>
-<em>DDL(Data Definition Language)数据定义语言：</em><br>
+<strong>DDL(Data Definition Language)数据定义语言：</strong><br>
 <code>适用范围：对数据库中的某些对象(例如，database,table)进行管理，如建库、建表、更改表结构，删库、删表，建索引，设置约束等：Create, Alter 和 Drop.</code><br>
 - Create语句：可以创建数据库和数据库的一些对象。<br>
 - Drop语句：可以删除数据表、索引、触发程序、条件约束以及数据表的权限等。<br>
@@ -585,7 +589,7 @@ window.addEventListener('load', function() {
 <p>DCL（DataControl Language）是数据库控制语言。是用来设置或更改数据库用户或角色权限的语句，包括（grant,deny,revoke等）语句。在默认状态下，只有sysadmin, dbcreator, db_owner或db_securityadmin等人员才有权力执行DCL<br>
 DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 <h2 id="模式schema">模式（Schema）：</h2>
-<pre><code>   也称逻辑模式，是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图。
+<pre><code class="language-git">也称逻辑模式，是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图。
 </code></pre>
 <h3 id="理解">理解：</h3>
 <p>① 一个数据库只有一个模式；<br>
@@ -603,22 +607,31 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 <li>对于一个数据库系统而言，同一外模式也可以为某一用户的多个应用所应用，但任何一个应用程序都必须使用而且只能使用一个外模式，才能对数据库中的数据进行操作。一个模式可以支持若干个外模式，但每一个外模式只能属于一个模式。</li>
 </ul>
 <h2 id="数据库完整性database-integrity">数据库完整性（Database Integrity）</h2>
-<pre><code>  指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。
-  
-  数据库完整性约束可分为6类：列级静态约束、元组级静态约束、关系级静态约束、列级动态约束、元组级动态约束、关系级动态约束。动态约束通常由应用软件来实现。
-  
-  关系完整性的用于保证数据库中数据的正确性。系统在进行更新、插入或删除等操作时都要检查数据的完整性，核实其约束条件，即关系模型的完整性规则。
-  
-  在关系模型中有四类完整性约束：实体完整性、域完整性、参照完整性和用户定义的完整性，其中实体完整性和参照完整性约束条件, 称为关系的两个不变性。
-</code></pre>
+<p><mark>指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。</mark></p>
+<h3 id="数据库完整性约束分类">数据库完整性约束分类</h3>
+<p><mark>数据库完整性约束可分为6类：列级静态约束、元组级静态约束、关系级静态约束、列级动态约束、元组级动态约束、关系级动态约束。动态约束通常由应用软件来实现。</mark></p>
+<ul>
+<li>
+<p>关系完整性的用于保证数据库中数据的正确性。系统在进行更新、插入或删除等操作时都要检查数据的完整性，核实其约束条件，即关系模型的完整性规则。</p>
+</li>
+<li>
+<p>在关系模型中有四类完整性约束：实体完整性、域完整性、参照完整性和用户定义的完整性，其中实体完整性和参照完整性约束条件, 称为关系的两个不变性。</p>
 <ul>
 <li>1、实体完整性（Entity Integrity）。实体完整性指表中行的完整性。主要用于保证操作的数据（记录）非空、唯一且不重复。即实体完整性要求每个关系（表）有且仅有一个主键，每一个主键值必须唯一，而且不允许为“空”（NULL）或重复。</li>
 <li>2、域完整性（Domain Integrity）是指数据库表中的列必须满足某种特定的数据类型或约束。其中约束又包括取值范围、精度等规定。表中的CHECK、FOREIGN KEY 约束和DEFAULT、 NOT NULL定义都属于域完整性的范畴。</li>
 <li>3、参照完整性（Referential Integrity）属于表间规则。对于永久关系的相关表，在更新、插入或删除记录时，如果只改其一，就会影响数据的完整性。如删除父表的某记录后，子表的相应记录未删除，致使这些记录称为孤立记录。对于更新、插入或删除表间数据的完整性，统称为参照完整性。通常，在客观现实中的实体之间存在一定联系，在关系模型中实体及实体间的联系都是以关系进行描述，因此，操作时就可能存在着关系与关系间的关联和引用。</li>
 <li>4、用户定义完整性（User-defined Integrity）是对数据表中字段属性的约束，用户定义完整性规则（User-defined integrity）也称域完整性规则。包括字段的值域、字段的类型和字段的有效规则（如小数位数）等约束，是由确定关系结构时所定义的字段的属性决定的。</li>
 </ul>
-<h2 id="判断关系分解是否保持函数依赖">判断关系分解是否保持函数依赖？</h2>
-<p>设有属性集 {ABCDEF}，存在这样的函数依赖集{A-&gt;BC , CD-&gt;E , B-&gt;D , BE-&gt;F , EF-&gt;A},然后有这样的分解{ABC , BD , BEF}。设U1=ABC，A-&gt;BC，U2=BD，B-&gt;D ，U3=BEF，BE-&gt;F ，即我们不能推出 CD-&gt;E ，EF-&gt;A，所以也不具有保持函数依赖的特性。</p>
+</li>
+</ul>
+<h2 id="判断是否保持函数依赖">判断是否保持函数依赖？</h2>
+<ul>
+<li>设有属性集 {ABCDEF}，存在这样的函数依赖集{A-&gt;BC , CD-&gt;E , B-&gt;D , BE-&gt;F , EF-&gt;A},然后有这样的分解{ABC , BD , BEF}。判断该关系分解是否保持函数依赖？
+<ul>
+<li>答：设U1=ABC，A-&gt;BC，U2=BD，B-&gt;D ，U3=BEF，BE-&gt;F ，即我们不能推出 CD-&gt;E ，EF-&gt;A，所以也不具有保持函数依赖的特性。</li>
+</ul>
+</li>
+</ul>
 <h2 id="exists-not-exists">exists / not exists</h2>
 <ul>
 <li>EXISTS(包括 NOT EXISTS )子句的返回值是一个BOOL值。 EXISTS内部有一个子查询语句(SELECT ... FROM...)， 我将其称为EXIST的内查询语句。其内查询语句返回一个结果集。 EXISTS子句根据其内查询语句的结果集空或者非空，返回一个布尔值。</li>
