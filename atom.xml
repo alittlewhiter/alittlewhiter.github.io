@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-03T02:13:55.148Z</updated>
+    <updated>2020-03-03T03:33:41.166Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -28,15 +28,15 @@
 <h2 id="32位cpu系统级寄存器和数据结构">32位cpu系统级寄存器和数据结构</h2>
 <figure data-type="image" tabindex="1"><img src="https://alittlewhiter.github.io/post-images/1583199240318.png" alt="" loading="lazy"></figure>
 <h2 id="寄存器分类介绍32位模式">寄存器分类介绍（32位模式）</h2>
-<ul>
-<li>通用寄存器：8个，分别为EAX，EBX，ECX，EDX，ESP，EBP，ESI，EDI</li>
-<li>标志寄存器：1个，EFLAGS</li>
-<li>控制寄存器：5个，分别为CR0-CR4</li>
-<li>调试寄存器：8个，分别为DR0-DR7</li>
-<li>系统地址寄存器：4个，GDTR，IDTR，LDTR和TR</li>
-<li>段寄存器：6个，分别为CS，DS，SS，ES，FS，GS</li>
-<li>其他特殊目的寄存器：EIP，TSC等</li>
-</ul>
+<blockquote>
+<p>通用寄存器：8个，分别为EAX，EBX，ECX，EDX，ESP，EBP，ESI，EDI<br>
+标志寄存器：1个，EFLAGS<br>
+控制寄存器：5个，分别为CR0-CR4<br>
+调试寄存器：8个，分别为DR0-DR7<br>
+系统地址寄存器：4个，GDTR，IDTR，LDTR和TR<br>
+段寄存器：6个，分别为CS，DS，SS，ES，FS，GS<br>
+其他特殊目的寄存器：EIP，TSC等</p>
+</blockquote>
 <h3 id="通用寄存器general-purpose-registers">通用寄存器（General-Purpose Registers）：</h3>
 <ul>
 <li>
@@ -244,7 +244,7 @@ URL: https://www.docin.com/p-880130068.html<br>
 <!-- more -->
 <h2 id="开始你的表演">开始你的表演</h2>
 <p>1、设想要使用new建立一个rows行，cols列的矩阵:</p>
-<pre><code>int rows, cols ;
+<pre><code class="language-c++">int rows, cols ;
 int **array = new int*[rows] ; 
 for (int i = 0 ; i &lt; rows ; i++) {
     array[i] = new int[cols] ; 
@@ -252,7 +252,7 @@ for (int i = 0 ; i &lt; rows ; i++) {
 }  
 </code></pre>
 <p>2、结构体重载操作符模板：</p>
-<pre><code>Point operator + (const Point&amp; A, const Point&amp; B) {  
+<pre><code class="language-c++">Point operator + (const Point&amp; A, const Point&amp; B) {  
      return Point(A.x+B.x, A.y+B.y); 
 }
 ostream&amp; operator &lt;&lt; (ostream &amp;out, const Point&amp; p) {
@@ -263,7 +263,7 @@ Point a, b;
 cout &lt;&lt; a+b &lt;&lt; endl; 
 </code></pre>
 <p>3、求和函数模板sum()：</p>
-<pre><code>template&lt;typename T&gt; T sum(T* begin, T* end) {  
+<pre><code class="language-c++">template&lt;typename T&gt; T sum(T* begin, T* end) {  
     T *p = begin;  
     T ans = 0;  
     for(T *p = begin; p != end; p++)   
@@ -272,7 +272,7 @@ cout &lt;&lt; a+b &lt;&lt; endl;
 }
 </code></pre>
 <p>4、结构体和类也可以是带模板的，如Point中x，y可以为int或double等多种类型：</p>
-<pre><code>template &lt;typename T&gt; struct Point {  
+<pre><code class="language-c++">template &lt;typename T&gt; struct Point {  
     T x, y;  
     Point(T x=0, T y=0) : x(x),y(y) { } 
 }; 
@@ -280,7 +280,7 @@ cout &lt;&lt; a+b &lt;&lt; endl;
 <p>5、重载转换运算符 ：<br>
 对于类X的成员函数 X::operator T()<br>
 T是类型名 ，定义了一个X到T的转换。</p>
-<pre><code>operator bool() const {
+<pre><code class="language-c++">operator bool() const {
    return p;
 } 
 Handle h; 
@@ -292,7 +292,7 @@ bool b=h;       //在这里调用
 <ul>
 <li>最快算法：</li>
 </ul>
-<pre><code>int gcd(int a, int b){
+<pre><code class="language-c++">int gcd(int a, int b){
     while(b^=a^=b^=a%=b) ;
     return a;
 }
@@ -300,12 +300,12 @@ bool b=h;       //在这里调用
 <ul>
 <li>一般算法：</li>
 </ul>
-<pre><code>int gcd(int a,  int b)  {          // 要求
+<pre><code class="language-c++">int gcd(int a,  int b)  {          // 要求
      return b ? gcd(b, a%b) : a ;
 }
 </code></pre>
 <p>8、普通快速幂的模板：</p>
-<pre><code>int fastpow(int base, int n, int mod){
+<pre><code class="language-c++">int fastpow(int base, int n, int mod){
 	int ans=1; 
 	while(n){
 		if(n&amp;1) 
@@ -317,7 +317,7 @@ bool b=h;       //在这里调用
 }
 </code></pre>
 <p>9、快速读入整数（ 远快于 scanf () 与 cin ）</p>
-<pre><code>inline int read() {
+<pre><code class="language-c++">inline int read() {
     int x = 0, f = 1; char ch = getchar();
     while(ch &lt; '0' || ch &gt; '9') { if(ch == '-') f = -1; ch = getchar(); }
     while(ch &gt;= '0' &amp;&amp; ch &lt;= '9') { x = x * 10 + ch - '0'; ch = getchar(); }
@@ -327,7 +327,7 @@ bool b=h;       //在这里调用
 <p>10、</p>
 <p>11、</p>
 <p>Final、一道大杂烩~真香</p>
-<pre><code>#include&lt;bits/stdc++.h&gt;
+<pre><code class="language-c++">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
 #define maxn 500005
