@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+<meta name="keywords" content="Gridea静态个人博客">
+<meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
+<meta name="theme-color" content="#000">
+<title>X86寄存器详解 | 君の知らない物语</title>
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583200856450">
+<link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
+
+<link rel="stylesheet" href="/media/css/gemini.css">
+
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/androidstudio.css" rel="stylesheet">  
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+    <meta name="description" content="X86寄存器详解" />
+    <meta name="keywords" content="" />
+
+    <!--载入js，在</body>之前插入即可-->
+    <!--Leancloud 操作库:-->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <script>
+    	new Valine({
+        	// AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+        	av: AV, 
+        	el: '.comment',
+	      	lang: 'zh-cn',									//设置评论语言
+        	emoticon_url: 'https://cloud.panjunwen.com/alu',
+  			emoticon_list: ["狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","暗地观察.png"],
+  			app_id: 'NiMhbI5HfafpUeqfua7lr6u6-gzGzoHsz',
+  			app_key: 'rn5LDD2SJRIlfy7jvtskcRUF',
+  			placeholder: '评论留言'
+    	});
+	</script>  
+    
+  </head>
+  <body>
+    <div class="head-top-line"></div>
+    <div class="header-box">
+      
+<div class=" gemini">
+  <header class="header bg-color ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>君の知らない物语</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">『精于心，简于形』</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            <li class="nav-item ">
+              
+                <a href="/">
+                  <i class="fa fa-home"></i> 首页
+                </a>
+              
+            </li>
+          
+            <li class="nav-item ">
+              
+                <a href="/archives">
+                  <i class="fa fa-archive"></i> 归档
+                </a>
+              
+            </li>
+          
+            <li class="nav-item ">
+              
+                <a href="/tags">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+            <li class="nav-item ">
+              
+                <a href="/post/about">
+                  <i class="fa fa-user"></i> 关于
+                </a>
+              
+            </li>
+          
+          <li class="nav-item">
+            <a>
+              <i class="fa fa-search"></i> 搜索
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+    </div>
+    <div class="main-continer">
+      
+      <div class="section-layout gemini ">
+        <div class="section-layout-wrapper">
+          
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="https://alittlewhiter.github.io/images/avatar.png"/>
+    <p class="site-author-name">君の知らない物语</p>
+    <p class="site-description right-motion">Just, wait a minute ...</p>
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">9</span>
+        <span class="site-item-stat-name">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="">
+        <span class="site-item-stat-count">28</span>
+        <span class="site-item-stat-name">分类</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">28</span>
+        <span class="site-item-stat-name">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+      <div class="sidebar-item">
+        <span class="site-item-rss">
+            <i class="fa fa-rss"></i>
+            <a href="https://alittlewhiter.github.io/atom.xml" target="_blank">RSS</a>
+        </span>
+      </div>
+    
+  
+  
+    <div class="sidebar-item sidebar-item-social">
+      <div class="social-item">
+        
+        
+          
+            <a class="social-img" href="#">
+              <img src="\media\images\custom-array-imgSocials-1583133576756-socialImg.png" />
+              <i class="fa fa-toggle-right"></i> Bilibili
+            </a>
+          
+            <a class="social-img" href="#">
+              <img src="\media\images\custom-array-imgSocials-1583133576760-socialImg.jpg" />
+              <i class="fa fa-qq"></i> QQ
+            </a>
+          
+            <a class="social-img" href="#">
+              <img src="\media\images\custom-array-imgSocials-1583133576780-socialImg.png" />
+              <i class="fa fa-wechat"></i> WeChat
+            </a>
+          
+        
+      </div>
+    </div>
+  
+
+
+</div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto" id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#32%E4%BD%8Dcpu%E7%B3%BB%E7%BB%9F%E7%BA%A7%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">32位cpu系统级寄存器和数据结构</a></li>
+<li><a href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%88%86%E7%B1%BB%E4%BB%8B%E7%BB%8D32%E4%BD%8D%E6%A8%A1%E5%BC%8F">寄存器分类介绍（32位模式）</a>
+<ul>
+<li><a href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8general-purpose-registers">通用寄存器（General-Purpose Registers）：</a></li>
+<li><a href="#%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8eflags">标志寄存器（EFLAGS）：</a>
+<ul>
+<li><a href="#eflags%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E7%8A%B6%E6%80%81%E6%A0%87%E5%BF%970-2-4-6-7%E4%BB%A5%E5%8F%8A11%E4%BD%8D%E6%8C%87%E7%A4%BA%E7%AE%97%E6%9C%AF%E6%8C%87%E4%BB%A4%E5%A6%82add-sub-mul%E4%BB%A5%E5%8F%8Adiv%E6%8C%87%E4%BB%A4%E7%9A%84%E7%BB%93%E6%9E%9C%E8%BF%99%E4%BA%9B%E7%8A%B6%E6%80%81%E6%A0%87%E5%BF%97%E7%9A%84%E4%BD%9C%E7%94%A8%E5%A6%82%E4%B8%8B">EFLAGS寄存器的状态标志(0、2、4、6、7以及11位)指示算术指令（如ADD, SUB, MUL以及DIV指令）的结果，这些状态标志的作用如下：</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E6%A0%87%E5%BF%97%E4%BB%A5%E5%8F%8Aiopl%E5%9F%9Fsystem-flags-and-iopl-field">系统标志以及IOPL域(System Flags and IOPL Field)，</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A8control-register">控制寄存器（Control Register）：</a>
+<ul>
+<li><a href="#cr0-%E5%8C%85%E5%90%AB%E4%BA%86-6-%E4%B8%AA%E9%A2%84%E5%AE%9A%E4%B9%89%E6%A0%87%E5%BF%97%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%A4%84%E7%90%86%E5%99%A8%E7%9A%84%E7%8A%B6%E6%80%81%E5%85%B6%E5%90%84%E7%89%B9%E6%AE%8A%E4%BD%8D%E7%9A%84%E5%90%AB%E4%B9%89%E5%8A%9F%E8%83%BD%E5%A6%82%E4%B8%8B">CR0: 包含了 6 个预定义标志，控制系统的工作模式和处理器的状态，其各特殊位的含义功能如下：</a></li>
+<li><a href="#cr1-%E6%9C%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A8%E4%BF%9D%E7%95%99">CR1: 未定义的控制寄存器，保留。</a></li>
+<li><a href="#cr2-%E9%A1%B5%E6%95%85%E9%9A%9C%E7%BA%BF%E6%80%A7%E5%9C%B0%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8%E4%BF%9D%E7%95%99%E6%9C%80%E5%90%8E%E4%B8%80%E6%AC%A1%E5%87%BA%E7%8E%B0%E9%A1%B5%E6%95%85%E9%9A%9C%E7%9A%84%E5%85%A832%E4%BD%8D%E7%BA%BF%E6%80%A7%E5%9C%B0%E5%9D%80">CR2: 页故障线性地址寄存器，保留最后一次出现页故障的全32位线性地址</a></li>
+<li><a href="#cr3-%E9%A1%B5%E7%9B%AE%E5%BD%95%E5%9F%BA%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8%E4%BF%9D%E5%AD%98%E9%A1%B5%E7%9B%AE%E5%BD%95%E8%A1%A8%E7%9A%84%E7%89%A9%E7%90%86%E5%86%85%E5%AD%98%E5%9F%BA%E5%9C%B0%E5%9D%80%E5%92%8Cpcd%E5%92%8Cpwt%E6%A0%87%E5%BF%97%E4%BD%8D%E5%92%8Ccache%E6%9C%89%E5%85%B3">CR3: 页目录基址寄存器，保存页目录表的物理内存基地址和PCD和PWT标志位(和Cache有关)</a></li>
+<li><a href="#cr4-%E4%B8%80%E4%BA%9B%E7%BB%93%E6%9E%84%E7%9A%84%E6%89%A9%E5%B1%95%E8%A1%A8%E6%98%8E%E5%AF%B9%E4%BA%8E%E7%89%B9%E5%AE%9A%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%89%A7%E8%A1%8C%E6%94%AF%E6%8C%81">CR4: 一些结构的扩展.表明对于特定的处理器和操作系统执行支持.</a></li>
+</ul>
+</li>
+<li><a href="#%E8%B0%83%E8%AF%95%E5%AF%84%E5%AD%98%E5%99%A8debug-register">调试寄存器（Debug Register）：</a>
+<ul>
+<li><a href="#%E8%B0%83%E8%AF%95%E5%9C%B0%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8debug-address-registersdr0-dr3">调试地址寄存器（Debug Address Registers）DR0-DR3：</a></li>
+</ul>
+</li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E5%9C%B0%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8memory-management-registers">系统地址寄存器（Memory Management Registers）：</a></li>
+<li><a href="#%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8">段寄存器：</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E7%89%B9%E6%AE%8A%E7%9B%AE%E7%9A%84%E5%AF%84%E5%AD%98%E5%99%A8">其他特殊目的寄存器：</a></li>
+</ul>
+</li>
+<li><a href="#64%E4%BD%8D%E6%89%A9%E5%B1%95%E5%AF%84%E5%AD%98%E5%99%A8%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E">64位扩展寄存器（简要说明）</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料：</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1; 
+let active = 'active-show', activeClass = 'active-current';
+let tocWrapper = document.querySelector('#toc_wrapper');
+let tocContent = tocWrapper.children[0];
+let autoNumber = tocWrapper&&tocWrapper.classList.contains('auto-number');
+
+function addTocNumber(elem, deep) {
+  if (!elem) {
+    return;
+  }
+  let prop = elem.__proto__;
+
+  if (prop === HTMLUListElement.prototype) {
+    for (let i = 0; i < elem.children.length; i++) {
+      addTocNumber(elem.children[i], deep + (i + 1) + '.');
+    }
+  } else if (prop === HTMLLIElement.prototype) {
+    // 保存li元素
+    lList.push(elem);
+    for (let i = 0; i < elem.children.length; i++) {
+      let cur = elem.children[i];
+      if (cur.__proto__ === HTMLAnchorElement.prototype) {
+        if (autoNumber) {
+          cur.text =  deep + ' ' + cur.text;
+        }
+      } else if (cur.__proto__ === HTMLUListElement.prototype) {
+        addTocNumber(cur, deep);
+      }
+    }
+  }
+}
+
+
+document.addEventListener('scroll', function(e) {
+  if (lList.length <= 0) {
+    return;
+  }
+  let scrollTop = document.scrollingElement.scrollTop;
+  let dir;
+
+  if (lastTop - scrollTop > 0) {
+    dir = 'up';
+  } else {
+    dir = 'down';
+  }
+
+  lastTop = scrollTop;
+  if (scrollTop <= 0) {
+    if (lastIndex >= 0 && lastIndex < hList.length) {
+      lList[lastIndex].classList.remove(activeClass);
+    }
+    return;
+  }
+
+  let current = 0, hasFind = false;
+  for (let i = 0; i < hList.length; i++) {
+    if (hList[i].offsetTop > scrollTop) {
+      current = i;
+      hasFind = true;
+      break;
+    }
+  }
+  if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+    current = hList.length - 1;
+  } else {
+    current--;
+  }
+  if (dir === 'down') {
+    if (current > lastIndex) {
+      addActiveClass(current);
+      removeActiveClass(lastIndex) 
+      lastIndex = current;
+      removeParentActiveClass();
+      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
+    }
+  } else {
+    if (current < lastIndex) {
+      addActiveClass(current);
+      removeActiveClass(lastIndex);
+      lastIndex = current;
+      removeParentActiveClass();
+      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
+    }
+  }
+});
+
+function removeParentActiveClass() {
+  let parents = tocContent.querySelectorAll('.'+active)
+  parents.forEach(function(elem) {
+    elem.classList.remove(active);
+  });
+}
+
+function addActiveClass(index) {
+  if (index >= 0 && index < hList.length) {
+    lList[index].classList.add(activeClass);
+  }
+}
+
+function removeActiveClass(index) {
+  if (index >= 0 && index < hList.length) {
+    lList[index].classList.remove(activeClass);
+  }
+}
+
+function addActiveLiElemment(elem, parent) {
+  if (!elem || elem === parent) {
+    return;
+  } else {
+    if (elem.__proto__ === HTMLLIElement.prototype) {
+      elem.classList.add(active);
+    }
+    addActiveLiElemment(elem.parentElement, parent);
+  }
+}
+
+function showToc() {
+  if (tocWrapper) {
+    postBody = document.querySelector('#post_body');
+    for (let i = 0; i < postBody.children.length; i++) {
+      if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+        hList.push(postBody.children[i]);
+      }
+    }
+    if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+    } else if (tocWrapper.classList.contains('no_compress')){
+      tocContent.classList.add('expanded');
+    } else {
+      if (hList.length > 10) {
+        active = 'active-hidden'
+        tocContent.classList.add('closed');
+      } else {
+        tocContent.classList.add('expanded');
+      }
+    }
+  }
+}
+addTocNumber(tocContent, '');
+
+window.addEventListener('load', function() {
+  showToc();
+  document.querySelector('#sidebar').style='display: block;';
+  tocWrapper.classList.add('toc-active');
+  setTimeout(function() {
+    if ("createEvent" in document) {
+      let evt = document.createEvent("HTMLEvents");
+      evt.initEvent("scroll", false, true);
+      document.dispatchEvent(evt);
+    }
+    else {
+      document.fireEvent("scroll");
+    }
+  }, 500)
+})
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+          <div class="section-box box-shadow-wrapper">
+            <div class="section bg-color post post-page">
+              <div class="article-box">
+    <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://alittlewhiter.github.io/post/x86-ji-cun-qi-xiang-jie/">
+      X86寄存器详解
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2020-03-03</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>20分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>5145<span class="pc-show">字数</span></span>
+    </span>
+  </div>
+</header>
+</div>
+              <div class="post-body next-md-body" id="post_body">
+                <p>Keywords：x86寄存器、<br>
+精心整理，有空看看</p>
+<!-- more -->
+<h2 id="概述">概述</h2>
+<p>x86或80x86是英特尔Intel首先开发制造的一种微处理器体系结构的泛称。该系列较早期的处理器名称是以数字来表示，并以“86”作为结尾，包括最开始16位的Intel 8086、80186、80286、到后来推出32位80386微处理器以及如今64位的80486，因此其架构被称为“x86”。 寄存器是CPU的组成部分，是有限存贮容量的高速存贮部件，是 CPU 中非常珍贵的稀有资源，它们可用来暂存指令、数据和地址。在中央处理器的控制部件中，有指令寄存器(IR)和程序计数器(PC)，而在算术及逻辑部件中，寄存器有累加器(ACC)。<br>
+早期的8086CPU中，只包含14个结构为16位的寄存器（即一个寄存器可以存放下2个字节的数据）：AX，BX，CX，DX，SP，BP，DI，SI，IP，FLAG，CS，DS，ES，SS。而到了 80386 CPU中，寄存器的个数增多了，同时寄存器的结构也变了，如绝大多数的寄存器扩展为32位，而有些寄存器则仍是16位 ，并在后续发展中不断更新改进。</p>
+<h2 id="32位cpu系统级寄存器和数据结构">32位cpu系统级寄存器和数据结构</h2>
+<figure data-type="image" tabindex="1"><img src="https://alittlewhiter.github.io/post-images/1583199240318.png" alt="" loading="lazy"></figure>
+<h2 id="寄存器分类介绍32位模式">寄存器分类介绍（32位模式）</h2>
+<ul>
+<li>通用寄存器：8个，分别为EAX，EBX，ECX，EDX，ESP，EBP，ESI，EDI</li>
+<li>标志寄存器：1个，EFLAGS</li>
+<li>控制寄存器：5个，分别为CR0-CR4</li>
+<li>调试寄存器：8个，分别为DR0-DR7</li>
+<li>系统地址寄存器：4个，GDTR，IDTR，LDTR和TR</li>
+<li>段寄存器：6个，分别为CS，DS，SS，ES，FS，GS</li>
+<li>其他特殊目的寄存器：EIP，TSC等</li>
+</ul>
+<h3 id="通用寄存器general-purpose-registers">通用寄存器（General-Purpose Registers）：</h3>
+<ul>
+<li>
+<p>尽管这8个通用寄存器大多时候是通用的，可以作任何用途，但是在某些情况下也有各自约定俗成的隐含用法。比如在串循环操作中ECX用作计数器，而EDI用于寻址目标数据串，ESI用于寻址源数据串。EBP和ESP主要用来维护栈，ESP通常指向栈的顶部，EBP指向当前栈帧的起始地址。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200258718.png" alt="" loading="lazy"></p>
+<ul>
+<li>EAX, EBX, ECX, EDX称数据寄存器，它们都可以作为32位寄存器（如EAX）、16位寄存器（AX）或者分为两个独立的8位寄存器（AH、AL）使用。如果作为8位或者16位寄存器被寻址，则仅会改变32位寄存器的某一部分而不影响其他部分。</li>
+<li>ESI、EDI、SI和DI称为变址寄存器，主要用于存放存储单元在段内的偏移量，用它们可实现多种不同形式的存储器操作数的寻址方式。EBP、ESP、BP和SP称为指针寄存器，主要用于存放堆栈内存储单元的偏移量，用它们可实现多种寻址方式，为以不同的地址形式访问堆栈存储单元提供方便。变址寄存器和指针寄存器不可分割成8位寄存器，但也可存储算术逻辑运算的操作数和运算结果。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200289859.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+<li>
+<p>EAX(Accumulator)：累加寄存器 可作为累加器用于乘法、除法及一些调整指令，也可以保存被访问存储器单元的偏移地址。</p>
+</li>
+<li>
+<p>EBX (Base)：基址寄存器 可以被作为EBX、BX，BH和BL被寻址，包括16位微处理器，BX可以保存内存系统位置的偏移地址，32位的EBX也可以用来寻址内存数据。</p>
+</li>
+<li>
+<p>ECX (Count)：计数器寄存器 ECX是一个通用目的计数器，它持有多种指令的计数，自80386以上ECX寄存器也可以保存访问数据所在存储器单元的偏移地址。用于计数的指令包括重复字符串指令（REP/REPE/REPNE）、shift、rotate 和 LOOP/LOOPD 指令。重复字符串指令使用CX， Shift 和 rotate 移位指令使用CL作为计数器。，而LOOP/LOOPD循环指令使用CX或者ECX指令。</p>
+</li>
+<li>
+<p>EDX (Data)：数据寄存器 通用目的数据寄存器，它常与EAX配合保存乘法运算结果的一部分或者除法运算之前的被除数，80386以后也可被用作寻址内存数据。</p>
+</li>
+<li>
+<p>EDI（Destination Index）目标索引寄存器 通常寻址一些字符串指令的字符串目标数据。它也可以起到32或者16位通用寄存器的作用。</p>
+</li>
+<li>
+<p>ESI（Source Index）源索引寄存器 通常寻址字符串指令的源字符串数据。</p>
+</li>
+<li>
+<p>EBP (Base Pointer) 基指针寄存器 用作EBP或BP寻址，可直接存取堆栈中数据</p>
+</li>
+<li>
+<p>ESP (Stack Pointer) 堆栈指针寄存器 可访问内存中堆栈段的栈顶</p>
+</li>
+</ul>
+<h3 id="标志寄存器eflags">标志寄存器（EFLAGS）：</h3>
+<ul>
+<li>控制任务状态和模式切换、中断处理、指令追踪和访问权限控制，寄存器中的标志位需要特权指令代码才可以修改(特权指令：运行在内核态下的代码)，16位模式下使用PUSHF和POPF将FLAG压栈和推出，32位则用PUSHFD/POPFD。80x86和Pentium全系列微处理器的EFLAGS和FLAG寄存器如下：<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200854075.png" alt="" loading="lazy"></li>
+</ul>
+<h4 id="eflags寄存器的状态标志0-2-4-6-7以及11位指示算术指令如add-sub-mul以及div指令的结果这些状态标志的作用如下">EFLAGS寄存器的状态标志(0、2、4、6、7以及11位)指示算术指令（如ADD, SUB, MUL以及DIV指令）的结果，这些状态标志的作用如下：</h4>
+<ul>
+<li>CF(bit 0) [Carry flag]   若算术操作产生的结果在最高有效位(most-significant bit)发生进位或借位则将其置1，反之清零。这个标志指示无符号整型运算的溢出状态，这个标志同样在多倍精度运算(multiple-precision arithmetic)中使用。</li>
+<li>PF(bit 2) [Parity flag]   如果结果的最低有效字节(least-significant byte)包含偶数个1位则该位置1，否则清零。</li>
+<li>AF(bit 4) [Adjust flag]   如果算术操作在结果的第3位发生进位或借位则将该标志置1，否则清零。这个标志在BCD(binary-code decimal)算术运算中被使用。</li>
+<li>ZF(bit 6) [Zero flag]   若结果为0则将其置1，反之清零。</li>
+<li>SF(bit 7) [Sign flag]   该标志被设置为有符号整型的最高有效位。(0指示结果为正，反之则为负)</li>
+<li>DF(bit 10)[Direction flag] 控制串指令(MOVS, CMPS, SCAS, LODS以及STOS)。设置DF标志使得串指令自动递减（从高地址向低地址方向处理字符串），清除该标志则使得串指令自动递增。STD以及- CLD指令分别用于设置以及清除DF标志。</li>
+<li>OF(bit 11) [Overflow flag]   如果整型结果是较大的正数或较小的负数，并且无法匹配目的操作数时将该位置1，反之清零。这个标志为带符号整型运算指示溢出状态。</li>
+</ul>
+<h4 id="系统标志以及iopl域system-flags-and-iopl-field">系统标志以及IOPL域(System Flags and IOPL Field)，</h4>
+<pre><code> EFLAGS寄存器中的这部分标志用于控制操作系统或是执行操作，它们不允许被应用程序所修改。这些标志的作用如下：
+</code></pre>
+<ul>
+<li>TF(bit 8) [Trap flag]   将该位设置为1以允许单步调试模式，清零则禁用该模式。</li>
+<li>IF(bit 9) [Interrupt enable flag]   该标志用于控制处理器对可屏蔽中断请求(maskable interrupt requests)的响应。置1以响应可屏蔽中断，反之则禁止可屏蔽中断。</li>
+<li>IOPL(bits 12 and 13) [I/O privilege level field]   指示当前运行任务的I/O特权级(I/O privilege level)，正在运行任务的当前特权级(CPL)必须小于或等于I/O特权级才能允许访问I/O地址空间。这个域只能在CPL为0时才能通过POPF以及IRET指令修改。</li>
+<li>NT(bit 14) [Nested task flag]   这个标志控制中断链和被调用任务。若当前任务与前一个执行任务相关则置1，反之则清零。</li>
+<li>RF(bit 16) [Resume flag]   控制处理器对调试异常的响应。</li>
+<li>VM(bit 17) [Virtual-8086 mode flag]   置1以允许虚拟8086模式，清除则返回保护模式。</li>
+<li>AC(bit 18) [Alignment check flag]   该标志以及在CR0寄存器中的AM位置1时将允许内存引用的对齐检查，以上两个标志中至少有一个被清零则禁用对齐检查。</li>
+<li>VIF(bit 19) [Virtual interrupt flag]   该标志是IF标志的虚拟镜像(Virtual image)，与VIP标志结合起来使用。使用这个标志以及VIP标志，并设置CR4控制寄存器中的VME标志就可以允许虚拟模式扩展(virtual mode extensions)</li>
+<li>VIP(bit 20) [Virtual interrupt pending flag]   该位置1以指示一个中断正在被挂起，当没有中断挂起时该位清零。【Software sets and clears this flag; the processor only reads it.】与VIF标志结合使用。</li>
+<li>ID(bit 21) [Identification flag]   程序能够设置或清除这个标志指示了处理器对CPUID指令的支持。</li>
+</ul>
+<h3 id="控制寄存器control-register">控制寄存器（Control Register）：</h3>
+<p>（CR0 - CR4）保存全局性、和任务无关的机器状态，用于控制和确定 处理器的操作模式以及当前执行任务的一些特性，其逻辑结构具体如下图：<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200418040.png" alt="" loading="lazy"></p>
+<h4 id="cr0-包含了-6-个预定义标志控制系统的工作模式和处理器的状态其各特殊位的含义功能如下">CR0: 包含了 6 个预定义标志，控制系统的工作模式和处理器的状态，其各特殊位的含义功能如下：</h4>
+<ul>
+<li>PG（bit 31）：分页有效时,置位为1,清空时为0（与PE一同使用），该指令表明是否使用页表将线性地址转换成物理地址</li>
+<li>CD（bit 30）：cache 缺失设置位</li>
+<li>NW（bit 29）：直写无效(直写:高速缓存中的数据始终保持与主存储器中数据匹配)</li>
+<li>AM（bit 18）：对齐功能屏蔽(与EFLAGS寄存器中 AC标志位一同使用)</li>
+<li>WP（bit 16）：写保护</li>
+<li>NE（bit 5）：数字错误标志位(与浮点协处理器共同使用)</li>
+<li>ET（bit 4）：扩展类型.设置有效位时,支持 ntel 387 DX 数学协处理器指令.</li>
+<li>TS（bit 3）：每当任务切换时就设置该位,并且在解释协处理器指令之前测试该位</li>
+<li>EM（bit 2）：该位表明是否需要仿真协处理器的功能</li>
+<li>MP（bit 1）：协处理器监视标志位</li>
+<li>PE（bit 0）：保护模式使能，当设置有效位（1），CPU工作在保护模式；反之（0），则在实模式下运行。</li>
+</ul>
+<h4 id="cr1-未定义的控制寄存器保留">CR1: 未定义的控制寄存器，保留。</h4>
+<h4 id="cr2-页故障线性地址寄存器保留最后一次出现页故障的全32位线性地址">CR2: 页故障线性地址寄存器，保留最后一次出现页故障的全32位线性地址</h4>
+<h4 id="cr3-页目录基址寄存器保存页目录表的物理内存基地址和pcd和pwt标志位和cache有关">CR3: 页目录基址寄存器，保存页目录表的物理内存基地址和PCD和PWT标志位(和Cache有关)</h4>
+<ul>
+<li>PCD: 控制当前页目录表的缓冲，当设置清空时，缓冲置位时，缓冲无效.与CR0中的CD或PG一同使用</li>
+<li>PWT: 控制cache采取直写还是回写的策略.当设置清空时,回写有效.当置位时，直写有效。</li>
+</ul>
+<h4 id="cr4-一些结构的扩展表明对于特定的处理器和操作系统执行支持">CR4: 一些结构的扩展.表明对于特定的处理器和操作系统执行支持.</h4>
+<ul>
+<li>VME: 虚地址模式，当清空时无效.</li>
+<li>PVI: 保护模式虚中断，当清空时无效</li>
+<li>TSD: 时间戳允许标志位，当清空时，允许RDTSC指令执行在任务特权级上；当置位时，只允许工作在特权级0.</li>
+<li>DE: 调试扩展，置位表明DR4与DR5将产生没有定义的异常</li>
+<li>PSE: 当置位时使用4M的页面；清空，使用4K的页面</li>
+<li>PAE: 置位表示使用36物理内存的分页机制，清空时使用32位分页机制</li>
+<li>MCE: 置位表示使用机器检查异常机制</li>
+<li>PGE: 置位表示启动全局页面，当写CR3时，也不会被替换.</li>
+<li>PCE: 置位表明使RDPMC指令工作在任何保护级别.</li>
+<li>OSFXSR: 置位表明操作系统支持FXSAVE and FXRSTOR指令</li>
+<li>OSXMMEXCPT: 置位表明操作系统支持不可屏蔽的SIMD浮点异常.</li>
+</ul>
+<h3 id="调试寄存器debug-register">调试寄存器（Debug Register）：</h3>
+<p>（DR0 - DR7）使系统程序设计人员设置和监视1到4个断点（编号0-3），用它们可以规定指令执行和数据读写的任何组合。应用于调试应用代码、系统代码、开发多任务操作系统，来监视代码的运行和处理器的性能。对于每个断点，可以指定以下信息：</p>
+<ul>
+<li>断点发生的线性地址</li>
+<li>断点位置的长度：1、2、4或8个字节</li>
+<li>必须在地址处执行的操作才能生成调试异常</li>
+<li>是否启用断点</li>
+<li>生成调试异常时是否存在断点条件<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200462908.png" alt="" loading="lazy"></li>
+</ul>
+<h4 id="调试地址寄存器debug-address-registersdr0-dr3">调试地址寄存器（Debug Address Registers）DR0-DR3：</h4>
+<pre><code>保留4个32位断点的线性地址
+</code></pre>
+<ul>
+<li>调试寄存器（Debug Registers）DR4，DR5： 启用调试扩展时（控制寄存器CR4中的DE标志已置位时）保留调试寄存器DR4和DR5（）并尝试引用DR4和DR5寄存器会导致无效操作码异常</li>
+<li>调试状态寄存器（Debug Status Register）DR6： 报告在上次调试异常时采样的调试条件生成，且仅在生成异常时才会更新此寄存器。该寄存器中的标志显示以下信息：
+<ul>
+<li>B0—B3: 断点状态的监测</li>
+<li>BD: 调试寄存器访问监测.置位,表明在指令流中,下一条指令将访问其中的一个调试寄存器</li>
+<li>BS: 单步执行标志位</li>
+<li>BT: 任务转换标志位</li>
+</ul>
+</li>
+<li>调试控制寄存器（Debug Control Register）DR7：
+<ul>
+<li>L0—L3: 局部断点使能标志位</li>
+<li>G0--G3: 全局断点使能标志位</li>
+<li>LE AND GE: 置位表明处理器可以监测导致数据断点的指令，一般置位</li>
+<li>GD: 通用监测使能标志位.表明是否开启调试寄存器保护.</li>
+<li>LEN0 through LEN3 : 用来表明相应断点地址寄存器内存位置的大小.</li>
+<li>R/W0 through R/W3: 相应断点的状态</li>
+</ul>
+</li>
+</ul>
+<h3 id="系统地址寄存器memory-management-registers">系统地址寄存器（Memory Management Registers）：</h3>
+<ul>
+<li>
+<p>80386中含有4个系统地址寄存器，包括全局描述符表寄存器GDTR(Global Descriptor Table Register)、中断描述符表寄存器 IDTR(Interrupt Descriptor Table Register)、局部描述表 寄存器LDTR(Local Descriptor Table Register)和任务寄存器TR(Task Register)。</p>
+</li>
+<li>
+<p>主要用来在保护模式下，管理用于生成线性地址和物理地址的4个系统管理描述符表，GDTR、IDTR和LDTR用于寻址存放描述符表的段。TR用于寻址一个特殊的任务状态段(Task State Segment，TSS)。TSS中包含着当前执行任务的重要信息。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200761420.png" alt="" loading="lazy"></p>
+<ul>
+<li>全局描述符表寄存器GDTR：是一个48位寄存器，用来存放全局描述符表GDT的32位线性基地址和16位的界限值。在全局描述符表中不仅包括有操作系统使用的描述符，而且还有所有任务使用的公用描述符。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成0xFFFF，在保护模式初始化过程中必须给GDTR加载一个新值。</li>
+<li>中断描述符表寄存器IDTR：是一个48位寄存器，用来存放中断描述符表IDT的32位线性基地址和16位的界限值。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成 0xFFFF。<br>
+局部描述符表寄存器LDTR：是一个16位寄存器，用来存放局部描述符表 LDT 的 32 位线性基地址、16 位段限长和描述符属性值。另外还有一个隐含的描述符高速缓冲寄存器，用来存放LDT表描述符。在机器加电或处理器复位后，段选择符和基地址被默认地设置为 0，而段长度被设置成 0xFFFF。</li>
+<li>任务状态寄存器TR：是一个16位寄存器，用来存放当前任务状态段TSS的16位段选择符、32位基地址、16位段长度和描述符属性值。与之相应，也有一个隐含的描述符高速缓冲寄存器，用来存放任务状态段TSS的描述符。当执行任务切换时，处理器会把新任务的 TSS 的段选择符和段描述符自动加载进任务寄存器TR中。</li>
+</ul>
+</li>
+</ul>
+<h3 id="段寄存器">段寄存器：</h3>
+<ul>
+<li>段寄存器是根据内存分段的管理模式而设置的，用于保存16位段选择器（一种特殊指针，用于标识内存中的段）。内存单元的物理地址由段寄存器的值和一个偏移量组合而成的，这样可用两个较少位数的值组合成一个可访问较大物理空间的内存地址。DS，ES，FS和GS寄存器指向四个数据段，四个数据段的可用性允许有效和安全地访问不同类型的数据结构。
+<ul>
+<li>代码段寄存器（CS）(Code Segment)：包含代码段的段选择器，其中存储正在执行的指令。处理器使用由CS和EIP组成的逻辑地址从代码段中获取指令</li>
+<li>数据段寄存器（DS）(Data Segment)：值为数据段的段值</li>
+<li>附加段寄存器（ES）(Extra Segment)：其值为附加数据段的段值</li>
+<li>附加段寄存器（FS）(Extra Segment)：其值为附加数据段的段值</li>
+<li>附加段寄存器（GS）(Extra Segment)：32位微机系统中可访问</li>
+<li>堆栈段寄存器（SS）(Stack Segment)：其值为堆栈段的段值，包含堆栈段的段选择器，其中存储过程堆栈以用于当前正在执行的程序，任务或处理程序，所有堆栈操作都使用SS寄存器来查找。</li>
+</ul>
+</li>
+</ul>
+<h3 id="其他特殊目的寄存器">其他特殊目的寄存器：</h3>
+<ul>
+<li>
+<p>指令指针指示器（EIP）：它是32位寄存器，低16位称为IP（8086的指令指针寄存器），用与兼容16位CPU，其内容是下一条要取入CPU的指令在内存中的偏移地址。当一个程序开始运行时，系统把EIP清零，每取入一条指令，EPI自动增加取入CPU的字节数目，所以称EIP为指令指针。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200805247.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>时间戳寄存器（TSC）：每个时钟周期时其值加1，重启时清零。通过RDTSC指令读取TSC寄存器，只有当CR4寄存器的TSD位为0时，才可以在任何优先级下执行该指令，否则只能在特权级下执行该指令。</p>
+</li>
+<li>
+<p>浮点寄存器（FP）：由于在80486微处理器内部设有浮点运算器，因此在其内部有相应的寄存器，其中包括8个80位通用数据寄存器、1个48位指令指针寄存器、1个48位数据指针寄存器、1个16位控制字寄存器、1个16位状态字寄存器和1个16位标记字寄存器。</p>
+</li>
+</ul>
+<h2 id="64位扩展寄存器简要说明">64位扩展寄存器（简要说明）</h2>
+<ul>
+<li>X86-64中，通用寄存器都是64位，相对32位的x86来说，标识符从原来的ebp变成rbp。为了向后兼容性，ebp依然可以使用，不过指向了rbp的低32位，新增加通用寄存器r8到r15，其低位分别用d、w、b指定长度。</li>
+<li>32位使用栈帧来作为传递的参数的保存位置，而64位使用寄存器，分别用rdi,rsi,rdx,rcx,r8,r9作为第1-6个参数，rax作为返回值。64位没有栈帧的指针，32位用ebp作为栈帧指针，64位取消了这个设定，rbp作为通用寄存器使用。64位支持一些形式的以PC相关的寻址，而32位只有在jmp的时候才会用到这种寻址方式。其中：
+<ul>
+<li>rax 作为函数返回值使用</li>
+<li>rsp 栈指针寄存器，指向栈顶</li>
+<li>rdi，rsi，rdx，rcx，r8，r9 用作函数参数，依次对应第1参数，第2参数</li>
+<li>rbx，rbp，r12，r13，14，15 用作数据存储，遵循被调用者使用规则，简单说就是随便用，调用子函数之前要备份它，以防他被修改</li>
+<li>r10，r11 用作数据存储，遵循调用者使用规则，简单说就是使用之前要先保存原值<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200833479.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料">参考资料：</h2>
+<p>【1】	深入理解计算机体系结构<br>
+【2】	X86系列汇编语言程序设计<br>
+【3】	李忠，王晓波，余洁．x86汇编语言：从实模式到保护模式[M]．北京：电子工业出版社<br>
+【4】	Intel x86 CPU系列的寄存器-wangbaolin719-ChinaUnix博客<br>
+URL: http://blog.chinaunix.net/uid-27717694-id-3943419.html<br>
+【5】	Intel_x86_CPU系列的寄存器[整理版]<br>
+URL: https://www.docin.com/p-880130068.html<br>
+【6】	[官方文档]：64-ia-32-architectures-software-developer-manual-325462.pdf</p>
+
+              </div>
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      君の知らない物语
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://alittlewhiter.github.io/post/x86-ji-cun-qi-xiang-jie/" title="X86寄存器详解">X86寄存器详解</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="C++ 板子" href="https://alittlewhiter.github.io/post/c-ban-zi/">C++ 板子</a>
+        <a class="nav-mobile-next" title="C++ 板子" href="https://alittlewhiter.github.io/post/c-ban-zi/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+              
+
+    		<!-- 评论模块 -->
+			<div class="comment"> </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By HsxyHao
+    </div>
+    <div class="poweredby">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </footer>
+  
+  
+  <div class="gemini back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
+    
+    <span class="scrollpercent">
+      <span id="back_to_top_text">0</span>%
+    </span>
+    
+  </div>
+  
+  
+    <link rel="stylesheet" href="/media/live2d/histoire/css/live2d.css" />
+<div class="box-scale">
+  <div id="landlord" style="left:5px;bottom:0px;" data-key="189d0e1bf9c4491d9eb6dba4788dc386">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
+    <div class="live_talk_input_body">
+      <div class="live_talk_input_name_body">
+        <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off" placeholder="你的名字" />
+      </div>
+      <div class="live_talk_input_text_body">
+        <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off" placeholder="要和我聊什么呀？"/>
+        <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
+      </div>
+    </div>
+    <input name="live_talk" id="live_talk" value="1" type="hidden" />
+    <div class="live_ico_box">
+      <div class="live_ico_item type_info" id="showInfoBtn"></div>
+      <div class="live_ico_item type_talk" id="showTalkBtn"></div>
+      
+      <div class="live_ico_item type_youdu" id="youduButton"></div>
+      <div class="live_ico_item type_quit" id="hideButton"></div>
+      <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
+      <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
+      <input id="duType" value="douqilai" type="hidden">
+      
+    </div>
+  </div>
+</div>
+<div id="open_live2d">召唤 伊斯特瓦尔</div>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+var message_Path = '/media/live2d/histoire/';
+let landlord = document.querySelector('#landlord');
+var apiKey = landlord.dataset.key;
+</script>
+<script type="text/javascript" src="/media/live2d/histoire/js/live2d.js"></script>
+<script type="text/javascript" src="/media/live2d/histoire/js/message.js"></script>
+  
+  
+</div>
+<script>
+
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+  back2TopText = document.querySelector('#back_to_top_text'),
+  drawerBox = document.querySelector('#drawer_box'),
+  rightSideBar = document.querySelector('.sidebar'),
+  viewport = document.querySelector('body');
+
+  function scrollAnimation(currentY, targetY) {
+   
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
+
+  back2Top.addEventListener("click", function(e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+  
+  window.addEventListener('scroll', function(e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  
+  let hasCacu = false;
+  window.onresize = function() {
+    if (window.width > 991) {
+      calcuHeight();
+    } else {
+      hasCacu = false;
+    }
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+  
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function() {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, transitionDir,{ });
+          }
+        })
+        window.Velocity(viewport, openProp,{
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, {
+              opacity: 0
+            });
+          }
+        })
+        window.Velocity(viewport, closeProp ,{
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+</script>
+    </div>
+
+	
+
+  </body>
+  <!--Valine 的核心代码库-->
+  <script src="/media/js/Valine.min.js"></script>    
+
+  <script src="/media/js/motion.js"></script>
+</html>

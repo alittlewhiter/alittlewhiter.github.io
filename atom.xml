@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-03T00:57:08.174Z</updated>
+    <updated>2020-03-03T02:01:04.362Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -10,6 +10,238 @@
     <logo>https://alittlewhiter.github.io/images/avatar.png</logo>
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
+    <entry>
+        <title type="html"><![CDATA[X86寄存器详解]]></title>
+        <id>https://alittlewhiter.github.io/post/x86-ji-cun-qi-xiang-jie/</id>
+        <link href="https://alittlewhiter.github.io/post/x86-ji-cun-qi-xiang-jie/">
+        </link>
+        <updated>2020-03-03T01:29:03.000Z</updated>
+        <summary type="html"><![CDATA[<p>Keywords：x86寄存器、<br>
+精心整理，有空看看</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Keywords：x86寄存器、<br>
+精心整理，有空看看</p>
+<!-- more -->
+<h2 id="概述">概述</h2>
+<p>x86或80x86是英特尔Intel首先开发制造的一种微处理器体系结构的泛称。该系列较早期的处理器名称是以数字来表示，并以“86”作为结尾，包括最开始16位的Intel 8086、80186、80286、到后来推出32位80386微处理器以及如今64位的80486，因此其架构被称为“x86”。 寄存器是CPU的组成部分，是有限存贮容量的高速存贮部件，是 CPU 中非常珍贵的稀有资源，它们可用来暂存指令、数据和地址。在中央处理器的控制部件中，有指令寄存器(IR)和程序计数器(PC)，而在算术及逻辑部件中，寄存器有累加器(ACC)。<br>
+早期的8086CPU中，只包含14个结构为16位的寄存器（即一个寄存器可以存放下2个字节的数据）：AX，BX，CX，DX，SP，BP，DI，SI，IP，FLAG，CS，DS，ES，SS。而到了 80386 CPU中，寄存器的个数增多了，同时寄存器的结构也变了，如绝大多数的寄存器扩展为32位，而有些寄存器则仍是16位 ，并在后续发展中不断更新改进。</p>
+<h2 id="32位cpu系统级寄存器和数据结构">32位cpu系统级寄存器和数据结构</h2>
+<figure data-type="image" tabindex="1"><img src="https://alittlewhiter.github.io/post-images/1583199240318.png" alt="" loading="lazy"></figure>
+<h2 id="寄存器分类介绍32位模式">寄存器分类介绍（32位模式）</h2>
+<ul>
+<li>通用寄存器：8个，分别为EAX，EBX，ECX，EDX，ESP，EBP，ESI，EDI</li>
+<li>标志寄存器：1个，EFLAGS</li>
+<li>控制寄存器：5个，分别为CR0-CR4</li>
+<li>调试寄存器：8个，分别为DR0-DR7</li>
+<li>系统地址寄存器：4个，GDTR，IDTR，LDTR和TR</li>
+<li>段寄存器：6个，分别为CS，DS，SS，ES，FS，GS</li>
+<li>其他特殊目的寄存器：EIP，TSC等</li>
+</ul>
+<h3 id="通用寄存器general-purpose-registers">通用寄存器（General-Purpose Registers）：</h3>
+<ul>
+<li>
+<p>尽管这8个通用寄存器大多时候是通用的，可以作任何用途，但是在某些情况下也有各自约定俗成的隐含用法。比如在串循环操作中ECX用作计数器，而EDI用于寻址目标数据串，ESI用于寻址源数据串。EBP和ESP主要用来维护栈，ESP通常指向栈的顶部，EBP指向当前栈帧的起始地址。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200258718.png" alt="" loading="lazy"></p>
+<ul>
+<li>EAX, EBX, ECX, EDX称数据寄存器，它们都可以作为32位寄存器（如EAX）、16位寄存器（AX）或者分为两个独立的8位寄存器（AH、AL）使用。如果作为8位或者16位寄存器被寻址，则仅会改变32位寄存器的某一部分而不影响其他部分。</li>
+<li>ESI、EDI、SI和DI称为变址寄存器，主要用于存放存储单元在段内的偏移量，用它们可实现多种不同形式的存储器操作数的寻址方式。EBP、ESP、BP和SP称为指针寄存器，主要用于存放堆栈内存储单元的偏移量，用它们可实现多种寻址方式，为以不同的地址形式访问堆栈存储单元提供方便。变址寄存器和指针寄存器不可分割成8位寄存器，但也可存储算术逻辑运算的操作数和运算结果。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200289859.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+<li>
+<p>EAX(Accumulator)：累加寄存器 可作为累加器用于乘法、除法及一些调整指令，也可以保存被访问存储器单元的偏移地址。</p>
+</li>
+<li>
+<p>EBX (Base)：基址寄存器 可以被作为EBX、BX，BH和BL被寻址，包括16位微处理器，BX可以保存内存系统位置的偏移地址，32位的EBX也可以用来寻址内存数据。</p>
+</li>
+<li>
+<p>ECX (Count)：计数器寄存器 ECX是一个通用目的计数器，它持有多种指令的计数，自80386以上ECX寄存器也可以保存访问数据所在存储器单元的偏移地址。用于计数的指令包括重复字符串指令（REP/REPE/REPNE）、shift、rotate 和 LOOP/LOOPD 指令。重复字符串指令使用CX， Shift 和 rotate 移位指令使用CL作为计数器。，而LOOP/LOOPD循环指令使用CX或者ECX指令。</p>
+</li>
+<li>
+<p>EDX (Data)：数据寄存器 通用目的数据寄存器，它常与EAX配合保存乘法运算结果的一部分或者除法运算之前的被除数，80386以后也可被用作寻址内存数据。</p>
+</li>
+<li>
+<p>EDI（Destination Index）目标索引寄存器 通常寻址一些字符串指令的字符串目标数据。它也可以起到32或者16位通用寄存器的作用。</p>
+</li>
+<li>
+<p>ESI（Source Index）源索引寄存器 通常寻址字符串指令的源字符串数据。</p>
+</li>
+<li>
+<p>EBP (Base Pointer) 基指针寄存器 用作EBP或BP寻址，可直接存取堆栈中数据</p>
+</li>
+<li>
+<p>ESP (Stack Pointer) 堆栈指针寄存器 可访问内存中堆栈段的栈顶</p>
+</li>
+</ul>
+<h3 id="标志寄存器eflags">标志寄存器（EFLAGS）：</h3>
+<ul>
+<li>控制任务状态和模式切换、中断处理、指令追踪和访问权限控制，寄存器中的标志位需要特权指令代码才可以修改(特权指令：运行在内核态下的代码)，16位模式下使用PUSHF和POPF将FLAG压栈和推出，32位则用PUSHFD/POPFD。80x86和Pentium全系列微处理器的EFLAGS和FLAG寄存器如下：<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200854075.png" alt="" loading="lazy"></li>
+</ul>
+<h4 id="eflags寄存器的状态标志0-2-4-6-7以及11位指示算术指令如add-sub-mul以及div指令的结果这些状态标志的作用如下">EFLAGS寄存器的状态标志(0、2、4、6、7以及11位)指示算术指令（如ADD, SUB, MUL以及DIV指令）的结果，这些状态标志的作用如下：</h4>
+<ul>
+<li>CF(bit 0) [Carry flag]   若算术操作产生的结果在最高有效位(most-significant bit)发生进位或借位则将其置1，反之清零。这个标志指示无符号整型运算的溢出状态，这个标志同样在多倍精度运算(multiple-precision arithmetic)中使用。</li>
+<li>PF(bit 2) [Parity flag]   如果结果的最低有效字节(least-significant byte)包含偶数个1位则该位置1，否则清零。</li>
+<li>AF(bit 4) [Adjust flag]   如果算术操作在结果的第3位发生进位或借位则将该标志置1，否则清零。这个标志在BCD(binary-code decimal)算术运算中被使用。</li>
+<li>ZF(bit 6) [Zero flag]   若结果为0则将其置1，反之清零。</li>
+<li>SF(bit 7) [Sign flag]   该标志被设置为有符号整型的最高有效位。(0指示结果为正，反之则为负)</li>
+<li>DF(bit 10)[Direction flag] 控制串指令(MOVS, CMPS, SCAS, LODS以及STOS)。设置DF标志使得串指令自动递减（从高地址向低地址方向处理字符串），清除该标志则使得串指令自动递增。STD以及- CLD指令分别用于设置以及清除DF标志。</li>
+<li>OF(bit 11) [Overflow flag]   如果整型结果是较大的正数或较小的负数，并且无法匹配目的操作数时将该位置1，反之清零。这个标志为带符号整型运算指示溢出状态。</li>
+</ul>
+<h4 id="系统标志以及iopl域system-flags-and-iopl-field">系统标志以及IOPL域(System Flags and IOPL Field)，</h4>
+<pre><code> EFLAGS寄存器中的这部分标志用于控制操作系统或是执行操作，它们不允许被应用程序所修改。这些标志的作用如下：
+</code></pre>
+<ul>
+<li>TF(bit 8) [Trap flag]   将该位设置为1以允许单步调试模式，清零则禁用该模式。</li>
+<li>IF(bit 9) [Interrupt enable flag]   该标志用于控制处理器对可屏蔽中断请求(maskable interrupt requests)的响应。置1以响应可屏蔽中断，反之则禁止可屏蔽中断。</li>
+<li>IOPL(bits 12 and 13) [I/O privilege level field]   指示当前运行任务的I/O特权级(I/O privilege level)，正在运行任务的当前特权级(CPL)必须小于或等于I/O特权级才能允许访问I/O地址空间。这个域只能在CPL为0时才能通过POPF以及IRET指令修改。</li>
+<li>NT(bit 14) [Nested task flag]   这个标志控制中断链和被调用任务。若当前任务与前一个执行任务相关则置1，反之则清零。</li>
+<li>RF(bit 16) [Resume flag]   控制处理器对调试异常的响应。</li>
+<li>VM(bit 17) [Virtual-8086 mode flag]   置1以允许虚拟8086模式，清除则返回保护模式。</li>
+<li>AC(bit 18) [Alignment check flag]   该标志以及在CR0寄存器中的AM位置1时将允许内存引用的对齐检查，以上两个标志中至少有一个被清零则禁用对齐检查。</li>
+<li>VIF(bit 19) [Virtual interrupt flag]   该标志是IF标志的虚拟镜像(Virtual image)，与VIP标志结合起来使用。使用这个标志以及VIP标志，并设置CR4控制寄存器中的VME标志就可以允许虚拟模式扩展(virtual mode extensions)</li>
+<li>VIP(bit 20) [Virtual interrupt pending flag]   该位置1以指示一个中断正在被挂起，当没有中断挂起时该位清零。【Software sets and clears this flag; the processor only reads it.】与VIF标志结合使用。</li>
+<li>ID(bit 21) [Identification flag]   程序能够设置或清除这个标志指示了处理器对CPUID指令的支持。</li>
+</ul>
+<h3 id="控制寄存器control-register">控制寄存器（Control Register）：</h3>
+<p>（CR0 - CR4）保存全局性、和任务无关的机器状态，用于控制和确定 处理器的操作模式以及当前执行任务的一些特性，其逻辑结构具体如下图：<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200418040.png" alt="" loading="lazy"></p>
+<h4 id="cr0-包含了-6-个预定义标志控制系统的工作模式和处理器的状态其各特殊位的含义功能如下">CR0: 包含了 6 个预定义标志，控制系统的工作模式和处理器的状态，其各特殊位的含义功能如下：</h4>
+<ul>
+<li>PG（bit 31）：分页有效时,置位为1,清空时为0（与PE一同使用），该指令表明是否使用页表将线性地址转换成物理地址</li>
+<li>CD（bit 30）：cache 缺失设置位</li>
+<li>NW（bit 29）：直写无效(直写:高速缓存中的数据始终保持与主存储器中数据匹配)</li>
+<li>AM（bit 18）：对齐功能屏蔽(与EFLAGS寄存器中 AC标志位一同使用)</li>
+<li>WP（bit 16）：写保护</li>
+<li>NE（bit 5）：数字错误标志位(与浮点协处理器共同使用)</li>
+<li>ET（bit 4）：扩展类型.设置有效位时,支持 ntel 387 DX 数学协处理器指令.</li>
+<li>TS（bit 3）：每当任务切换时就设置该位,并且在解释协处理器指令之前测试该位</li>
+<li>EM（bit 2）：该位表明是否需要仿真协处理器的功能</li>
+<li>MP（bit 1）：协处理器监视标志位</li>
+<li>PE（bit 0）：保护模式使能，当设置有效位（1），CPU工作在保护模式；反之（0），则在实模式下运行。</li>
+</ul>
+<h4 id="cr1-未定义的控制寄存器保留">CR1: 未定义的控制寄存器，保留。</h4>
+<h4 id="cr2-页故障线性地址寄存器保留最后一次出现页故障的全32位线性地址">CR2: 页故障线性地址寄存器，保留最后一次出现页故障的全32位线性地址</h4>
+<h4 id="cr3-页目录基址寄存器保存页目录表的物理内存基地址和pcd和pwt标志位和cache有关">CR3: 页目录基址寄存器，保存页目录表的物理内存基地址和PCD和PWT标志位(和Cache有关)</h4>
+<ul>
+<li>PCD: 控制当前页目录表的缓冲，当设置清空时，缓冲置位时，缓冲无效.与CR0中的CD或PG一同使用</li>
+<li>PWT: 控制cache采取直写还是回写的策略.当设置清空时,回写有效.当置位时，直写有效。</li>
+</ul>
+<h4 id="cr4-一些结构的扩展表明对于特定的处理器和操作系统执行支持">CR4: 一些结构的扩展.表明对于特定的处理器和操作系统执行支持.</h4>
+<ul>
+<li>VME: 虚地址模式，当清空时无效.</li>
+<li>PVI: 保护模式虚中断，当清空时无效</li>
+<li>TSD: 时间戳允许标志位，当清空时，允许RDTSC指令执行在任务特权级上；当置位时，只允许工作在特权级0.</li>
+<li>DE: 调试扩展，置位表明DR4与DR5将产生没有定义的异常</li>
+<li>PSE: 当置位时使用4M的页面；清空，使用4K的页面</li>
+<li>PAE: 置位表示使用36物理内存的分页机制，清空时使用32位分页机制</li>
+<li>MCE: 置位表示使用机器检查异常机制</li>
+<li>PGE: 置位表示启动全局页面，当写CR3时，也不会被替换.</li>
+<li>PCE: 置位表明使RDPMC指令工作在任何保护级别.</li>
+<li>OSFXSR: 置位表明操作系统支持FXSAVE and FXRSTOR指令</li>
+<li>OSXMMEXCPT: 置位表明操作系统支持不可屏蔽的SIMD浮点异常.</li>
+</ul>
+<h3 id="调试寄存器debug-register">调试寄存器（Debug Register）：</h3>
+<p>（DR0 - DR7）使系统程序设计人员设置和监视1到4个断点（编号0-3），用它们可以规定指令执行和数据读写的任何组合。应用于调试应用代码、系统代码、开发多任务操作系统，来监视代码的运行和处理器的性能。对于每个断点，可以指定以下信息：</p>
+<ul>
+<li>断点发生的线性地址</li>
+<li>断点位置的长度：1、2、4或8个字节</li>
+<li>必须在地址处执行的操作才能生成调试异常</li>
+<li>是否启用断点</li>
+<li>生成调试异常时是否存在断点条件<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200462908.png" alt="" loading="lazy"></li>
+</ul>
+<h4 id="调试地址寄存器debug-address-registersdr0-dr3">调试地址寄存器（Debug Address Registers）DR0-DR3：</h4>
+<pre><code>保留4个32位断点的线性地址
+</code></pre>
+<ul>
+<li>调试寄存器（Debug Registers）DR4，DR5： 启用调试扩展时（控制寄存器CR4中的DE标志已置位时）保留调试寄存器DR4和DR5（）并尝试引用DR4和DR5寄存器会导致无效操作码异常</li>
+<li>调试状态寄存器（Debug Status Register）DR6： 报告在上次调试异常时采样的调试条件生成，且仅在生成异常时才会更新此寄存器。该寄存器中的标志显示以下信息：
+<ul>
+<li>B0—B3: 断点状态的监测</li>
+<li>BD: 调试寄存器访问监测.置位,表明在指令流中,下一条指令将访问其中的一个调试寄存器</li>
+<li>BS: 单步执行标志位</li>
+<li>BT: 任务转换标志位</li>
+</ul>
+</li>
+<li>调试控制寄存器（Debug Control Register）DR7：
+<ul>
+<li>L0—L3: 局部断点使能标志位</li>
+<li>G0--G3: 全局断点使能标志位</li>
+<li>LE AND GE: 置位表明处理器可以监测导致数据断点的指令，一般置位</li>
+<li>GD: 通用监测使能标志位.表明是否开启调试寄存器保护.</li>
+<li>LEN0 through LEN3 : 用来表明相应断点地址寄存器内存位置的大小.</li>
+<li>R/W0 through R/W3: 相应断点的状态</li>
+</ul>
+</li>
+</ul>
+<h3 id="系统地址寄存器memory-management-registers">系统地址寄存器（Memory Management Registers）：</h3>
+<ul>
+<li>
+<p>80386中含有4个系统地址寄存器，包括全局描述符表寄存器GDTR(Global Descriptor Table Register)、中断描述符表寄存器 IDTR(Interrupt Descriptor Table Register)、局部描述表 寄存器LDTR(Local Descriptor Table Register)和任务寄存器TR(Task Register)。</p>
+</li>
+<li>
+<p>主要用来在保护模式下，管理用于生成线性地址和物理地址的4个系统管理描述符表，GDTR、IDTR和LDTR用于寻址存放描述符表的段。TR用于寻址一个特殊的任务状态段(Task State Segment，TSS)。TSS中包含着当前执行任务的重要信息。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200761420.png" alt="" loading="lazy"></p>
+<ul>
+<li>全局描述符表寄存器GDTR：是一个48位寄存器，用来存放全局描述符表GDT的32位线性基地址和16位的界限值。在全局描述符表中不仅包括有操作系统使用的描述符，而且还有所有任务使用的公用描述符。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成0xFFFF，在保护模式初始化过程中必须给GDTR加载一个新值。</li>
+<li>中断描述符表寄存器IDTR：是一个48位寄存器，用来存放中断描述符表IDT的32位线性基地址和16位的界限值。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成 0xFFFF。<br>
+局部描述符表寄存器LDTR：是一个16位寄存器，用来存放局部描述符表 LDT 的 32 位线性基地址、16 位段限长和描述符属性值。另外还有一个隐含的描述符高速缓冲寄存器，用来存放LDT表描述符。在机器加电或处理器复位后，段选择符和基地址被默认地设置为 0，而段长度被设置成 0xFFFF。</li>
+<li>任务状态寄存器TR：是一个16位寄存器，用来存放当前任务状态段TSS的16位段选择符、32位基地址、16位段长度和描述符属性值。与之相应，也有一个隐含的描述符高速缓冲寄存器，用来存放任务状态段TSS的描述符。当执行任务切换时，处理器会把新任务的 TSS 的段选择符和段描述符自动加载进任务寄存器TR中。</li>
+</ul>
+</li>
+</ul>
+<h3 id="段寄存器">段寄存器：</h3>
+<ul>
+<li>段寄存器是根据内存分段的管理模式而设置的，用于保存16位段选择器（一种特殊指针，用于标识内存中的段）。内存单元的物理地址由段寄存器的值和一个偏移量组合而成的，这样可用两个较少位数的值组合成一个可访问较大物理空间的内存地址。DS，ES，FS和GS寄存器指向四个数据段，四个数据段的可用性允许有效和安全地访问不同类型的数据结构。
+<ul>
+<li>代码段寄存器（CS）(Code Segment)：包含代码段的段选择器，其中存储正在执行的指令。处理器使用由CS和EIP组成的逻辑地址从代码段中获取指令</li>
+<li>数据段寄存器（DS）(Data Segment)：值为数据段的段值</li>
+<li>附加段寄存器（ES）(Extra Segment)：其值为附加数据段的段值</li>
+<li>附加段寄存器（FS）(Extra Segment)：其值为附加数据段的段值</li>
+<li>附加段寄存器（GS）(Extra Segment)：32位微机系统中可访问</li>
+<li>堆栈段寄存器（SS）(Stack Segment)：其值为堆栈段的段值，包含堆栈段的段选择器，其中存储过程堆栈以用于当前正在执行的程序，任务或处理程序，所有堆栈操作都使用SS寄存器来查找。</li>
+</ul>
+</li>
+</ul>
+<h3 id="其他特殊目的寄存器">其他特殊目的寄存器：</h3>
+<ul>
+<li>
+<p>指令指针指示器（EIP）：它是32位寄存器，低16位称为IP（8086的指令指针寄存器），用与兼容16位CPU，其内容是下一条要取入CPU的指令在内存中的偏移地址。当一个程序开始运行时，系统把EIP清零，每取入一条指令，EPI自动增加取入CPU的字节数目，所以称EIP为指令指针。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200805247.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>时间戳寄存器（TSC）：每个时钟周期时其值加1，重启时清零。通过RDTSC指令读取TSC寄存器，只有当CR4寄存器的TSD位为0时，才可以在任何优先级下执行该指令，否则只能在特权级下执行该指令。</p>
+</li>
+<li>
+<p>浮点寄存器（FP）：由于在80486微处理器内部设有浮点运算器，因此在其内部有相应的寄存器，其中包括8个80位通用数据寄存器、1个48位指令指针寄存器、1个48位数据指针寄存器、1个16位控制字寄存器、1个16位状态字寄存器和1个16位标记字寄存器。</p>
+</li>
+</ul>
+<h2 id="64位扩展寄存器简要说明">64位扩展寄存器（简要说明）</h2>
+<ul>
+<li>X86-64中，通用寄存器都是64位，相对32位的x86来说，标识符从原来的ebp变成rbp。为了向后兼容性，ebp依然可以使用，不过指向了rbp的低32位，新增加通用寄存器r8到r15，其低位分别用d、w、b指定长度。</li>
+<li>32位使用栈帧来作为传递的参数的保存位置，而64位使用寄存器，分别用rdi,rsi,rdx,rcx,r8,r9作为第1-6个参数，rax作为返回值。64位没有栈帧的指针，32位用ebp作为栈帧指针，64位取消了这个设定，rbp作为通用寄存器使用。64位支持一些形式的以PC相关的寻址，而32位只有在jmp的时候才会用到这种寻址方式。其中：
+<ul>
+<li>rax 作为函数返回值使用</li>
+<li>rsp 栈指针寄存器，指向栈顶</li>
+<li>rdi，rsi，rdx，rcx，r8，r9 用作函数参数，依次对应第1参数，第2参数</li>
+<li>rbx，rbp，r12，r13，14，15 用作数据存储，遵循被调用者使用规则，简单说就是随便用，调用子函数之前要备份它，以防他被修改</li>
+<li>r10，r11 用作数据存储，遵循调用者使用规则，简单说就是使用之前要先保存原值<br>
+<img src="https://alittlewhiter.github.io/post-images/1583200833479.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料">参考资料：</h2>
+<p>【1】	深入理解计算机体系结构<br>
+【2】	X86系列汇编语言程序设计<br>
+【3】	李忠，王晓波，余洁．x86汇编语言：从实模式到保护模式[M]．北京：电子工业出版社<br>
+【4】	Intel x86 CPU系列的寄存器-wangbaolin719-ChinaUnix博客<br>
+URL: http://blog.chinaunix.net/uid-27717694-id-3943419.html<br>
+【5】	Intel_x86_CPU系列的寄存器[整理版]<br>
+URL: https://www.docin.com/p-880130068.html<br>
+【6】	[官方文档]：64-ia-32-architectures-software-developer-manual-325462.pdf</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C++ 板子]]></title>
         <id>https://alittlewhiter.github.io/post/c-ban-zi/</id>
