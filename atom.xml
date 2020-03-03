@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-03T17:00:34.442Z</updated>
+    <updated>2020-03-03T17:08:12.369Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -57,37 +57,36 @@
 <h2 id="markdown基本撰写和格式语法">Markdown基本撰写和格式语法</h2>
 <ol>
 <li>标题<br>
-要创建标题，请在标题文本前添加一至六个 <code>#</code> 符号，使用的 <code>#</code> 数量（1 - 6）将决定标题的大小。<pre><code class="language-git">#    一级标题
+要创建标题，请在标题文本前添加一至六个 <code>#</code> 符号，使用的 <code>#</code> 数量（1 - 6）将决定标题的大小。</li>
+</ol>
+<pre><code class="language-git">#    一级标题
 ##   二级标题
 ###  三级标题
 #### 四级标题
 #### 五级标题
 ######   六级标题
 </code></pre>
-<strong>补充</strong>
+<p><strong>补充</strong></p>
 <ul>
 <li>对标题进行封闭处理(类似于html中的自闭合标签加个/标注),那么你可以对应的在标题后面加上 相应数量的&quot;#&quot;。</li>
 <li>一级标题和二级标题还支持另外的使用方式，就是在一级标题下面加<code>=</code>，二级标题下面加<code>-</code>（最少加一个）：</li>
 </ul>
-<pre><code class="language-html">一级标题
-===
-二级标题
----
+<pre><code class="language-html">  一级标题
+  ===
+  二级标题
+  ---
 </code></pre>
-</li>
-</ol>
 <p><strong>分隔线</strong><br>
 连续的三个以上的*或-或_, 你也可以在连字符或星号之间使用空格。</p>
-<pre><code>ggg
+<pre><code class="language-php+HTML">---
+***
+___
+- - -
 </code></pre>
-<hr>
-<hr>
-<hr>
-<hr>
 <ol start="2">
-<li>
-<p>样式文本<br>
-可以使用粗体、斜体或删除线文本来表示强调。粗体和斜体能够嵌套，</p>
+<li>样式文本<br>
+可以使用粗体、斜体或删除线文本来表示强调。粗体和斜体能够嵌套，</li>
+</ol>
 <table>
 <thead>
 <tr>
@@ -114,49 +113,21 @@
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p>引用文本</p>
-</li>
-<li>
-<p>引用代码</p>
-</li>
-<li>
-<p>链接</p>
-</li>
-<li>
-<p>章节链接</p>
-</li>
-<li>
-<p>相对链接</p>
-</li>
-<li>
-<p>列表</p>
-</li>
-<li>
-<p>任务列表</p>
-</li>
-<li>
-<p>引用议题 和 拉取请求</p>
-</li>
-<li>
-<p>提及人员 和 团队</p>
-</li>
-<li>
-<p>引用外部资源</p>
-</li>
-<li>
-<p>内容附件</p>
-</li>
-<li>
-<p>使用表情符号</p>
-</li>
-<li>
-<p>段落</p>
-</li>
-<li>
-<p>忽略Markdown格式</p>
-</li>
+<ol start="3">
+<li>引用文本</li>
+<li>引用代码</li>
+<li>链接</li>
+<li>章节链接</li>
+<li>相对链接</li>
+<li>列表</li>
+<li>任务列表</li>
+<li>引用议题 和 拉取请求</li>
+<li>提及人员 和 团队</li>
+<li>引用外部资源</li>
+<li>内容附件</li>
+<li>使用表情符号</li>
+<li>段落</li>
+<li>忽略Markdown格式</li>
 <li></li>
 </ol>
 ]]></content>
