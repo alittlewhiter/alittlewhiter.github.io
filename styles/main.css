@@ -1890,12 +1890,12 @@ body {
     .nav-toggle .line {
       background-color: #eee !important;
     }.header {
-        width: 960px;
+        width: 1000px;
         margin: 0 auto;
       }
 
       .main-continer {
-        width: 960px;
+        width: 1000px;
         margin: 0 auto;
       }
     body {
@@ -1964,8 +1964,8 @@ body {
       color: #adb5bd;
       border-bottom-color: #adb5bd;
     }.markdownIt-TOC a:hover {
-      color: #4dabf7;
-      border-bottom-color: #4dabf7;
+      color: #66d9e8;
+      border-bottom-color: #66d9e8;
     }.active-current > a {
       color: #fc6423 !important;
       border-bottom-color: #fc6423 !important;
@@ -1999,7 +1999,10 @@ body {
     }
     .mist .site-title i {
       background: #FFF;
-    }.box-scale > #landlord {
+    }article code {
+white-space: normal;
+word-break: break-all;
+}.box-scale > #landlord {
       transform: scale(1);
     }.box-shadow-wrapper {
       box-shadow: none !important;
