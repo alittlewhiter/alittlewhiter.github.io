@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-04T03:14:23.932Z</updated>
+    <updated>2020-03-04T04:31:49.938Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -10,6 +10,32 @@
     <logo>https://alittlewhiter.github.io/images/avatar.png</logo>
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
+    <entry>
+        <title type="html"><![CDATA[Valine - 你值得拥有┏ (゜ω゜)=☞]]></title>
+        <id>https://alittlewhiter.github.io/post/valine-ni-zhi-de-yong-you-o/</id>
+        <link href="https://alittlewhiter.github.io/post/valine-ni-zhi-de-yong-you-o/">
+        </link>
+        <updated>2020-03-04T04:08:08.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>Keywords：Gridea、Valine、博客评论回复</strong><br>
+简直不要再好、、还是希望更好(╹ڡ╹ )</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>Keywords：Gridea、Valine、博客评论回复</strong><br>
+简直不要再好、、还是希望更好(╹ڡ╹ )</p>
+<!-- more -->
+<h2 id="first">First</h2>
+<p>虽然破站也不会有人来看，但还是想为Gridea加上一个评论系统，说——不定呢嘿嘿(￣▽,￣)╭ （想peach</p>
+<p>Gridea提供了两个评论系统，Gitalk和disqus。Gitalk需要使用Github账号登录，对于没有github账号的人来说不太方便，disqus目前在国内不太可用。于是<strong>valine</strong> 非你莫属！😜😜</p>
+<h2 id="介绍">介绍</h2>
+<p>Valine是一款快速、简洁且高效的<strong>无后端</strong>评论系统，且原版即支持表情包、Markdown等特性。<br>
+官网地址：<code>https://valine.js.org/</code></p>
+<p>其次，为了成功配置Valine需要leancloud平台，注册-登录-控制台-创建应用（一条龙.jpg<br>
+<img src="https://alittlewhiter.github.io/post-images/1583296181154.png" alt="" loading="lazy"><br>
+进入刚刚创建的应用(开发版)，选择左下角的<code>设置</code> &gt; <code>应用Keys</code>，可以获取应用的APP ID和APP Key，进入安全中心，Web安全域名下填写自己的Github Pages（Coding Pages）提供的博客域名，点击保存。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583296272560.png" alt="" loading="lazy"><br>
+点击<code>存储</code>新建一个Class，名称为Comment，如下。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583296175616.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于CDN这回事儿]]></title>
         <id>https://alittlewhiter.github.io/post/guan-yu-cdn-zhe-hui-shi-er/</id>
@@ -84,9 +110,11 @@ ___
 - - -
 </code></pre>
 <ol start="2">
-<li>样式文本<br>
-可以使用粗体、斜体或删除线文本来表示强调。粗体和斜体能够嵌套，</li>
+<li>样式文本</li>
 </ol>
+<ul>
+<li>可以使用粗体、斜体或删除线文本来表示强调，粗体和斜体能够互相嵌套</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -642,6 +670,7 @@ bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
 ]]></summary>
         <content type="html"><![CDATA[<p>Keywords：Ucore lab0、lab1、lab2实验分析、报告</p>
 <!-- more -->
+<p>先晾会儿~(￣o￣) . z Z</p>
 ]]></content>
     </entry>
     <entry>
@@ -768,91 +797,6 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 </ul>
 <h2 id="and-next">And next</h2>
 <p>。。。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于Python 爬虫 - 小记]]></title>
-        <id>https://alittlewhiter.github.io/post/guan-yu-python-pa-chong-xiao-ji/</id>
-        <link href="https://alittlewhiter.github.io/post/guan-yu-python-pa-chong-xiao-ji/">
-        </link>
-        <updated>2020-03-02T10:51:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>于中国大学MOOC有关<strong>爬虫</strong>网课学习记录<br>
-<s>学这玩意儿也不是一次两次了、没一次学进去过的。。。😓</s></p>
-]]></summary>
-        <content type="html"><![CDATA[<p>于中国大学MOOC有关<strong>爬虫</strong>网课学习记录<br>
-<s>学这玩意儿也不是一次两次了、没一次学进去过的。。。😓</s></p>
-<!-- more -->
-<h2 id="requests库的常用方法">requests库的常用方法：</h2>
-<p>requests.request(method, url, **kwargs);   method具体方法，url访问链接，kwargs控制访问参数（可选）<br>
-get(url, params=None, **)<br>
-head(url, **)<br>
-post(url, data, json, **)<br>
-put(url, data, **)<br>
-patch(url, data, **)<br>
-delete(url,  **)</p>
-<p>可选访问参数有：params，data，json，headers，cookies，auth，files，timeout，proxies，allow_redirects，stream，verify，cert</p>
-<h2 id="通用代码模板">通用代码模板：</h2>
-<p>import requests</p>
-<p>def getHTMLText(url):<br>
-try:<br>
-r = requests.get(url, timeout=100)<br>
-r.raise_for_status()             # 对状态码不是200的错误状态抛出一个HTTP异常<br>
-r.encoding = r.apparent_encoding<br>
-return r.text<br>
-except:<br>
-print(r.status_code)<br>
-return &quot;产生异常&quot;</p>
-<h1 id="爬虫尺寸">爬虫尺寸：</h1>
-<ul>
-<li>小规模 --Requests库，数据量小，爬取小型网页数据</li>
-<li>中规模 --Scrapy库，数据规模较大，速度敏感，爬取系列网站</li>
-<li>大规模 --定制开发库，搜索引擎，爬取速度关键，全网爬取</li>
-</ul>
-<h1 id="robots协议">Robots协议</h1>
-<p>各个网站主页根目录下，给出网站对于各种用户代理访问的反爬规则</p>
-<h1 id="beautifulsoup库的使用">BeautifulSoup库的使用</h1>
-<p>pip install beautifulsoup4</p>
-<p>#- 对HTML页面内容的遍历方法：（构建标签树）<br>
-<code>from bs4 import BeautifulSoup</code><br>
-<code>soup = BeautifulSoup(aRespaonse.text, 'html.parser')</code><br>
-<code>data = soup.prettify()</code><br>
-<code>with open('F:/py123.html;, 'wb') as f:</code><br>
-<code>f.write(data.encode('utf-8'))</code><br>
-<code>f.close()</code><br>
-<code>tag = soup.title/a/p/head/body/....</code><br>
-<code>tag.attrs // 获取标签内属性，字典</code><br>
-<code>tag(.parent)*.name // 标签名，父级标签名</code><br>
-<code>tag.string // 标签内字符串</code></p>
-<p>#- bs4库的基本元素：<br>
-Tag，Name，Attributes，NavigabString，Comment<br>
-#- bs4库的遍历功能<br>
-.contents,  .parent,  .parents,  .children,   .descendants, .next_sibling,   .previous_sibling,  .next_siblings,  .previous_siblings</p>
-<h2 id="信息标记的三种形式">信息标记的三种形式：</h2>
-<ul>
-<li>1、XML    &lt;<em>&gt;&lt;/</em>&gt;标签类型<br>
-Internet上信息交互与传递</li>
-<li>2、JSON    &quot;<em>&quot;: [&quot;</em>&quot;, &quot;*&quot;, ..]  有类型的键值对，字符串形式<br>
-移动应用云端和节点的信息通信，适于js等，无注释</li>
-<li>3、YAML    无类型键值对，缩进表达所属关系<br>
-Name:   #comment<br>
-name1<br>
-name2<br>
-各类系统的配置文件，有注释易读</li>
-</ul>
-<p><code>{soup/&lt;..&gt;}(..) .find_all(name, attrs, recursive, string, **kwargs) :</code><br>
-<code>返回一个列表类型，存储查找的结果。</code></p>
-<ul>
-<li>name：对标签名称检索字符串</li>
-<li>attrs：对标签属性值检索字符串，可标注属性检索</li>
-<li>recursive：是否对子孙全部检索，默认True</li>
-<li>string：对&lt;&gt;...&lt;/&gt;中间的内容进行检索</li>
-<li>**kwargs:</li>
-<li>···</li>
-</ul>
-<p>⏳<br>
-⏳<br>
-⏳<br>
-。。。算啦、本辣鸡写不下去了，有缘再见吧 😇</p>
 ]]></content>
     </entry>
 </feed>
