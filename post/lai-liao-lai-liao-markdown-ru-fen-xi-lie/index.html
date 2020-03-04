@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>来了来了、Markdown入坟系列 | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583307762017">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583327904928">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -163,7 +163,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">12</span>
+        <span class="site-item-stat-count">13</span>
         <span class="site-item-stat-name">文章</span>
       </a>
     </div>
@@ -225,7 +225,22 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#markdown%E5%9F%BA%E6%9C%AC%E6%92%B0%E5%86%99%E5%92%8C%E6%A0%BC%E5%BC%8F%E8%AF%AD%E6%B3%95">Markdown基本撰写和格式语法</a></li>
+<li><a href="#markdown%E5%9F%BA%E6%9C%AC%E6%92%B0%E5%86%99%E5%92%8C%E6%A0%BC%E5%BC%8F%E8%AF%AD%E6%B3%95">Markdown基本撰写和格式语法</a>
+<ul>
+<li><a href="#%E6%A0%87%E9%A2%98">标题</a></li>
+<li><a href="#%E6%A0%B7%E5%BC%8F%E6%96%87%E6%9C%AC">样式文本</a></li>
+<li><a href="#%E5%BC%95%E7%94%A8%E6%96%87%E6%9C%AC">引用文本</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接</a></li>
+<li><a href="#%E8%84%9A%E6%B3%A8">脚注</a></li>
+<li><a href="#%E5%88%97%E8%A1%A8">列表</a></li>
+<li><a href="#%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8">任务列表</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E8%A1%A8%E6%83%85%E7%AC%A6%E5%8F%B7">使用表情符号</a></li>
+<li><a href="#%E6%AE%B5%E8%90%BD">段落</a></li>
+<li><a href="#%E5%85%AC%E5%BC%8F">公式</a></li>
+<li><a href="#%E5%BF%BD%E7%95%A5markdown%E6%A0%BC%E5%BC%8F">忽略Markdown格式</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -509,12 +524,12 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
+      <span>7分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>355<span class="pc-show">字数</span></span>
+      <span>1513<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
@@ -526,10 +541,9 @@ window.addEventListener('load', function() {
 <mark>Typora大法好！！！</mark></p>
 <!-- more -->
 <h2 id="markdown基本撰写和格式语法">Markdown基本撰写和格式语法</h2>
-<ol>
-<li>标题<br>
-要创建标题，请在标题文本前添加一至六个 <code>#</code> 符号，使用的 <code>#</code> 数量（1 - 6）将决定标题的大小。</li>
-</ol>
+<h3 id="标题">标题</h3>
+<pre><code>要创建标题，请在标题文本前添加一至六个 `#` 符号，使用的 `#` 数量（1 - 6）将决定标题的大小。
+</code></pre>
 <pre><code class="language-git">#    一级标题
 ##   二级标题
 ###  三级标题
@@ -549,60 +563,220 @@ window.addEventListener('load', function() {
 </code></pre>
 <p><strong>分隔线</strong><br>
 连续的三个以上的*或-或_, 你也可以在连字符或星号之间使用空格。</p>
-<pre><code class="language-php+HTML">---
+<pre><code class="language-HTML">---
 ***
 ___
 - - -
 </code></pre>
-<ol start="2">
-<li>样式文本</li>
-</ol>
+<h3 id="样式文本">样式文本</h3>
 <ul>
 <li>可以使用粗体、斜体或删除线文本来表示强调，粗体和斜体能够互相嵌套</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>样式</th>
-<th>语法</th>
+<th style="text-align:left">样式</th>
+<th style="text-align:left">语法</th>
+<th style="text-align:left">实例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>粗体</td>
-<td><code>** **</code> 或 <code>__ __</code>包围起来（无需多余空格）</td>
+<td style="text-align:left">粗体</td>
+<td style="text-align:left"><code>** **</code> 或 <code>__ __</code> 包围（无需多余空格）</td>
+<td style="text-align:left"><strong>粗体字</strong></td>
 </tr>
 <tr>
-<td>斜体</td>
-<td><code>* *</code> 或 <code>_ _</code>包围</td>
+<td style="text-align:left">斜体</td>
+<td style="text-align:left"><code>* *</code> 或 <code>_ _</code> 包围</td>
+<td style="text-align:left"><em>斜体字</em></td>
 </tr>
 <tr>
-<td>删除线</td>
-<td><code>~~ ~~</code>包围</td>
+<td style="text-align:left">上标</td>
+<td style="text-align:left"><code>^ ^</code> 包围</td>
+<td style="text-align:left">5a<sup>3</sup>b<sup>2</sup>c</td>
 </tr>
 <tr>
-<td>全部粗体+斜体</td>
-<td><code>*** ***</code>包围</td>
+<td style="text-align:left">下标</td>
+<td style="text-align:left"><code>~ ~</code> 包围</td>
+<td style="text-align:left">C<sub>60</sub> 是足球烯</td>
+</tr>
+<tr>
+<td style="text-align:left">删除线</td>
+<td style="text-align:left"><code>~~ ~~</code> 包围</td>
+<td style="text-align:left"><s>删除线</s></td>
+</tr>
+<tr>
+<td style="text-align:left">粗体+斜体</td>
+<td style="text-align:left"><code>*** ***</code> 包围</td>
+<td style="text-align:left"><em><strong>粗体又斜体</strong></em></td>
+</tr>
+<tr>
+<td style="text-align:left">强调</td>
+<td style="text-align:left"><code>== ==</code> 包围</td>
+<td style="text-align:left"><mark>重要的事情说三遍</mark></td>
 </tr>
 </tbody>
 </table>
-<ol start="3">
-<li>引用文本</li>
-<li>引用代码</li>
-<li>链接</li>
-<li>章节链接</li>
-<li>相对链接</li>
-<li>列表</li>
-<li>任务列表</li>
-<li>引用议题 和 拉取请求</li>
-<li>提及人员 和 团队</li>
-<li>引用外部资源</li>
-<li>内容附件</li>
-<li>使用表情符号</li>
-<li>段落</li>
-<li>忽略Markdown格式</li>
+<h3 id="引用文本">引用文本</h3>
+<p>可以使用 <code>&gt;</code> 来引用一段文本，引用可以多层嵌套</p>
+<blockquote>
+<p>鲁迅：“这是一段引用文本”（我没说.jpg）</p>
+<blockquote>
+<p>禁止套娃！</p>
+<blockquote>
+<p>禁止禁止套娃！！</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
 <li></li>
+</ul>
+<h3 id="代码">代码</h3>
+<ul>
+<li>
+<p>使用单反引号<code>` `</code>或双反引号<code>`` ``</code>可标注句子中的代码或命令，反引号中的文本不会被Markdown解释器格式化，一般在文本段落中还能起<code>突出强调</code>的作用。</p>
+</li>
+<li>
+<p>要将代码或文本格式化为各自的不同块，按照不同类型的代码风格进行高亮显示，使用三反引号<code>```[C/Java/html/..] ```</code> 独立分行。</p>
+<pre><code class="language-git">一些基本的git命令：
+git status
+git add ./
+git commit
+</code></pre>
+<p><code>code支持的语言：1c, abnf, accesslog, actionscript, ada, apache, applescript, arduino, armasm, asciidoc, aspectj, autohotkey, autoit, avrasm, awk, axapta, bash, basic, bnf, brainfuck, cal, capnproto, ceylon, clean, clojure, clojure-repl, cmake, coffeescript, coq, cos, cpp, crmsh, crystal, cs, csp, css, d, dart, delphi, diff, django, dns, dockerfile, dos, dsconfig, dts, dust, ebnf, elixir, elm, erb, erlang, erlang-repl, excel, fix, flix, fortran, fsharp, gams, gauss, gcode, gherkin, glsl, go, golo, gradle, groovy, haml, handlebars, haskell, haxe, hsp, htmlbars, http, hy, inform7, ini, irpf90, java, javascript, json, julia, kotlin, lasso, ldif, leaf, less, lisp, livecodeserver, livescript, llvm, lsl, lua, makefile, markdown, mathematica, matlab, maxima, mel, mercury, mipsasm, mizar, mojolicious, monkey, moonscript, n1ql, nginx, nimrod, nix, nsis, objectivec, ocaml, openscad, oxygene, parser3, perl, pf, php, pony, powershell, processing, profile, prolog, protobuf, puppet, purebasic, python, q, qml, r, rib, roboconf, rsl, ruby, ruleslanguage, rust, scala, scheme, scilab, scss, smali, smalltalk, sml, sqf, sql, stan, stata, step21, stylus, subunit, swift, taggerscript, tap, tcl, tex, thrift, tp, twig, typescript, vala, vbnet, vbscript, vbscript-html, verilog, vhdl, vim, x86asm, xl, xml, xquery, yaml, zephir</code></p>
+</li>
+<li>
+<p>如果不需要代码高亮，可以用下面的方法禁用：</p>
+<p><code>```nohighlight</code><br>
+<code>```</code></p>
+</li>
+</ul>
+<h3 id="链接">链接</h3>
+<ul>
+<li>
+<p>通过将链接文本包含在方括号 <code>[ ]</code> 内，然后将 URL 包含在括号 <code>( )</code> 内，可创建内联链接。 还可以使用键盘快捷键 <code>命令键 + k</code> 来创建链接。</p>
+<pre><code class="language-html">本站点是使用 [GitHub Pages](https://pages.github.com/) 构建的。
+</code></pre>
+<p>本站点是使用 <a href="https://pages.github.com/">GitHub Pages</a> 构建的。</p>
+</li>
+</ul>
+<h3 id="脚注">脚注</h3>
+<ul>
+<li>向文章添加脚注，以上标的形式展示，脚注内容会显示在文章结尾处。<pre><code class="language-nohighlight">大佬写文章总是喜欢做这样[^fn1]或那样[^fn2]的脚注。
+</code></pre>
+</li>
+<li>大佬写文章总是喜欢做这样<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>或那样<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>的脚注。</li>
+</ul>
+<h3 id="列表">列表</h3>
+<ul>
+<li>
+<p>无序列表：通过在一行或多行文本前面添加 <code>+</code>、 <code>-</code> 或 <code>*</code> 后跟一个空格，可创建无序列表。</p>
+<pre><code>+ George Washington
++ John Adams
++ Thomas Jefferson
+</code></pre>
+</li>
+<li>
+<p>有序列表：在列表前面加上数字/字母 作为编号，每个编号使用一个点+空格</p>
+<pre><code>1. James Madison
+2. James Monroe
+3. John Quincy Adams
+</code></pre>
+</li>
+</ul>
+<ul>
+<li>
+<p>列表（有序 or 无序）还能嵌套：通过在一个列表项下面缩进一个或多个其他列表项，可创建嵌套列表。</p>
+<p>要通过编辑器或使用等宽字体创建嵌套列表，可以直观地对齐列表。 在嵌套列表项的前面键入空格字符，直至列表标记字符（<code>-</code> 或 <code>*</code>）位于其上方条目中第一个文本字符的正下方。</p>
+<pre><code>1. First list item
+   - First nested list item
+     + Second nested list item
+</code></pre>
+<ol>
+<li>First list item
+<ul>
+<li>First nested list item
+<ul>
+<li>Second nested list item</li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
+</li>
+</ul>
+<h3 id="任务列表">任务列表</h3>
+<ul>
+<li>
+<p>创建任务列表，在列表项目前面、列表标号[-+*]后面加一个常规 <code>空格</code> 字符，后接 <code>[ ]</code> 。若要将任务标记为已完成，使用 <code>[x]</code> 即可。演示如下：</p>
+<pre><code class="language-html">- [x] 完成更改
+- [ ] 推送提交到 GitHub
+- [ ] (Optional) 打开拉取请求
+</code></pre>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5604532"><label class="task-list-item-label" for="task-item-5604532"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4038648"><label class="task-list-item-label" for="task-item-4038648"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4047645"><label class="task-list-item-label" for="task-item-4047645"> (Optional) 打开拉取请求</label></li>
+</ul>
+<p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
+</li>
+</ul>
+<h3 id="使用表情符号">使用表情符号</h3>
+<ul>
+<li>
+<p>通过键入 <code>:EMOJICODE:</code> 可在您的写作中添加表情符号。</p>
+<pre><code class="language-html">@octocat :+1: 这个 PR 看起来很棒 - 可以合并了！ :ship:
+</code></pre>
+<p>@octocat 👍 这个 PR 看起来很棒 - 可以合并了！ 🚢</p>
+</li>
+</ul>
+<ul>
+<li>键入 <code>:</code> 将显示建议的表情符号列表，该列表将在键入时进行过滤，因此一旦找到所需的表情符号，可按Tab或Enter键以完成突出显示的结果。</li>
+</ul>
+<h3 id="段落">段落</h3>
+<ul>
+<li>通过在文本行之间留一个空白行，可创建新段落。</li>
+</ul>
+<h3 id="公式">公式</h3>
+<ul>
+<li>
+<p>使用Latex语法将公式写在 <code>$$ $$</code> 内部，将会自动生成相应的公式。e.g.</p>
+<pre><code>$$
+\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \\
+\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial v} &amp; 0 \\
+\end{vmatrix}
+$$
+</code></pre>
+</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi mathvariant="bold">V</mi><mn>1</mn></msub><mo>×</mo><msub><mi mathvariant="bold">V</mi><mn>2</mn></msub><mo>=</mo><mrow><mo fence="true">∣</mo><mtable><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi mathvariant="bold">i</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi mathvariant="bold">j</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi mathvariant="bold">k</mi></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>X</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>u</mi></mrow></mfrac></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>Y</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>u</mi></mrow></mfrac></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>X</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>v</mi></mrow></mfrac></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>Y</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>v</mi></mrow></mfrac></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr></mtable><mo fence="true">∣</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \\
+\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial v} &amp; 0 \\
+\end{vmatrix}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83611em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">V</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83611em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">V</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.6802159999999997em;vertical-align:-1.590108em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.08597em;"><span style="top:-1.05597em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-1.6619700000000002em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-2.26797em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-2.87397em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-3.47997em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-4.08597em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500299999999998em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.090108em;"><span style="top:-4.250108em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">i</span></span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathdefault mtight">u</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathdefault mtight" style="margin-right:0.07847em;">X</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-1.769892em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathdefault mtight" style="margin-right:0.07847em;">X</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.590108em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.090108em;"><span style="top:-4.250108em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">j</span></span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathdefault mtight">u</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathdefault mtight" style="margin-right:0.22222em;">Y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-1.769892em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathdefault mtight" style="margin-right:0.22222em;">Y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.590108em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.090108em;"><span style="top:-4.250108em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">k</span></span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-1.769892em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.590108em;"><span></span></span></span></span></span></span></span><span class="mclose"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.08597em;"><span style="top:-1.05597em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-1.6619700000000002em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-2.26797em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-2.87397em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-3.47997em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-4.08597em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500299999999998em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="忽略markdown格式">忽略Markdown格式</h3>
+<ul>
+<li>
+<p>通过在Markdown字符前使用 <code>\</code> 来忽略（或转义）Markdown格式。e.g.</p>
+<pre><code class="language-html">让我们将 \*our-new-project\* 重命名为 \*our-old-project\*。
+</code></pre>
+<p>将 *our-new-project*  重命名为 *our-old-project* 。</p>
+</li>
+</ul>
+<p>Next...</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>我也不懂。。。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>怕了怕了！！！ <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 
               </div>
               <div class="post-footer">
