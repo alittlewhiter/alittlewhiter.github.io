@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-04T07:02:27.885Z</updated>
+    <updated>2020-03-04T07:43:45.748Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -84,7 +84,15 @@
         lang: 'zh-cn',                  // 设置语言
         avatar: 'mm',                 // 设置头像
         emoticon_url: 'https://cloud.panjunwen.com/alu',
-        emoticon_list: [&quot;狂汗.png&quot;,&quot;不说话.png&quot;,&quot;汗.png&quot;,&quot;坐等.png&quot;,&quot;献花.png&quot;,&quot;不高兴.png&quot;,&quot;中刀.png&quot;,&quot;害羞.png&quot;,&quot;皱眉.png&quot;,&quot;小眼睛.png&quot;,&quot;暗地观察.png&quot;],
+        emoticon_list: [&quot;吐.png&quot;,&quot;喷血.png&quot;,&quot;狂汗.png&quot;,&quot;不说话.png&quot;,&quot;汗.png&quot;,&quot;坐等.png&quot;,
+          &quot;献花.png&quot;,&quot;不高兴.png&quot;,&quot;中刀.png&quot;,&quot;害羞.png&quot;,&quot;皱眉.png&quot;,&quot;小眼睛.png&quot;,
+          &quot;中指.png&quot;,&quot;尴尬.png&quot;,&quot;瞅你.png&quot;,&quot;想一想.png&quot;,&quot;中枪.png&quot;,&quot;得意.png&quot;,&quot;肿包.png&quot;,
+          &quot;扇耳光.png&quot;,&quot;亲亲.png&quot;,&quot;惊喜.png&quot;,&quot;脸红.png&quot;,&quot;无所谓.png&quot;,&quot;便便.png&quot;,&quot;愤怒.png&quot;,
+          &quot;蜡烛.png&quot;,&quot;献黄瓜.png&quot;,&quot;内伤.png&quot;,&quot;投降.png&quot;,&quot;观察.png&quot;,&quot;看不见.png&quot;,&quot;击掌.png&quot;,
+          &quot;抠鼻.png&quot;,&quot;邪恶.png&quot;,&quot;看热闹.png&quot;,&quot;口水.png&quot;,&quot;抽烟.png&quot;,&quot;锁眉.png&quot;,&quot;装大款.png&quot;,
+          &quot;吐舌.png&quot;,&quot;无奈.png&quot;,&quot;长草.png&quot;,&quot;赞一个.png&quot;,&quot;呲牙.png&quot;,&quot;无语.png&quot;,&quot;阴暗.png&quot;,
+          &quot;不出所料.png&quot;,&quot;咽气.png&quot;,&quot;期待.png&quot;,&quot;高兴.png&quot;,&quot;吐血倒地.png&quot;,&quot;哭泣.png&quot;,&quot;欢呼.png&quot;,
+          &quot;黑线.png&quot;,&quot;喜极而泣.png&quot;,&quot;喷水.png&quot;,&quot;深思.png&quot;,&quot;鼓掌.png&quot;,&quot;暗地观察.png&quot;],
         app_id: 'nD4DEajJJj9QlUpYtF8YFa1v-9Nh9j0Va',
         app_key: 'PpbNRCLEJPuymBxdJfNzU6Bb',
         placeholder: '我有话说...'
