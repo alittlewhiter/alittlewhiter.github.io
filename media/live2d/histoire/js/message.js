@@ -110,7 +110,7 @@ if(!norunFlag){
 		if(document.referrer !== ''){
 			var referrer = document.createElement('a');
 			referrer.href = document.referrer;
-			text = '嗨！来自 <span style="color:#0099cc;">' + referrer.hostname + '</span> 的朋友！';
+			text = '嗨！ <span style="color:#0099cc;">' + referrer.hostname + '</span> 的朋友！';
 			var domain = referrer.hostname.split('.')[1];
 			if (domain == 'baidu') {
 				text = '嗨！ 来自 百度搜索 的朋友！<br>欢迎访问<span style="color:#0099cc;">「 ' + document.title.split(' - ')[0] + ' 」</span>';
@@ -131,7 +131,7 @@ if(!norunFlag){
 				} else if (now > 11 && now <= 14) {
 					text = '中午了，工作了一个上午，现在是午餐时间！';
 				} else if (now > 14 && now <= 17) {
-					text = '午后很容易犯困呢，今天的运动目标完成了吗？';
+					text = '午后很容易犯困呢，今天的学习目标完成了吗？';
 				} else if (now > 17 && now <= 19) {
 					text = '傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红~~';
 				} else if (now > 19 && now <= 21) {
@@ -175,7 +175,7 @@ if(!norunFlag){
 		var sleepStatu = sessionStorage.getItem("Sleepy");
 		if(sleepStatu!=='1'){
 			talkValTimer();
-			showMessage('你回来啦~', 0);
+			showMessage('等你好久了~', 0);
 			clearInterval(sleepTimer_);
 			sleepTimer_= null;
 		}
@@ -375,7 +375,7 @@ if(!norunFlag){
 		if(live2dUser !== null){
 			$('#AIuserName').val(live2dUser);
 		}
-		//获取位置
+		//获取位置  --> 改为初始在右边
 		var landL = sessionStorage.getItem("historywidth");
 		var landB = sessionStorage.getItem("historyheight");
 		if(landL == null || landB ==null){
@@ -383,6 +383,7 @@ if(!norunFlag){
 			landB = '0px'
 		}
 		$('#landlord').css('left',landL+'px');
+		//$('#landlord').css('right',landL + 'px');
 		$('#landlord').css('bottom',landB + 'px');
 		//移动
 		function getEvent() {

@@ -1304,7 +1304,7 @@ blockquote:before {
 .next-md-body code,
 .next-md-body pre {
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-  font-size: 12px;
+  font-size: 14px;
 }
 .next-md-body pre {
   margin-bottom: 0;
