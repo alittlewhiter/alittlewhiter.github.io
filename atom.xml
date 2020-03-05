@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-04T13:53:41.492Z</updated>
+    <updated>2020-03-05T04:27:09.637Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -11,14 +11,210 @@
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
     <entry>
-        <title type="html"><![CDATA[Test for bilibili]]></title>
+        <title type="html"><![CDATA[不值一提skills  ㄟ( ▔, ▔ )ㄏ]]></title>
         <id>https://alittlewhiter.github.io/post/test-for-bilibili/</id>
         <link href="https://alittlewhiter.github.io/post/test-for-bilibili/">
         </link>
         <updated>2020-03-04T12:43:42.000Z</updated>
-        <content type="html"><![CDATA[<div >
+        <content type="html"><![CDATA[<p>😒😒😒</p>
+<h2 id="windows自带哈希md5计算功能">⇨Windows自带哈希MD5计算功能：</h2>
+<ul>
+<li>打开cmd输入：<code>certutil -hashfile f:\py123.html MD5</code></li>
+<li>输出：<pre><code>MD5 的 f:\py123.html 哈希:
+a813a62426c06c3391959c32ead8bb70
+CertUtil: -hashfile 命令成功完成。
+</code></pre>
+</li>
+</ul>
+<h2 id="git-常用命令">⇨git 常用命令：</h2>
+<ul>
+<li>
+<p>远程提交代码：</p>
+<pre><code class="language-git">$ git init                                  # 初始化
+$ git add README.md                         # 添加文件
+$ git commit -m &quot;添加 README.md 文件&quot;        # 提交并备注信息
+</code></pre>
+</li>
+<li>
+<p>生成 SSH Key</p>
+<pre><code class="language-git">$ ssh-keygen -t rsa -C &quot;ljch1201@vip.qq.com&quot;
+在Github账户配置里填入本机 .ssh/目录下 id_rsa.pub中的ssh key
+验证是否成功
+$ ssh -T git@github.com
+$ git remote add py git@github.com:alittlewhiter/py.git     #添加远程仓库配置
+
+$ git push -u py master       # 提交到 Github
+</code></pre>
+</li>
+<li>
+<p>查看当前配置有哪些远程仓库</p>
+<pre><code class="language-git">$ git remote
+$ git remote -v
+</code></pre>
+</li>
+<li>
+<p>从远端仓库提取数据并尝试合并到当前分支：</p>
+<pre><code class="language-git">$git merge origin/master
+$git fetch origin       #从远程仓库下载新分支与数据，不合并
+</code></pre>
+</li>
+<li>
+<p>删除远程仓库</p>
+<pre><code class="language-git">$git remote rm origin2   
+</code></pre>
+</li>
+</ul>
+<h2 id="win10锁屏屏保壁纸">⇨win10锁屏屏保壁纸</h2>
+<ul>
+<li>进入下面修改文件名为.jpg即可：<br>
+<code>C:\Users\ljch1\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets</code></li>
+</ul>
+<h2 id="mysql80安装使用备忘for-win10">⇨MySQL8.0安装使用备忘(For Win10):</h2>
+<ul>
+<li>
+<p>登录：</p>
+<pre><code class="language-mysql">mysql -u root -p    (root-&gt;1234)
+修改用户密码，在MySQL中执行命令：
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';
+</code></pre>
+</li>
+<li>
+<p>关于mysql service 启动和关闭命令：</p>
+<pre><code class="language-shell">管理员身份运行cmd / PowerShell
+开启： net start mysql8
+关闭：net stop mysql8
+(mysql8: 配置我的Windows mysql service 名称)
+</code></pre>
+</li>
+<li>
+<p>查看数据库的编码方式；</p>
+<pre><code class="language-mysql">use db;
+show variables like &quot;char%&quot;;
+</code></pre>
+</li>
+<li>
+<p>Mysql8.0 修改配置：</p>
+<pre><code class="language-nohighlight">可以在 C盘的隐藏目录下 C:\ProgramData\MySQL\MySQL Server 8.0\ 找到my.ini
+例如修改字符编码：default_character_set=utf8
+</code></pre>
+</li>
+<li>
+<p>我的MySQL8.0 连接navicat失败，不支持默认root认证（错误1251）：</p>
+<pre><code class="language-mysql">ALTER USER 'root'@'localhost' IDENTIFIED BY '1234' PASSWORD EXPIRE NEVER;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
+FLUSH PRIVILEGES;
+</code></pre>
+</li>
+</ul>
+<h2 id="端口占用问题for-win10">⇨端口占用问题（For Win10）</h2>
+<ul>
+<li>打开cmd（或 <code>命令提示符</code> / <code>Power Shell</code>）<pre><code class="language-nohighlight">输入  netstat   -ano|findstr  8005 （什么端口号被占用就输入什么端口号），回车
+新出来的那一行  最后面有个数字 我的是15068
+再输入 taskkill  /pid  15068 /f  回车
+</code></pre>
+</li>
+</ul>
+<h2 id="获取本客户端的ip">⇨获取本客户端的IP</h2>
+<ul>
+<li>采用搜狐的一个接口：<br>
+<code>获取该客户端的源IP：http://pv.sohu.com/cityjson?ie=utf-8 返回的内容分别是：IP、ID、城市名字</code></li>
+</ul>
+<h2 id="gridea博客文章插入b站视频">⇨Gridea博客文章插入B站视频：</h2>
+<ul>
+<li>插入如下的代码，注意添加属性<code>width=&quot;628px&quot; height=&quot;462px&quot;</code>调节合适大小😆<br>
+<s>白嫖使我快乐</s>😜😜😎<pre><code class="language-html">&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=92875449&amp;cid=159238254&amp;page=1&quot; 
+scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot; 
+width=&quot;628px&quot; height=&quot;462px&quot; &gt; &lt;/iframe&gt;
+</code></pre>
 <iframe src="//player.bilibili.com/player.html?aid=92875449&cid=159238254&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="628px" height="462px" > </iframe>
-</div>]]></content>
+</li>
+</ul>
+<h2 id="博客插入网易云播放器外链">⇨博客插入网易云播放器外链</h2>
+<ul>
+<li>同样是如下的代码，加个div盒子使之居中：<pre><code class="language-html">&lt;div style=&quot;text-align: center; position: relative;&quot; &gt;
+&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=450
+src=&quot;//music.163.com/outchain/player?type=0&amp;id=3049694290&amp;height=430&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
+<div style="text-align: center; position: relative;" >
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=3049694290&height=430"></iframe>
+</div>
+</li>
+</ul>
+<h2 id="教务系统选课脚本">⇨教务系统选课脚本：</h2>
+<ul>
+<li>复制如下代码，去选课页面打开<code>开发者工具</code> - <code>console</code> 粘贴，运行等待即可 (哈哈、然而对于恶心的验证码就爱莫能助了🤣)<pre><code class="language-javascript">var button = $(&quot;input[onclick='eletivePreAddCourse(\&quot;single\&quot;, {\&quot;epid\&quot;:\&quot;309109294\&quot;})']&quot;);
+var i = 1;
+var select = setInterval(function() {
+    button.click();
+    if(($(&quot;.result-content&quot;).text() == &quot;选课成功&quot;) ) {
+        window.clearInterval(select);
+        console.log(&quot;选课成功！&quot;);
+    } else {
+        console.log(&quot;第 &quot; + i + &quot; 次选课失败&quot;);
+        i++;
+    }
+},1200);
+</code></pre>
+</li>
+</ul>
+<h2 id="cmd下的mklink命令">⇨cmd下的mklink命令</h2>
+<ul>
+<li>个人理解，有点类似linux的alias建立命令的快捷方式）：
+<ol>
+<li>把系统盘中的appdata文件夹拷贝到非系统盘；</li>
+<li>删除系统盘中的appdata文件夹，用mklink命令建立个链接（链接到非系统盘的appdata文件夹）。</li>
+</ol>
+</li>
+</ul>
+<h2 id="win10任务栏输入法标识中英变为悬浮工具栏">⇨Win10任务栏输入法标识[中/英]变为悬浮工具栏：</h2>
+<ul>
+<li>记一下这样可以改回来、纯个人问题😅<sub>这样才舒服</sub><br>
+设置-&gt;时间和语言-&gt;语言（中文）-&gt;选项-&gt;键盘-&gt;微软拼音输入法-&gt;外观-&gt;关闭：输入法工具栏</li>
+</ul>
+<h2 id="激活密钥">⇨激活密钥：</h2>
+<ul>
+<li>VMWare15.5<sub>呃呃，我也不知道能留多久</sub><pre><code class="language-nohighlight">FC7D0-D1YDL-M8DXZ-CYPZE-P2AY6
+YZ718-4REEQ-08DHQ-JNYQC-ZQRD0
+110L3-9135J-M807A-08ARK-84V7L
+</code></pre>
+</li>
+<li>Sublime Text 3<pre><code class="language-nohighlight">sudo vim /etc/hosts           // 注意修改host文件屏蔽官网检验、windows同
+127.0.0.1       www.sublimetext.com
+127.0.0.1       license.sublimehq.com
+
+----- BEGIN LICENSE -----
+Member J2TeaM
+Single User License
+EA7E-1011316
+D7DA350E 1B8B0760 972F8B60 F3E64036
+B9B4E234 F356F38F 0AD1E3B7 0E9C5FAD
+FA0A2ABE 25F65BD8 D51458E5 3923CE80
+87428428 79079A01 AA69F319 A1AF29A4
+A684C2DC 0B1583D4 19CBD290 217618CD
+5653E0A0 BACE3948 BB2EE45E 422D2C87
+DD9AF44B 99C49590 D2DBDEE1 75860FD2
+8C8BB2AD B2ECE5A4 EFC08AF2 25A9B864
+------ END LICENSE ------
+</code></pre>
+</li>
+</ul>
+<h2 id="浏览器清除缓存">⇨浏览器清除缓存</h2>
+<ul>
+<li>
+<p>清除套接字缓存<br>
+在Chrome中打开地址：<code>chrome://net-internals/#sockets</code>，分别点击第一个 <code>Close idle sockets</code>（关闭空闲套接字）和第二个<code>Flush socket pools</code>（清空套接字池）。此时再次刷新想要调试的页面，应该是可以，如果不行，请执行下面第二步操作。</p>
+</li>
+<li>
+<p>清除 DNS 缓存<br>
+在Chrome中打开地址：<code>chrome://net-internals/#dns</code>，点击Clear host cache（清除主机缓存）。<br>
+<sub>新版Edge中可以改为edge://net-internals/</sub></p>
+</li>
+<li>
+<p>可能统统没效果，果然还是直接：设置-清除所有Cookie和缓存、开发者工具-Network-勾选<code>Disable Cache</code> 等操作有(bao)效(li)点  。</p>
+</li>
+</ul>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Valine - 你值得拥有┏ (゜ω゜)=☞]]></title>
@@ -366,9 +562,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-557137"><label class="task-list-item-label" for="task-item-557137"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8352340"><label class="task-list-item-label" for="task-item-8352340"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-738416"><label class="task-list-item-label" for="task-item-738416"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5824517"><label class="task-list-item-label" for="task-item-5824517"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7629549"><label class="task-list-item-label" for="task-item-7629549"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1979940"><label class="task-list-item-label" for="task-item-1979940"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
@@ -888,6 +1084,32 @@ template&lt;class T&gt;inline void prints(T x,char c){prints(x),putchar(c);}
 <li>事实上，一个Box中由很多行很多元素组成，vertical-align只作用于在同一行内的元素，它的垂直并不是相对于整个Box而言的。如果把 vertical-align:middle 放到一个单元格元素，即table的td元素中，它的垂直居中显示是没任何问题的，因为它表示相对于该行的垂直高度居中显示。</li>
 <li>可以设置&lt;span&gt;元素style中的 line-heght 值为其父元素&lt;div&gt;的height值，这样 vertical-align:middle 就会使&lt;span&gt;元素内容垂直居中。</li>
 </ul>
+<h2 id="css选择器">CSS选择器</h2>
+<p>css选择器诸如div p、div&gt;p、div+p、div~p、div.a 的用法和区别</p>
+<h3 id="div-p">div p ：</h3>
+<blockquote>
+<p>将所有<code>&lt;div&gt;</code>标签里面的<code>&lt;p&gt;</code>标签选中（子标签和孙子辈标签）</p>
+</blockquote>
+<h3 id="divp">div&gt;p ：</h3>
+<blockquote>
+<p>将所有<code>&lt;div&gt;</code>标签的子标签<code>&lt;p&gt;</code>选中，不包括孙子辈标签。</p>
+</blockquote>
+<h3 id="divp-2">div+p ：</h3>
+<blockquote>
+<p>将所有离<code>&lt;div&gt;</code> <strong>最近</strong>的<code>&lt;p&gt;</code>标签选中</p>
+</blockquote>
+<h3 id="div~p">div~p ：</h3>
+<blockquote>
+<p>将<code>&lt;div&gt;</code> <strong>后面</strong>所有的<p>标签选中</p>
+</blockquote>
+<h3 id="diva">div.a ：</h3>
+<blockquote>
+<p>将<code>&lt;div&gt;</code>下 <strong>class=a</strong>的标签选中</p>
+</blockquote>
+<h3 id="p-span">p, span ：</h3>
+<blockquote>
+<p>将全部的p和span标签都选中</p>
+</blockquote>
 <h2 id="more">More...</h2>
 ]]></content>
     </entry>

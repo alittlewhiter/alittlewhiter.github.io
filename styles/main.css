@@ -1964,26 +1964,26 @@ body {
       color: #adb5bd;
       border-bottom-color: #adb5bd;
     }.markdownIt-TOC a:hover {
-      color: #66d9e8;
-      border-bottom-color: #66d9e8;
+      color: #3bc9db;
+      border-bottom-color: #3bc9db;
     }.active-current > a {
-      color: #fc6423 !important;
-      border-bottom-color: #fc6423 !important;
+      color: #4dabf7 !important;
+      border-bottom-color: #4dabf7 !important;
     }
     .sidebar-title-active {
-      color: #fc6423 !important;
-      border-bottom-color: #fc6423 !important;
+      color: #4dabf7;
+      border-bottom-color: #4dabf7;
     }
     .sidebar-title-item:hover {
-      color: #fc6423 !important;
+      color: #4dabf7 !important;
     }
     .active-show > a {
-      color: #fc6423;
-      border-bottom-color: #fc6423;
+      color: #4dabf7;
+      border-bottom-color: #4dabf7;
     }
     .active-hidden > a {
-      color: #fc6423;
-      border-bottom-color: #fc6423;
+      color: #4dabf7;
+      border-bottom-color: #4dabf7;
     }
       .site-meta {
         background: #000 !important;
@@ -1999,9 +1999,12 @@ body {
     }
     .mist .site-title i {
       background: #FFF;
-    }article code {
-white-space: normal;
-word-break: break-all;
+    }next-md-body pre {
+	word-wrap: break-word;
+	font-size: 14px;
+}
+.valine .vinputs-area {
+	border: 1px solid #c8c8c8;
 }.box-scale > #landlord {
       transform: scale(1);
     }.box-shadow-wrapper {
