@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-05T10:01:20.623Z</updated>
+    <updated>2020-03-05T11:18:21.823Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -562,9 +562,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9224154"><label class="task-list-item-label" for="task-item-9224154"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4900583"><label class="task-list-item-label" for="task-item-4900583"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9050049"><label class="task-list-item-label" for="task-item-9050049"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2394606"><label class="task-list-item-label" for="task-item-2394606"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8031803"><label class="task-list-item-label" for="task-item-8031803"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1111807"><label class="task-list-item-label" for="task-item-1111807"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
