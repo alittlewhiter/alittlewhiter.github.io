@@ -1999,7 +1999,7 @@ body {
     }
     .mist .site-title i {
       background: #FFF;
-    }next-md-body pre {
+    }next-md-body pre, pre {
 	word-wrap: break-word;
 	font-size: 14px;
 }
