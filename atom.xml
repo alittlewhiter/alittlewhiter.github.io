@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-05T15:05:44.845Z</updated>
+    <updated>2020-03-06T08:07:10.271Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -11,213 +11,20 @@
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
     <entry>
-        <title type="html"><![CDATA[不值一提skills  ㄟ( ▔, ▔ )ㄏ]]></title>
-        <id>https://alittlewhiter.github.io/post/test-for-bilibili/</id>
-        <link href="https://alittlewhiter.github.io/post/test-for-bilibili/">
+        <title type="html"><![CDATA[C/C++ 捡漏(っ °Д °;)っ]]></title>
+        <id>https://alittlewhiter.github.io/post/cc-jian-lou-tu-degd-degtu/</id>
+        <link href="https://alittlewhiter.github.io/post/cc-jian-lou-tu-degd-degtu/">
         </link>
-        <updated>2020-03-04T12:43:42.000Z</updated>
-        <content type="html"><![CDATA[<p>😒😒😒</p>
-<h2 id="windows自带哈希md5计算功能">⇨Windows自带哈希MD5计算功能：</h2>
-<ul>
-<li>打开cmd输入：<code>certutil -hashfile f:\py123.html MD5</code></li>
-<li>输出：<pre><code>MD5 的 f:\py123.html 哈希:
-a813a62426c06c3391959c32ead8bb70
-CertUtil: -hashfile 命令成功完成。
-</code></pre>
-</li>
-</ul>
-<h2 id="git-常用命令">⇨git 常用命令：</h2>
-<ul>
-<li>
-<p>远程提交代码：</p>
-<pre><code class="language-git">$ git init                                  # 初始化
-$ git add README.md                         # 添加文件
-$ git commit -m &quot;添加 README.md 文件&quot;        # 提交并备注信息
-</code></pre>
-</li>
-<li>
-<p>生成 SSH Key</p>
-<pre><code class="language-git">$ ssh-keygen -t rsa -C &quot;ljch1201@vip.qq.com&quot;
-在Github账户配置里填入本机 .ssh/目录下 id_rsa.pub中的ssh key
-验证是否成功
-$ ssh -T git@github.com
-$ git remote add py git@github.com:alittlewhiter/py.git     #添加远程仓库配置
-
-$ git push -u py master       # 提交到 Github
-</code></pre>
-</li>
-<li>
-<p>查看当前配置有哪些远程仓库</p>
-<pre><code class="language-git">$ git remote
-$ git remote -v
-</code></pre>
-</li>
-<li>
-<p>从远端仓库提取数据并尝试合并到当前分支：</p>
-<pre><code class="language-git">$git merge origin/master
-$git fetch origin       #从远程仓库下载新分支与数据，不合并
-</code></pre>
-</li>
-<li>
-<p>删除远程仓库</p>
-<pre><code class="language-git">$git remote rm origin2   
-</code></pre>
-</li>
-</ul>
-<h2 id="win10锁屏屏保壁纸">⇨win10锁屏屏保壁纸</h2>
-<ul>
-<li>进入下面修改文件名为.jpg即可：<br>
-<code>C:\Users\ljch1\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets</code></li>
-</ul>
-<h2 id="mysql80安装使用备忘for-win10">⇨MySQL8.0安装使用备忘(For Win10):</h2>
-<ul>
-<li>
-<p>登录：</p>
-<pre><code class="language-mysql">mysql -u root -p    (root-&gt;1234)
-修改用户密码，在MySQL中执行命令：
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';
-</code></pre>
-</li>
-<li>
-<p>关于mysql service 启动和关闭命令：</p>
-<pre><code class="language-shell">管理员身份运行cmd / PowerShell
-开启： net start mysql8
-关闭：net stop mysql8
-(mysql8: 配置我的Windows mysql service 名称)
-</code></pre>
-</li>
-<li>
-<p>查看数据库的编码方式；</p>
-<pre><code class="language-mysql">use db;
-show variables like &quot;char%&quot;;
-</code></pre>
-</li>
-<li>
-<p>Mysql8.0 修改配置：</p>
-<pre><code class="language-nohighlight">可以在 C盘的隐藏目录下 C:\ProgramData\MySQL\MySQL Server 8.0\ 找到my.ini
-例如修改字符编码：default_character_set=utf8
-</code></pre>
-</li>
-<li>
-<p>我的MySQL8.0 连接navicat失败，不支持默认root认证（错误1251）：</p>
-<pre><code class="language-mysql">ALTER USER 'root'@'localhost' IDENTIFIED BY '1234' PASSWORD EXPIRE NEVER;
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
-FLUSH PRIVILEGES;
-</code></pre>
-</li>
-</ul>
-<h2 id="端口占用问题for-win10">⇨端口占用问题（For Win10）</h2>
-<ul>
-<li>打开cmd（或 <code>命令提示符</code> / <code>Power Shell</code>）<pre><code class="language-nohighlight">输入  netstat   -ano|findstr  8005 （什么端口号被占用就输入什么端口号），回车
-新出来的那一行  最后面有个数字 我的是15068
-再输入 taskkill  /pid  15068 /f  回车
-</code></pre>
-</li>
-</ul>
-<h2 id="获取本客户端的ip">⇨获取本客户端的IP</h2>
-<ul>
-<li>采用搜狐的一个接口：<br>
-<code>获取该客户端的源IP：http://pv.sohu.com/cityjson?ie=utf-8 返回的内容分别是：IP、ID、城市名字</code></li>
-</ul>
-<h2 id="gridea博客文章插入b站视频">⇨Gridea博客文章插入B站视频：</h2>
-<ul>
-<li>插入如下的代码，注意添加属性<code>width=&quot;628px&quot; height=&quot;462px&quot;</code>调节合适大小😆<br>
-<s>白嫖使我快乐</s>😜😜😎<pre><code class="language-html">&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=92875449&amp;cid=159238254&amp;page=1&quot; 
-scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot; 
-width=&quot;628px&quot; height=&quot;462px&quot; &gt; &lt;/iframe&gt;
-</code></pre>
-<iframe src="//player.bilibili.com/player.html?aid=92875449&cid=159238254&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="628px" height="462px" > </iframe>
-</li>
-</ul>
-<h2 id="博客插入网易云播放器外链">⇨博客插入网易云播放器外链</h2>
-<ul>
-<li>同样是如下的代码，加个div盒子使之居中：<pre><code class="language-html">&lt;div style=&quot;text-align: center; position: relative;&quot; &gt;
-&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=450
-src=&quot;//music.163.com/outchain/player?type=0&amp;id=3049694290&amp;height=430&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-</code></pre>
-<div style="text-align: center; position: relative;" >
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=3049694290&height=430"></iframe>
-</div>
-</li>
-</ul>
-<blockquote>
-<p>对于开启代理情况：可能因无法访问music.163.com导致音乐资源访问失败，其实这时候需单独设置直连路由的域名，但继续是<code>music.163.com</code>可能无效，我的情况是改为<code>m10.music.126.net</code>即可。<br>
-<img src="https://alittlewhiter.github.io/post-images/1583408028648.png" alt="" loading="lazy"></p>
-</blockquote>
-<h2 id="教务系统选课脚本">⇨教务系统选课脚本：</h2>
-<ul>
-<li>复制如下代码，去选课页面打开<code>开发者工具</code> - <code>console</code> 粘贴，运行等待即可 (哈哈、然而对于恶心的验证码就爱莫能助了🤣)<pre><code class="language-javascript">var button = $(&quot;input[onclick='eletivePreAddCourse(\&quot;single\&quot;, {\&quot;epid\&quot;:\&quot;309109294\&quot;})']&quot;);
-var i = 1;
-var select = setInterval(function() {
-    button.click();
-    if(($(&quot;.result-content&quot;).text() == &quot;选课成功&quot;) ) {
-        window.clearInterval(select);
-        console.log(&quot;选课成功！&quot;);
-    } else {
-        console.log(&quot;第 &quot; + i + &quot; 次选课失败&quot;);
-        i++;
-    }
-},1200);
-</code></pre>
-</li>
-</ul>
-<h2 id="cmd下的mklink命令">⇨cmd下的mklink命令</h2>
-<ul>
-<li>个人理解，有点类似linux的alias建立命令的快捷方式）：
-<ol>
-<li>把系统盘中的appdata文件夹拷贝到非系统盘；</li>
-<li>删除系统盘中的appdata文件夹，用mklink命令建立个链接（链接到非系统盘的appdata文件夹）。</li>
-</ol>
-</li>
-</ul>
-<h2 id="win10任务栏输入法标识中英变为悬浮工具栏">⇨Win10任务栏输入法标识[中/英]变为悬浮工具栏：</h2>
-<ul>
-<li>记一下这样可以改回来、纯个人问题😅<sub>这样才舒服</sub><br>
-设置-&gt;时间和语言-&gt;语言（中文）-&gt;选项-&gt;键盘-&gt;微软拼音输入法-&gt;外观-&gt;关闭：输入法工具栏</li>
-</ul>
-<h2 id="激活密钥">⇨激活密钥：</h2>
-<ul>
-<li>VMWare15.5<sub>呃呃，我也不知道能留多久</sub><pre><code class="language-nohighlight">FC7D0-D1YDL-M8DXZ-CYPZE-P2AY6
-YZ718-4REEQ-08DHQ-JNYQC-ZQRD0
-110L3-9135J-M807A-08ARK-84V7L
-</code></pre>
-</li>
-<li>Sublime Text 3<pre><code class="language-nohighlight">sudo vim /etc/hosts           // 注意修改host文件屏蔽官网检验、windows同
-127.0.0.1       www.sublimetext.com
-127.0.0.1       license.sublimehq.com
-
------ BEGIN LICENSE -----
-Member J2TeaM
-Single User License
-EA7E-1011316
-D7DA350E 1B8B0760 972F8B60 F3E64036
-B9B4E234 F356F38F 0AD1E3B7 0E9C5FAD
-FA0A2ABE 25F65BD8 D51458E5 3923CE80
-87428428 79079A01 AA69F319 A1AF29A4
-A684C2DC 0B1583D4 19CBD290 217618CD
-5653E0A0 BACE3948 BB2EE45E 422D2C87
-DD9AF44B 99C49590 D2DBDEE1 75860FD2
-8C8BB2AD B2ECE5A4 EFC08AF2 25A9B864
------- END LICENSE ------
-</code></pre>
-</li>
-</ul>
-<h2 id="浏览器清除缓存">⇨浏览器清除缓存</h2>
-<ul>
-<li>
-<p>清除套接字缓存<br>
-在Chrome中打开地址：<code>chrome://net-internals/#sockets</code>，分别点击第一个 <code>Close idle sockets</code>（关闭空闲套接字）和第二个<code>Flush socket pools</code>（清空套接字池）。此时再次刷新想要调试的页面，应该是可以，如果不行，请执行下面第二步操作。</p>
-</li>
-<li>
-<p>清除 DNS 缓存<br>
-在Chrome中打开地址：<code>chrome://net-internals/#dns</code>，点击Clear host cache（清除主机缓存）。<br>
-<sub>新版Edge中可以改为edge://net-internals/</sub></p>
-</li>
-<li>
-<p>可能统统没效果，果然还是直接：设置-清除所有Cookie和缓存、开发者工具-Network-勾选<code>Disable Cache</code> 等操作有(bao)效(li)点  。</p>
-</li>
-</ul>
+        <updated>2020-03-06T07:27:40.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>Keywords：C/C++、语法扫雷、使用误区</strong><br>
+常常雷区蹦迪的我无(hai)所(pa)畏(ji)惧(le)🤣🤣🤣<br>
+~ <sub>记得之前写过类似的、哪去了😑😵😵</sub> ~</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>Keywords：C/C++、语法扫雷、使用误区</strong><br>
+常常雷区蹦迪的我无(hai)所(pa)畏(ji)惧(le)🤣🤣🤣<br>
+~ <sub>记得之前写过类似的、哪去了😑😵😵</sub> ~</p>
+<!-- more -->
+<h2 id="函数fill与memset的区别">函数fill与memset的区别</h2>
 ]]></content>
     </entry>
     <entry>
@@ -566,9 +373,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6145970"><label class="task-list-item-label" for="task-item-6145970"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4274005"><label class="task-list-item-label" for="task-item-4274005"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2693751"><label class="task-list-item-label" for="task-item-2693751"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9766430"><label class="task-list-item-label" for="task-item-9766430"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3968177"><label class="task-list-item-label" for="task-item-3968177"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3798778"><label class="task-list-item-label" for="task-item-3798778"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
@@ -946,7 +753,7 @@ bool b=h;       //在这里调用
 </code></pre>
 <p>10、</p>
 <p>11、</p>
-<p>Final、一道大杂烩~真香</p>
+<p>Final、一道大杂烩<sup>真香</sup>  输入输出模板</p>
 <pre><code class="language-c++">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
@@ -1065,22 +872,33 @@ template&lt;class T&gt;inline void prints(T x,char c){prints(x),putchar(c);}
 <li>Static：默认值，没有定位。</li>
 <li>Inherit：继承父元素的position值。</li>
 </ol>
-<p>** 一、absolute：绝对定位，CSS 写法“ position: absolute; ”**<br>
-1. 没有设定 Top、Right、Bottom、Left 的情况，默认依据父级的“内容区域原始点”为原始点，上面例子红色部分(父级黄色区域有 Padding 属性，“坐标原始点”和“内容区域原始点”不一样)， 基于绝对定位的元素不会占据空间。<br>
-2. 有设定 Top、Right、Bottom、Left 的情况，这里又分了两种情况如下：<br>
-(1). 父级没 position 属性，浏览器左上角(即 Body)为“坐标原始点”进行定位，位置由 Top、Right、Bottom、Left 属性决定。<br>
-(2). 父级有 position属性，父级的“坐标原始点”为原始点，此时可以忽略父级元素padding的作用。</p>
-<p>** 二、relative：相对定位，CSS 写法“ position: relative; ”**<br>
-父级元素第一个relative子元素参照父级的“内容区域原始点”为原始点，无父级则以 Body 的“内容区域原始点”为原始点，其余依各元素次序顺延下来获得其位置，再受Top、Right、Bottom、Left 属性值影响，且有“撑开或占据高度”的作用。<br>
-相对定位与绝对定位的区别在于它的参照点不是左上角的原点，而是该元素本身原先的起点位置。并且即使该元素偏移到了新的位置，也仍然从原始的起点处占据空间。</p>
-<p>** 注 **：Absolute定位的子元素宽度不会影响父元素的宽度，而relative定位的子元素可能会撑大父元素。在没有独立设置宽度时，absolute定位的子元素的宽度会自动缩小为内部元素的布局应有的宽度，而relative定位的元素会继承父元素的宽度（甚至超出父元素范围产生覆盖），但不包括边界宽度。</p>
+<p><strong>一、absolute：绝对定位，CSS 写法“ position: absolute; ”</strong></p>
+<ol>
+<li>没有设定 Top、Right、Bottom、Left 的情况，默认依据父级的“内容区域原始点”为原始点，上面例子红色部分(父级黄色区域有 Padding 属性，“坐标原始点”和“内容区域原始点”不一样)， 基于绝对定位的元素不会占据空间。</li>
+<li>有设定 Top、Right、Bottom、Left 的情况，这里又分了两种情况如下：
+<ul>
+<li>父级没 position 属性，浏览器左上角(即 Body)为“坐标原始点”进行定位，位置由 Top、Right、Bottom、Left 属性决定。</li>
+<li>父级有 position属性，父级的“坐标原始点”为原始点，此时可以忽略父级元素padding的作用。</li>
+</ul>
+</li>
+</ol>
+<p><strong>二、relative：相对定位，CSS 写法“ position: relative; ”</strong></p>
+<ol>
+<li>
+<p>父级元素第一个relative子元素参照父级的“内容区域原始点”为原始点，无父级则以 Body 的“内容区域原始点”为原始点，其余依各元素次序顺延下来获得其位置，再受Top、Right、Bottom、Left 属性值影响，且有“撑开或占据高度”的作用。</p>
+</li>
+<li>
+<p>相对定位与绝对定位的区别在于它的参照点不是左上角的原点，而是该元素本身原先的起点位置。并且即使该元素偏移到了新的位置，也仍然从原始的起点处占据空间。</p>
+<p><strong>注</strong>：Absolute定位的子元素宽度不会影响父元素的宽度，而relative定位的子元素可能会撑大父元素。在没有独立设置宽度时，absolute定位的子元素的宽度会自动缩小为内部元素的布局应有的宽度，而relative定位的元素会继承父元素的宽度（甚至超出父元素范围产生覆盖），但不包括边界宽度。</p>
+</li>
+</ol>
 <h2 id="超链接-aa">超链接 <a></a></h2>
 <ul>
-<li>超链接虽然在网页中占有不可替代的地位, 但是在HTML中创建超链接非常简单, 只需用&lt;a&gt; &lt;/a&gt;标记环绕需要被链接的对象即可。<br>
+<li>超链接虽然在网页中占有不可替代的地位, 但是在HTML中创建超链接非常简单, 只需用<code>&lt;a&gt;&lt;/a&gt;</code>标记环绕需要被链接的对象即可。<br>
 <code>基本语法格式: &lt;a href-&quot;跳转目标&quot; target=&quot;目标窗口的弹出方式”&gt;文本或图像&lt;/a&gt;</code></li>
 <li>在上面的语法中, &lt;a&gt;标记是一个行内标记,用于定义超链接, href和target为其常用属性，具体解释如下:<br>
--- href :用于指定链接目标的url地址。当为&lt;a&gt;标记应用href属性时，它就具有了超链接的功能。<br>
--- target :用于指定链接页面的打开方式，其取值有self和blank两种，其中self为默认值。意为在原窗口中打开，blank为在新窗口中打开。</li>
+-- <code>href</code>：用于指定链接目标的url地址。当为&lt;a&gt;标记应用href属性时，它就具有了超链接的功能。<br>
+-- <code>target</code>：用于指定链接页面的打开方式，其取值有self和blank两种，其中self为默认值。意为在原窗口中打开，blank为在新窗口中打开。</li>
 </ul>
 <h2 id="文本居中">文本居中</h2>
 <ul>
@@ -1114,6 +932,42 @@ template&lt;class T&gt;inline void prints(T x,char c){prints(x),putchar(c);}
 <blockquote>
 <p>将全部的p和span标签都选中</p>
 </blockquote>
+<h2 id="正则匹配生日">正则匹配生日：</h2>
+<pre><code class="language-javascript">var checkBirth = function (val) {
+  var pattern = /^((19[2-9]\d{1})|(20((0[0-9])|(1[0-8]))))\-((0?[1-9])|(1[0-2]))\-((0?[1-9])|([1-2][0-9])|30|31)$/;
+  if(pattern.test(val)) {
+    var date = new Date(val);
+    var month = val.substring(val.indexOf(&quot;-&quot;)+1,val.lastIndexOf(&quot;-&quot;));
+    return date &amp;&amp; (date.getMonth()+1 == parseInt(month));
+  }
+  return false;
+}
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-javascript">var checkBirth = function (val) {
+  var pattern = /^((?:19[2-9]\d{1})|(?:20(?:(?:0[0-9])|(?:1[0-8]))))\-((?:0?[1-9])|(?:1[0-2]))\-((?:0?[1-9])|(?:[1-2][0-9])|30|31)$/;
+  var result = val.match(pattern);
+  if(result != null) {
+    var iYear = parseInt(result[1]);
+    var month = result[2];
+    var date = result[3];
+    if(/^((0?[469])|11)$/.test(month) &amp;&amp;　date == '31') {
+      return false;
+    } else if(parseInt(month) == 2){
+      if((iYear % 4 ==0 &amp;&amp; iYear % 100 != 0) || (iYear % 400 == 0)) {
+        if(date == '29') {
+          return true;
+        }
+      }
+      if(parseInt(date) &gt; 28) {
+        return false;
+      }
+    }
+    return true;
+  }
+  return false;
+}
+</code></pre>
 <h2 id="more">More...</h2>
 ]]></content>
     </entry>
@@ -1162,11 +1016,14 @@ bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
         <link href="https://alittlewhiter.github.io/post/na-yi-tian-ren-lei-zhong-yu-hui-xiang-qi-ceng-yi-du-bei-ucore-zhi-pei-de-kong-ju/">
         </link>
         <updated>2020-03-02T12:02:31.000Z</updated>
-        <summary type="html"><![CDATA[<p>Keywords：Ucore lab0、lab1、lab2实验分析、报告</p>
+        <summary type="html"><![CDATA[<p><strong>Keywords：Ucore lab0、lab1、lab2实验分析、报告</strong><br>
+“天不生夫子，万古如长夜。。”</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>Keywords：Ucore lab0、lab1、lab2实验分析、报告</p>
+        <content type="html"><![CDATA[<p><strong>Keywords：Ucore lab0、lab1、lab2实验分析、报告</strong><br>
+“天不生夫子，万古如长夜。。”</p>
 <!-- more -->
-<p>先晾会儿~(￣o￣) . z Z</p>
+<p>哈哈、咕了！！<br>
+先晾会儿~(￣o￣) . z Z</p>
 ]]></content>
     </entry>
     <entry>

@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>数据库の一些笔记 | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583420737723">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583482021057">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -163,19 +163,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">13</span>
+        <span class="site-item-stat-count">14</span>
         <span class="site-item-stat-name">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">37</span>
+        <span class="site-item-stat-count">38</span>
         <span class="site-item-stat-name">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">37</span>
+        <span class="site-item-stat-count">38</span>
         <span class="site-item-stat-name">标签</span>
       </a>
     </div>
@@ -260,6 +260,7 @@
 </li>
 <li><a href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BF%9D%E6%8C%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96">判断是否保持函数依赖？</a></li>
 <li><a href="#exists-not-exists">exists / not exists</a></li>
+<li><a href="#with-check-with-nocheck">WITH CHECK | WITH NOCHECK</a></li>
 <li><a href="#and-next">And next</a></li>
 </ul>
 </li>
@@ -556,19 +557,19 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>10分钟</span>
+      <span>11分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>2765<span class="pc-show">字数</span></span>
+      <span>2883<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
 </div>
               <div class="post-body next-md-body" id="post_body">
                 <p>Keywords：关系的键、DML &amp; DDL、模式、数据库完整性、FD</p>
-<p>新冠肺炎宅在家，学习效率那是超像想地low哇<sub>（唉、搬点旧货</sub></p>
+<p>眼睛模糊看不清，高锰酸钾滴眼睛<sub>😇😇（唉、搬点旧货</sub></p>
 <!-- more -->
 <h2 id="有关-键">有关 键</h2>
 <p><strong>超键（super key， SK）</strong><br>
@@ -611,10 +612,14 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 <li>对于一个数据库系统而言，同一外模式也可以为某一用户的多个应用所应用，但任何一个应用程序都必须使用而且只能使用一个外模式，才能对数据库中的数据进行操作。一个模式可以支持若干个外模式，但每一个外模式只能属于一个模式。</li>
 </ul>
 <h2 id="数据库完整性database-integrity">数据库完整性（Database Integrity）</h2>
-<p><mark>指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。</mark></p>
-<h3 id="数据库完整性约束分类">数据库完整性约束分类</h3>
-<p><mark>数据库完整性约束可分为6类：列级静态约束、元组级静态约束、关系级静态约束、列级动态约束、元组级动态约束、关系级动态约束。动态约束通常由应用软件来实现。</mark></p>
 <ul>
+<li>指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。数据库完整性由各种各样的完整性约束来保证，因此可以说数据库完整性设计就是数据库完整性约束的设计。</li>
+</ul>
+<h3 id="数据库完整性约束分类">数据库完整性约束分类</h3>
+<ul>
+<li>
+<p>数据库完整性约束可分为6类：列级静态约束、元组级静态约束、关系级静态约束、列级动态约束、元组级动态约束、关系级动态约束，动态约束通常由应用软件来实现。</p>
+</li>
 <li>
 <p>关系完整性的用于保证数据库中数据的正确性。系统在进行更新、插入或删除等操作时都要检查数据的完整性，核实其约束条件，即关系模型的完整性规则。</p>
 </li>
@@ -644,6 +649,12 @@ DQL（Data QueryLanguage）：SELECT，数据查询语言</p>
 <li>WHERE关键字后面的是条件表达式。条件表达式计算完成后，会有一个返回值，即非0或0，非0即为真(true)，0即为假(false)。同理EXISTS后面的条件也有一个返回值，真或假，来确定接下来执不执行SELECT。</li>
 <li>分析器先找到关键字SELECT，然后跳到FROM关键字将STUDENT表导入内存，并通过指针找到第一条记录，接着找到WHERE关键字计算它的条件表达式，如果为真那么把这条记录装到一个虚表当中，指针再指向下一条记录。如果为假那么指针直接指向下一条记录，而不进行其它操作。一直检索完整个表，并把检索出来的虚拟表返回给用户。EXISTS是条件表达式的一部分，它也有一个返回值(true或false)。</li>
 <li>exists 与 in 最大的区别在于 in引导的子句只能返回一个字段，exists子句是允许的，但in只允许有一个字段返回。EXISTS与IN的使用效率的问题，通常情况下采用exists要比in效率高，因为IN不走索引，但要看实际情况具体使用：IN适合于外表大而内表小的情况；EXISTS适合于外表小而内表大的情况。</li>
+</ul>
+<h2 id="with-check-with-nocheck">WITH CHECK | WITH NOCHECK</h2>
+<ul>
+<li>指定表中的数据是否用新添加的或重新启用的 FOREIGN KEY 或 CHECK 约束进行验证。</li>
+<li>如果没有指定，对于新约束，假定为 WITH CHECK，对于重新启用的约束， WITH NOCHECK是针对已存在的数据而言的，也就是说现在新增加或重新启用了一个约束，那么要不要对数据库中已存在的数据使用此<br>
+约束进行检查，nockeck就是不检查。。</li>
 </ul>
 <h2 id="and-next">And next</h2>
 <p>。。。</p>
