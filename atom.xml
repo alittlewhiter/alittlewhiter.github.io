@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-06T08:07:10.271Z</updated>
+    <updated>2020-03-11T02:46:33.225Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -10,6 +10,49 @@
     <logo>https://alittlewhiter.github.io/images/avatar.png</logo>
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
+    <entry>
+        <title type="html"><![CDATA[Win10定制deskthemepack主题包]]></title>
+        <id>https://alittlewhiter.github.io/post/win10-ding-zhi-deskthemepack-zhu-ti-bao/</id>
+        <link href="https://alittlewhiter.github.io/post/win10-ding-zhi-deskthemepack-zhu-ti-bao/">
+        </link>
+        <updated>2020-03-11T01:59:13.000Z</updated>
+        <summary type="html"><![CDATA[<p>额、其实真没什么。。😅<br>
+500怜さいこう！！ /封面</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>额、其实真没什么。。😅<br>
+500怜さいこう！！ /封面</p>
+<!-- more -->
+<p>偶然来找找怎么制作Win10的主题包deskthemepack文件（Win7上应该是themepack），一些小记录<sub>就懒得放图了</sub><br>
+走起✨✨</p>
+<ol>
+<li>
+<p>进入-&gt;设置 - 个性化 - 主题，依次设置自己的主题的“背景、颜色、声音、鼠标光标”。</p>
+</li>
+<li>
+<p>进入-&gt;背景，选择背景为 <code>幻灯片放映</code> ，点击浏览以选中自己需要的壁纸文件夹作为幻灯片相册。可以更改切换频率（10min）、设置是否无序播放、选择契合度为拉伸</p>
+</li>
+<li>
+<p>进入-&gt;颜色，首先选择颜色为深色/浅色/自定义（这里选深色），打开透明效果，主题色可以选择 自动从背景提取，或自定义一种固定颜色，‘在以下区域显示主题色’按需勾选（建议不用）。</p>
+</li>
+<li>
+<p>进入-&gt;声音，这里一般不用修改，但也可以根据自己需要下载其他合适的音效进行配置。</p>
+</li>
+<li>
+<p>进入-&gt;鼠标光标，这里可以更改鼠标方案，win10 1809版本已有一些内置的选项（我选Windows黑色 系统方案），可以勾选启用阴影效果。</p>
+</li>
+<li>
+<p>最后点击保存主题、并为主题命名，这时Windows其实是保存了我们当前所自定义的一些配置，配置文件（filename.theme）位置位于：<code>C:\Users\你的用户名\AppData\Local\Microsoft\Windows\Themes</code> 。</p>
+</li>
+<li>
+<p>如果想将主题保存为 <code>.deskthemepack</code> 文件并用于分享给其他人，可以在该主题上点击右键，即可弹出“保存用于共享的主题”按钮，点击该按钮即可弹出“另存为”对话窗口，输入文件名，选择路径保存即可。<br>
+<img src="https://alittlewhiter.github.io/post-images/1583893408283.png" alt="" loading="lazy"></p>
+</li>
+</ol>
+<p>其实只是个壁纸主题包，各种深度定制还是直接建议网上搜索。。。<sub>定制越深似乎都涉及修改注册表等啥的、打扰了😓</sub><br>
+如果喜欢动态壁纸当然还是WE大法好！国内也有很多一些诸如火萤、星空、UPUPOO等<br>
+不想太麻烦、也可以找一些轻量化的插件进行美化。如 <a href="http://www.startisback.com/">StartIsBack</a> (备梯付费、建议baipiao)和<a href="https://rocketdock.en.softonic.com/">RocketDock</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C/C++ 捡漏(っ °Д °;)っ]]></title>
         <id>https://alittlewhiter.github.io/post/cc-jian-lou-tu-degd-degtu/</id>
@@ -25,6 +68,202 @@
 ~ <sub>记得之前写过类似的、哪去了😑😵😵</sub> ~</p>
 <!-- more -->
 <h2 id="函数fill与memset的区别">函数fill与memset的区别</h2>
+<p><strong>memset函数</strong>：memset(arr, int, sizeof(arr));</p>
+<ul>
+<li>
+<p>按照字节填充数字，由于其机制为对指定内存区域逐字节地复制，而与数组<sub>(指针)</sub>arr指向的数据类型无关。建议仅在需要填充全0 <code>(memset(arr, 0, sizeof arr);)</code> 或全1 <code>（memset(a, -1, sizeof a);）</code> 时使用。</p>
+</li>
+<li>
+<p>包含在在C头文件<code>string.h</code> 或 <code>&lt;cstring&gt;</code> 里面，有时包含 <code>&lt;stdlib.h&gt;</code> 也可。</p>
+</li>
+</ul>
+<p><strong>fill函数</strong>：fill(arr, arr + sizeof(arr), dataType);</p>
+<ul>
+<li>
+<p>按照指针arr实际类型逐个单元进行赋值，将一个区间的元素都赋同一个值（可以是字符、整数、布尔、浮点等类型）。</p>
+</li>
+<li>
+<p>包含在C++头文件 <code>&lt;algorithm&gt;</code>里面，</p>
+</li>
+</ul>
+<p><strong>区别</strong></p>
+<ul>
+<li>因为memset函数按照字节填充，所以一般memset只能用来填充char型数组（只有char型占一个字节），如果填充int型数组，除了0和-1，其他的会导致填充时期望的值与实际读取的值不相同，而fill函数可以赋值任何类型。</li>
+</ul>
+<h2 id="输入字符和字符串">输入字符和字符串</h2>
+<ol>
+<li>首先C语言有多个函数可以从键盘获得用户输入，分别是：</li>
+</ol>
+<ul>
+<li>scanf()：和 printf() 类似，scanf() 可以输入多种类型的数据，格式化控制，非常强大！</li>
+<li>getchar()、getche()、getch()：这三个函数都用于输入单个字符。</li>
+<li>gets()：获取一行数据，并作为字符串处理。</li>
+</ul>
+<ol start="2">
+<li>输入单个字符</li>
+</ol>
+<ul>
+<li>
+<p><strong>getchar()</strong></p>
+<p>函数getchar()包含在 <code>&lt;stdio.h&gt;</code> 头文件中，它几乎是 <code>scanf(&quot;%c&quot;, c)</code> 的替代品，相比之更加简洁，一次从缓冲区读入一个字符。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main() {
+    char c = getchar();
+    printf(&quot;c = %c\n&quot;, c);
+    return 0;
+}
+</code></pre>
+<pre><code class="language-nohighlight">@↙
+c = @
+</code></pre>
+</li>
+<li>
+<p><strong>getche()</strong></p>
+<p>此函数没有缓冲区，输入一个字符后会立即读取并继续执行，而不用等待用户按下回车键，这是它和 scanf()、getchar() 的最大区别。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+int main() {
+    char c = getche();
+    printf(&quot;c: %c\n&quot;, c);
+    return 0;
+}
+</code></pre>
+<pre><code class="language-c">@c = @
+</code></pre>
+<p>输入<code>@</code>后，getche() 立即读取完毕，接着继续执行 printf() 将字符输出，所以没有按下回车键程序就运行结束了。</p>
+<p><strong>注意</strong>：getche() 位于 <code>conio.h</code> 头文件中，而这个头文件是 Windows 特有的，Linux 和 Mac OS 下没有包含该头文件，因此getche() 并不是标准函数，默认只能在 Windows 下使用，不能在 Linux 和 Mac OS 下使用。</p>
+</li>
+<li>
+<p><strong>getch()</strong></p>
+<p>getch() 也没有缓冲区，输入一个字符后会立即读取，不用按下回车键。getch() 的特别之处是它没有回显，看不到输入的字符。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+int main() {
+    char c = getch();
+    printf(&quot;c: %c\n&quot;, c);
+    return 0;
+}
+</code></pre>
+<pre><code class="language-c">c = @
+</code></pre>
+<p><strong>注</strong>：getch() 也位于 conio.h 头文件中，也不是标准函数。</p>
+</li>
+</ul>
+<ol>
+<li>输入字符串</li>
+</ol>
+<ul>
+<li>
+<p>输入字符串当然可以使用 scanf() 这个通用的输入函数，对应的格式控制符为<code>%s</code> 。</p>
+</li>
+<li>
+<p>也可以使用gets() 函数，它也是有缓冲区的，每次按下回车键代表当前输入结束了，gets() 开始从缓冲区中读取内容。gets() 和 scanf() 的主要区别是：</p>
+<ul>
+<li>scanf() 读取字符串时以空格为分隔，遇到空格就认为当前字符串结束了，所以无法读取含有空格的字符串。</li>
+<li>gets() 认为空格也是字符串的一部分，只有遇到回车键时才认为字符串输入结束，所以，不管输入了多少个空格，只要不按下回车键，对 gets() 来说就是一个完整的字符串。</li>
+</ul>
+<pre><code class="language-c">char url[50];
+gets(url);
+printf(&quot;url: %s\n&quot;, url);
+</code></pre>
+<pre><code class="language-c">One apple once a day, keeps your enemies away!↙
+One apple once a day, keeps your enemies away!
+</code></pre>
+</li>
+</ul>
+<h2 id="fgetc和fputc函数用法">fgetc和fputc函数用法</h2>
+<ul>
+<li>
+<p>C语言中，读写文件比较灵活，既可以每次读写一个字符，也可以读写一个字符串，甚至是任意字节的数据（数据块）。</p>
+</li>
+<li>
+<p>以字符形式读写文件时，每次可以从文件中读取一个字符，或者向文件中写入一个字符。主要使用两个函数，分别是 fgetc() 和 fputc()，仅需包含 <code>stdio.h</code> 。</p>
+</li>
+</ul>
+<h3 id="字符读取函数-fgetc">字符读取函数 fgetc</h3>
+<ul>
+<li>
+<p>fgetc 是 file get char 的缩写，意思是从指定的文件中读取一个字符。</p>
+</li>
+<li>
+<p>fgetc() 的用法为：<code>int fgetc (FILE *fp);</code> fp 为文件指针。fgetc() 读取成功时返回读取到的字符，读取到文件末尾或读取失败时返回<code>EOF</code>。</p>
+</li>
+<li>
+<p>EOF 是 end of file 的缩写，表示文件末尾，是在 stdio.h 中定义的宏，它的值是一个负数，往往是 -1。fgetc() 的返回值类型之所以为 int，就是为了容纳这个负数（char不能是负数）。</p>
+<ul>
+<li>EOF 不绝对是 -1，也可以是其他负数，这要看编译器的实现。</li>
+</ul>
+<pre><code class="language-c">char ch;
+FILE *fp = fopen(&quot;F:\\demo.txt&quot;, &quot;r+&quot;);
+ch = fgetc(fp);
+</code></pre>
+</li>
+<li>
+<p>在文件内部有一个位置指针，用来指向当前读写到的位置，也就是读写到第几个字节。在文件打开时，该指针总是指向文件的第一个字节。使用 fgetc() 函数后，该指针会向后移动一个字节，所以可以连续多次使用 fgetc() 读取多个字符。</p>
+</li>
+<li>
+<p>注意：这个文件内部的位置指针与C语言中的指针不是一回事。位置指针仅仅是一个标志，表示文件读写到的位置，也就是读写到第几个字节，它不表示地址。文件每读写一次，位置指针就会移动一次，它不需要你在程序中定义和赋值，而是由系统自动设置，对用户是隐藏的。</p>
+<pre><code class="language-c">FILE *fp;
+char ch;
+if( (fp=fopen(&quot;F:\\demo.txt&quot;,&quot;rt&quot;)) == NULL ){
+    puts(&quot;Fail to open file!&quot;);
+    exit(0);
+}
+while( (ch=fgetc(fp)) != EOF ){
+    putchar(ch);
+}
+putchar('\n');
+fclose(fp);		// 注意文件需要关闭
+</code></pre>
+<ul>
+<li>
+<p>EOF 本来表示文件末尾，意味着读取结束，但是很多函数在读取出错时也返回 EOF，那么当返回 EOF 时，可以借助 stdio.h 中的两个函数来判断是 <code>读取结束</code> 还是 <code>读取错误</code> ，分别是 <code>feof()</code> 和 <code>ferror()</code> 。</p>
+</li>
+<li>
+<p>feof() 函数用来判断文件内部指针是否指向了文件末尾，原型是<code>int feof ( FILE * fp );</code> 当指向文件末尾时返回非零值，否则返回零值。</p>
+</li>
+<li>
+<p>ferror() 函数用来判断文件操作是否出错，原型是 <code>int ferror ( FILE *fp );</code> ，出错时返回非零值，否则返回零值。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="字符写入函数-fputc">字符写入函数 fputc</h3>
+<ul>
+<li>fputc 是 file output char 的所以，意思是向指定的文件中写入一个字符。fputc() 的用法为：<code>int fputc ( int ch, FILE *fp );</code> ch 为要写入的字符，fp 为文件指针。fputc() 写入成功时返回写入的字符，失败时返回 EOF，返回值类型为 int 也是为了容纳这个负数。</li>
+<li>被写入的文件可以用写、读写、追加方式打开，用写或读写方式打开一个已存在的文件时将清除原有的文件内容，并将写入的字符放在文件开头。如需保留原有文件内容，并把写入的字符放在文件末尾，就必须以追加方式打开文件。不管以何种方式打开，被写入的文件若不存在时则创建该文件。</li>
+<li>每写入一个字符，文件内部位置指针向后移动一个字节。</li>
+</ul>
+<h2 id="fgets和fputs函数">fgets和fputs函数</h2>
+<p>每次读写一个字符串或者一个数据块，这样能明显提高效率。</p>
+<h3 id="读字符串函数-fgets">读字符串函数 fgets</h3>
+<ul>
+<li>fgets() 函数用来从指定的文件中读取一个字符串，并保存到字符数组中，用法为： <code>char *fgets ( char *str, int n, FILE *fp );</code> str 为字符数组，n 为要读取的字符数目，fp 为文件指针。</li>
+<li><strong>返回值</strong>：读取成功时返回字符数组首地址，也即 str；读取失败时返回 NULL；如果开始读取时文件内部指针已经指向了文件末尾，那么将读取不到任何字符，也返回 NULL。</li>
+<li><strong>注</strong>1：读取到的字符串会在末尾自动添加 '\0'，n 个字符也包括 '\0'。也就是说，实际只读取到了 n-1 个字符，如果希望读取 100 个字符，n 的值应该为 101。</li>
+<li><strong>注2</strong>：在读取到 n-1 个字符之前如果出现了换行，或者读到了文件末尾，则读取结束。不管 n 的值多大，fgets() 最多只能读取一行数据，不能跨行。 <code>C中没有按行读取文件的函数，可以借助 fgets()将 n 的值设置地足够大，每次就可以读取到一行数据。</code></li>
+</ul>
+<h3 id="写字符串函数-fputs">写字符串函数 fputs</h3>
+<ul>
+<li>fputs() 函数用来向指定的文件写入一个字符串，用法为： <code>int fputs( char *str, FILE *fp );</code> str 为要写入的字符串，fp 为文件指针。写入成功返回非负数，失败返回 EOF。</li>
+</ul>
+<h2 id="fscanf-和-fprintf函数">fscanf 和 fprintf函数</h2>
+<ul>
+<li>
+<p>fscanf() 和 fprintf() 函数与前面使用的 scanf() 和 printf() 功能相似，都是格式化读写函数，两者的区别在于 fscanf() 和 fprintf() 的读写对象不是键盘和显示器，而是磁盘文件。</p>
+<p>两个函数的原型如下，与 scanf() 和 printf() 相比，仅仅多了一个 fp 参数。</p>
+<pre><code class="language-c">int fscanf ( FILE *fp, char * format, ... );
+int fprintf ( FILE *fp, char * format, ... );
+</code></pre>
+</li>
+<li>
+<p><code>fp 为文件指针，format 为格式控制字符串，... 表示参数列表。</code> 如果将 fp 设置为 stdin，那么 fscanf() 函数将会从键盘读取数据，与 scanf 作用相同；设置为 stdout，那么 fprintf() 函数将会向显示器输出内容，与 printf 作用相同。</p>
+</li>
+<li>
+<p>fprintf() 返回成功写入的字符的个数，失败则返回负数；fscanf() 返回参数列表中被成功赋值的参数个数。</p>
+</li>
+</ul>
+<h2 id="next">Next</h2>
 ]]></content>
     </entry>
     <entry>
@@ -373,9 +612,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9766430"><label class="task-list-item-label" for="task-item-9766430"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3968177"><label class="task-list-item-label" for="task-item-3968177"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3798778"><label class="task-list-item-label" for="task-item-3798778"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2890479"><label class="task-list-item-label" for="task-item-2890479"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9436588"><label class="task-list-item-label" for="task-item-9436588"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1126288"><label class="task-list-item-label" for="task-item-1126288"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
@@ -979,11 +1218,11 @@ template&lt;class T&gt;inline void prints(T x,char c){prints(x),putchar(c);}
         <updated>2020-03-02T12:47:24.000Z</updated>
         <summary type="html"><![CDATA[<p>Keywords： WIFI、WLAN、跃点、RJ45、and so on<br>
 bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
-#- 丢你王忠，你好！🕷 -#</p>
+#- 丢你Wang Zhong，你好！🕷 -#</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>Keywords： WIFI、WLAN、跃点、RJ45、and so on<br>
 bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
-#- 丢你王忠，你好！🕷 -#</p>
+#- 丢你Wang Zhong，你好！🕷 -#</p>
 <!-- more -->
 <h2 id="wlan-和wifi-的区别">WLAN 和WIFI 的区别？</h2>
 <ul>
@@ -1024,41 +1263,6 @@ bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
 <!-- more -->
 <p>哈哈、咕了！！<br>
 先晾会儿~(￣o￣) . z Z</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[搬点之前的《操♂作 系 统》]]></title>
-        <id>https://alittlewhiter.github.io/post/ban-dian-zhi-qian-de-lesslesscao-zuo-xi-tong-greatergreater-huan-you-wo-os-da-jpg/</id>
-        <link href="https://alittlewhiter.github.io/post/ban-dian-zhi-qian-de-lesslesscao-zuo-xi-tong-greatergreater-huan-you-wo-os-da-jpg/">
-        </link>
-        <updated>2020-03-02T11:47:06.000Z</updated>
-        <summary type="html"><![CDATA[<p>Keywords：OS管理功能、分类、进程</p>
-<p>就学啥忘啥呗、学到老 &amp; 忘到老...<br>
-~（Ko no OS da !）~</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Keywords：OS管理功能、分类、进程</p>
-<p>就学啥忘啥呗、学到老 &amp; 忘到老...<br>
-~（Ko no OS da !）~</p>
-<!-- more -->
-<h1 id="操作系统可以分为五大管理功能部分">操作系统可以分为五大管理功能部分：</h1>
-<p>1）设备管理：主要是负责内核与外围设备的数据交互，实质是对硬件设备的管理，包括对输入输出设备的分配，初始化，维护与回收等。例如管理音频输入输出。<br>
-2）作业管理：这部分功能主要是负责人机交互，图形界面或者系统任务的管理。<br>
-3）文件管理：这部分功能涉及文件的逻辑组织和物理组织，目录结构和管理等。从操作系统的角度来看，文件系统是系统对文件存储器的存储空间进行分配，维护和回收，同时负责文件的索引，共享和权限保护。而从用户的角度来说，文件系统是按照文件目录和文件名来进行存取的。<br>
-4）进程管理：说明一个进程存在的唯一标志是pcb（进程控制块），负责维护进程的信息和状态。进程管理实质上是系统采取某些进程调度算法来使处理合理的分配给每个任务使用。<br>
-5）存储管理：数据的存储方式和组织结构。</p>
-<h1 id="os的分类">OS的分类</h1>
-<h3 id="操作系统的类型也可以分为几种批处理系统分时操作系统实时操作系统网络操作系统等-下面将简单的介绍他们各自的特点">操作系统的类型也可以分为几种：批处理系统，分时操作系统，实时操作系统，网络操作系统等。下面将简单的介绍他们各自的特点：</h3>
-<p>1）批处理系统：首先，用户提交完作业后并在获得结果之前不会再与操作系统进行数据交互，用户提交的作业由系统外存储存为后备作业；数据是成批处理的，有操作系统负责作业的自动完成；支持多道程序运行。<br>
-2）分时操作系统：首先交互性方面，用户可以对程序动态运行时对其加以控制；支持多个用户登录终端，并且每个用户共享CPU和其他系统资源。<br>
-3）实时操作系统：会有时钟管理，包括定时处理和延迟处理。实时性要求比较高，某些任务必须优先处理，而有些任务则会被延迟调度完成。<br>
-4）网络操作系统：网络操作系统主要有几种基本功能<br>
-（1）网络通信：负责在源主机与目标主机之间的数据的可靠通信，这是最基本的功能。<br>
-（2）网络服务：系统支持一些电子邮件服务，文件传输，数据共享，设备共享等。<br>
-（3）资源管理：对网络中共享的资源进行管理，例如设置权限以保证数据源的安全性。<br>
-（4）网络管理：主要任务是实现安全管理，例如通过“存取控制”来确保数据的存取安全性，通过“容错性”来保障服务器故障时数据的安全性。<br>
-（5）支持交互操作：在客户/服务器模型的LAN环境下，多种客户机和主机不仅能与服务器进行数据连接通信，并且可以访问服务器的文件系统</p>
-<h1 id="下一个">下一个</h1>
-<p>。。</p>
 ]]></content>
     </entry>
 </feed>
