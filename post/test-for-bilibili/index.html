@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>不值一提skills  ㄟ( ▔, ▔ )ㄏ | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1583894787751">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1584079243905">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -241,6 +241,7 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
+<li><a href="#windows-10-%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6cmd-%E6%89%A9%E5%B1%95">⇨Windows 10 命令提示符/cmd 扩展</a></li>
 <li><a href="#windows%E8%87%AA%E5%B8%A6%E5%93%88%E5%B8%8Cmd5%E8%AE%A1%E7%AE%97%E5%8A%9F%E8%83%BD">⇨Windows自带哈希MD5计算功能：</a></li>
 <li><a href="#git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">⇨git 常用命令：</a></li>
 <li><a href="#win10%E9%94%81%E5%B1%8F%E5%B1%8F%E4%BF%9D%E5%A3%81%E7%BA%B8">⇨win10锁屏屏保壁纸</a></li>
@@ -549,18 +550,61 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>6分钟</span>
+      <span>8分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1341<span class="pc-show">字数</span></span>
+      <span>1810<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
 </div>
               <div class="post-body next-md-body" id="post_body">
                 <p>😒😒😒</p>
+<!-- more -->
+<h2 id="windows-10-命令提示符cmd-扩展">⇨Windows 10 命令提示符/cmd 扩展</h2>
+<ol>
+<li>启用UTF-8编码<br>
+打开命令提示符点击左上角<code>图标</code>-&gt;<code>属性</code>-&gt;<code>选项</code>-&gt;<code>当前代码页</code>栏目可以看到 <code>936</code> ，即当前命令行默认采用的Windows 936（GBK）编码，在运行Code::Blocks等程序通过命令行输出时常常显示乱码，因此可以通过cmd命令： <code>chcp 65001</code> 切换到UTF-8编码，再次打开看到 <code>当前代码页</code> 也显示65001（UTF-8）。<br>
+为防止每次启用cmd都重新设置，可以修改注册表：可以添加新的AutoRun值，也可以指定.bat脚本文件来执行，如下在cmd_doskey.bat文件中添加 <code>@chcp 65001</code> 即可。<br>
+<img src="https://alittlewhiter.github.io/post-images/1584077422441.png" alt="" loading="lazy"></li>
+<li>doskey命令设置命令简称<s>linux别名</s><br>
+在cmd使用doskey命令直接命名别名，如：<code>doskey ls=dir /d</code> ，执行后就可以直接使用ls命令显示目录内容了。同样可以修改注册表永久保存配置：（都是命令行预配置、在和上面同样的地方）<br>
+<img src="https://alittlewhiter.github.io/post-images/1584078009158.png" alt="" loading="lazy"></li>
+<li>鼠标右键在当前目录打开命令行<br>
+同样是注册表注入：复制-&gt;保存到 <code>.reg</code> 文件，双击注入到注册表。<pre><code class="language-c++">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHere]
+@=&quot;在此处打开命令提示符&quot;
+&quot;Icon&quot;=&quot;cmd.exe&quot;
+
+[HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHere\command]
+@=&quot;cmd.exe /s /k pushd &quot;%V&quot;&quot;
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHere]
+@=&quot;在此处打开命令窗口&quot;
+&quot;Icon&quot;=&quot;cmd.exe&quot;
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHere\command]
+@=&quot;cmd.exe /s /k pushd \&quot;%V\&quot;&quot;
+
+[HKEY_CLASSES_ROOT\Drive\shell\OpenCmdHere]
+@=&quot;在此处打开命令窗口&quot;
+&quot;Icon&quot;=&quot;cmd.exe&quot;
+
+[HKEY_CLASSES_ROOT\Drive\shell\OpenCmdHere\command]
+@=&quot;cmd.exe /s /k pushd \&quot;%V\&quot;&quot;
+
+[HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHere]
+@=&quot;在此处打开命令窗口&quot;
+&quot;Icon&quot;=&quot;cmd.exe&quot;
+
+[HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHere\command]
+@=&quot;cmd.exe /s /k pushd \&quot;%V\&quot;&quot;
+</code></pre>
+也可以直接下载该文件：<a href="https://github.com/alittlewhiter/MyCloud/blob/master/cmdAnywhere.reg">cmdAnywhere.reg</a>, <a href="https://github.com/alittlewhiter/MyCloud/blob/master/cmdAdministrater.reg">cmdAdministrater.reg</a></li>
+</ol>
 <h2 id="windows自带哈希md5计算功能">⇨Windows自带哈希MD5计算功能：</h2>
 <ul>
 <li>打开cmd输入：<code>certutil -hashfile f:\py123.html MD5</code></li>
