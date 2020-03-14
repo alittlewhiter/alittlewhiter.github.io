@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-13T06:05:10.972Z</updated>
+    <updated>2020-03-14T05:52:47.326Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -149,7 +149,7 @@ int main() {
 <p><strong>注</strong>：getch() 也位于 conio.h 头文件中，也不是标准函数。</p>
 </li>
 </ul>
-<ol>
+<ol start="3">
 <li>输入字符串</li>
 </ol>
 <ul>
@@ -263,6 +263,41 @@ int fprintf ( FILE *fp, char * format, ... );
 <p>fprintf() 返回成功写入的字符的个数，失败则返回负数；fscanf() 返回参数列表中被成功赋值的参数个数。</p>
 </li>
 </ul>
+<h2 id="整数与字符串的相互转换">整数与字符串的相互转换</h2>
+<ol>
+<li>整数转字符串
+<ul>
+<li>扩展函数 <code>itoa()</code><br>
+itoa ( integer to alphanumeric)是把整型数转换成字符串的一个函数。Windows环境下包含在 <code>&lt;stdlib.h&gt;</code> 头文件中，函数原型：<pre><code class="language-c">char* itoa(int value, char*string, int radix);
+// value: 要转换的整数，string: 转换后的字符串,radix: 转换进制数，如2,8,10,16 进制等。
+</code></pre>
+</li>
+<li><code>sprintf()</code>函数</li>
+</ul>
+<ol>
+<li>sprintf函数原型为 <code>int sprintf(char *str, const char *format, ...)</code> 。作用是格式化字符串，具体功能：将数字变量转换为字符串、得到整型变量的16进制和8进制字符串、连接多个字符串。</li>
+<li>snprintf函数是sprintf函数的更加安全版本，考虑到字符串的字节数，防止了字符串溢出。函数形式为：<code>int snprintf(char *restrict buf, size_t n, const char * restrict format, ...);</code> 。最多从源串中拷贝n－1个字符到目标串中，然后再在后面加一个0。所以如果目标串的大小为n 的话，将不会溢出。</li>
+</ol>
+</li>
+<li>字符串转整数
+<ul>
+<li>扩展函数 <code>atoi()</code><br>
+atoi (表示 alphanumeric to integer)是把字符串转换成整型数的一个函数。Windows环境下包含在 <code>&lt;stdlib.h&gt;</code> 头文件中，函数原型：<pre><code class="language-c">int  atoi(const char *nptr);           // 字符串转整数函数，nptr: 要转换的字符串
+</code></pre>
+</li>
+<li><code>sscanf()</code> 函数<br>
+sscanf函数原型为 <code>int sscanf(const char *str, const char *format, ...)</code> 。将参数str的字符串根据参数format字符串来转换并格式化数据，转换后的结果存于对应的参数内。具体功能如下：
+<ol>
+<li>根据格式从字符串中提取数据。如从字符串中取出整数、浮点数和字符串等。</li>
+<li>取指定长度的字符串</li>
+<li>取到指定字符为止的字符串</li>
+<li>取仅包含指定字符集的字符串</li>
+<li>取到指定字符集为止的字符串</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
 <h2 id="next">Next</h2>
 ]]></content>
     </entry>
@@ -613,9 +648,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8653639"><label class="task-list-item-label" for="task-item-8653639"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6350265"><label class="task-list-item-label" for="task-item-6350265"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9693232"><label class="task-list-item-label" for="task-item-9693232"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4753342"><label class="task-list-item-label" for="task-item-4753342"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9873122"><label class="task-list-item-label" for="task-item-9873122"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3383914"><label class="task-list-item-label" for="task-item-3383914"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
