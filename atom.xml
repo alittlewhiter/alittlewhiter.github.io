@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-14T14:40:29.631Z</updated>
+    <updated>2020-03-18T09:42:05.367Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -10,6 +10,49 @@
     <logo>https://alittlewhiter.github.io/images/avatar.png</logo>
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
+    <entry>
+        <title type="html"><![CDATA[DFS & BFS]]></title>
+        <id>https://alittlewhiter.github.io/post/dfs-and-bfs/</id>
+        <link href="https://alittlewhiter.github.io/post/dfs-and-bfs/">
+        </link>
+        <updated>2020-03-18T08:36:25.000Z</updated>
+        <summary type="html"><![CDATA[<p>Keywords：dfs，bfs</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Keywords：dfs，bfs</p>
+<!-- more -->
+<h2 id="深度优先搜索dfs">深度优先搜索（DFS）</h2>
+<h2 id="广度优先搜索bfs">广度优先搜索（BFS）</h2>
+<h2 id="二者的比较">二者的比较 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></h2>
+<ul>
+<li>
+<p>一般来说，BFS常用于找单一的最短路线，或者是规模小的路径搜索，它的特点是”搜到就是最优解”， 而DFS用于找多个解或者是”步数已知（好比3步就必需达到前提）”的标题，它的空间效率高，然则找到的不必定是最优解，必需记实并完成全数搜索，故一般情况下，深搜需要很是高效的剪枝（优化）.</p>
+</li>
+<li>
+<p>搜索最短路径这些的很显著是用广搜，因为广搜的特征就是一层一层往下搜的，保证当前搜到的都是最优解，当然，最短路径只是一方面的操作，像什么起码状态转换也是可以操作的。</p>
+</li>
+<li>
+<p>深搜就是优先搜索一棵子树，然后是另一棵，它和广搜对比，有着内存需要相对较少的所长，八皇后标题就是典范楷模的操作，这类标题很显著是不能用广搜往解决的。或者像图论里面的找圈的算法，数的前序中序后序遍历等，都是深搜。</p>
+<p>深搜的实现近似于栈，广搜则是操作了队列，边进队，边出队。</p>
+</li>
+<li>
+<p><strong>优缺点</strong>：BFS:对于解决最短或最少问题特别有效，而且寻找深度小，但缺点是内存耗费量大（需要开大量的数组单元用来存储状态）。<br>
+DFS：对于解决遍历和求所有问题有效，对于问题搜索深度小的时候处理速度迅速，然而在深度很大的情况下效率不高</p>
+</li>
+<li>
+<p>不管是BFS还是DFS，它们虽然好用，但由于时间和空间的局限性，以至于它们只能解决数据量小的问题。</p>
+</li>
+</ul>
+<p><strong>坐标类型搜索</strong> ：这种类型的搜索题目通常来说简单的比较简单，复杂的通常在边界的处理和情况的讨论方面会比较复杂，分析这类问题，我们首先要抓住题目的意思，看具体是怎么建立坐标系（特别重要），然后仔细分析到搜索的每一个阶段是如何通过条件转移到下一个阶段的。确定每一次递归（对于DFS）的回溯和深入条件，对于BFS，要注意每一次入队的条件同时注意判重。要牢牢把握目标状态是一个什么状态，在什么时候结束搜索。还有，DFS过程的参数如何设定，是带参数还是不带参数，带的话各个参数一定要保证能完全的表示一个状态，不会出现一个状态对应多个参数，而这一点对于BFS来说就稍简单些，只需要多设置些变量就可以了。</p>
+<p><strong>数值类型搜索</strong>：这种类型的搜索就需要仔细分析分析了，一般来说采用DFS，而且它的终止条件一般都是很明显的，难就难在对于过程的把握，过程的把握类似于坐标类型的搜索（判重、深入、枚举），注意这种类型的搜索通常还要用到剪枝优化，对于那些明显不符合要求的特殊状态我们一定要在之前就去掉它，否则它会像滚雪球一样越滚越大，浪费我们的时间 。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>版权声明：此处文段选自CSDN博主「osDetach」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。原文链接：https://blog.csdn.net/qq_41681241/article/details/81432634 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Win10定制deskthemepack主题包]]></title>
         <id>https://alittlewhiter.github.io/post/win10-ding-zhi-deskthemepack-zhu-ti-bao/</id>
@@ -648,9 +691,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7375188"><label class="task-list-item-label" for="task-item-7375188"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3075654"><label class="task-list-item-label" for="task-item-3075654"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7288511"><label class="task-list-item-label" for="task-item-7288511"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6668367"><label class="task-list-item-label" for="task-item-6668367"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5272498"><label class="task-list-item-label" for="task-item-5272498"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-585662"><label class="task-list-item-label" for="task-item-585662"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
@@ -1283,22 +1326,6 @@ bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
 <li>169.254.0.0/16这样的IP是一个本地链接地址段。RFC3927指出，在IP网络里，每台主机都需要一个IP地址，通常情况下是通过DHCP服务器自动分配，但某些特殊情况下，DHCP分配失败或者没有DHCP服务器时，机器可以自己分配一个IP来完成这个工作。<br>
 169.254.X.X是 Windows操作系统 在 DHCP 信息租用失败时自动给客户机分配的IP地址。由于网络连接问题、网线问题,DHCP服务器(其实就是Modem, 路由器, 或提供共享上网的主机)问题等，而令DHCP信息租用失败, 而IP169.254.X.X 的分配可能会令客户机(你自己的计算机,设置了&quot;自动获取IP&quot;)与所处局域网网关(Modem, 路由器, 或提供共享上网的主机) 位于不同的网段中, 而无法与网关通信,而导致无法接入Internet的情况。</li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[那一天，人类终于回想起曾一度被Ucore支配的恐惧...]]></title>
-        <id>https://alittlewhiter.github.io/post/na-yi-tian-ren-lei-zhong-yu-hui-xiang-qi-ceng-yi-du-bei-ucore-zhi-pei-de-kong-ju/</id>
-        <link href="https://alittlewhiter.github.io/post/na-yi-tian-ren-lei-zhong-yu-hui-xiang-qi-ceng-yi-du-bei-ucore-zhi-pei-de-kong-ju/">
-        </link>
-        <updated>2020-03-02T12:02:31.000Z</updated>
-        <summary type="html"><![CDATA[<p><strong>Keywords：Ucore lab0、lab1、lab2实验分析、报告</strong><br>
-“天不生夫子，万古如长夜。。”</p>
-]]></summary>
-        <content type="html"><![CDATA[<p><strong>Keywords：Ucore lab0、lab1、lab2实验分析、报告</strong><br>
-“天不生夫子，万古如长夜。。”</p>
-<!-- more -->
-<p>哈哈、咕了！！<br>
-先晾会儿~(￣o￣) . z Z</p>
 ]]></content>
     </entry>
 </feed>
