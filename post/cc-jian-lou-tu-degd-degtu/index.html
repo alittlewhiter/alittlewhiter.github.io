@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>C/C++ 捡漏(っ °Д °;)っ | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1584524308209">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1585262149144">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -163,19 +163,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">16</span>
+        <span class="site-item-stat-count">18</span>
         <span class="site-item-stat-name">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">42</span>
+        <span class="site-item-stat-count">45</span>
         <span class="site-item-stat-name">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">42</span>
+        <span class="site-item-stat-count">45</span>
         <span class="site-item-stat-name">标签</span>
       </a>
     </div>
@@ -257,6 +257,7 @@
 </li>
 <li><a href="#fscanf-%E5%92%8C-fprintf%E5%87%BD%E6%95%B0">fscanf 和 fprintf函数</a></li>
 <li><a href="#%E6%95%B4%E6%95%B0%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2">整数与字符串的相互转换</a></li>
+<li><a href="#stl%E4%B8%AD%E7%9A%84-iterator-%E5%92%8C-const_iterator">STL中的 iterator 和 const_iterator</a></li>
 <li><a href="#next">Next</a></li>
 </ul>
 </li>
@@ -565,12 +566,12 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>12分钟</span>
+      <span>13分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>2934<span class="pc-show">字数</span></span>
+      <span>3388<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
@@ -811,6 +812,29 @@ sscanf函数原型为 <code>int sscanf(const char *str, const char *format, ...)
 </ul>
 </li>
 </ol>
+<h2 id="stl中的-iterator-和-const_iterator">STL中的 iterator 和 const_iterator</h2>
+<ul>
+<li>
+<p>在C++中使用STL的容器时，经常会用到迭代器，使用迭代器可以很方便的进行容器元素遍历和修改等操作。</p>
+</li>
+<li>
+<p>STL容器中<strong>set</strong>的迭代器是<code>const_iterator</code>类型，而<strong>vector等</strong>的迭代器则是普通的<code>iterator</code>类型。在声明一个集合或者一个哈希表的迭代器时，虽然我们声明的是普通的iterator，但是其实它们都是const_iterator，即一个无法对元素进行修改操作的const引用（set取到的iterator则是const的，而map取到的iterator的key则是const的）。因此，如果使用该迭代器对容器中元素进行修改操作则会编译不通过，对于map的迭代器同理。</p>
+</li>
+<li>
+<p>为什么不允许对元素进行修改？</p>
+<ol>
+<li>因为set和map这种类型的容器，需要根据key来保持有序或者是确保元素的唯一性，所以不允许用户直接对元素进行修改。如果允许用户在使用iterator时直接对元素进行修改间接的修改了元素的键值，很有可能导致非唯一性或无序。</li>
+<li>由于这种类型的容器需要保持元素的有序性，底层可能用了某种数据结构来保存（如：堆），如果频繁的修改元素，则内部可能需要多次进行排序，导致效率低下。</li>
+</ol>
+</li>
+<li>
+<p>怎么对元素进行修改？</p>
+<ol>
+<li>使用容器的erase()和insert()方法。如果想修改某个元素，那么直接删掉它，再将修改过的元素插入到原有的容器中。这种方法的缺点是效率太低。</li>
+<li>使用const_cast。const_cast可以去掉任何底层const修饰，使得一个const变量成为非const的。如： <code>int &amp;item1 = const_cast&lt;int&amp;&gt; (*iter);</code></li>
+</ol>
+</li>
+</ul>
 <h2 id="next">Next</h2>
 
               </div>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-18T11:26:36.764Z</updated>
+    <updated>2020-03-26T22:36:09.197Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -10,6 +10,147 @@
     <logo>https://alittlewhiter.github.io/images/avatar.png</logo>
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
+    <entry>
+        <title type="html"><![CDATA[最左&最右推导、语法树]]></title>
+        <id>https://alittlewhiter.github.io/post/zui-zuo-andzui-you-tui-dao-yu-fa-shu/</id>
+        <link href="https://alittlewhiter.github.io/post/zui-zuo-andzui-you-tui-dao-yu-fa-shu/">
+        </link>
+        <updated>2020-03-26T10:36:42.000Z</updated>
+        <summary type="html"><![CDATA[<p>keyeords：最左推导、最右推导、语法树、二义性</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>keyeords：最左推导、最右推导、语法树、二义性</p>
+<!-- more -->
+<ol>
+<li>
+<p>最左推导和最右推导</p>
+<ul>
+<li><strong>最左推导</strong>：任何一步α =&gt; β都是对α中的最左一个非终结符进行替换</li>
+<li><strong>最右推导</strong>：任何一步α =&gt; β都是对α中的最右一个非终结符进行替换</li>
+<li>例如：<br>
+文法G(E)为：
+<ul>
+<li>
+<p>E -&gt; T | E + T |E - T</p>
+</li>
+<li>
+<p>T -&gt; F | T * F | T / F</p>
+</li>
+<li>
+<p>F -&gt; (E) | i</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>给出i * (i + i)的最左推导和最右推导。</p>
+<pre><code class="language-nohighlight">最左推导：
+从文法的起始符号开始：
+E -&gt; T
+-&gt; T * F
+-&gt; F * F
+-&gt; i * F
+-&gt; i * (E)
+-&gt; i * (E + T)
+-&gt; i * (T +T)
+-&gt; i * (F + T)
+-&gt; i * (i + T)
+-&gt; i * (i + F)
+-&gt; i * (i + i)
+最右推导：
+从文法的开始符号开始：
+E -&gt; T
+-&gt; T * F
+-&gt; T * (E)
+-&gt; T * (E + T)
+-&gt; T * (E + F)
+-&gt; T * (E + i)
+-&gt; T * (T + i)
+-&gt; T * (F + i)
+-&gt; T * (i + i)
+-&gt; F * (i + i)
+-&gt; i * (i + 1)
+</code></pre>
+</li>
+<li>
+<p><strong>文法的二义性：</strong></p>
+<p>给定一个文法G，如果L（G）中存在一个具有两棵或两棵以上分析树的句子， 我们就称该文法为二义性的，G也叫二义性文法。</p>
+<p><strong>造成二义性的原因</strong>：文法中没有体现出结合率和优先级</p>
+<figure data-type="image" tabindex="1"><img src="https://alittlewhiter.github.io/post-images/1585262146917.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[某科学のPrime]]></title>
+        <id>https://alittlewhiter.github.io/post/mou-ke-xue-noprime/</id>
+        <link href="https://alittlewhiter.github.io/post/mou-ke-xue-noprime/">
+        </link>
+        <updated>2020-03-21T11:15:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>Keywords：判断质数、求素数</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Keywords：判断质数、求素数</p>
+<!-- more -->
+<ol>
+<li>
+<p>判断素数的效率算法：</p>
+<pre><code class="language-c++">bool isprime(long x){
+    if(x==2 || x==3 || x==5)
+        return true;
+    if(x%2==0 || x%3==0 || x%5==0 || x&lt;2)
+        return false;
+    long c = 7, mc = int(sqrt(x));
+    while(c &lt;= mc){
+        if(x%c == 0)
+            return false;
+        c += 4;
+        if(x%c == 0)
+            return false;
+        c += 2;
+        if(x%c == 0)
+            return false;
+        c += 4;
+        if(x%c == 0)
+            return false;
+        c += 2;
+        if(x%c == 0)
+            return false;
+        c += 4;
+        if(x%c == 0)
+            return false;
+        c += 6;
+        if(x%c == 0)
+            return false;
+        c += 2;
+        if(x%c == 0)
+            return false;
+        c += 6;
+    }
+    return true;
+}
+</code></pre>
+</li>
+<li>
+<p>求取n以内的素数：</p>
+<pre><code class="language-java">int countPrimes(int n) {
+    if(!n||n==1)  return 0;
+    vector&lt;bool&gt; isPrime(n,true);
+    for(int i=2;i*i&lt;n;++i) {
+        if(!isPrime[i]) continue;
+        //填表起点i*i，如3*3，因为3*2已填，步长+i
+        for(int j=i*i;j&lt;n;j+=i) {
+            isPrime[j]=false;
+        }
+    }
+    int count=0;
+    for(int i=2;i&lt;n;++i) {
+        if(isPrime[i])  ++count;
+    }
+    return count;
+}
+</code></pre>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[DFS & BFS]]></title>
         <id>https://alittlewhiter.github.io/post/dfs-and-bfs/</id>
@@ -341,6 +482,29 @@ sscanf函数原型为 <code>int sscanf(const char *str, const char *format, ...)
 </ul>
 </li>
 </ol>
+<h2 id="stl中的-iterator-和-const_iterator">STL中的 iterator 和 const_iterator</h2>
+<ul>
+<li>
+<p>在C++中使用STL的容器时，经常会用到迭代器，使用迭代器可以很方便的进行容器元素遍历和修改等操作。</p>
+</li>
+<li>
+<p>STL容器中<strong>set</strong>的迭代器是<code>const_iterator</code>类型，而<strong>vector等</strong>的迭代器则是普通的<code>iterator</code>类型。在声明一个集合或者一个哈希表的迭代器时，虽然我们声明的是普通的iterator，但是其实它们都是const_iterator，即一个无法对元素进行修改操作的const引用（set取到的iterator则是const的，而map取到的iterator的key则是const的）。因此，如果使用该迭代器对容器中元素进行修改操作则会编译不通过，对于map的迭代器同理。</p>
+</li>
+<li>
+<p>为什么不允许对元素进行修改？</p>
+<ol>
+<li>因为set和map这种类型的容器，需要根据key来保持有序或者是确保元素的唯一性，所以不允许用户直接对元素进行修改。如果允许用户在使用iterator时直接对元素进行修改间接的修改了元素的键值，很有可能导致非唯一性或无序。</li>
+<li>由于这种类型的容器需要保持元素的有序性，底层可能用了某种数据结构来保存（如：堆），如果频繁的修改元素，则内部可能需要多次进行排序，导致效率低下。</li>
+</ol>
+</li>
+<li>
+<p>怎么对元素进行修改？</p>
+<ol>
+<li>使用容器的erase()和insert()方法。如果想修改某个元素，那么直接删掉它，再将修改过的元素插入到原有的容器中。这种方法的缺点是效率太低。</li>
+<li>使用const_cast。const_cast可以去掉任何底层const修饰，使得一个const变量成为非const的。如： <code>int &amp;item1 = const_cast&lt;int&amp;&gt; (*iter);</code></li>
+</ol>
+</li>
+</ul>
 <h2 id="next">Next</h2>
 ]]></content>
     </entry>
@@ -691,9 +855,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4806652"><label class="task-list-item-label" for="task-item-4806652"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-372004"><label class="task-list-item-label" for="task-item-372004"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1232791"><label class="task-list-item-label" for="task-item-1232791"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2620778"><label class="task-list-item-label" for="task-item-2620778"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8555712"><label class="task-list-item-label" for="task-item-8555712"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-476239"><label class="task-list-item-label" for="task-item-476239"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
@@ -1162,170 +1326,6 @@ template&lt;class T&gt;inline void prints(T x,char c){prints(x),putchar(c);}
 
 </code></pre>
 <p>mua~</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Web：前 前 后 后  ]]></title>
-        <id>https://alittlewhiter.github.io/post/webqian-qian-hou-hou/</id>
-        <link href="https://alittlewhiter.github.io/post/webqian-qian-hou-hou/">
-        </link>
-        <updated>2020-03-02T13:07:17.000Z</updated>
-        <summary type="html"><![CDATA[<p>Keywords：html, css, javascript, 标签，布局...<br>
-【奥里给 ~hetui！！</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Keywords：html, css, javascript, 标签，布局...<br>
-【奥里给 ~hetui！！</p>
-<!-- more -->
-<h2 id="position绝对和相对">Position：绝对和相对</h2>
-<h3 id="主要区别">主要区别</h3>
-<ul>
-<li>Absolution：元素会脱离文档流，定位是相对于离它最近的且不是static定位的父元素而言，若该元素没有设置宽度，则宽度由元素里面的内容决定，且宽度不会影响父元素，定位为absolution后，原来的位置相当于是空的，下面的的元素会来占据。</li>
-<li>Relative：元素仍处于文档流中，定位是相对于原本自身的位置，若没有设置宽度，则宽度为父元素的宽度，该元素的大小会影响父元素的大小。</li>
-</ul>
-<h3 id="position扩展">position扩展</h3>
-<ol>
-<li>Absolute：绝对定位，是相对于最近的且不是static定位的父元素来定位</li>
-<li>Fixed：绝对定位，是相对于浏览器窗口来定位的，是固定的，不会跟屏幕一起滚动。</li>
-<li>Relative：相对定位，是相对于其原本的位置来定位的。</li>
-<li>Static：默认值，没有定位。</li>
-<li>Inherit：继承父元素的position值。</li>
-</ol>
-<p><strong>一、absolute：绝对定位，CSS 写法“ position: absolute; ”</strong></p>
-<ol>
-<li>没有设定 Top、Right、Bottom、Left 的情况，默认依据父级的“内容区域原始点”为原始点，上面例子红色部分(父级黄色区域有 Padding 属性，“坐标原始点”和“内容区域原始点”不一样)， 基于绝对定位的元素不会占据空间。</li>
-<li>有设定 Top、Right、Bottom、Left 的情况，这里又分了两种情况如下：
-<ul>
-<li>父级没 position 属性，浏览器左上角(即 Body)为“坐标原始点”进行定位，位置由 Top、Right、Bottom、Left 属性决定。</li>
-<li>父级有 position属性，父级的“坐标原始点”为原始点，此时可以忽略父级元素padding的作用。</li>
-</ul>
-</li>
-</ol>
-<p><strong>二、relative：相对定位，CSS 写法“ position: relative; ”</strong></p>
-<ol>
-<li>
-<p>父级元素第一个relative子元素参照父级的“内容区域原始点”为原始点，无父级则以 Body 的“内容区域原始点”为原始点，其余依各元素次序顺延下来获得其位置，再受Top、Right、Bottom、Left 属性值影响，且有“撑开或占据高度”的作用。</p>
-</li>
-<li>
-<p>相对定位与绝对定位的区别在于它的参照点不是左上角的原点，而是该元素本身原先的起点位置。并且即使该元素偏移到了新的位置，也仍然从原始的起点处占据空间。</p>
-<p><strong>注</strong>：Absolute定位的子元素宽度不会影响父元素的宽度，而relative定位的子元素可能会撑大父元素。在没有独立设置宽度时，absolute定位的子元素的宽度会自动缩小为内部元素的布局应有的宽度，而relative定位的元素会继承父元素的宽度（甚至超出父元素范围产生覆盖），但不包括边界宽度。</p>
-</li>
-</ol>
-<h2 id="超链接-aa">超链接 <a></a></h2>
-<ul>
-<li>超链接虽然在网页中占有不可替代的地位, 但是在HTML中创建超链接非常简单, 只需用<code>&lt;a&gt;&lt;/a&gt;</code>标记环绕需要被链接的对象即可。<br>
-<code>基本语法格式: &lt;a href-&quot;跳转目标&quot; target=&quot;目标窗口的弹出方式”&gt;文本或图像&lt;/a&gt;</code></li>
-<li>在上面的语法中, &lt;a&gt;标记是一个行内标记,用于定义超链接, href和target为其常用属性，具体解释如下:<br>
--- <code>href</code>：用于指定链接目标的url地址。当为&lt;a&gt;标记应用href属性时，它就具有了超链接的功能。<br>
--- <code>target</code>：用于指定链接页面的打开方式，其取值有self和blank两种，其中self为默认值。意为在原窗口中打开，blank为在新窗口中打开。</li>
-</ul>
-<h2 id="文本居中">文本居中</h2>
-<ul>
-<li>在将&lt;span&gt;标签style属性设置为vertical-align: middle 后，元素内容并没有垂直居中，在W3C官方中对 vertical-align做了下面的解释：This property affects the vertical positioning inside a line box of the boxes generated by an inline-level element.</li>
-<li>事实上，一个Box中由很多行很多元素组成，vertical-align只作用于在同一行内的元素，它的垂直并不是相对于整个Box而言的。如果把 vertical-align:middle 放到一个单元格元素，即table的td元素中，它的垂直居中显示是没任何问题的，因为它表示相对于该行的垂直高度居中显示。</li>
-<li>可以设置&lt;span&gt;元素style中的 line-heght 值为其父元素&lt;div&gt;的height值，这样 vertical-align:middle 就会使&lt;span&gt;元素内容垂直居中。</li>
-</ul>
-<h2 id="css选择器">CSS选择器</h2>
-<p>css选择器诸如div p、div&gt;p、div+p、div~p、div.a 的用法和区别</p>
-<h3 id="div-p">div p ：</h3>
-<blockquote>
-<p>将所有<code>&lt;div&gt;</code>标签里面的<code>&lt;p&gt;</code>标签选中（子标签和孙子辈标签）</p>
-</blockquote>
-<h3 id="divp">div&gt;p ：</h3>
-<blockquote>
-<p>将所有<code>&lt;div&gt;</code>标签的子标签<code>&lt;p&gt;</code>选中，不包括孙子辈标签。</p>
-</blockquote>
-<h3 id="divp-2">div+p ：</h3>
-<blockquote>
-<p>将所有离<code>&lt;div&gt;</code> <strong>最近</strong>的<code>&lt;p&gt;</code>标签选中</p>
-</blockquote>
-<h3 id="div~p">div~p ：</h3>
-<blockquote>
-<p>将<code>&lt;div&gt;</code> <strong>后面</strong>所有的<p>标签选中</p>
-</blockquote>
-<h3 id="diva">div.a ：</h3>
-<blockquote>
-<p>将<code>&lt;div&gt;</code>下 <strong>class=a</strong>的标签选中</p>
-</blockquote>
-<h3 id="p-span">p, span ：</h3>
-<blockquote>
-<p>将全部的p和span标签都选中</p>
-</blockquote>
-<h2 id="正则匹配生日">正则匹配生日：</h2>
-<pre><code class="language-javascript">var checkBirth = function (val) {
-  var pattern = /^((19[2-9]\d{1})|(20((0[0-9])|(1[0-8]))))\-((0?[1-9])|(1[0-2]))\-((0?[1-9])|([1-2][0-9])|30|31)$/;
-  if(pattern.test(val)) {
-    var date = new Date(val);
-    var month = val.substring(val.indexOf(&quot;-&quot;)+1,val.lastIndexOf(&quot;-&quot;));
-    return date &amp;&amp; (date.getMonth()+1 == parseInt(month));
-  }
-  return false;
-}
-</code></pre>
-<p>或者：</p>
-<pre><code class="language-javascript">var checkBirth = function (val) {
-  var pattern = /^((?:19[2-9]\d{1})|(?:20(?:(?:0[0-9])|(?:1[0-8]))))\-((?:0?[1-9])|(?:1[0-2]))\-((?:0?[1-9])|(?:[1-2][0-9])|30|31)$/;
-  var result = val.match(pattern);
-  if(result != null) {
-    var iYear = parseInt(result[1]);
-    var month = result[2];
-    var date = result[3];
-    if(/^((0?[469])|11)$/.test(month) &amp;&amp;　date == '31') {
-      return false;
-    } else if(parseInt(month) == 2){
-      if((iYear % 4 ==0 &amp;&amp; iYear % 100 != 0) || (iYear % 400 == 0)) {
-        if(date == '29') {
-          return true;
-        }
-      }
-      if(parseInt(date) &gt; 28) {
-        return false;
-      }
-    }
-    return true;
-  }
-  return false;
-}
-</code></pre>
-<h2 id="more">More...</h2>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Computer Network 默 · 示 · 录]]></title>
-        <id>https://alittlewhiter.github.io/post/computer-network-mo-shi-lu/</id>
-        <link href="https://alittlewhiter.github.io/post/computer-network-mo-shi-lu/">
-        </link>
-        <updated>2020-03-02T12:47:24.000Z</updated>
-        <summary type="html"><![CDATA[<p>Keywords： WIFI、WLAN、跃点、RJ45、and so on<br>
-bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
-#- 丢你Wang Zhong，你好！🕷 -#</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Keywords： WIFI、WLAN、跃点、RJ45、and so on<br>
-bie说了，反正天<s>填</s>坑啊！😭😭😭<br>
-#- 丢你Wang Zhong，你好！🕷 -#</p>
-<!-- more -->
-<h2 id="wlan-和wifi-的区别">WLAN 和WIFI 的区别？</h2>
-<ul>
-<li>WIFI包含于WLAN中，主要采用802.11b协议的一项技术，是WLAN的一个标准，子集的关系。它们发射信号的功率不同，覆盖范围不同。</li>
-<li>WIFI就是一种无线联网的技术，一般都是小范围的， 距离发射器远了就会收不到网络，而wlan覆盖范围就广泛的多</li>
-</ul>
-<h2 id="跃点">跃点：</h2>
-<ul>
-<li>即路由。一个路由为一个跃点。传输过程中需要经过多个网络，每个被经过的网络设备点（有能力路由的）叫做一个跃点，地址就是它的ip。跃点数是经过了多少个跃点的累加器，为了防止无用的数据包在网上流散。 为路由指定所需跃点数的整数值（范围是 1 ~ 9999），它用来在路由表里的多个路由中选择与转发包中的目标地址最为匹配的路由, 所选的路由具有最少的跃点数。自动跃点修改方法如下：
-<ul>
-<li>进入相关设备的网络设置，再进入internet TCP/IP的属性设置，再进入高级属性设置；</li>
-<li>默认情况下是勾选的“自动跃点”，不要选择它，手动输入“接口跃点数”，输入的数字越小，优先级越高，这样可以手动控制哪个路由的优先级了。</li>
-</ul>
-</li>
-</ul>
-<h2 id="rj45接口">RJ45接口</h2>
-<ul>
-<li>有两类：用于以太网网卡(网卡接口)、路由器以太网接口等的DTE类型，还有用于交换机等的DCE类型。DTE我们可以称做“数据终端设备”，DCE我们可以称做“数据通信设备”。从某种意义来说，DTE设备称为“主动通信设备”，DCE设备称为“被动通信设备”。当两个类型一样的设备使用RJ45接口连接通信时，必须使用交叉线连接。</li>
-</ul>
-<h2 id="ip分配">IP分配</h2>
-<ul>
-<li>169.254.0.0/16这样的IP是一个本地链接地址段。RFC3927指出，在IP网络里，每台主机都需要一个IP地址，通常情况下是通过DHCP服务器自动分配，但某些特殊情况下，DHCP分配失败或者没有DHCP服务器时，机器可以自己分配一个IP来完成这个工作。<br>
-169.254.X.X是 Windows操作系统 在 DHCP 信息租用失败时自动给客户机分配的IP地址。由于网络连接问题、网线问题,DHCP服务器(其实就是Modem, 路由器, 或提供共享上网的主机)问题等，而令DHCP信息租用失败, 而IP169.254.X.X 的分配可能会令客户机(你自己的计算机,设置了&quot;自动获取IP&quot;)与所处局域网网关(Modem, 路由器, 或提供共享上网的主机) 位于不同的网段中, 而无法与网关通信,而导致无法接入Internet的情况。</li>
-</ul>
 ]]></content>
     </entry>
 </feed>
