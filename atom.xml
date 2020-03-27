@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-27T00:05:01.030Z</updated>
+    <updated>2020-03-27T00:08:30.865Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -20,14 +20,17 @@
 ]]></summary>
         <content type="html"><![CDATA[<p>keyeords：最左推导、最右推导、语法树、二义性</p>
 <!-- more -->
-<ol>
-<li>
-<p>最左推导和最右推导</p>
+<h2 id="最左推导和最右推导">最左推导和最右推导</h2>
 <ul>
-<li><strong>最左推导</strong>：任何一步α =&gt; β都是对α中的最左一个非终结符进行替换</li>
-<li><strong>最右推导</strong>：任何一步α =&gt; β都是对α中的最右一个非终结符进行替换</li>
-<li>例如：<br>
-文法G(E)为：
+<li>
+<p><strong>最左推导</strong>：任何一步α =&gt; β都是对α中的最左一个非终结符进行替换</p>
+</li>
+<li>
+<p><strong>最右推导</strong>：任何一步α =&gt; β都是对α中的最右一个非终结符进行替换</p>
+</li>
+<li>
+<p>例如：<br>
+文法G(E)为：</p>
 <ul>
 <li>
 <p>E -&gt; T | E + T |E - T</p>
@@ -37,8 +40,6 @@
 </li>
 <li>
 <p>F -&gt; (E) | i</p>
-</li>
-</ul>
 </li>
 </ul>
 <p>给出i * (i + i)的最左推导和最右推导。</p>
@@ -70,13 +71,13 @@ E -&gt; T
 -&gt; i * (i + 1)
 </code></pre>
 </li>
-<li>
-<p><strong>文法的二义性：</strong></p>
-<p>给定一个文法G，如果L（G）中存在一个具有两棵或两棵以上分析树的句子， 我们就称该文法为二义性的，G也叫二义性文法。</p>
-<p><strong>造成二义性的原因</strong>：文法中没有体现出结合率和优先级</p>
-<figure data-type="image" tabindex="1"><img src="https://alittlewhiter.github.io/post-images/1585262146917.png" alt="" loading="lazy"></figure>
-</li>
-</ol>
+</ul>
+<h2 id="文法的二义性">文法的二义性</h2>
+<ul>
+<li>给定一个文法G，如果L（G）中存在一个具有两棵或两棵以上分析树的句子， 我们就称该文法为二义性的，G也叫二义性文法。<br>
+<strong>造成二义性的原因</strong>：文法中没有体现出结合率和优先级<br>
+<img src="https://alittlewhiter.github.io/post-images/1585262146917.png" alt="" loading="lazy"></li>
+</ul>
 ]]></content>
     </entry>
     <entry>
@@ -855,9 +856,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1133719"><label class="task-list-item-label" for="task-item-1133719"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6166086"><label class="task-list-item-label" for="task-item-6166086"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8194263"><label class="task-list-item-label" for="task-item-8194263"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4115051"><label class="task-list-item-label" for="task-item-4115051"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9338830"><label class="task-list-item-label" for="task-item-9338830"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1921354"><label class="task-list-item-label" for="task-item-1921354"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
