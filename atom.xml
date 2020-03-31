@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-31T08:21:53.475Z</updated>
+    <updated>2020-03-31T09:42:34.360Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -10,6 +10,32 @@
     <logo>https://alittlewhiter.github.io/images/avatar.png</logo>
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
+    <entry>
+        <title type="html"><![CDATA[Prover]]></title>
+        <id>https://alittlewhiter.github.io/post/prover/</id>
+        <link href="https://alittlewhiter.github.io/post/prover/">
+        </link>
+        <updated>2020-03-31T09:11:03.000Z</updated>
+        <summary type="html"><![CDATA[<p>证明。。。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>证明。。。</p>
+<!-- more -->
+<h2 id="floyd算法的正确性证明">Floyd算法的正确性证明</h2>
+<ul>
+<li>用数学归纳法证明： 假设存在一条最短路径为i,d1,d2,d3,…,dk,j (i,j,dt均为点的标号)，也就是说从i到j的最短路径就是这一条，并且其中任意两点距离也都是最短的（反证法）。</li>
+<li>我们现在需要证明，这条路径的权值在外层循环k=max(d1,d2,d3,…,dk),我们记成max(i to j),被填入到矩阵D中。</li>
+<li>设P为i与j的最短路径中还需要经过的点的个数
+<ul>
+<li>当P=0的时候显然成立，因为i与j的最短路径为直接相连的那条边</li>
+<li>当P=1的时候也成立，因为当外层循环k等于那个点的时候，就可以得到D[i][k]+D[k][j]并填入到D中</li>
+<li>假设P&lt;=m时成立，即对于任意两点路径，若它们之间经过的点小于等于m，则有k=max(d1,d2,…,dP)时，i,j最短路径权值被填入到矩阵D中。</li>
+<li>当P=m+1时，找到这经过的m+1个点中标号最大的点dt，也就是说dt=max(d1,d2,…,dm+1),那么dt与j或i之间最多只有m个点，按照前面的假设，我们知道在k=max(i to dt)和k=max(dt to j)的时候，D[i][dt]和D[dt][j]会获得最短的路径权值，又因为dt &gt; max(i to dt) 且 dt &gt; max(dt to j)，所以当k=dt的时候，我们知道D[i][j]=D[i][dt]+D[dt][j]一定是最后的结果了，这时，P=m+1情况成立。</li>
+</ul>
+</li>
+</ul>
+<h2 id="next">next...</h2>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[最左&最右推导、语法树]]></title>
         <id>https://alittlewhiter.github.io/post/zui-zuo-andzui-you-tui-dao-yu-fa-shu/</id>
@@ -857,9 +883,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4832909"><label class="task-list-item-label" for="task-item-4832909"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7379174"><label class="task-list-item-label" for="task-item-7379174"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8804077"><label class="task-list-item-label" for="task-item-8804077"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6063413"><label class="task-list-item-label" for="task-item-6063413"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7710606"><label class="task-list-item-label" for="task-item-7710606"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9381813"><label class="task-list-item-label" for="task-item-9381813"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
@@ -1139,195 +1165,6 @@ URL: http://blog.chinaunix.net/uid-27717694-id-3943419.html<br>
 【5】	Intel_x86_CPU系列的寄存器[整理版]<br>
 URL: https://www.docin.com/p-880130068.html<br>
 【6】	[官方文档]：64-ia-32-architectures-software-developer-manual-325462.pdf</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[C++ 板子]]></title>
-        <id>https://alittlewhiter.github.io/post/c-ban-zi/</id>
-        <link href="https://alittlewhiter.github.io/post/c-ban-zi/">
-        </link>
-        <updated>2020-03-02T13:42:08.000Z</updated>
-        <summary type="html"><![CDATA[<p>Keywords：代码块、函数、语法 for C++<br>
-{ 这 xx 竟 这 该 死 的 甜 美 ...  不要停下来啊~🤙🤙🤙}</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Keywords：代码块、函数、语法 for C++<br>
-{ 这 xx 竟 这 该 死 的 甜 美 ...  不要停下来啊~🤙🤙🤙}</p>
-<!-- more -->
-<h2 id="开始你的表演">开始你的表演</h2>
-<p>1、设想要使用new建立一个rows行，cols列的矩阵:</p>
-<pre><code class="language-c++">int rows, cols ;
-int **array = new int*[rows] ; 
-for (int i = 0 ; i &lt; rows ; i++) {
-    array[i] = new int[cols] ; 
-    memset(*array, 0, sizeof(int)*cols) ;    // memset()是按字节填充，值一般只为0或-1。
-}  
-</code></pre>
-<p>2、结构体重载操作符模板：</p>
-<pre><code class="language-c++">Point operator + (const Point&amp; A, const Point&amp; B) {  
-     return Point(A.x+B.x, A.y+B.y); 
-}
-ostream&amp; operator &lt;&lt; (ostream &amp;out, const Point&amp; p) {
-    out &lt;&lt; &quot;(&quot; &lt;&lt; p.x &lt;&lt; &quot;,&quot; &lt;&lt; p.y &lt;&lt; &quot;)&quot;;  
-    return out; 
-}
-Point a, b;
-cout &lt;&lt; a+b &lt;&lt; endl; 
-</code></pre>
-<p>3、求和函数模板sum()：</p>
-<pre><code class="language-c++">template&lt;typename T&gt; T sum(T* begin, T* end) {  
-    T *p = begin;  
-    T ans = 0;  
-    for(T *p = begin; p != end; p++)   
-        ans = ans + *p;   
-    return ans; 
-}
-</code></pre>
-<p>4、结构体和类也可以是带模板的，如Point中x，y可以为int或double等多种类型：</p>
-<pre><code class="language-c++">template &lt;typename T&gt; struct Point {  
-    T x, y;  
-    Point(T x=0, T y=0) : x(x),y(y) { } 
-}; 
-</code></pre>
-<p>5、重载转换运算符 ：<br>
-对于类X的成员函数 X::operator T()<br>
-T是类型名 ，定义了一个X到T的转换。</p>
-<pre><code class="language-c++">operator bool() const {
-   return p;
-} 
-Handle h; 
-bool b=h;       //在这里调用  
-</code></pre>
-<p>6、C++中const 引用的是对象时只能访问该对象的const 函数，因为其他函数有可能会修改该对象的成员，编译器为了避免该类事情发生，会认为调用非const函数是错误的，error：…discards qualifiers 的意思就是缺少限定符。<br>
-因此：** 类似getter函数一般需要在后面加const限定符 **</p>
-<p>7、求gcd最大公约数</p>
-<ul>
-<li>最快算法：</li>
-</ul>
-<pre><code class="language-c++">int gcd(int a, int b){
-    while(b^=a^=b^=a%=b) ;
-    return a;
-}
-</code></pre>
-<ul>
-<li>一般算法：</li>
-</ul>
-<pre><code class="language-c++">int gcd(int a,  int b)  {          // 要求
-     return b ? gcd(b, a%b) : a ;
-}
-</code></pre>
-<p>8、普通快速幂的模板：</p>
-<pre><code class="language-c++">int fastpow(int base, int n, int mod){
-	int ans=1; 
-	while(n){
-		if(n&amp;1) 
-                    ans *= base % mod ;
-		base *= base;
-		n &gt;&gt;= 1;
-	}
-	return ans%mod;
-}
-</code></pre>
-<p>9、快速读入整数（ 远快于 scanf () 与 cin ）</p>
-<pre><code class="language-c++">inline int read() {
-    int x = 0, f = 1; char ch = getchar();
-    while(ch &lt; '0' || ch &gt; '9') { if(ch == '-') f = -1; ch = getchar(); }
-    while(ch &gt;= '0' &amp;&amp; ch &lt;= '9') { x = x * 10 + ch - '0'; ch = getchar(); }
-    return x * f;
-}
-</code></pre>
-<p>10、</p>
-<p>11、</p>
-<p>Final、一道大杂烩<sup>真香</sup>  输入输出模板</p>
-<pre><code class="language-c++">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-typedef long long ll;
-#define maxn 500005
-#define maxm 200005
-#define INF 1234567890
-#define p 1000000007
-template&lt;class T&gt;inline bool read(T &amp;x)
-{
-    x=0;register char c=getchar();register bool f=0;
-    while(!isdigit(c)){if(c==EOF)return false;f^=c=='-',c=getchar();}
-    while(isdigit(c))x=(x&lt;&lt;3)+(x&lt;&lt;1)+(c^48),c=getchar();
-    if(f)x=-x;
-    return true;
-}
-template&lt;class T&gt;inline bool readd(T &amp;x)
-{
-    register ll X=0;register double y=1.0;register char c=getchar();register bool f=0;
-    while(!isdigit(c)){if(c==EOF)return false;f^=c=='-',c=getchar();}
-    while(isdigit(c))X=(X&lt;&lt;3)+(X&lt;&lt;1)+(c^48),c=getchar();
-    x=X;
-    if(c!='.')return true;
-    c=getchar();
-    while(isdigit(c))x+=(y/=10)*(c^48),c=getchar();
-    if(f)x=-x;
-    return true;
-}
-template&lt;class T&gt;inline bool readc(T &amp;x)
-{
-    register char c=getchar();
-    while(c==' '||c=='\n'||c=='\r'||c=='\t')c=getchar();
-    if(c==EOF)return false;
-    x=c;
-    return true;
-}
-template&lt;class T&gt;inline bool readc(T *x)
-{
-    register char c=getchar();
-    while(c==' '||c=='\n'||c=='\r'||c=='\t')c=getchar();
-    if(c==EOF)return false;
-    while(c!=' '&amp;&amp;c!='\n'&amp;&amp;c!='\r'&amp;&amp;c!='\t'&amp;&amp;c!=EOF)*x++=c,c=getchar();
-    *x=0;
-    return true;
-}
-template&lt;class T&gt;inline bool reads(T &amp;x)
-{
-    x=&quot;&quot;;register char c=getchar();
-    while(c==' '||c=='\n'||c=='\r'||c=='\t')c=getchar();
-    if(c==EOF)return false;
-    while(c!=' '&amp;&amp;c!='\n'&amp;&amp;c!='\r'&amp;&amp;c!='\t'&amp;&amp;c!=EOF)x+=c,c=getchar();
-    return true;
-}
-template&lt;class T&gt;inline void print(T x)
-{
-    if(x&lt;0)putchar('-'),x=-x;
-    if(x&gt;9)print(x/10);
-    putchar(x%10^48);
-}
-template&lt;class T&gt;inline void printd(T x,ll y)
-{
-    static ll mul[]={1};
-    for(register ll i=1;i&lt;=18;i++)
-        mul[i]=(mul[i-1]&lt;&lt;3)+(mul[i-1]&lt;&lt;1);
-    if(x&lt;-1e-12)putchar('-'),x=-x;
-    x*=mul[y];
-    register ll x1=(ll)round(x),x2=x1/mul[y],x3=x1-x2*mul[y];
-    print(x2);
-    if(y&gt;0)
-    {
-        putchar('.');
-        for(register ll i=1;i&lt;y&amp;&amp;x3*mul[i]&lt;mul[y];putchar('0'),i++);
-        print(x3);
-    }
-}
-template&lt;class T&gt;inline void printc(T x){putchar(x);}
-template&lt;class T&gt;inline void printc(T *x){while(*x)putchar(*x++);}
-template&lt;class T&gt;inline void prints(T x){for(register ll i=0;x[i]!='\0';i++)putchar(x[i]);}
-template&lt;class T&gt;inline T maxd(T a,T b){if(b&gt;a)return b;return a;}
-template&lt;class T&gt;inline T mind(T a,T b){if(b&lt;a)return b;return a;}
-template&lt;class T&gt;inline T gcd(T a,T b){while(a^=b^=a^=b%=a);return b;}
-template&lt;class T&gt;inline T lcm(T a,T b){return a/gcd(a,b)*b;}
-template&lt;class T&gt;inline T absd(const T &amp;a){if(a&lt;0)return -a;return a;}
-template&lt;class T&gt;inline void print(T x,char c){print(x),putchar(c);}
-template&lt;class T&gt;inline void printd(T x,ll y,char c){printd(x,y),putchar(c);}
-template&lt;class T&gt;inline void printc(T x,T c){printc(x),putchar(c);}
-template&lt;class T&gt;inline void printc(T *x,T c){printc(x),putchar(c);}
-template&lt;class T&gt;inline void prints(T x,char c){prints(x),putchar(c);}
-
-</code></pre>
-<p>mua~</p>
 ]]></content>
     </entry>
 </feed>
