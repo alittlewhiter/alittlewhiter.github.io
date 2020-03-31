@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-27T00:08:30.865Z</updated>
+    <updated>2020-03-31T08:21:53.475Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -274,6 +274,7 @@ DFS：对于解决遍历和求所有问题有效，对于问题搜索深度小�
 <p><strong>区别</strong></p>
 <ul>
 <li>因为memset函数按照字节填充，所以一般memset只能用来填充char型数组（只有char型占一个字节），如果填充int型数组，除了0和-1，其他的会导致填充时期望的值与实际读取的值不相同，而fill函数可以赋值任何类型。</li>
+<li><strong>注</strong>：C++使用fill初始化二维数组时应该 <code>fill(dis[0], dis[0]+maxn*maxn, INF);</code> ,因为 dis[0]才是dis的首元素 dis[0][0] 的地址。</li>
 </ul>
 <h2 id="输入字符和字符串">输入字符和字符串</h2>
 <ol>
@@ -856,9 +857,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4115051"><label class="task-list-item-label" for="task-item-4115051"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9338830"><label class="task-list-item-label" for="task-item-9338830"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1921354"><label class="task-list-item-label" for="task-item-1921354"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4832909"><label class="task-list-item-label" for="task-item-4832909"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7379174"><label class="task-list-item-label" for="task-item-7379174"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8804077"><label class="task-list-item-label" for="task-item-8804077"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>

@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>C/C++ 捡漏(っ °Д °;)っ | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1585267706730">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1585642904894">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -571,7 +571,7 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>3388<span class="pc-show">字数</span></span>
+      <span>3428<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
@@ -603,6 +603,7 @@ window.addEventListener('load', function() {
 <p><strong>区别</strong></p>
 <ul>
 <li>因为memset函数按照字节填充，所以一般memset只能用来填充char型数组（只有char型占一个字节），如果填充int型数组，除了0和-1，其他的会导致填充时期望的值与实际读取的值不相同，而fill函数可以赋值任何类型。</li>
+<li><strong>注</strong>：C++使用fill初始化二维数组时应该 <code>fill(dis[0], dis[0]+maxn*maxn, INF);</code> ,因为 dis[0]才是dis的首元素 dis[0][0] 的地址。</li>
 </ul>
 <h2 id="输入字符和字符串">输入字符和字符串</h2>
 <ol>
