@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-03-31T09:42:34.360Z</updated>
+    <updated>2020-04-03T05:19:00.946Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
     <entry>
-        <title type="html"><![CDATA[Prover]]></title>
+        <title type="html"><![CDATA[P r o v e r]]></title>
         <id>https://alittlewhiter.github.io/post/prover/</id>
         <link href="https://alittlewhiter.github.io/post/prover/">
         </link>
@@ -883,9 +883,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6063413"><label class="task-list-item-label" for="task-item-6063413"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7710606"><label class="task-list-item-label" for="task-item-7710606"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9381813"><label class="task-list-item-label" for="task-item-9381813"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1092997"><label class="task-list-item-label" for="task-item-1092997"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3927836"><label class="task-list-item-label" for="task-item-3927836"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3669885"><label class="task-list-item-label" for="task-item-3669885"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
