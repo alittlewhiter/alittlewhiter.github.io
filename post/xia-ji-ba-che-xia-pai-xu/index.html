@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
-<title>DFS &amp; BFS | 君の知らない物语</title>
+<title>瞎几把扯下排序... | 君の知らない物语</title>
 <link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1585912057260">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
@@ -32,8 +32,8 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
     onload="renderMathInElement(document.body);"></script>
 
-    <meta name="description" content="DFS & BFS" />
-    <meta name="keywords" content="DFS,BFS,(low)技巧,CSDN转载,课内笔记,知识点" />
+    <meta name="description" content="瞎几把扯下排序..." />
+    <meta name="keywords" content="数据结构,C/C++,算法,课外笔记" />
     <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
   </head>
@@ -241,9 +241,12 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2dfs">深度优先搜索（DFS）</a></li>
-<li><a href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2bfs">广度优先搜索（BFS）</a></li>
-<li><a href="#%E4%BA%8C%E8%80%85%E7%9A%84%E6%AF%94%E8%BE%83">二者的比较 [^fn1]</a></li>
+<li><a href="#%E6%8E%92%E5%BA%8F%E7%9A%84%E6%A6%82%E5%BF%B5">排序的概念</a></li>
+<li><a href="#%E6%8E%92%E5%BA%8F%E7%9A%84%E5%88%86%E7%B1%BB">排序的分类</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0">算法概述</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90">代码分析</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93%E5%88%86%E6%9E%90">总结分析</a></li>
+<li><a href="#%E4%BD%95%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95">何种排序算法？</a></li>
 </ul>
 </li>
 </ul>
@@ -499,8 +502,8 @@ window.addEventListener('load', function() {
               <div class="article-box">
     <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://alittlewhiter.github.io/post/dfs-and-bfs/">
-      DFS &amp; BFS
+    <a class="post-title-link" href="https://alittlewhiter.github.io/post/xia-ji-ba-che-xia-pai-xu/">
+      瞎几把扯下排序...
     </a>
   </h1>
   <div class="post-meta">
@@ -508,7 +511,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-03-18</span>
+      <span>2020-04-03</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -517,38 +520,26 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://alittlewhiter.github.io/tag/dfs/">
-              <span>DFS</span>
+            <a href="https://alittlewhiter.github.io/tag/shu-ju-jie-gou/">
+              <span>数据结构</span>
             </a>、
           
         
           
-            <a href="https://alittlewhiter.github.io/tag/bfs/">
-              <span>BFS</span>
+            <a href="https://alittlewhiter.github.io/tag/cc/">
+              <span>C/C++</span>
             </a>、
           
         
           
-            <a href="https://alittlewhiter.github.io/tag/lowji-qiao/">
-              <span>(low)技巧</span>
+            <a href="https://alittlewhiter.github.io/tag/cjn0VUih9/">
+              <span>算法</span>
             </a>、
           
         
           
-            <a href="https://alittlewhiter.github.io/tag/gD_RWL4mwe/">
-              <span>CSDN转载</span>
-            </a>、
-          
-        
-          
-            <a href="https://alittlewhiter.github.io/tag/e_q7qpct-k/">
-              <span>课内笔记</span>
-            </a>、
-          
-        
-          
-            <a href="https://alittlewhiter.github.io/tag/0yyq63M4V_/">
-              <span>知识点</span>
+            <a href="https://alittlewhiter.github.io/tag/m71_UCZBGX/">
+              <span>课外笔记</span>
             </a>
           
         
@@ -557,50 +548,551 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>4分钟</span>
+      <span>22分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>940<span class="pc-show">字数</span></span>
+      <span>5474<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
 </div>
               <div class="post-body next-md-body" id="post_body">
-                <p>Keywords：dfs，bfs</p>
+                <p>keywords: 经典排序算法，C/C++，笔记备忘</p>
+<p>pro, 太pro了！</p>
 <!-- more -->
-<h2 id="深度优先搜索dfs">深度优先搜索（DFS）</h2>
-<h2 id="广度优先搜索bfs">广度优先搜索（BFS）</h2>
-<h2 id="二者的比较">二者的比较 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></h2>
-<ul>
+<h2 id="排序的概念">排序的概念</h2>
+<p>排序是计算机内经常进行的一种操作，其目的是将一组“无序”的记录序列调整为“有序”的记录序列。</p>
+<p>排序分为内部排序和外部排序。</p>
+<p>若整个排序过程不需要访问外存便能完成，则称此类排序问题为内部排序。</p>
+<p>反之，若参加排序的记录数量很大，整个序列的排序过程不可能在内存中完成，则称此类排序问题为外部排序。</p>
+<h2 id="排序的分类">排序的分类</h2>
+<p>这里主要介绍的八种排序算法均属于<code>内部排序</code>。如果按照策略来分类，大致可分为：交换排序、插入排序、选择排序、归并排序和基数排序。如下图所示：<br>
+<img src="https://alittlewhiter.github.io/post-images/1585901877572.jpg" alt="" loading="lazy"></p>
+<h2 id="算法概述">算法概述</h2>
+<ol>
 <li>
-<p>一般来说，BFS常用于找单一的最短路线，或者是规模小的路径搜索，它的特点是”搜到就是最优解”， 而DFS用于找多个解或者是”步数已知（好比3步就必需达到前提）”的标题，它的空间效率高，然则找到的不必定是最优解，必需记实并完成全数搜索，故一般情况下，深搜需要很是高效的剪枝（优化）.</p>
+<p>插入排序<br>
+<strong>直接插入排序</strong><br>
+将第一个和第二个元素排好序，然后将第3个元素插入到已经排好序的元素中，依次类推（插入排序最好的情况就是数组已经有序了）</p>
+<p><strong>希尔排序</strong><br>
+因为插入排序每次只能操作一个元素，效率低。希尔排序对待排序的N个元素，取奇数k=N/2，将下标差值为k的数分为一组（一组元素个数看总元素个数决定），在组内构成有序序列，再取k=k/2，将下标差值为k的数分为一组，构成有序序列，直到k=1，然后再进行直接插入排序。</p>
 </li>
 <li>
-<p>搜索最短路径这些的很显著是用广搜，因为广搜的特征就是一层一层往下搜的，保证当前搜到的都是最优解，当然，最短路径只是一方面的操作，像什么起码状态转换也是可以操作的。</p>
+<p>选择排序<br>
+<strong>简单选择排序</strong><br>
+选出最小的数和第一个数交换，再在剩余的数中又选择最小的和第二个数交换，依次类推。</p>
+<p><strong>堆排序</strong><br>
+以升序排序为例，利用<code>小根堆</code>或<code>大根堆</code>的性质，不断输出最小元素或移动最大元素，直到堆中元素全部有序。</p>
 </li>
 <li>
-<p>深搜就是优先搜索一棵子树，然后是另一棵，它和广搜对比，有着内存需要相对较少的所长，八皇后标题就是典范楷模的操作，这类标题很显著是不能用广搜往解决的。或者像图论里面的找圈的算法，数的前序中序后序遍历等，都是深搜。</p>
-<p>深搜的实现近似于栈，广搜则是操作了队列，边进队，边出队。</p>
+<p>交换排序<br>
+<strong>冒泡排序</strong><br>
+改进1：如果某次冒泡不存在数据交换，则说明已经排序好了，可以直接退出排序。<br>
+改进2：头尾进行冒泡，每次把最大的沉底，最小的浮上去，两边往中间靠1。</p>
+<p><strong>快速排序</strong><br>
+选择一个基准元素，比基准元素小的放基准元素的前面，比基准元素大的放基准元素的后面，这种动作叫分区，每次分区都把一个数列分成了两部分，每次分区都使得一个数字有序，然后将基准元素前面部分和后面部分继续分区，一直分区直到分区的区间中只有一个元素</p>
 </li>
 <li>
-<p><strong>优缺点</strong>：BFS:对于解决最短或最少问题特别有效，而且寻找深度小，但缺点是内存耗费量大（需要开大量的数组单元用来存储状态）。<br>
-DFS：对于解决遍历和求所有问题有效，对于问题搜索深度小的时候处理速度迅速，然而在深度很大的情况下效率不高</p>
+<p>归并排序<br>
+<strong>一般归并排序</strong><br>
+将一个无序的数列一直一分为二，直到分到序列中只有一个数的时候，这个序列肯定是有序的，因为只有一个数，然后将两个只含有一个数字的序列合并为含有两个数字的有序序列，这样一直进行下去，最后就变成了一个全部的有序数列，合并时一般需要额外的内存空间用于存放临时数组。</p>
+<p><strong>在位归并排序</strong><br>
+不需要辅助数组即可实现分区的合并。</p>
 </li>
 <li>
-<p>不管是BFS还是DFS，它们虽然好用，但由于时间和空间的局限性，以至于它们只能解决数据量小的问题。</p>
+<p>基数排序<br>
+找到最大的数，开个比最大的数大一点的数组，遍历每个元素，某个元素为k，则a[k]++,最好遍历数组a，a[k]等于多少就输出多少个k，只能处理整型数。</p>
 </li>
-</ul>
-<p><strong>坐标类型搜索</strong> ：这种类型的搜索题目通常来说简单的比较简单，复杂的通常在边界的处理和情况的讨论方面会比较复杂，分析这类问题，我们首先要抓住题目的意思，看具体是怎么建立坐标系（特别重要），然后仔细分析到搜索的每一个阶段是如何通过条件转移到下一个阶段的。确定每一次递归（对于DFS）的回溯和深入条件，对于BFS，要注意每一次入队的条件同时注意判重。要牢牢把握目标状态是一个什么状态，在什么时候结束搜索。还有，DFS过程的参数如何设定，是带参数还是不带参数，带的话各个参数一定要保证能完全的表示一个状态，不会出现一个状态对应多个参数，而这一点对于BFS来说就稍简单些，只需要多设置些变量就可以了。</p>
-<p><strong>数值类型搜索</strong>：这种类型的搜索就需要仔细分析分析了，一般来说采用DFS，而且它的终止条件一般都是很明显的，难就难在对于过程的把握，过程的把握类似于坐标类型的搜索（判重、深入、枚举），注意这种类型的搜索通常还要用到剪枝优化，对于那些明显不符合要求的特殊状态我们一定要在之前就去掉它，否则它会像滚雪球一样越滚越大，浪费我们的时间 。</p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>版权声明：此处文段选自CSDN博主「osDetach」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。原文链接：https://blog.csdn.net/qq_41681241/article/details/81432634 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li>
+<p>计数排序。。。</p>
 </li>
 </ol>
-</section>
+<p>又或者按照排序稳定性：</p>
+<p><strong>不稳定排序</strong>：简单选择排序，快速排序，希尔排序，堆排序<br>
+<strong>稳定排序</strong>：冒泡排序，直接插入排序，归并排序，基数排序</p>
+<h2 id="代码分析">代码分析</h2>
+<ol>
+<li>
+<p>直接插入排序（Insertion Sort)<br>
+<strong>算法思想</strong>：直接插入排序的核心思想就是：将数组中的所有元素依次跟前面已经排好的元素相比较，如果选择的元素比已排序的元素小，则交换，直到全部元素都比较过 因此，从上面的描述中我们可以发现，直接插入排序可以用两个循环完成：<br>
+<mark>第一层循环</mark>：遍历待比较的所有数组元素<br>
+<mark>第二层循环</mark>：将本轮选择的元素(selected)与已经排好序的元素(ordered)相比较。如果：selected &gt; ordered，那么将二者交换。</p>
+<pre><code class="language-c++">void InsertSort(int a[], int n) {
+    for(int i= 1; i&lt;n; i++) {
+        if(a[i] &lt; a[i-1]) {   //若第i个元素大于i-1元素，直接插入。小于的话，移动有序表后插入
+            int j= i-1;  
+            int x = a[i];     //复制为哨兵，即存储待排序元素
+            a[i] = a[i-1];           //先后移一个元素
+            while(x &lt; a[j]){   //查找在有序表的插入位置
+                a[j+1] = a[j];
+                j--;     //元素后移
+            }
+            a[j+1] = x;     //插入到正确位置
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>希尔排序（Shell‘s Sort）</p>
+<p><strong>算法思想</strong>：希尔排序也称 <code>递减增量排序</code> 算法，是插入排序的一种更高效的改进版本，但希尔排序是非稳定排序算法。希尔排序的基本思想是：先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序。</p>
+<p>算法步骤：</p>
+<ul>
+<li>
+<p>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；</p>
+</li>
+<li>
+<p>按增量序列个数k，对序列进行k 趟排序；</p>
+</li>
+<li>
+<p>每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</p>
+</li>
+</ul>
+<p>图<img src="https://alittlewhiter.github.io/post-images/1585911980835.png" alt="" loading="lazy"></p>
+<pre><code class="language-c++">void ShellInsertSort(int a[], int n, int dk) {
+    for(int i= dk; i&lt;n; ++i) {
+        if(a[i] &lt; a[i-dk]) {      //若第i个元素大于i-1元素，直接插入。小于的话，移动有序表后插入
+            int j = i-dk;  
+            int x = a[i];      //复制为哨兵，即存储待排序元素
+            a[i] = a[i-dk];      //首先后移一个元素
+            while(x &lt; a[j]) {    //查找在有序表的插入位置
+                a[j+dk] = a[j];
+                j -= dk;       //元素后移
+            }
+            a[j+dk] = x;      //插入到正确位置
+        }
+    }
+}
+
+ // 先按增量d（n/2,n为要排序数的个数进行希尔排序
+void shellSort(int a[], int n) {
+    int dk = n/2;
+    while( dk &gt;= 1  ){
+        ShellInsertSort(a, n, dk);
+        dk = dk/2;
+    }
+}
+</code></pre>
+<p>关于增量序列的选择：</p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ol>
+<p>​</p>
+<ol start="3">
+<li>
+<p><strong>简单选择排序（Selection Sort）</strong></p>
+<p>算法思想：简单选择排序的实现思想：<code>比较+交换</code></p>
+<ol>
+<li>从待排序序列中，找到关键字最小的元素；</li>
+<li>如果最小元素不是待排序序列的第一个元素，将其和第一个元素互换；</li>
+<li>从余下的 N - 1 个元素中，找出关键字最小的元素，重复(1)、(2)步，直到排序结束。因此我们可以发现，简单选择排序也是通过两层循环实现。第一层循环：依次遍历序列当中的每一个元素 第二层循环：将遍历得到的当前元素依次与余下的元素进行比较，符合最小元素的条件，则交换。</li>
+</ol>
+<pre><code class="language-c++">int SelectMinKey(int a[], int n, int i) {
+    int k = i;
+    for(int j=i+1 ; j&lt; n; ++j) 
+        if(a[k] &gt; a[j])
+            k = j;
+    return k;
+}
+
+void selectSort(int a[], int n) {
+    int key, tmp;
+    for(int i = 0; i&lt; n; ++i) {
+        key = SelectMinKey(a, n,i);           //选择最小的元素
+        if(key != i) {
+            tmp = a[i];
+            a[i] = a[key];
+            a[key] = tmp; 			//最小元素与第i位置元素互换
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>堆排序（Heap Sort）</p>
+<p><strong>堆的概念</strong>：<mark>堆</mark>本质是一种数组对象。特别重要的一点性质：任意的叶子节点小于（或大于）它所有的父节点。对此，又分为大顶堆和小顶堆：</p>
+<ul>
+<li>
+<p>大顶堆要求节点的元素都要大于其孩子。</p>
+</li>
+<li>
+<p>小顶堆要求节点元素都小于其左右孩子。</p>
+</li>
+</ul>
+<p>两者对左右孩子的大小关系不做任何要求。</p>
+<p>利用堆排序，就是基于大顶堆或者小顶堆的一种排序方法，下面通过大顶堆来实现。</p>
+<p>基本思想：堆排序可以按照以下步骤来完成：</p>
+<ol>
+<li>
+<p>首先将序列构建称为大顶堆；（这样满足了大顶堆的性质：位于根节点的元素一定是当前序列的最大值）</p>
+</li>
+<li>
+<p>取出当前大顶堆的根节点，将其与序列末尾元素进行交换；（此时：序列末尾的元素为已排序的最大值；由于交换了元素，当前位于根节点的堆并不一定满足大顶堆的性质）</p>
+</li>
+<li>
+<p>对交换后的n-1个序列元素进行调整，使其满足大顶堆的性质；</p>
+</li>
+<li>
+<p>重复2.3步骤，直至堆中只有1个元素为止</p>
+</li>
+</ol>
+<pre><code class="language-c++">/**
+ * 已知H[s…m]除了H[s] 外均满足堆的定义
+ * 调整H[s],使其成为大顶堆.即将对第s个结点为根的子树筛选,
+ *
+ * @param H是待调整的堆数组
+ * @param s是待调整的数组元素的位置
+ * @param length是数组的长度
+ */
+void HeapAdjust(int H[],int s, int length) {
+    int tmp  = H[s];
+    int child = 2*s+1; //左孩子结点的位置。(i+1 为当前调整结点的右孩子结点的位置)
+    while (child &lt; length) {
+        if(child+1 &lt;length &amp;&amp; H[child]&lt;H[child+1]) { // 如果右孩子大于左孩子(找到比当前待调整结点大的孩子结点)
+            ++child ;
+        }
+        if(H[s]&lt;H[child]) {     // 如果较大的子结点大于父结点
+            H[s] = H[child];    // 那么把较大的子结点往上移动，替换它的父结点
+            s = child;          // 重新设置s ,即待调整的下一个结点的位置
+            child = 2*s+1;
+        }  else {               // 如果当前待调整结点大于它的左右孩子，则不需要调整，直接退出
+            break;
+        }
+        H[s] = tmp;             // 当前待调整的结点放到比其大的孩子结点位置上
+    }
+}
+
+void HeapSort(int H[],int length) {
+    //建立初始堆
+    //最后一个有孩子的节点的位置 i=  (length -1) / 2
+    for (int i = (length -1) / 2 ; i &gt;= 0; --i)
+        HeapAdjust(H,i,length);
+    
+    //从最后一个元素开始对序列进行调整
+    for (int i = length - 1; i &gt; 0; --i) {
+        //交换堆顶元素H[0]和堆中最后一个元素
+        int temp = H[i];
+        H[i] = H[0];
+        H[0] = temp;
+        //每次交换堆顶元素和堆中最后一个元素之后，都要对堆进行调整
+        HeapAdjust(H,0,i);
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>冒泡排序（Bubble Sort）</p>
+<p><strong>算法思想</strong>：冒泡遍历所有的数据，每次对相邻元素进行两两比较，如果顺序和预先规定的顺序不一致，则进行位置交换；这样一次遍历会将最大或最小的数据上浮到顶端，之后再重复同样的操作，直到所有的数据有序。</p>
+<p>这个算法的名字由来是因为越大的元素会经由交换慢慢“浮”到数列的顶端，冒泡排序算法的运作如下：</p>
+<ul>
+<li>
+<p>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p>
+</li>
+<li>
+<p>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</p>
+</li>
+<li>
+<p>针对所有的元素重复以上的步骤，除了最后一个。</p>
+</li>
+<li>
+<p>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
+</li>
+</ul>
+<pre><code class="language-c++">void bubbleSort(int a[], int n) {
+    for(int i =0 ; i&lt; n-1; ++i) {
+        for(int j = 0; j &lt; n-i-1; ++j) {
+            if(a[j] &gt; a[j+1]) {
+                int tmp = a[j] ;
+                a[j] = a[j+1] ;
+                a[j+1] = tmp;
+            }
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><strong>快速排序（Quick Sort）</strong></p>
+<p><strong>算法思想</strong>：快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要Ο(n logn)次比较。在最坏状况下则需要Ο(n2)次比较，但这种状况并不常见。</p>
+<p>事实上，快速排序通常明显比其他Ο(n log n) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
+<p>快速排序使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。</p>
+<p>算法步骤：</p>
+<ol>
+<li>从数列中挑出一个元素，称为 “基准”（pivot）。</li>
+<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。</li>
+<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。</li>
+</ol>
+<pre><code class="language-c++">void swap(int *a, int *b) {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+int partition(int a[], int low, int high) {
+    int privotKey = a[low];                //基准元素
+    while(low &lt; high) {                   //从表的两端交替地向中间扫描
+        while(low &lt; high  &amp;&amp; a[high] &gt;= privotKey)
+            --high;  //从high 所指位置向前搜索，至多到low+1 位置。将比基准元素小的交换到低端
+        swap(&amp;a[low], &amp;a[high]);
+        while(low &lt; high  &amp;&amp; a[low] &lt;= privotKey )
+            ++low;
+        swap(&amp;a[low], &amp;a[high]);
+    }
+    return low;
+}
+
+
+void quickSort(int a[], int low, int high) {
+    if(low &lt; high) {
+        int privotLoc = partition(a,  low,  high);  //将表一分为二
+        quickSort(a,  low,  privotLoc -1);      //递归对低子表递归排序
+        quickSort(a,   privotLoc + 1, high);    //递归对高子表递归排序
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><strong>归并排序（Merge Sort）</strong></p>
+<p><strong>算法思想</strong>：归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。</p>
+<p>算法步骤：</p>
+<ol>
+<li>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列；</li>
+<li>设定两个指针，最初位置分别为两个已经排序序列的起始位置；</li>
+<li>比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置；</li>
+<li>重复步骤3直到某一指针达到序列尾；</li>
+<li>将另一序列剩下的所有元素直接复制到合并序列尾。</li>
+</ol>
+<pre><code class="language-c++">//将r[i…m]和r[m +1 …n]归并到辅助数组rf[i…n]
+void Merge(ElemType *r,ElemType *rf, int i, int m, int n) {
+    int j,k;
+    for(j=m+1,k=i; i&lt;=m &amp;&amp; j &lt;=n ; ++k) {
+        if(r[j] &lt; r[i])
+            rf[k] = r[j++];
+        else
+            rf[k] = r[i++];
+    }
+    while(i &lt;= m)
+        rf[k++] = r[i++];
+    while(j &lt;= n)
+        rf[k++] = r[j++];
+}
+
+void MergeSort(ElemType *r, ElemType *rf, int lenght) {
+    int len = 1;
+    ElemType *q = r ;
+    ElemType *tmp ;
+    while(len &lt; lenght) {
+        int s = len;
+        len = 2 * s ;
+        int i = 0;
+        while(i+ len &lt;lenght) {
+            Merge(q, rf,  i, i+ s-1, i+ len-1 ); //对等长的两个子表合并
+            i = i+ len;
+        }
+        if(i + s &lt; lenght) {
+            Merge(q, rf,  i, i+ s -1, lenght -1); //对不等长的两个子表合并
+        }
+        tmp = q;
+        q = rf;
+        rf = tmp; //交换q,rf，以保证下一趟归并时，仍从q 归并到rf
+    }
+}
+</code></pre>
+<p>一般在提到<a href="http://en.wikipedia.org/wiki/Merge_sort">Merge Sort</a>时，大都想到上面分治Divide-and-Conqure算法, 它一般是O(nlgn)的时间复杂度以及额外的O(n)空间。，但实际上<strong>O(n)的额外空间</strong>这一缺点是完全可以克服的，完全<code>可以实现O(nlgn) 时间效率以及 O(1) 额外空间</code> 的归并排序。对于这种不用额外空间(即<code>常数大小的额外空间</code>)的算法，有一个通用的名字叫做In-place Algorithms，因此我们称该归并算法为 <code>In-place merge sort</code> ，也就是<code>在位归并排序</code> 。</p>
+<p><strong>在位归并排序</strong>：</p>
+<p>在C++头文件中有在位归并排序的模板实现：<code>#include&lt;algorithm&gt;</code>  ，<code>void std::inplace_merge(_BIter, _BIter, _BIter);</code></p>
+<pre><code class="language-c++">#include&lt;algorithm&gt;
+
+int num[arrayLength];
+
+mergesort(0, arrayLength-1);		// main()函数调用
+
+void mergesort(int left,int right) {
+    if(left&gt;=right)
+        return;
+    int mid=(left+right)/2;
+    mergesort(left,mid);
+    mergesort(mid+1,right);
+    inplace_merge(number+left, number+mid+1, number+right+1);
+}
+</code></pre>
+<p>另外，还可以通过 <code>循环左移</code> 来实现归并操作：</p>
+<pre><code class="language-c++">//将长度为n的数组逆序
+void reverse(int *arr,int n) {
+    int i=0,j=n-1;
+    while(i&lt;j) {
+        swap(arr[i],arr[j]);
+        i++;
+        j--;
+    }
+}
+
+//将数组向左循环移位i个位置
+void exchange(int *arr,int n,int i) {
+    reverse(arr,i);
+    reverse(arr+i,n-i);
+    reverse(arr,n);
+}
+
+//数组两个有序部分的归并
+void merge(int *arr,int begin,int mid,int end) {
+    int i=begin,j=mid,k=end;
+    while(i&lt;j &amp;&amp; j&lt;=k) {
+        int step=0;
+        while(i&lt;j &amp;&amp; arr[i]&lt;=arr[j])
+            ++i;
+        while(j&lt;=k &amp;&amp; arr[j]&lt;=arr[i]) {
+            ++j;
+            ++step;
+        }
+        exchange(arr+i,j-i,j-i-step);
+        i=i+step;
+    }
+}
+
+void MergeSort(int *arr,int l,int r) {
+    if(l&lt;r) {
+        int mid=(l+r)/2;
+        MergeSort(arr,l,mid);
+        MergeSort(arr,mid+1,r);
+        merge(arr,l,mid+1,r);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><strong>基数排序(Radix Sort)</strong></p>
+<p><strong>算法思想</strong>：基数排序 通过序列中各个元素的值，对排序的N个元素进行若干趟的“分配”与“收集”来实现排序。</p>
+<p>分配：将 L[i]中的元素取出，首先确定其个位上的数字，根据该数字分配到与之序号相同的桶中 。</p>
+<p>收集：当序列中所有的元素都分配到对应的桶中，再按照顺序依次将桶中的元素收集形成新的一个待排序列 L[ ] 。</p>
+<p>对新形成的序列L[]重复执行分配和收集元素中的十位、百位...直到分配完该序列中的最高位，则排序结束。</p>
+<pre><code class="language-c++">void RadixSort(Node L[],length,maxradix) {
+    int m,n,k,lsp;
+    k=1;
+    m=1;
+    int temp[10][length-1];
+    Empty(temp); //清空临时空间
+    while(k&lt;maxradix) { //遍历所有关键字
+        for(int i=0; i&lt;length; i++) { //分配过程
+            if(L[i]&lt;m)
+                Temp[0][n]=L[i];
+            else
+                Lsp=(L[i]/m)%10; //确定关键字
+            Temp[lsp][n]=L[i];
+            n++;
+        }
+        CollectElement(L,Temp); //收集
+        n=0;
+        m=m*10;
+        k++;
+    }
+}
+
+</code></pre>
+</li>
+</ol>
+<h2 id="总结分析">总结分析</h2>
+<p>各算法の时间复杂度函数O(n)的增长情况如图：<br>
+<img src="https://alittlewhiter.github.io/post-images/1585912012375.png" alt="" loading="lazy"></p>
+<p>所以对n较大的排序记录，一般的选择都是时间复杂度为O(nlog2n)的排序方法。</p>
+<ol>
+<li>
+<p>平方阶(O(n2))排序</p>
+<p>各类简单排序:直接插入、直接选择和冒泡排序；</p>
+</li>
+<li>
+<p>线性对数阶(O(nlog2n))排序</p>
+<p>快速排序、堆排序和归并排序；</p>
+</li>
+<li>
+<p>O(n1+§))排序,§是介于0和1之间的常数。</p>
+<p>希尔排序</p>
+</li>
+<li>
+<p>线性阶(O(n))排序</p>
+<p>基数排序，此外还有桶排序、箱排序。</p>
+</li>
+</ol>
+<p><em><strong>因此</strong></em>：</p>
+<ul>
+<li>
+<p>当原表有序或基本有序时，<code>直接插入排序</code>和<code>冒泡排序</code>将大大减少比较次数和移动记录的次数，时间复杂度可降至O（n）；</p>
+</li>
+<li>
+<p>而<code>快速排序</code>则相反，<mark>当原表基本有序时，将蜕化为冒泡排序，时间复杂度提高为O（n2）</mark>；</p>
+</li>
+<li>
+<p>原表是否有序，对简单选择排序、堆排序、归并排序和基数排序的时间复杂度影响不大。</p>
+</li>
+</ul>
+<p><strong>排序算法的稳定性</strong>: 若待排序的序列中，存在多个<code>具有相同关键字的记录，经过排序， 这些记录的相对次序保持不变</code>，则称该算法是稳定的；若经排序后，记录的相对 次序发生了改变，则称该算法是不稳定的。</p>
+<p><strong>稳定性的好处</strong>：排序算法如果是稳定的，那么从一个键上排序，然后再从另一个键上排序，第一个键排序的结果可以为第二个键排序所用。</p>
+<ul>
+<li>
+<p>基数排序就是这样，先按低位排序，逐次按高位排序，低位相同的元素其顺序再高位也相同时是不会改变的。另外，如果排序算法稳定，可以避免多余的比较；</p>
+</li>
+<li>
+<p>稳定的排序算法：冒泡排序、插入排序、归并排序和基数排序</p>
+</li>
+<li>
+<p>不稳定的排序算法：选择排序、快速排序、希尔排序、堆排序</p>
+</li>
+</ul>
+<h2 id="何种排序算法">何种排序算法？</h2>
+<p>考虑的因素有以下四点：</p>
+<ol>
+<li>
+<p>待排序的记录数目n的大小；</p>
+</li>
+<li>
+<p>记录本身数据量的大小，也就是记录中除关键字外的其他信息量的大小；</p>
+</li>
+<li>
+<p>关键字的结构及其分布情况；</p>
+</li>
+<li>
+<p>对排序稳定性的要求。</p>
+</li>
+</ol>
+<p>具体来说：设待排序元素的个数为n</p>
+<p>1）当n较大，则应采用时间复杂度为O(nlog2n)的排序方法：<code>快速排序</code>、<code>堆排序</code>或<code>归并排序</code>。</p>
+<ul>
+<li>
+<p>快速排序：是目前基于比较的内部排序中被认为是最好的方法，当待排序的关键字是随机分布时，快速排序的平均时间最短；</p>
+</li>
+<li>
+<p>堆排序 ： 如果内存空间允许且要求稳定性的，</p>
+</li>
+<li>
+<p>归并排序：它有一定数量的数据移动，所以我们可能过与插入排序组合，先获得一定长度的序列，然后再合并，在效率上将有所提高。</p>
+</li>
+</ul>
+<p>2） 当n较大，内存空间允许，且要求稳定性：归并排序</p>
+<p>3）当n较小，可采用直接插入或直接选择排序。</p>
+<ul>
+<li>
+<p>直接插入排序：当元素分布有序，直接插入排序将大大减少比较次数和移动记录的次数。</p>
+</li>
+<li>
+<p>直接选择排序 ：元素分布有序，如果不要求稳定性，选择直接选择排序</p>
+</li>
+</ul>
+<p>4）一般不使用或不直接使用传统的冒泡排序。</p>
+<p>5）基数排序</p>
+<ul>
+<li>它是一种稳定的排序算法，但有一定的局限性：
+<ol>
+<li>关键字可分解。</li>
+<li>记录的关键字位数较少，如果密集更好。</li>
+<li>如果是数字时，最好是无符号的，否则将增加相应的映射复杂度，可先将其正负分开排序。</li>
+</ol>
+</li>
+</ul>
 
               </div>
               <div class="post-footer">
@@ -611,7 +1103,7 @@ DFS：对于解决遍历和求所有问题有效，对于问题搜索深度小�
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://alittlewhiter.github.io/post/dfs-and-bfs/" title="DFS &amp; BFS">DFS &amp; BFS</a>
+      <a href="https://alittlewhiter.github.io/post/xia-ji-ba-che-xia-pai-xu/" title="瞎几把扯下排序...">瞎几把扯下排序...</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -620,31 +1112,23 @@ DFS：对于解决遍历和求所有问题有效，对于问题搜索深度小�
   </ul>
   <div class="tags">
     
-      <a href="https://alittlewhiter.github.io/tag/dfs/"># DFS</a>
+      <a href="https://alittlewhiter.github.io/tag/shu-ju-jie-gou/"># 数据结构</a>
     
-      <a href="https://alittlewhiter.github.io/tag/bfs/"># BFS</a>
+      <a href="https://alittlewhiter.github.io/tag/cc/"># C/C++</a>
     
-      <a href="https://alittlewhiter.github.io/tag/lowji-qiao/"># (low)技巧</a>
+      <a href="https://alittlewhiter.github.io/tag/cjn0VUih9/"># 算法</a>
     
-      <a href="https://alittlewhiter.github.io/tag/gD_RWL4mwe/"># CSDN转载</a>
-    
-      <a href="https://alittlewhiter.github.io/tag/e_q7qpct-k/"># 课内笔记</a>
-    
-      <a href="https://alittlewhiter.github.io/tag/0yyq63M4V_/"># 知识点</a>
+      <a href="https://alittlewhiter.github.io/tag/m71_UCZBGX/"># 课外笔记</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="某科学のPrime" href="https://alittlewhiter.github.io/post/mou-ke-xue-noprime/">某科学のPrime</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="某科学のPrime" href="https://alittlewhiter.github.io/post/mou-ke-xue-noprime/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Win10定制deskthemepack主题包" href="https://alittlewhiter.github.io/post/win10-ding-zhi-deskthemepack-zhu-ti-bao/">Win10定制deskthemepack主题包</a>
-        <a class="nav-mobile-next" title="Win10定制deskthemepack主题包" href="https://alittlewhiter.github.io/post/win10-ding-zhi-deskthemepack-zhu-ti-bao/">下一篇</a>
+        <a class="nav-pc-next" title="P r o v e r" href="https://alittlewhiter.github.io/post/prover/">P r o v e r</a>
+        <a class="nav-mobile-next" title="P r o v e r" href="https://alittlewhiter.github.io/post/prover/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

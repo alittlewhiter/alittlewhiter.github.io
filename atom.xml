@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-04-03T05:19:00.946Z</updated>
+    <updated>2020-04-03T11:07:45.462Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -10,6 +10,551 @@
     <logo>https://alittlewhiter.github.io/images/avatar.png</logo>
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
+    <entry>
+        <title type="html"><![CDATA[瞎几把扯下排序...]]></title>
+        <id>https://alittlewhiter.github.io/post/xia-ji-ba-che-xia-pai-xu/</id>
+        <link href="https://alittlewhiter.github.io/post/xia-ji-ba-che-xia-pai-xu/">
+        </link>
+        <updated>2020-04-03T08:13:25.000Z</updated>
+        <summary type="html"><![CDATA[<p>keywords: 经典排序算法，C/C++，笔记备忘</p>
+<p>pro, 太pro了！</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>keywords: 经典排序算法，C/C++，笔记备忘</p>
+<p>pro, 太pro了！</p>
+<!-- more -->
+<h2 id="排序的概念">排序的概念</h2>
+<p>排序是计算机内经常进行的一种操作，其目的是将一组“无序”的记录序列调整为“有序”的记录序列。</p>
+<p>排序分为内部排序和外部排序。</p>
+<p>若整个排序过程不需要访问外存便能完成，则称此类排序问题为内部排序。</p>
+<p>反之，若参加排序的记录数量很大，整个序列的排序过程不可能在内存中完成，则称此类排序问题为外部排序。</p>
+<h2 id="排序的分类">排序的分类</h2>
+<p>这里主要介绍的八种排序算法均属于<code>内部排序</code>。如果按照策略来分类，大致可分为：交换排序、插入排序、选择排序、归并排序和基数排序。如下图所示：<br>
+<img src="https://alittlewhiter.github.io/post-images/1585901877572.jpg" alt="" loading="lazy"></p>
+<h2 id="算法概述">算法概述</h2>
+<ol>
+<li>
+<p>插入排序<br>
+<strong>直接插入排序</strong><br>
+将第一个和第二个元素排好序，然后将第3个元素插入到已经排好序的元素中，依次类推（插入排序最好的情况就是数组已经有序了）</p>
+<p><strong>希尔排序</strong><br>
+因为插入排序每次只能操作一个元素，效率低。希尔排序对待排序的N个元素，取奇数k=N/2，将下标差值为k的数分为一组（一组元素个数看总元素个数决定），在组内构成有序序列，再取k=k/2，将下标差值为k的数分为一组，构成有序序列，直到k=1，然后再进行直接插入排序。</p>
+</li>
+<li>
+<p>选择排序<br>
+<strong>简单选择排序</strong><br>
+选出最小的数和第一个数交换，再在剩余的数中又选择最小的和第二个数交换，依次类推。</p>
+<p><strong>堆排序</strong><br>
+以升序排序为例，利用<code>小根堆</code>或<code>大根堆</code>的性质，不断输出最小元素或移动最大元素，直到堆中元素全部有序。</p>
+</li>
+<li>
+<p>交换排序<br>
+<strong>冒泡排序</strong><br>
+改进1：如果某次冒泡不存在数据交换，则说明已经排序好了，可以直接退出排序。<br>
+改进2：头尾进行冒泡，每次把最大的沉底，最小的浮上去，两边往中间靠1。</p>
+<p><strong>快速排序</strong><br>
+选择一个基准元素，比基准元素小的放基准元素的前面，比基准元素大的放基准元素的后面，这种动作叫分区，每次分区都把一个数列分成了两部分，每次分区都使得一个数字有序，然后将基准元素前面部分和后面部分继续分区，一直分区直到分区的区间中只有一个元素</p>
+</li>
+<li>
+<p>归并排序<br>
+<strong>一般归并排序</strong><br>
+将一个无序的数列一直一分为二，直到分到序列中只有一个数的时候，这个序列肯定是有序的，因为只有一个数，然后将两个只含有一个数字的序列合并为含有两个数字的有序序列，这样一直进行下去，最后就变成了一个全部的有序数列，合并时一般需要额外的内存空间用于存放临时数组。</p>
+<p><strong>在位归并排序</strong><br>
+不需要辅助数组即可实现分区的合并。</p>
+</li>
+<li>
+<p>基数排序<br>
+找到最大的数，开个比最大的数大一点的数组，遍历每个元素，某个元素为k，则a[k]++,最好遍历数组a，a[k]等于多少就输出多少个k，只能处理整型数。</p>
+</li>
+<li>
+<p>计数排序。。。</p>
+</li>
+</ol>
+<p>又或者按照排序稳定性：</p>
+<p><strong>不稳定排序</strong>：简单选择排序，快速排序，希尔排序，堆排序<br>
+<strong>稳定排序</strong>：冒泡排序，直接插入排序，归并排序，基数排序</p>
+<h2 id="代码分析">代码分析</h2>
+<ol>
+<li>
+<p>直接插入排序（Insertion Sort)<br>
+<strong>算法思想</strong>：直接插入排序的核心思想就是：将数组中的所有元素依次跟前面已经排好的元素相比较，如果选择的元素比已排序的元素小，则交换，直到全部元素都比较过 因此，从上面的描述中我们可以发现，直接插入排序可以用两个循环完成：<br>
+<mark>第一层循环</mark>：遍历待比较的所有数组元素<br>
+<mark>第二层循环</mark>：将本轮选择的元素(selected)与已经排好序的元素(ordered)相比较。如果：selected &gt; ordered，那么将二者交换。</p>
+<pre><code class="language-c++">void InsertSort(int a[], int n) {
+    for(int i= 1; i&lt;n; i++) {
+        if(a[i] &lt; a[i-1]) {   //若第i个元素大于i-1元素，直接插入。小于的话，移动有序表后插入
+            int j= i-1;  
+            int x = a[i];     //复制为哨兵，即存储待排序元素
+            a[i] = a[i-1];           //先后移一个元素
+            while(x &lt; a[j]){   //查找在有序表的插入位置
+                a[j+1] = a[j];
+                j--;     //元素后移
+            }
+            a[j+1] = x;     //插入到正确位置
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>希尔排序（Shell‘s Sort）</p>
+<p><strong>算法思想</strong>：希尔排序也称 <code>递减增量排序</code> 算法，是插入排序的一种更高效的改进版本，但希尔排序是非稳定排序算法。希尔排序的基本思想是：先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序。</p>
+<p>算法步骤：</p>
+<ul>
+<li>
+<p>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；</p>
+</li>
+<li>
+<p>按增量序列个数k，对序列进行k 趟排序；</p>
+</li>
+<li>
+<p>每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</p>
+</li>
+</ul>
+<p>图<img src="https://alittlewhiter.github.io/post-images/1585911980835.png" alt="" loading="lazy"></p>
+<pre><code class="language-c++">void ShellInsertSort(int a[], int n, int dk) {
+    for(int i= dk; i&lt;n; ++i) {
+        if(a[i] &lt; a[i-dk]) {      //若第i个元素大于i-1元素，直接插入。小于的话，移动有序表后插入
+            int j = i-dk;  
+            int x = a[i];      //复制为哨兵，即存储待排序元素
+            a[i] = a[i-dk];      //首先后移一个元素
+            while(x &lt; a[j]) {    //查找在有序表的插入位置
+                a[j+dk] = a[j];
+                j -= dk;       //元素后移
+            }
+            a[j+dk] = x;      //插入到正确位置
+        }
+    }
+}
+
+ // 先按增量d（n/2,n为要排序数的个数进行希尔排序
+void shellSort(int a[], int n) {
+    int dk = n/2;
+    while( dk &gt;= 1  ){
+        ShellInsertSort(a, n, dk);
+        dk = dk/2;
+    }
+}
+</code></pre>
+<p>关于增量序列的选择：</p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ol>
+<p>​</p>
+<ol start="3">
+<li>
+<p><strong>简单选择排序（Selection Sort）</strong></p>
+<p>算法思想：简单选择排序的实现思想：<code>比较+交换</code></p>
+<ol>
+<li>从待排序序列中，找到关键字最小的元素；</li>
+<li>如果最小元素不是待排序序列的第一个元素，将其和第一个元素互换；</li>
+<li>从余下的 N - 1 个元素中，找出关键字最小的元素，重复(1)、(2)步，直到排序结束。因此我们可以发现，简单选择排序也是通过两层循环实现。第一层循环：依次遍历序列当中的每一个元素 第二层循环：将遍历得到的当前元素依次与余下的元素进行比较，符合最小元素的条件，则交换。</li>
+</ol>
+<pre><code class="language-c++">int SelectMinKey(int a[], int n, int i) {
+    int k = i;
+    for(int j=i+1 ; j&lt; n; ++j) 
+        if(a[k] &gt; a[j])
+            k = j;
+    return k;
+}
+
+void selectSort(int a[], int n) {
+    int key, tmp;
+    for(int i = 0; i&lt; n; ++i) {
+        key = SelectMinKey(a, n,i);           //选择最小的元素
+        if(key != i) {
+            tmp = a[i];
+            a[i] = a[key];
+            a[key] = tmp; 			//最小元素与第i位置元素互换
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>堆排序（Heap Sort）</p>
+<p><strong>堆的概念</strong>：<mark>堆</mark>本质是一种数组对象。特别重要的一点性质：任意的叶子节点小于（或大于）它所有的父节点。对此，又分为大顶堆和小顶堆：</p>
+<ul>
+<li>
+<p>大顶堆要求节点的元素都要大于其孩子。</p>
+</li>
+<li>
+<p>小顶堆要求节点元素都小于其左右孩子。</p>
+</li>
+</ul>
+<p>两者对左右孩子的大小关系不做任何要求。</p>
+<p>利用堆排序，就是基于大顶堆或者小顶堆的一种排序方法，下面通过大顶堆来实现。</p>
+<p>基本思想：堆排序可以按照以下步骤来完成：</p>
+<ol>
+<li>
+<p>首先将序列构建称为大顶堆；（这样满足了大顶堆的性质：位于根节点的元素一定是当前序列的最大值）</p>
+</li>
+<li>
+<p>取出当前大顶堆的根节点，将其与序列末尾元素进行交换；（此时：序列末尾的元素为已排序的最大值；由于交换了元素，当前位于根节点的堆并不一定满足大顶堆的性质）</p>
+</li>
+<li>
+<p>对交换后的n-1个序列元素进行调整，使其满足大顶堆的性质；</p>
+</li>
+<li>
+<p>重复2.3步骤，直至堆中只有1个元素为止</p>
+</li>
+</ol>
+<pre><code class="language-c++">/**
+ * 已知H[s…m]除了H[s] 外均满足堆的定义
+ * 调整H[s],使其成为大顶堆.即将对第s个结点为根的子树筛选,
+ *
+ * @param H是待调整的堆数组
+ * @param s是待调整的数组元素的位置
+ * @param length是数组的长度
+ */
+void HeapAdjust(int H[],int s, int length) {
+    int tmp  = H[s];
+    int child = 2*s+1; //左孩子结点的位置。(i+1 为当前调整结点的右孩子结点的位置)
+    while (child &lt; length) {
+        if(child+1 &lt;length &amp;&amp; H[child]&lt;H[child+1]) { // 如果右孩子大于左孩子(找到比当前待调整结点大的孩子结点)
+            ++child ;
+        }
+        if(H[s]&lt;H[child]) {     // 如果较大的子结点大于父结点
+            H[s] = H[child];    // 那么把较大的子结点往上移动，替换它的父结点
+            s = child;          // 重新设置s ,即待调整的下一个结点的位置
+            child = 2*s+1;
+        }  else {               // 如果当前待调整结点大于它的左右孩子，则不需要调整，直接退出
+            break;
+        }
+        H[s] = tmp;             // 当前待调整的结点放到比其大的孩子结点位置上
+    }
+}
+
+void HeapSort(int H[],int length) {
+    //建立初始堆
+    //最后一个有孩子的节点的位置 i=  (length -1) / 2
+    for (int i = (length -1) / 2 ; i &gt;= 0; --i)
+        HeapAdjust(H,i,length);
+    
+    //从最后一个元素开始对序列进行调整
+    for (int i = length - 1; i &gt; 0; --i) {
+        //交换堆顶元素H[0]和堆中最后一个元素
+        int temp = H[i];
+        H[i] = H[0];
+        H[0] = temp;
+        //每次交换堆顶元素和堆中最后一个元素之后，都要对堆进行调整
+        HeapAdjust(H,0,i);
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>冒泡排序（Bubble Sort）</p>
+<p><strong>算法思想</strong>：冒泡遍历所有的数据，每次对相邻元素进行两两比较，如果顺序和预先规定的顺序不一致，则进行位置交换；这样一次遍历会将最大或最小的数据上浮到顶端，之后再重复同样的操作，直到所有的数据有序。</p>
+<p>这个算法的名字由来是因为越大的元素会经由交换慢慢“浮”到数列的顶端，冒泡排序算法的运作如下：</p>
+<ul>
+<li>
+<p>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p>
+</li>
+<li>
+<p>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</p>
+</li>
+<li>
+<p>针对所有的元素重复以上的步骤，除了最后一个。</p>
+</li>
+<li>
+<p>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
+</li>
+</ul>
+<pre><code class="language-c++">void bubbleSort(int a[], int n) {
+    for(int i =0 ; i&lt; n-1; ++i) {
+        for(int j = 0; j &lt; n-i-1; ++j) {
+            if(a[j] &gt; a[j+1]) {
+                int tmp = a[j] ;
+                a[j] = a[j+1] ;
+                a[j+1] = tmp;
+            }
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><strong>快速排序（Quick Sort）</strong></p>
+<p><strong>算法思想</strong>：快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要Ο(n logn)次比较。在最坏状况下则需要Ο(n2)次比较，但这种状况并不常见。</p>
+<p>事实上，快速排序通常明显比其他Ο(n log n) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
+<p>快速排序使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。</p>
+<p>算法步骤：</p>
+<ol>
+<li>从数列中挑出一个元素，称为 “基准”（pivot）。</li>
+<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。</li>
+<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。</li>
+</ol>
+<pre><code class="language-c++">void swap(int *a, int *b) {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+int partition(int a[], int low, int high) {
+    int privotKey = a[low];                //基准元素
+    while(low &lt; high) {                   //从表的两端交替地向中间扫描
+        while(low &lt; high  &amp;&amp; a[high] &gt;= privotKey)
+            --high;  //从high 所指位置向前搜索，至多到low+1 位置。将比基准元素小的交换到低端
+        swap(&amp;a[low], &amp;a[high]);
+        while(low &lt; high  &amp;&amp; a[low] &lt;= privotKey )
+            ++low;
+        swap(&amp;a[low], &amp;a[high]);
+    }
+    return low;
+}
+
+
+void quickSort(int a[], int low, int high) {
+    if(low &lt; high) {
+        int privotLoc = partition(a,  low,  high);  //将表一分为二
+        quickSort(a,  low,  privotLoc -1);      //递归对低子表递归排序
+        quickSort(a,   privotLoc + 1, high);    //递归对高子表递归排序
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><strong>归并排序（Merge Sort）</strong></p>
+<p><strong>算法思想</strong>：归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。</p>
+<p>算法步骤：</p>
+<ol>
+<li>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列；</li>
+<li>设定两个指针，最初位置分别为两个已经排序序列的起始位置；</li>
+<li>比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置；</li>
+<li>重复步骤3直到某一指针达到序列尾；</li>
+<li>将另一序列剩下的所有元素直接复制到合并序列尾。</li>
+</ol>
+<pre><code class="language-c++">//将r[i…m]和r[m +1 …n]归并到辅助数组rf[i…n]
+void Merge(ElemType *r,ElemType *rf, int i, int m, int n) {
+    int j,k;
+    for(j=m+1,k=i; i&lt;=m &amp;&amp; j &lt;=n ; ++k) {
+        if(r[j] &lt; r[i])
+            rf[k] = r[j++];
+        else
+            rf[k] = r[i++];
+    }
+    while(i &lt;= m)
+        rf[k++] = r[i++];
+    while(j &lt;= n)
+        rf[k++] = r[j++];
+}
+
+void MergeSort(ElemType *r, ElemType *rf, int lenght) {
+    int len = 1;
+    ElemType *q = r ;
+    ElemType *tmp ;
+    while(len &lt; lenght) {
+        int s = len;
+        len = 2 * s ;
+        int i = 0;
+        while(i+ len &lt;lenght) {
+            Merge(q, rf,  i, i+ s-1, i+ len-1 ); //对等长的两个子表合并
+            i = i+ len;
+        }
+        if(i + s &lt; lenght) {
+            Merge(q, rf,  i, i+ s -1, lenght -1); //对不等长的两个子表合并
+        }
+        tmp = q;
+        q = rf;
+        rf = tmp; //交换q,rf，以保证下一趟归并时，仍从q 归并到rf
+    }
+}
+</code></pre>
+<p>一般在提到<a href="http://en.wikipedia.org/wiki/Merge_sort">Merge Sort</a>时，大都想到上面分治Divide-and-Conqure算法, 它一般是O(nlgn)的时间复杂度以及额外的O(n)空间。，但实际上<strong>O(n)的额外空间</strong>这一缺点是完全可以克服的，完全<code>可以实现O(nlgn) 时间效率以及 O(1) 额外空间</code> 的归并排序。对于这种不用额外空间(即<code>常数大小的额外空间</code>)的算法，有一个通用的名字叫做In-place Algorithms，因此我们称该归并算法为 <code>In-place merge sort</code> ，也就是<code>在位归并排序</code> 。</p>
+<p><strong>在位归并排序</strong>：</p>
+<p>在C++头文件中有在位归并排序的模板实现：<code>#include&lt;algorithm&gt;</code>  ，<code>void std::inplace_merge(_BIter, _BIter, _BIter);</code></p>
+<pre><code class="language-c++">#include&lt;algorithm&gt;
+
+int num[arrayLength];
+
+mergesort(0, arrayLength-1);		// main()函数调用
+
+void mergesort(int left,int right) {
+    if(left&gt;=right)
+        return;
+    int mid=(left+right)/2;
+    mergesort(left,mid);
+    mergesort(mid+1,right);
+    inplace_merge(number+left, number+mid+1, number+right+1);
+}
+</code></pre>
+<p>另外，还可以通过 <code>循环左移</code> 来实现归并操作：</p>
+<pre><code class="language-c++">//将长度为n的数组逆序
+void reverse(int *arr,int n) {
+    int i=0,j=n-1;
+    while(i&lt;j) {
+        swap(arr[i],arr[j]);
+        i++;
+        j--;
+    }
+}
+
+//将数组向左循环移位i个位置
+void exchange(int *arr,int n,int i) {
+    reverse(arr,i);
+    reverse(arr+i,n-i);
+    reverse(arr,n);
+}
+
+//数组两个有序部分的归并
+void merge(int *arr,int begin,int mid,int end) {
+    int i=begin,j=mid,k=end;
+    while(i&lt;j &amp;&amp; j&lt;=k) {
+        int step=0;
+        while(i&lt;j &amp;&amp; arr[i]&lt;=arr[j])
+            ++i;
+        while(j&lt;=k &amp;&amp; arr[j]&lt;=arr[i]) {
+            ++j;
+            ++step;
+        }
+        exchange(arr+i,j-i,j-i-step);
+        i=i+step;
+    }
+}
+
+void MergeSort(int *arr,int l,int r) {
+    if(l&lt;r) {
+        int mid=(l+r)/2;
+        MergeSort(arr,l,mid);
+        MergeSort(arr,mid+1,r);
+        merge(arr,l,mid+1,r);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><strong>基数排序(Radix Sort)</strong></p>
+<p><strong>算法思想</strong>：基数排序 通过序列中各个元素的值，对排序的N个元素进行若干趟的“分配”与“收集”来实现排序。</p>
+<p>分配：将 L[i]中的元素取出，首先确定其个位上的数字，根据该数字分配到与之序号相同的桶中 。</p>
+<p>收集：当序列中所有的元素都分配到对应的桶中，再按照顺序依次将桶中的元素收集形成新的一个待排序列 L[ ] 。</p>
+<p>对新形成的序列L[]重复执行分配和收集元素中的十位、百位...直到分配完该序列中的最高位，则排序结束。</p>
+<pre><code class="language-c++">void RadixSort(Node L[],length,maxradix) {
+    int m,n,k,lsp;
+    k=1;
+    m=1;
+    int temp[10][length-1];
+    Empty(temp); //清空临时空间
+    while(k&lt;maxradix) { //遍历所有关键字
+        for(int i=0; i&lt;length; i++) { //分配过程
+            if(L[i]&lt;m)
+                Temp[0][n]=L[i];
+            else
+                Lsp=(L[i]/m)%10; //确定关键字
+            Temp[lsp][n]=L[i];
+            n++;
+        }
+        CollectElement(L,Temp); //收集
+        n=0;
+        m=m*10;
+        k++;
+    }
+}
+
+</code></pre>
+</li>
+</ol>
+<h2 id="总结分析">总结分析</h2>
+<p>各算法の时间复杂度函数O(n)的增长情况如图：<br>
+<img src="https://alittlewhiter.github.io/post-images/1585912012375.png" alt="" loading="lazy"></p>
+<p>所以对n较大的排序记录，一般的选择都是时间复杂度为O(nlog2n)的排序方法。</p>
+<ol>
+<li>
+<p>平方阶(O(n2))排序</p>
+<p>各类简单排序:直接插入、直接选择和冒泡排序；</p>
+</li>
+<li>
+<p>线性对数阶(O(nlog2n))排序</p>
+<p>快速排序、堆排序和归并排序；</p>
+</li>
+<li>
+<p>O(n1+§))排序,§是介于0和1之间的常数。</p>
+<p>希尔排序</p>
+</li>
+<li>
+<p>线性阶(O(n))排序</p>
+<p>基数排序，此外还有桶排序、箱排序。</p>
+</li>
+</ol>
+<p><em><strong>因此</strong></em>：</p>
+<ul>
+<li>
+<p>当原表有序或基本有序时，<code>直接插入排序</code>和<code>冒泡排序</code>将大大减少比较次数和移动记录的次数，时间复杂度可降至O（n）；</p>
+</li>
+<li>
+<p>而<code>快速排序</code>则相反，<mark>当原表基本有序时，将蜕化为冒泡排序，时间复杂度提高为O（n2）</mark>；</p>
+</li>
+<li>
+<p>原表是否有序，对简单选择排序、堆排序、归并排序和基数排序的时间复杂度影响不大。</p>
+</li>
+</ul>
+<p><strong>排序算法的稳定性</strong>: 若待排序的序列中，存在多个<code>具有相同关键字的记录，经过排序， 这些记录的相对次序保持不变</code>，则称该算法是稳定的；若经排序后，记录的相对 次序发生了改变，则称该算法是不稳定的。</p>
+<p><strong>稳定性的好处</strong>：排序算法如果是稳定的，那么从一个键上排序，然后再从另一个键上排序，第一个键排序的结果可以为第二个键排序所用。</p>
+<ul>
+<li>
+<p>基数排序就是这样，先按低位排序，逐次按高位排序，低位相同的元素其顺序再高位也相同时是不会改变的。另外，如果排序算法稳定，可以避免多余的比较；</p>
+</li>
+<li>
+<p>稳定的排序算法：冒泡排序、插入排序、归并排序和基数排序</p>
+</li>
+<li>
+<p>不稳定的排序算法：选择排序、快速排序、希尔排序、堆排序</p>
+</li>
+</ul>
+<h2 id="何种排序算法">何种排序算法？</h2>
+<p>考虑的因素有以下四点：</p>
+<ol>
+<li>
+<p>待排序的记录数目n的大小；</p>
+</li>
+<li>
+<p>记录本身数据量的大小，也就是记录中除关键字外的其他信息量的大小；</p>
+</li>
+<li>
+<p>关键字的结构及其分布情况；</p>
+</li>
+<li>
+<p>对排序稳定性的要求。</p>
+</li>
+</ol>
+<p>具体来说：设待排序元素的个数为n</p>
+<p>1）当n较大，则应采用时间复杂度为O(nlog2n)的排序方法：<code>快速排序</code>、<code>堆排序</code>或<code>归并排序</code>。</p>
+<ul>
+<li>
+<p>快速排序：是目前基于比较的内部排序中被认为是最好的方法，当待排序的关键字是随机分布时，快速排序的平均时间最短；</p>
+</li>
+<li>
+<p>堆排序 ： 如果内存空间允许且要求稳定性的，</p>
+</li>
+<li>
+<p>归并排序：它有一定数量的数据移动，所以我们可能过与插入排序组合，先获得一定长度的序列，然后再合并，在效率上将有所提高。</p>
+</li>
+</ul>
+<p>2） 当n较大，内存空间允许，且要求稳定性：归并排序</p>
+<p>3）当n较小，可采用直接插入或直接选择排序。</p>
+<ul>
+<li>
+<p>直接插入排序：当元素分布有序，直接插入排序将大大减少比较次数和移动记录的次数。</p>
+</li>
+<li>
+<p>直接选择排序 ：元素分布有序，如果不要求稳定性，选择直接选择排序</p>
+</li>
+</ul>
+<p>4）一般不使用或不直接使用传统的冒泡排序。</p>
+<p>5）基数排序</p>
+<ul>
+<li>它是一种稳定的排序算法，但有一定的局限性：
+<ol>
+<li>关键字可分解。</li>
+<li>记录的关键字位数较少，如果密集更好。</li>
+<li>如果是数字时，最好是无符号的，否则将增加相应的映射复杂度，可先将其正负分开排序。</li>
+</ol>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P r o v e r]]></title>
         <id>https://alittlewhiter.github.io/post/prover/</id>
@@ -883,9 +1428,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1092997"><label class="task-list-item-label" for="task-item-1092997"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3927836"><label class="task-list-item-label" for="task-item-3927836"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3669885"><label class="task-list-item-label" for="task-item-3669885"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8415240"><label class="task-list-item-label" for="task-item-8415240"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8382915"><label class="task-list-item-label" for="task-item-8382915"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6529264"><label class="task-list-item-label" for="task-item-6529264"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
@@ -945,226 +1490,6 @@ $$
 </li>
 </ol>
 </section>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[X86寄存器详解（正经.jpg]]></title>
-        <id>https://alittlewhiter.github.io/post/x86-ji-cun-qi-xiang-jie/</id>
-        <link href="https://alittlewhiter.github.io/post/x86-ji-cun-qi-xiang-jie/">
-        </link>
-        <updated>2020-03-03T01:29:03.000Z</updated>
-        <summary type="html"><![CDATA[<p>Keywords：x86寄存器、<br>
-精心整理，有空看看</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Keywords：x86寄存器、<br>
-精心整理，有空看看</p>
-<!-- more -->
-<h2 id="概述">概述</h2>
-<p>x86或80x86是英特尔Intel首先开发制造的一种微处理器体系结构的泛称。该系列较早期的处理器名称是以数字来表示，并以“86”作为结尾，包括最开始16位的Intel 8086、80186、80286、到后来推出32位80386微处理器以及如今64位的80486，因此其架构被称为“x86”。 寄存器是CPU的组成部分，是有限存贮容量的高速存贮部件，是 CPU 中非常珍贵的稀有资源，它们可用来暂存指令、数据和地址。在中央处理器的控制部件中，有指令寄存器(IR)和程序计数器(PC)，而在算术及逻辑部件中，寄存器有累加器(ACC)。<br>
-早期的8086CPU中，只包含14个结构为16位的寄存器（即一个寄存器可以存放下2个字节的数据）：AX，BX，CX，DX，SP，BP，DI，SI，IP，FLAG，CS，DS，ES，SS。而到了 80386 CPU中，寄存器的个数增多了，同时寄存器的结构也变了，如绝大多数的寄存器扩展为32位，而有些寄存器则仍是16位 ，并在后续发展中不断更新改进。</p>
-<h2 id="32位cpu系统级寄存器和数据结构">32位cpu系统级寄存器和数据结构</h2>
-<figure data-type="image" tabindex="1"><img src="https://alittlewhiter.github.io/post-images/1583199240318.png" alt="" loading="lazy"></figure>
-<h2 id="寄存器分类介绍32位模式">寄存器分类介绍（32位模式）</h2>
-<blockquote>
-<p>通用寄存器：8个，分别为EAX，EBX，ECX，EDX，ESP，EBP，ESI，EDI<br>
-标志寄存器：1个，EFLAGS<br>
-控制寄存器：5个，分别为CR0-CR4<br>
-调试寄存器：8个，分别为DR0-DR7<br>
-系统地址寄存器：4个，GDTR，IDTR，LDTR和TR<br>
-段寄存器：6个，分别为CS，DS，SS，ES，FS，GS<br>
-其他特殊目的寄存器：EIP，TSC等</p>
-</blockquote>
-<h3 id="通用寄存器general-purpose-registers">通用寄存器（General-Purpose Registers）：</h3>
-<ul>
-<li>
-<p>尽管这8个通用寄存器大多时候是通用的，可以作任何用途，但是在某些情况下也有各自约定俗成的隐含用法。比如在串循环操作中ECX用作计数器，而EDI用于寻址目标数据串，ESI用于寻址源数据串。EBP和ESP主要用来维护栈，ESP通常指向栈的顶部，EBP指向当前栈帧的起始地址。<br>
-<img src="https://alittlewhiter.github.io/post-images/1583200258718.png" alt="" loading="lazy"></p>
-<ul>
-<li>EAX, EBX, ECX, EDX称数据寄存器，它们都可以作为32位寄存器（如EAX）、16位寄存器（AX）或者分为两个独立的8位寄存器（AH、AL）使用。如果作为8位或者16位寄存器被寻址，则仅会改变32位寄存器的某一部分而不影响其他部分。</li>
-<li>ESI、EDI、SI和DI称为变址寄存器，主要用于存放存储单元在段内的偏移量，用它们可实现多种不同形式的存储器操作数的寻址方式。EBP、ESP、BP和SP称为指针寄存器，主要用于存放堆栈内存储单元的偏移量，用它们可实现多种寻址方式，为以不同的地址形式访问堆栈存储单元提供方便。变址寄存器和指针寄存器不可分割成8位寄存器，但也可存储算术逻辑运算的操作数和运算结果。<br>
-<img src="https://alittlewhiter.github.io/post-images/1583200289859.png" alt="" loading="lazy"></li>
-</ul>
-</li>
-<li>
-<p>EAX(Accumulator)：累加寄存器 可作为累加器用于乘法、除法及一些调整指令，也可以保存被访问存储器单元的偏移地址。</p>
-</li>
-<li>
-<p>EBX (Base)：基址寄存器 可以被作为EBX、BX，BH和BL被寻址，包括16位微处理器，BX可以保存内存系统位置的偏移地址，32位的EBX也可以用来寻址内存数据。</p>
-</li>
-<li>
-<p>ECX (Count)：计数器寄存器 ECX是一个通用目的计数器，它持有多种指令的计数，自80386以上ECX寄存器也可以保存访问数据所在存储器单元的偏移地址。用于计数的指令包括重复字符串指令（REP/REPE/REPNE）、shift、rotate 和 LOOP/LOOPD 指令。重复字符串指令使用CX， Shift 和 rotate 移位指令使用CL作为计数器。，而LOOP/LOOPD循环指令使用CX或者ECX指令。</p>
-</li>
-<li>
-<p>EDX (Data)：数据寄存器 通用目的数据寄存器，它常与EAX配合保存乘法运算结果的一部分或者除法运算之前的被除数，80386以后也可被用作寻址内存数据。</p>
-</li>
-<li>
-<p>EDI（Destination Index）目标索引寄存器 通常寻址一些字符串指令的字符串目标数据。它也可以起到32或者16位通用寄存器的作用。</p>
-</li>
-<li>
-<p>ESI（Source Index）源索引寄存器 通常寻址字符串指令的源字符串数据。</p>
-</li>
-<li>
-<p>EBP (Base Pointer) 基指针寄存器 用作EBP或BP寻址，可直接存取堆栈中数据</p>
-</li>
-<li>
-<p>ESP (Stack Pointer) 堆栈指针寄存器 可访问内存中堆栈段的栈顶</p>
-</li>
-</ul>
-<h3 id="标志寄存器eflags">标志寄存器（EFLAGS）：</h3>
-<ul>
-<li>控制任务状态和模式切换、中断处理、指令追踪和访问权限控制，寄存器中的标志位需要特权指令代码才可以修改(特权指令：运行在内核态下的代码)，16位模式下使用PUSHF和POPF将FLAG压栈和推出，32位则用PUSHFD/POPFD。80x86和Pentium全系列微处理器的EFLAGS和FLAG寄存器如下：<br>
-<img src="https://alittlewhiter.github.io/post-images/1583200854075.png" alt="" loading="lazy"></li>
-</ul>
-<h4 id="eflags寄存器的状态标志0-2-4-6-7以及11位指示算术指令如add-sub-mul以及div指令的结果这些状态标志的作用如下">EFLAGS寄存器的状态标志(0、2、4、6、7以及11位)指示算术指令（如ADD, SUB, MUL以及DIV指令）的结果，这些状态标志的作用如下：</h4>
-<ul>
-<li>CF(bit 0) [Carry flag]   若算术操作产生的结果在最高有效位(most-significant bit)发生进位或借位则将其置1，反之清零。这个标志指示无符号整型运算的溢出状态，这个标志同样在多倍精度运算(multiple-precision arithmetic)中使用。</li>
-<li>PF(bit 2) [Parity flag]   如果结果的最低有效字节(least-significant byte)包含偶数个1位则该位置1，否则清零。</li>
-<li>AF(bit 4) [Adjust flag]   如果算术操作在结果的第3位发生进位或借位则将该标志置1，否则清零。这个标志在BCD(binary-code decimal)算术运算中被使用。</li>
-<li>ZF(bit 6) [Zero flag]   若结果为0则将其置1，反之清零。</li>
-<li>SF(bit 7) [Sign flag]   该标志被设置为有符号整型的最高有效位。(0指示结果为正，反之则为负)</li>
-<li>DF(bit 10)[Direction flag] 控制串指令(MOVS, CMPS, SCAS, LODS以及STOS)。设置DF标志使得串指令自动递减（从高地址向低地址方向处理字符串），清除该标志则使得串指令自动递增。STD以及- CLD指令分别用于设置以及清除DF标志。</li>
-<li>OF(bit 11) [Overflow flag]   如果整型结果是较大的正数或较小的负数，并且无法匹配目的操作数时将该位置1，反之清零。这个标志为带符号整型运算指示溢出状态。</li>
-</ul>
-<h4 id="系统标志以及iopl域system-flags-and-iopl-field">系统标志以及IOPL域(System Flags and IOPL Field)，</h4>
-<p>EFLAGS寄存器中的这部分标志用于控制操作系统或是执行操作，它们不允许被应用程序所修改。这些标志的作用如下：</p>
-<ul>
-<li>TF(bit 8) [Trap flag]   将该位设置为1以允许单步调试模式，清零则禁用该模式。</li>
-<li>IF(bit 9) [Interrupt enable flag]   该标志用于控制处理器对可屏蔽中断请求(maskable interrupt requests)的响应。置1以响应可屏蔽中断，反之则禁止可屏蔽中断。</li>
-<li>IOPL(bits 12 and 13) [I/O privilege level field]   指示当前运行任务的I/O特权级(I/O privilege level)，正在运行任务的当前特权级(CPL)必须小于或等于I/O特权级才能允许访问I/O地址空间。这个域只能在CPL为0时才能通过POPF以及IRET指令修改。</li>
-<li>NT(bit 14) [Nested task flag]   这个标志控制中断链和被调用任务。若当前任务与前一个执行任务相关则置1，反之则清零。</li>
-<li>RF(bit 16) [Resume flag]   控制处理器对调试异常的响应。</li>
-<li>VM(bit 17) [Virtual-8086 mode flag]   置1以允许虚拟8086模式，清除则返回保护模式。</li>
-<li>AC(bit 18) [Alignment check flag]   该标志以及在CR0寄存器中的AM位置1时将允许内存引用的对齐检查，以上两个标志中至少有一个被清零则禁用对齐检查。</li>
-<li>VIF(bit 19) [Virtual interrupt flag]   该标志是IF标志的虚拟镜像(Virtual image)，与VIP标志结合起来使用。使用这个标志以及VIP标志，并设置CR4控制寄存器中的VME标志就可以允许虚拟模式扩展(virtual mode extensions)</li>
-<li>VIP(bit 20) [Virtual interrupt pending flag]   该位置1以指示一个中断正在被挂起，当没有中断挂起时该位清零。【Software sets and clears this flag; the processor only reads it.】与VIF标志结合使用。</li>
-<li>ID(bit 21) [Identification flag]   程序能够设置或清除这个标志指示了处理器对CPUID指令的支持。</li>
-</ul>
-<h3 id="控制寄存器control-register">控制寄存器（Control Register）：</h3>
-<p>（CR0 - CR4）保存全局性、和任务无关的机器状态，用于控制和确定 处理器的操作模式以及当前执行任务的一些特性，其逻辑结构具体如下图：<br>
-<img src="https://alittlewhiter.github.io/post-images/1583200418040.png" alt="" loading="lazy"></p>
-<h4 id="cr0-包含了-6-个预定义标志控制系统的工作模式和处理器的状态其各特殊位的含义功能如下">CR0: 包含了 6 个预定义标志，控制系统的工作模式和处理器的状态，其各特殊位的含义功能如下：</h4>
-<ul>
-<li>PG（bit 31）：分页有效时,置位为1,清空时为0（与PE一同使用），该指令表明是否使用页表将线性地址转换成物理地址</li>
-<li>CD（bit 30）：cache 缺失设置位</li>
-<li>NW（bit 29）：直写无效(直写:高速缓存中的数据始终保持与主存储器中数据匹配)</li>
-<li>AM（bit 18）：对齐功能屏蔽(与EFLAGS寄存器中 AC标志位一同使用)</li>
-<li>WP（bit 16）：写保护</li>
-<li>NE（bit 5）：数字错误标志位(与浮点协处理器共同使用)</li>
-<li>ET（bit 4）：扩展类型.设置有效位时,支持 ntel 387 DX 数学协处理器指令.</li>
-<li>TS（bit 3）：每当任务切换时就设置该位,并且在解释协处理器指令之前测试该位</li>
-<li>EM（bit 2）：该位表明是否需要仿真协处理器的功能</li>
-<li>MP（bit 1）：协处理器监视标志位</li>
-<li>PE（bit 0）：保护模式使能，当设置有效位（1），CPU工作在保护模式；反之（0），则在实模式下运行。</li>
-</ul>
-<h4 id="cr1-未定义的控制寄存器保留">CR1: 未定义的控制寄存器，保留。</h4>
-<h4 id="cr2-页故障线性地址寄存器保留最后一次出现页故障的全32位线性地址">CR2: 页故障线性地址寄存器，保留最后一次出现页故障的全32位线性地址</h4>
-<h4 id="cr3-页目录基址寄存器保存页目录表的物理内存基地址和pcd和pwt标志位和cache有关">CR3: 页目录基址寄存器，保存页目录表的物理内存基地址和PCD和PWT标志位(和Cache有关)</h4>
-<ul>
-<li>PCD: 控制当前页目录表的缓冲，当设置清空时，缓冲置位时，缓冲无效.与CR0中的CD或PG一同使用</li>
-<li>PWT: 控制cache采取直写还是回写的策略.当设置清空时,回写有效.当置位时，直写有效。</li>
-</ul>
-<h4 id="cr4-一些结构的扩展表明对于特定的处理器和操作系统执行支持">CR4: 一些结构的扩展.表明对于特定的处理器和操作系统执行支持.</h4>
-<ul>
-<li>VME: 虚地址模式，当清空时无效.</li>
-<li>PVI: 保护模式虚中断，当清空时无效</li>
-<li>TSD: 时间戳允许标志位，当清空时，允许RDTSC指令执行在任务特权级上；当置位时，只允许工作在特权级0.</li>
-<li>DE: 调试扩展，置位表明DR4与DR5将产生没有定义的异常</li>
-<li>PSE: 当置位时使用4M的页面；清空，使用4K的页面</li>
-<li>PAE: 置位表示使用36物理内存的分页机制，清空时使用32位分页机制</li>
-<li>MCE: 置位表示使用机器检查异常机制</li>
-<li>PGE: 置位表示启动全局页面，当写CR3时，也不会被替换.</li>
-<li>PCE: 置位表明使RDPMC指令工作在任何保护级别.</li>
-<li>OSFXSR: 置位表明操作系统支持FXSAVE and FXRSTOR指令</li>
-<li>OSXMMEXCPT: 置位表明操作系统支持不可屏蔽的SIMD浮点异常.</li>
-</ul>
-<h3 id="调试寄存器debug-register">调试寄存器（Debug Register）：</h3>
-<p>（DR0 - DR7）使系统程序设计人员设置和监视1到4个断点（编号0-3），用它们可以规定指令执行和数据读写的任何组合。应用于调试应用代码、系统代码、开发多任务操作系统，来监视代码的运行和处理器的性能。对于每个断点，可以指定以下信息：</p>
-<ul>
-<li>断点发生的线性地址</li>
-<li>断点位置的长度：1、2、4或8个字节</li>
-<li>必须在地址处执行的操作才能生成调试异常</li>
-<li>是否启用断点</li>
-<li>生成调试异常时是否存在断点条件<br>
-<img src="https://alittlewhiter.github.io/post-images/1583200462908.png" alt="" loading="lazy"></li>
-</ul>
-<h4 id="调试地址寄存器debug-address-registersdr0-dr3">调试地址寄存器（Debug Address Registers）DR0-DR3：</h4>
-<p>保留4个32位断点的线性地址</p>
-<h4 id="调试寄存器debug-registersdr4dr5">调试寄存器（Debug Registers）DR4，DR5：</h4>
-<p>启用调试扩展时（控制寄存器CR4中的DE标志已置位时）保留调试寄存器DR4和DR5（）并尝试引用DR4和DR5寄存器会导致无效操作码异常</p>
-<h4 id="调试状态寄存器debug-status-registerdr6">调试状态寄存器（Debug Status Register）DR6：</h4>
-<p>报告在上次调试异常时采样的调试条件生成，且仅在生成异常时才会更新此寄存器。该寄存器中的标志显示以下信息：<br>
-- B0—B3: 断点状态的监测<br>
-- BD: 调试寄存器访问监测.置位,表明在指令流中,下一条指令将访问其中的一个调试寄存器<br>
-- BS: 单步执行标志位<br>
-- BT: 任务转换标志位</p>
-<h4 id="调试控制寄存器debug-control-registerdr7">调试控制寄存器（Debug Control Register）DR7：</h4>
-<p>该寄存器中的标志信息如下：<br>
-- L0—L3: 局部断点使能标志位<br>
-- G0--G3: 全局断点使能标志位<br>
-- LE AND GE: 置位表明处理器可以监测导致数据断点的指令，一般置位<br>
-- GD: 通用监测使能标志位.表明是否开启调试寄存器保护.<br>
-- LEN0 through LEN3 : 用来表明相应断点地址寄存器内存位置的大小.<br>
-- R/W0 through R/W3: 相应断点的状态</p>
-<h3 id="系统地址寄存器memory-management-registers">系统地址寄存器（Memory Management Registers）：</h3>
-<ul>
-<li>80386中含有4个系统地址寄存器，包括全局描述符表寄存器GDTR(Global Descriptor Table Register)、中断描述符表寄存器 IDTR(Interrupt Descriptor Table Register)、局部描述表 寄存器LDTR(Local Descriptor Table Register)和任务寄存器TR(Task Register)。</li>
-<li>主要用来在保护模式下，管理用于生成线性地址和物理地址的4个系统管理描述符表，GDTR、IDTR和LDTR用于寻址存放描述符表的段。TR用于寻址一个特殊的任务状态段(Task State Segment，TSS)。TSS中包含着当前执行任务的重要信息。<br>
-<img src="https://alittlewhiter.github.io/post-images/1583200761420.png" alt="" loading="lazy"></li>
-</ul>
-<p>具体情况如下：<br>
-- 全局描述符表寄存器GDTR：是一个48位寄存器，用来存放全局描述符表GDT的32位线性基地址和16位的界限值。在全局描述符表中不仅包括有操作系统使用的描述符，而且还有所有任务使用的公用描述符。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成0xFFFF，在保护模式初始化过程中必须给GDTR加载一个新值。<br>
-- 中断描述符表寄存器IDTR：是一个48位寄存器，用来存放中断描述符表IDT的32位线性基地址和16位的界限值。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成 0xFFFF。<br>
-局部描述符表寄存器LDTR：是一个16位寄存器，用来存放局部描述符表 LDT 的 32 位线性基地址、16 位段限长和描述符属性值。另外还有一个隐含的描述符高速缓冲寄存器，用来存放LDT表描述符。在机器加电或处理器复位后，段选择符和基地址被默认地设置为 0，而段长度被设置成 0xFFFF。<br>
-- 任务状态寄存器TR：是一个16位寄存器，用来存放当前任务状态段TSS的16位段选择符、32位基地址、16位段长度和描述符属性值。与之相应，也有一个隐含的描述符高速缓冲寄存器，用来存放任务状态段TSS的描述符。当执行任务切换时，处理器会把新任务的 TSS 的段选择符和段描述符自动加载进任务寄存器TR中。</p>
-<h3 id="段寄存器">段寄存器：</h3>
-<ul>
-<li>段寄存器是根据内存分段的管理模式而设置的，用于保存16位段选择器（一种特殊指针，用于标识内存中的段）。内存单元的物理地址由段寄存器的值和一个偏移量组合而成的，这样可用两个较少位数的值组合成一个可访问较大物理空间的内存地址。DS，ES，FS和GS寄存器指向四个数据段，四个数据段的可用性允许有效和安全地访问不同类型的数据结构。
-<ul>
-<li>代码段寄存器（CS）(Code Segment)：包含代码段的段选择器，其中存储正在执行的指令。处理器使用由CS和EIP组成的逻辑地址从代码段中获取指令</li>
-<li>数据段寄存器（DS）(Data Segment)：值为数据段的段值</li>
-<li>附加段寄存器（ES）(Extra Segment)：其值为附加数据段的段值</li>
-<li>附加段寄存器（FS）(Extra Segment)：其值为附加数据段的段值</li>
-<li>附加段寄存器（GS）(Extra Segment)：32位微机系统中可访问</li>
-<li>堆栈段寄存器（SS）(Stack Segment)：其值为堆栈段的段值，包含堆栈段的段选择器，其中存储过程堆栈以用于当前正在执行的程序，任务或处理程序，所有堆栈操作都使用SS寄存器来查找。</li>
-</ul>
-</li>
-</ul>
-<h3 id="其他特殊目的寄存器">其他特殊目的寄存器：</h3>
-<ul>
-<li>
-<p>指令指针指示器（EIP）：它是32位寄存器，低16位称为IP（8086的指令指针寄存器），用与兼容16位CPU，其内容是下一条要取入CPU的指令在内存中的偏移地址。当一个程序开始运行时，系统把EIP清零，每取入一条指令，EPI自动增加取入CPU的字节数目，所以称EIP为指令指针。<br>
-<img src="https://alittlewhiter.github.io/post-images/1583200805247.png" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>时间戳寄存器（TSC）：每个时钟周期时其值加1，重启时清零。通过RDTSC指令读取TSC寄存器，只有当CR4寄存器的TSD位为0时，才可以在任何优先级下执行该指令，否则只能在特权级下执行该指令。</p>
-</li>
-<li>
-<p>浮点寄存器（FP）：由于在80486微处理器内部设有浮点运算器，因此在其内部有相应的寄存器，其中包括8个80位通用数据寄存器、1个48位指令指针寄存器、1个48位数据指针寄存器、1个16位控制字寄存器、1个16位状态字寄存器和1个16位标记字寄存器。</p>
-</li>
-</ul>
-<h2 id="64位扩展寄存器简要说明">64位扩展寄存器（简要说明）</h2>
-<ul>
-<li>X86-64中，通用寄存器都是64位，相对32位的x86来说，标识符从原来的ebp变成rbp。为了向后兼容性，ebp依然可以使用，不过指向了rbp的低32位，新增加通用寄存器r8到r15，其低位分别用d、w、b指定长度。</li>
-<li>32位使用栈帧来作为传递的参数的保存位置，而64位使用寄存器，分别用rdi,rsi,rdx,rcx,r8,r9作为第1-6个参数，rax作为返回值。64位没有栈帧的指针，32位用ebp作为栈帧指针，64位取消了这个设定，rbp作为通用寄存器使用。64位支持一些形式的以PC相关的寻址，而32位只有在jmp的时候才会用到这种寻址方式。其中：
-<ul>
-<li>rax 作为函数返回值使用</li>
-<li>rsp 栈指针寄存器，指向栈顶</li>
-<li>rdi，rsi，rdx，rcx，r8，r9 用作函数参数，依次对应第1参数，第2参数</li>
-<li>rbx，rbp，r12，r13，14，15 用作数据存储，遵循被调用者使用规则，简单说就是随便用，调用子函数之前要备份它，以防他被修改</li>
-<li>r10，r11 用作数据存储，遵循调用者使用规则，简单说就是使用之前要先保存原值<br>
-<img src="https://alittlewhiter.github.io/post-images/1583200833479.png" alt="" loading="lazy"></li>
-</ul>
-</li>
-</ul>
-<h2 id="参考资料">参考资料：</h2>
-<p>【1】	深入理解计算机体系结构<br>
-【2】	X86系列汇编语言程序设计<br>
-【3】	李忠，王晓波，余洁．x86汇编语言：从实模式到保护模式[M]．北京：电子工业出版社<br>
-【4】	Intel x86 CPU系列的寄存器-wangbaolin719-ChinaUnix博客<br>
-URL: http://blog.chinaunix.net/uid-27717694-id-3943419.html<br>
-【5】	Intel_x86_CPU系列的寄存器[整理版]<br>
-URL: https://www.docin.com/p-880130068.html<br>
-【6】	[官方文档]：64-ia-32-architectures-software-developer-manual-325462.pdf</p>
 ]]></content>
     </entry>
 </feed>
