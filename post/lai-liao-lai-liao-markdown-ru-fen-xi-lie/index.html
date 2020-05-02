@@ -8,7 +8,7 @@
 <meta name="description" content="Took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="theme-color" content="#000">
 <title>来了来了、Markdown入坟系列 | 君の知らない物语</title>
-<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1587685290467">
+<link rel="shortcut icon" href="https://alittlewhiter.github.io/favicon.ico?v=1588387261594">
 <link rel="stylesheet" href="https://alittlewhiter.github.io/styles/main.css">
 
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -545,7 +545,7 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1513<span class="pc-show">字数</span></span>
+      <span>1663<span class="pc-show">字数</span></span>
     </span>
   </div>
 </header>
@@ -635,6 +635,13 @@ ___
 </tr>
 </tbody>
 </table>
+<ul>
+<li><u>下划线</u>：Markdown 并无下划线的原生语法，因为会和链接的默认样式产生混淆。可以采用html的span标签、设置行内CSS的border-bottom属性来添加下划线：</li>
+<li>e.g.  <span style="border-bottom:2px dashed yellow;">span标签：所添加的需要加下划线的行内文字</span>， <u>u标签示例</u></li>
+</ul>
+<pre><code class="language-html">&lt;span style=&quot;border-bottom:2px dashed yellow;&quot;&gt;span标签：所添加的需要加下划线的行内文字&lt;/span&gt;
+&lt;u&gt;u标签示例&lt;/u&gt;
+</code></pre>
 <h3 id="引用文本">引用文本</h3>
 <p>可以使用 <code>&gt;</code> 来引用一段文本，引用可以多层嵌套</p>
 <blockquote>
@@ -646,9 +653,10 @@ ___
 </blockquote>
 </blockquote>
 </blockquote>
-<ul>
-<li></li>
-</ul>
+<pre><code class="language-nohighlight">&gt; 鲁迅：“这是一段引用文本”（我没说.jpg）
+&gt; &gt; 禁止套娃！
+&gt; &gt; &gt; 禁止禁止套娃！！
+</code></pre>
 <h3 id="代码">代码</h3>
 <ul>
 <li>
@@ -732,9 +740,9 @@ git commit
 - [ ] (Optional) 打开拉取请求
 </code></pre>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-915195"><label class="task-list-item-label" for="task-item-915195"> 完成更改</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6841484"><label class="task-list-item-label" for="task-item-6841484"> 推送提交到 GitHub</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9638690"><label class="task-list-item-label" for="task-item-9638690"> (Optional) 打开拉取请求</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7211583"><label class="task-list-item-label" for="task-item-7211583"> 完成更改</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6461613"><label class="task-list-item-label" for="task-item-6461613"> 推送提交到 GitHub</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3609355"><label class="task-list-item-label" for="task-item-3609355"> (Optional) 打开拉取请求</label></li>
 </ul>
 <p><strong>注</strong>：如果任务列表项描述以括号开头，则需要加空格分隔或使用\对其进行转义。</p>
 </li>
