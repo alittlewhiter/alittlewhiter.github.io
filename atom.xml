@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-05-02T02:41:08.740Z</updated>
+    <updated>2020-05-02T02:51:49.253Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -10,6 +10,185 @@
     <logo>https://alittlewhiter.github.io/images/avatar.png</logo>
     <icon>https://alittlewhiter.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 君の知らない物语</rights>
+    <entry>
+        <title type="html"><![CDATA[正规集的表示工具 和 识别工具]]></title>
+        <id>https://alittlewhiter.github.io/post/zheng-gui-ji-de-biao-shi-gong-ju-he-shi-bie-gong-ju/</id>
+        <link href="https://alittlewhiter.github.io/post/zheng-gui-ji-de-biao-shi-gong-ju-he-shi-bie-gong-ju/">
+        </link>
+        <updated>2020-05-02T02:43:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>Keywords：正规集，NFA，DFA，</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Keywords：正规集，NFA，DFA，</p>
+<!-- more -->
+<h2 id="正规集的表示工具和识别工具">正规集的表示工具和识别工具</h2>
+<h3 id="正规集的表示工具和识别工具-2">正规集的表示工具和识别工具</h3>
+<p>**任务性质：**选做任务，分值30分。要求独立完成，不接受团队成果。</p>
+<p>**任务介绍：**将给定的正规表达式转换为等价的有限状态自动机。</p>
+<h3 id="任务内容">任务内容</h3>
+<ol>
+<li>
+<p>设计一个程序，对于输入的一个正规表达式和一个任意字符串，判定该字符串是否该正规式所表示的正规集的一个元素，输出<code>Yes</code> or <code>No</code>。</p>
+</li>
+<li>
+<p>要求：</p>
+<ul>
+<li>
+<p>**输入：**键盘输入，两行。第一行输入一个RE，教科书标准写法，不含扩展符号。第二行输入一个任意字符串，不含非法字符；</p>
+</li>
+<li>
+<p><strong>输出：<strong>屏幕打印输出</strong>Yes</strong>或<strong>No</strong>，说明该串是否是该正规式所表示的语言的一个句子；</p>
+</li>
+<li>
+<p>**处理过程：**要求在实验报告中说明对主要数据结构和算法的设计，包括：正规式和自动机的数据结构设计和核心处理过程（DFA对串的识别过程等）；</p>
+</li>
+<li>
+<p>**程序代码：**要求以附件形式提供能编译运行的程序代码文件（包）；</p>
+</li>
+<li>
+<p>RE需要<mark>先转换为NFA，再由NFA转换为DFA</mark>，不强制要求最小化DFA；</p>
+</li>
+<li>
+<p>需要考虑e-closure函数的实现；</p>
+</li>
+<li>
+<p>考虑数据结构，如RE的数据结构，NFA的数据结构，NFA的状态数据结构，以及DFA的数据结构。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="任务分析">任务分析</h3>
+<ol>
+<li>
+<p>本任务是通过程序实现输入正规表达式（字符串），自动生成确定的有穷自动机（DFA），并能够通过该DFA去识别符合该正规式所定义语言的字符串。正规表达式是描述单词规则的工具，而有穷自动机能够对任意的一个单词，将其输入正规式的初始状态，自动机每次读入一个字母，根据单词的字母进行自动机中状态的转换，若其能够准确的到达自动机的终止状态，就说明该单词能够被自动机识别，也就满足了正规式所定义的规则。根据<mark>正规式与有穷自动机的等价性</mark>：<strong>对于Σ上的每个正规表达式<code>V</code>，都存在一个Σ上的DFA <code>M</code>，使得<code>L(M)=L(V)</code></strong>。</p>
+<p>​        关于DFA与NFA之间的差异：对于某一个状态S，输入一个字符a，DFA能够到达的下一个状态有且仅有一个，而NFA所能到达的状态个数大于或等于一个（即不确定的）。因为NFA为不确定的，对于程序来说识别时无法准确判断下一个应转移到哪一个状态，因此识别一个正规式的最好的方式是DFA。</p>
+</li>
+<li>
+<p>由于DFA非常方便实现字符串的模式匹配，且DFA可由NFA经一定算法确定化得到，因此可以先将正规式V转化为<code>X -&gt; Y</code>的NFA形式（其中X为初态，Y为终态，X通过正规式V可以转化为Y），并且根据以下规则对正规式逐步分解，加入新的节点和弧，直到每条弧的标记均为字符集Σ上的一个**<code>符号</code><strong>或者</strong><code>ε</code>**。这样就能构造出该正规表达式对应的非确定有穷自动机NFA，再考虑将NFA确定化为DFA、对DFA进行最小化（可选）即可。</p>
+<figure data-type="image" tabindex="1"><img src="E:%5CDailylife%5C%E8%AE%A1%E5%9F%BA%E5%B0%8F%E5%8F%AF%E7%88%B1%E7%9A%84%E4%B8%93%E5%B1%9E%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%EF%BC%88%E5%A4%A7%E4%B8%89%EF%BC%89%5C%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%5C%E5%AE%9E%E9%AA%8C%5Creports%5Cex1%5C%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E4%BB%BB%E5%8A%A1%E5%9B%9B%E3%80%81%E6%AD%A3%E8%A7%84%E9%9B%86%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%B7%A5%E5%85%B7%E5%92%8C%E8%AF%86%E5%88%AB%E5%B7%A5%E5%85%B7.assets%5CREG2NFA.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>本任务中使用的正规表达式由两种符号组成：</p>
+<ul>
+<li>**操作符：**空运算符 <code>ε</code>（程序中用<code>^</code>表示），或运算符 <code>|</code>，括号<code>()</code>，闭包运算符 <code>*</code>，隐含的连接符（程序中用<code>#</code>表示）</li>
+<li>**非操作符：**常见的除操作符以外的字符：如字母(<code>A-Z</code>、<code>a-z</code>)、数字(<code>0-9</code>)等符号。</li>
+</ul>
+<p>​        设计正规式转NFA的步骤中，有如下几种基础情况，并由这几种情况复合组合成更加复杂的正规表达式：</p>
+<ol>
+<li>
+<p>输入为空：</p>
+<figure data-type="image" tabindex="2"><img src="https://alittlewhiter.github.io/post-images/1588387671284.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>输入为单个字符 <code>a</code>：将字符<code>a</code>构造为一个NFA图<code>0-&gt;1</code></p>
+<figure data-type="image" tabindex="3"><img src="https://alittlewhiter.github.io/post-images/1588387678477.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>输入为<code>a|b</code>：由<strong>a</strong>和<strong>b</strong>对应的NFA图<code>1-&gt;2</code>和<code>3-&gt;4</code>构造新的NFA图<code>0-&gt;5</code></p>
+<figure data-type="image" tabindex="4"><img src="https://alittlewhiter.github.io/post-images/1588387693414.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>输入为<code>a*</code>：由原来a的NFA图<code>1-&gt;2</code>构造新的NFA图<code>0-&gt;3</code>，并添加转换弧和ε符号</p>
+<figure data-type="image" tabindex="5"><img src="https://alittlewhiter.github.io/post-images/1588387698970.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>输入为<code>ab</code>：由原来的NFA图<code>1-&gt;2</code>和<code>3-&gt;4</code>构造新的NFA图<code>0-&gt;5</code></p>
+<figure data-type="image" tabindex="6"><img src="https://alittlewhiter.github.io/post-images/1588387705080.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<p>​        对以上操作符有优先级：**<code>()</code> &gt; <code>*</code> &gt; <code>#(连接)</code>&gt;<code>|</code> **，且每种操作符到NFA都有固定的转换逻辑，都可以在1、2两种基础情况下，通过添加头尾节点和状态转换方向导出新的NFA。</p>
+</li>
+<li>
+<p>NFA与DFA相比，其不确定性表现在<strong>多值映射</strong>和<strong>带空转移</strong>，为了解决这个问题，设计状态的空闭包函数<code>e_closure()</code>，它可以计算出：对给定NFA图中的某一状态的结点，由其出发经过任意条ε弧能够到达的全部状态。这样NFA中<mark>由一个状态经字符a导出新的状态</mark>可以变形为：从该状态的空闭包所含的全部“等价”状态结点<code>s</code>出发，经过一条a弧能够到达状态节点<code>t</code>，全部这样的<code>t</code>的空闭包导出状态集的并集即为<strong>下一个状态</strong>（可构造为一个DFA结点）。</p>
+<p>​        NFA的确定化：设Σ为正规式全部非操作符字符集，对NFA初态结点x进行空闭包操作得到初态集<code>X=e_closure(x)</code>，并以此作为初态DFA结点。构造一张二维表，其第一行第一列为DFA初态结点X，其余列分别为对X输入Σ中的每个字符所导出的<strong>下一个状态</strong>构成的新的DFA结点，将新导出的DFA结点加入到新的行的第一列中去，并重复进行上述操作，直至不再有新的状态集合出现为止。</p>
+<p>​        因为NFA的状态数是有限的，其状态集组合也是有限的，故上述过程必在有限步骤内停止。对上述过程产生的DFA结点进行重新编号，二维表即成为一个状态矩阵，该矩阵表示了一个确定的有穷自动机，其唯一的初态为X，终态为任意包含NFA的终态结点y的状态集合。</p>
+<p>​        至此，该有穷自动机便可以用来表示正规式并识别任意字符串是否符合该正规式语言，进一步化简可以合并等价DFA状态，将DFA最小化 <sub>这里就不予实现</sub>。</p>
+</li>
+<li>
+<p>数据结构与算法设计：</p>
+<p>**NFA：**包括NFA结点集和NFA图<code>NFA_GRAPH</code>，每个NFA结点的状态编号<code>state</code>都为指向结点集<code>NFAset</code>的索引指针，其后继节点链表<code>next</code>中的“指针”也为指向结点集中对应<code>NFA_NODE</code>的索引，NFA图中的头、尾结点同理。</p>
+<p>此外，在正规式字符串扫描过程中，通过不断的读入字符增加首尾节点和状态转换后转化为一张NFA图，为此还需要一个NFA栈和一个符号栈。从左至右读入正规式的字符时对字符进行判断：</p>
+<ul>
+<li>若其为<strong>操作符 <code>*</code></strong>，将NFA栈顶弹出后进行闭包操作，操作后产生新的NFA压回NFA栈；若下一个字符为非操作符或<code>(</code>，符号栈压入一个连接符<code>#</code>；</li>
+<li>若为<strong>操作符 <code>|</code></strong>，逐个弹出符号栈顶部的全部<code>#</code>操作符，并每次从NFA栈弹出两个NFA作连接操作后压回NFA栈，直到符号栈顶符号不是<code>#</code>为止，这时压入一个<code>|</code>；</li>
+<li>若为<strong>操作符 <code>(</code></strong>，直接压入符号栈中；</li>
+<li>若为<strong>操作符 <code>)</code></strong>，依次弹出栈顶符号（<code>|</code>或<code>#</code>），并从NFA栈弹出两个NFA对其进行该操作后，得到新NFA压回NFA栈，直到符号栈栈顶为<code>(</code>为止，弹出<code>(</code>；若下一个字符为非操作符或<code>(</code>，符号栈压入一个连接符<code>#</code>；</li>
+<li>若为<strong>非操作符</strong>，则将该字符转换为NFA后压入NFA栈中；若下一个字符仍为非操作符或<code>(</code>，符号栈压入一个连接符<code>#</code>；</li>
+</ul>
+<p>​        当读完最后一个字符后将符号栈中的操作符逐个弹出，弹出一个操作符跟着弹出两个NFA栈的栈顶NFA，根据相应的操作符对两个NFA进行处理后转换为新的NFA压入NFA栈中。当处理完所有的符号栈中的符号后弹出NFA栈中的唯一元素即为所求的NFA。</p>
+<pre><code class="language-c++">class NFA_NODE {                    // NFA结点
+public:
+    int state;                      // 结点状态编号(也为指向状态集的索引)
+    char inchar;                    // 转移到该结点的输入字符
+    list&lt;int&gt; next;                 // 该结点的后继结点链表
+    NFA_NODE(int s, char in) : state(s), inchar(in) {}
+};
+
+class NFA_GRAPH {                   // NFA图
+public:
+    int head, tail;                 // 头、尾结点状态编号
+    NFA_GRAPH(int h, int t) : head(h), tail(t) {} 
+};
+vector&lt;NFA_NODE&gt; NFAset;            // NFA状态结点集
+</code></pre>
+<p>**DFA：**包括DFA结点集和状态转换表。每个DFA结点都统一存储在<code>DFAset</code>中，属性有状态编号<code>num</code>、结点类型<code>0，1，2</code>，输入字符以及该结点代表的等价的NFA状态集；每行第一列为一个DFA状态，后续列为第一列结点能够输入某字符导出的新状态集（可能为空）。</p>
+<p><strong>从NFA图转化为DFA算法：</strong></p>
+<ul>
+<li>首先，由NFA图获取初态结点<code>START</code>和终态结点<code>END</code>，求<code>e_closure(START)</code>并构造DFA初态结点<code>DFA_Start</code>，放进DFAset集合；</li>
+<li>建立一个DFA栈，初态结点入栈，建立一个DFA状态转换表；</li>
+<li>栈非空的情况下，取出栈顶元素放入状态转换表中（新建一行）；</li>
+<li>对正规式字符集（全部非操作符）中每个字符作输入字符，求当前DFA结点（等价的NFA状态集）导出的新NFA状态集闭包；
+<ul>
+<li>若状态集为空；则跳过该字符；</li>
+<li>若状态集已经在DFAset某一DFA结点代表的状态集出现过，则将原DFA结点加入到状态转换表中当前行后面；</li>
+<li>若状态集未出现过，且其包含终态结点<code>END</code>，则生成一个新的DFA终态结点（type=2），否则生成一个新的DFA中间节点（type=1），并将该结点加入到状态转换表中当前行后面，且入DFA栈；</li>
+</ul>
+</li>
+<li>若DFA栈非空，转第三步重复操作，直至不再产生新的状态集为止。</li>
+</ul>
+<pre><code class="language-c++">class DFA_NODE {                // DFA结点
+public: 
+    int num;                    // 结点状态编号(指向DFA结点集的指针)
+    int type;                   // 结点类型：初始状态0、中间状态1、终态2
+    char inchar;                // 转化到此DFA结点的输入字符
+    set&lt;int&gt; equiv;             // 等价的NFA结点状态集合
+    
+    DFA_NODE(int n, int t, char c, set&lt;int&gt;&amp; s): num(n), type(t),inchar(c),equiv(s) { }
+};
+vector&lt;DFA_NODE&gt; DFAset;            // DFA状态结点集
+vector&lt;vector&lt;int&gt;&gt; DFA;            // DFA状态转换表
+</code></pre>
+</li>
+<li>
+<p><strong>运用DFA状态转换表匹配字符串：</strong></p>
+<ul>
+<li>
+<p>由状态转换表第0行（DFA初态结点）开始，从字符串读入一个字符ch；</p>
+</li>
+<li>
+<p>判断该行后面是否含有能匹配该字符<code>(即inchar=ch)</code>的结点：</p>
+<ul>
+<li>若有，转移到状态转换表中该结点为首的行，扫描下一个字符ch，重复第二步；</li>
+<li>若没有，则匹配失败；</li>
+</ul>
+</li>
+<li>
+<p>若全部字符扫描成功，判断最后结点是否为终态结点（<code>type==2</code>）,若是，则匹配成功；否则，匹配失败。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>实验程序代码及注释见附件：</p>
+<ul>
+<li>编译环境：Windows10 + Code::Blocks17.12，mingw32 g++，-std=c++11，编码：UTF-8</li>
+<li><sub>这里就懒得上传了</sub></li>
+</ul>
+</li>
+</ol>
+<h3 id="备注">备注</h3>
+<p><strong>完成日期：</strong> 2020-05-01</p>
+<p><strong>报告格式：</strong> Markdown</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C语言·文法定义]]></title>
         <id>https://alittlewhiter.github.io/post/c-yu-yan-wen-fa-ding-yi/</id>
@@ -20,7 +199,61 @@
 ]]></summary>
         <content type="html"><![CDATA[<p>Keywords：C语言文法、LEX、词法分析</p>
 <!-- more -->
-<p>C语言文法定义如下：</p>
+<h2 id="我的简单版本">我的简单版本</h2>
+<pre><code class="language-xquery">&lt;PROC&gt;→&lt;DECLS&gt;|&lt;PROC&gt;&lt;DECLS&gt;
+&lt;DECLS&gt;→&lt;FUNCS&gt;|&lt;DECL_STAT&gt;
+
+&lt;FUNCS&gt;→&lt;FUNC&gt;&lt;BLOCK&gt;
+&lt;FUNC&gt;→&lt;TYPE&gt;&lt;IDEN&gt;&lt;(&gt;&lt;ARG_LIST&gt;&lt;)&gt;
+
+&lt;DECL_STAT&gt;→&lt;DECLARE&gt;&lt;;&gt;|&lt;DECLARE&gt;&lt;=&gt;&lt;CONST_EXPR&gt;&lt;;&gt;	//声明语句
+&lt;DECLARE&gt;→&lt;TYPE&gt;&lt;DIRECT_DECL&gt;
+
+&lt;DIRECT_DECL&gt;→&lt;UNARY_EXPR&gt;|&lt;DIRECT_DECL&gt;&lt;,&gt;&lt;UNARY_EXPR&gt;
+&lt;UNARY_EXPR&gt;→&lt;IDEN&gt;|&lt;ARRAY&gt;
+
+&lt;ARRAY&gt;→&lt;ARRAY&gt;&lt;[&gt;&lt;INTEGER&gt;&lt;]&gt;|&lt;IDEN&gt;&lt;[&gt;&lt;INTEGER&gt;&lt;]&gt;	//数组
+&lt;ARG_LIST&gt;→&lt;DECLARE&gt;|&lt;ARG_LIST&gt;&lt;,&gt;&lt;DECLARE&gt;		// 参数列表
+&lt;IDEN_LIST&gt;→&lt;IDEN&gt;|&lt;IDEN_LIST&gt;&lt;,&gt;&lt;IDEN&gt;			//标识符列表
+
+&lt;IDEN&gt;→&lt;LETTER&gt;&lt;IDEN_SUFFIX&gt;			//标识符
+&lt;IDEN_SUFFIX&gt;→&lt;LET_DIG&gt;&lt;IDEN_SUFFIX&gt;|^
+&lt;LET_DIG&gt;→&lt;LETTER&gt;|&lt;DIGIT&gt;
+&lt;CONST_EXPR&gt;→&lt;INTEGER&gt;|&lt;CHARACTER&gt;|&lt;STRING&gt; 	//常量表达式
+&lt;INTEGER&gt;→&lt;DIGIT&gt;|&lt;DIGIT&gt;&lt;INTEGER&gt;  //整数值
+&lt;LETTER&gt;→[A-Z]|[a_z]|_
+&lt;DIGIT&gt;→0|1|2|3|4|5|6|7|8|9
+
+&lt;DECL_LIST&gt;→&lt;DECL_STAT&gt;|&lt;DECL_LIST&gt;&lt;DECL_STAT&gt;			//声明列表
+&lt;STAT_LIST&gt;→&lt;STAT&gt;|&lt;STAT_LIST&gt;&lt;STAT&gt;					//语句列表
+
+&lt;STAT&gt;→&lt;BLOCK&gt;|&lt;EXPR_STAT&gt;|&lt;SELECT_STAT&gt;|&lt;LOOP_STAT&gt;|&lt;JUMP_STAT&gt;//语句
+
+&lt;BLOCK&gt;→&lt;{&gt;&lt;}&gt;|&lt;{&gt;&lt;STAT_LIST&gt;&lt;}&gt;|&lt;{&gt;&lt;DECL_LIST&gt;&lt;STAT_LIST&gt;&lt;}&gt;	//复合语句
+&lt;EXPR_STAT&gt;→&lt;;&gt;|&lt;UNARY_EXPR&gt;&lt;=&gt;&lt;EXPR&gt;&lt;;&gt;		//表达式语句
+&lt;EXPR&gt;→&lt;ARITHMETIC&gt;|&lt;LOGIC&gt;						//表达式
+
+//算术表达式
+&lt;ARITHMETIC&gt;→&lt;ARM_EXPR&gt;
+&lt;ARM_EXPR&gt;→&lt;ARM_EXPR&gt;&lt;+&gt;&lt;ADD_FACT&gt;|&lt;ARM_EXPR&gt;&lt;-&gt;&lt;ADD_FACT&gt;|&lt;ADD_FACT&gt;
+&lt;ADD_FACT&gt;→&lt;ADD_FACT&gt;&lt;*&gt;&lt;MUL_FACT&gt;|&lt;ADD_FACT&gt;&lt;/&gt;&lt;MUL_FACT&gt;|&lt;ADD_FACT&gt;&lt;%&gt;&lt;MUL_FACT&gt;|&lt;MUL_FACT&gt;
+&lt;MUL_FACT&gt;→&lt;SIGN&gt;&lt;UNARY_EXPR&gt;|&lt;SIGN&gt;&lt;INTEGER&gt;
+&lt;SIGN&gt;→&lt;-&gt;|^		// 正/负号
+
+//布尔表达式
+&lt;LOGIC&gt;→&lt;BOOL&gt;
+&lt;BOOL&gt;→&lt;BOOL&gt;&lt;||&gt;&lt;OR_FACT&gt;|&lt;OR_FACT&gt;
+&lt;OR_FACT&gt;→&lt;OR_FACT&gt;&lt;&amp;&amp;&gt;&lt;AND_FACT&gt;|&lt;AND_FACT&gt;
+&lt;AND_FACT&gt;→&lt;!&gt;&lt;BOOL_VALUE&gt;|&lt;BOOL_VALUE&gt;
+&lt;BOOL_VALUE&gt;→&lt;ARITHMETIC&gt;&lt;ROP&gt;&lt;ARITHMETIC&gt;|&lt;UNARY_EXPR&gt;
+&lt;ROP&gt;→&gt;|&lt;|&gt;=|&lt;=|==|!=
+
+//选择语句、循环语句、跳转语句
+&lt;SELECT_STAT&gt;→&lt;if&gt;&lt;(&gt;&lt;BOOL&gt;&lt;)&gt;&lt;STAT&gt;|&lt;if&gt;&lt;(&gt;&lt;BOOL&gt;&lt;)&gt;&lt;STAT&gt;&lt;else&gt;&lt;STAT&gt;
+&lt;LOOP_STAT&gt;→&lt;while&gt;&lt;(&gt;&lt;BOOL&gt;&lt;)&gt;&lt;STAT&gt;|&lt;for&gt;&lt;(&gt;&lt;EXPR_STAT&gt;&lt;EXPR_STAT&gt;&lt;EXPR_STAT&gt;&lt;)&gt;&lt;STAT&gt;
+&lt;JUMP_STAT&gt;→&lt;continue&gt;&lt;;&gt;|&lt;break&gt;&lt;;&gt;|&lt;return&gt;&lt;;&gt;|&lt;return&gt;&lt;EXPR&gt;&lt;;&gt;
+</code></pre>
+<h2 id="另一个定义如下">另一个定义如下：</h2>
 <pre><code class="language-c++">  &lt;程序&gt;→&lt;外部声明&gt;|&lt;程序&gt;&lt;外部声明&gt;
 
   &lt;外部声明&gt;→&lt;函数定义&gt;|&lt;声明&gt;
@@ -1250,122 +1483,6 @@ sscanf函数原型为 <code>int sscanf(const char *str, const char *format, ...)
 </li>
 </ul>
 <h2 id="next">Next</h2>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Valine - 你值得拥有┏ (゜ω゜)=☞]]></title>
-        <id>https://alittlewhiter.github.io/post/valine-ni-zhi-de-yong-you-o/</id>
-        <link href="https://alittlewhiter.github.io/post/valine-ni-zhi-de-yong-you-o/">
-        </link>
-        <updated>2020-03-04T04:08:08.000Z</updated>
-        <summary type="html"><![CDATA[<p><strong>Keywords：Gridea、Valine、无后端、评论系统</strong><br>
-简直不要再好、、还是希望更好(╹ڡ╹ )</p>
-]]></summary>
-        <content type="html"><![CDATA[<p><strong>Keywords：Gridea、Valine、无后端、评论系统</strong><br>
-简直不要再好、、还是希望更好(╹ڡ╹ )</p>
-<!-- more -->
-<h2 id="first">First</h2>
-<p>虽然破站也不会有人来看，但还是想为Gridea加上一个评论系统，说——不定呢嘿嘿(￣▽,￣)╭ （想peach</p>
-<p>Gridea提供了两个评论系统，Gitalk和disqus。Gitalk需要使用Github账号登录，对于没有github账号的人来说不太方便，disqus目前在国内不太可用。于是<strong>valine</strong> 非你莫属！😜😜</p>
-<h2 id="介绍">介绍</h2>
-<p>Valine是一款快速、简洁且高效的<strong>无后端</strong>评论系统：</p>
-<ul>
-<li>高速，使用国内后端云服务提供商 <code>LeanCloud</code> 提供的存储服务</li>
-<li>开源、自定义程度高</li>
-<li>支持邮件通知、支持验证码 (不建议)</li>
-<li>原版即支持表情包、Markdown等特性。<br>
-官网地址：<code>https://valine.js.org/</code></li>
-</ul>
-<h3 id="注册leancloud">注册leancloud</h3>
-<p>其次，为了成功配置Valine需要leancloud平台，注册-登录-控制台-创建应用（一条龙.jpg<br>
-<img src="https://alittlewhiter.github.io/post-images/1583296181154.png" alt="" loading="lazy"><br>
-进入刚刚创建的应用(开发版)，选择左下角的<code>设置</code> &gt; <code>应用Keys</code>，可以获取应用的APP ID和APP Key（注意保密）。进入安全中心，Web安全域名下填写自己的Github Pages（Coding Pages）提供的博客站点域名，点击保存。<br>
-<img src="https://alittlewhiter.github.io/post-images/1583296272560.png" alt="" loading="lazy"><br>
-点击<code>存储</code>新建一个Class，名称为Comment，添加如下。<br>
-<img src="https://alittlewhiter.github.io/post-images/1583296175616.png" alt="" loading="lazy"></p>
-<h3 id="修改主题模板">修改主题模板</h3>
-<p>在Gridea theme模板templates/_block的head.ejs中引入</p>
-<pre><code class="language-html">&lt;script src='//unpkg.com/valine/dist/Valine.min.js'&gt;&lt;/script&gt;
-</code></pre>
-<p>在post.ejs (文章详情页) 模板中文章末尾的位置添加下面的代码：</p>
-<pre><code class="language-html">&lt;div class=&quot;comments&quot;&gt;&lt;/div&gt;
-    &lt;script&gt;
-        new Valine({
-            el: '.comments',
-            appId: '&lt;API_ID&gt;',
-            appKey: '&lt;API_Key&gt;'
-        })
-    &lt;/script&gt;
-</code></pre>
-<blockquote>
-<p>相关配置属性含义看<a href="https://valine.js.org/configuration.html">这里</a></p>
-</blockquote>
-<ul>
-<li>接下来仅需修改appId和appKey即可，打开文章详情页，显示评论框就成功了。<br>
-<img src="https://alittlewhiter.github.io/post-images/1583301574844.png" alt="" loading="lazy"></li>
-</ul>
-<h3 id="upgrade-edition">Upgrade Edition：</h3>
-<ul>
-<li>
-<p>主题模板post.ejs文件中需要添加新的<a href="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn/scripts/Valine.min.js">Valine.min.js</a>文件，鉴于我下载该<a href="https://kveln.cn/media/scripts/Valine.min.js">js文件</a>保存到本地/media/scripts后，无论如何设置相对路径都无法同步到GitHub<s>博客</s>，所以只能采用网络上其他站点的资源url：<a href="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn/scripts/Valine.min.js">https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn/scripts/Valine.min.js</a>、<a href="https://kveln.cn/media/scripts/Valine.min.js">https://kveln.cn/media/scripts/Valine.min.js</a></p>
-<pre><code class="language-html">  &lt;!--载入js，在&lt;/body&gt;之前插入即可--&gt;
-  &lt;!--Leancloud 操作库:--&gt;
-  &lt;script src=&quot;//cdn1.lncld.net/static/js/3.0.4/av-min.js&quot;&gt;&lt;/script&gt;
-  &lt;!--Valine 的核心代码库  不知道为啥该.js放本地用不了，第二、第三个目前均可用--&gt;
-  &lt;!-- &lt;script src=&quot;/media/scripts/Valine.min.js&quot;&gt;&lt;/script&gt;   --&gt;
-  &lt;!-- &lt;script src=&quot;https://kveln.cn/media/scripts/Valine.min.js&quot;&gt;&lt;/script&gt; --&gt;
-  &lt;script src=&quot;//cdn.jsdelivr.net/gh/Alanrk/clean-cdn/scripts/Valine.min.js&quot;&gt;&lt;/script&gt;
-  
-  &lt;!-- 评论模块 --&gt;
-  	&lt;div class=&quot;comment&quot;&gt; &lt;/div&gt;
-
-  &lt;script&gt;
-      new Valine({
-        av: AV,                            // AV 对象来自上面引入av-min.js
-        el: '.comment',               // 选择标签容器
-        lang: 'zh-cn',                  // 设置语言
-        avatar: 'mm',                 // 设置头像
-        emoticon_url: 'https://cloud.panjunwen.com/alu',
-        emoticon_list: [&quot;吐.png&quot;,&quot;喷血.png&quot;,&quot;狂汗.png&quot;,&quot;不说话.png&quot;,&quot;汗.png&quot;,&quot;坐等.png&quot;,
-          &quot;献花.png&quot;,&quot;不高兴.png&quot;,&quot;中刀.png&quot;,&quot;害羞.png&quot;,&quot;皱眉.png&quot;,&quot;小眼睛.png&quot;,
-          &quot;中指.png&quot;,&quot;尴尬.png&quot;,&quot;瞅你.png&quot;,&quot;想一想.png&quot;,&quot;中枪.png&quot;,&quot;得意.png&quot;,&quot;肿包.png&quot;,
-          &quot;扇耳光.png&quot;,&quot;亲亲.png&quot;,&quot;惊喜.png&quot;,&quot;脸红.png&quot;,&quot;无所谓.png&quot;,&quot;便便.png&quot;,&quot;愤怒.png&quot;,
-          &quot;蜡烛.png&quot;,&quot;献黄瓜.png&quot;,&quot;内伤.png&quot;,&quot;投降.png&quot;,&quot;观察.png&quot;,&quot;看不见.png&quot;,&quot;击掌.png&quot;,
-          &quot;抠鼻.png&quot;,&quot;邪恶.png&quot;,&quot;看热闹.png&quot;,&quot;口水.png&quot;,&quot;抽烟.png&quot;,&quot;锁眉.png&quot;,&quot;装大款.png&quot;,
-          &quot;吐舌.png&quot;,&quot;无奈.png&quot;,&quot;长草.png&quot;,&quot;赞一个.png&quot;,&quot;呲牙.png&quot;,&quot;无语.png&quot;,&quot;阴暗.png&quot;,
-          &quot;不出所料.png&quot;,&quot;咽气.png&quot;,&quot;期待.png&quot;,&quot;高兴.png&quot;,&quot;吐血倒地.png&quot;,&quot;哭泣.png&quot;,&quot;欢呼.png&quot;,
-          &quot;黑线.png&quot;,&quot;喜极而泣.png&quot;,&quot;喷水.png&quot;,&quot;深思.png&quot;,&quot;鼓掌.png&quot;,&quot;暗地观察.png&quot;],
-        app_id: 'nD4DEajJJj9QlUpYtF8YFa1v-9Nh9j0Va',
-        app_key: 'PpbNRCLEJPuymBxdJfNzU6Bb',
-        placeholder: '我有话说...'
-    });
-  &lt;/script&gt;
-</code></pre>
-<ul>
-<li>需要修改的只有：<code>el</code>、<code>app_id</code> 和 <code>app_key</code>。如果之前有用原版Valine，请将邮件通知和验证码关掉：<code>notify: false</code>, <code>verify: false</code>，避免重复收到扰人通知，还有算术验证码确实反人类，强烈建议停用。将上面的app_id和和app_key替换成leancloud中对应的<code>ID</code>和<code>Key</code>即可，修改完成后点击保存，再把Gridea客户端中的<code>远程</code>-&gt;<code>评论配置</code>-&gt;<code>是否显示评论</code>关掉，同步即可。</li>
-</ul>
-<pre><code class="language-html">若未引入jQuery，则引入：
-&lt;script src=&quot;https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://alittlewhiter.github.io/post-images/1583305338443.png" alt="" loading="lazy"></figure>
-<ul>
-<li>进阶：可以考虑使用<code>Valine Admin</code>管理评论:
-<ul>
-<li>Valine Admin主要实现评论邮件通知、评论管理、垃圾评论过滤等功能。支持完全自定义的邮件通知模板。</li>
-<li>教程：<a href="https://github.com/DesertsP/Valine-Admin">Valine Admin</a>：<a href="https://github.com/DesertsP/Valine-Admin">https://github.com/DesertsP/Valine-Admin</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>更多详见:</p>
-<ul>
-<li><a href="https://deserts.io/diy-a-comment-system/">https://deserts.io/diy-a-comment-system/</a></li>
-<li><a href="https://valine.js.org/">https://valine.js.org/</a></li>
-</ul>
-</li>
-</ul>
-<p>Good Bye 😄!</p>
 ]]></content>
     </entry>
 </feed>
