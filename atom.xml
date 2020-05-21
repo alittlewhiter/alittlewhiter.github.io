@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-05-21T01:27:35.750Z</updated>
+    <updated>2020-05-21T01:30:11.313Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -379,7 +379,7 @@ vector&lt;vector&lt;int&gt;&gt; DFA;            // DFA状态转换表
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[如何白嫖到学习通上的课件（PPT]]></title>
+        <title type="html"><![CDATA[如何白嫖到学习通上的课件（]]></title>
         <id>https://alittlewhiter.github.io/post/ru-he-bai-piao-dao-xue-xi-tong-shang-de-ke-jian-ppt/</id>
         <link href="https://alittlewhiter.github.io/post/ru-he-bai-piao-dao-xue-xi-tong-shang-de-ke-jian-ppt/">
         </link>
@@ -389,7 +389,7 @@ vector&lt;vector&lt;int&gt;&gt; DFA;            // DFA状态转换表
         <content type="html"><![CDATA[<p>Keywords：超星学习通，课件下载，PPT下载</p>
 <!-- more -->
 <ol>
-<li>手机客户端？木大木大、Sayonara。。。</li>
+<li>手机客户端？木大木大、Sayonara。。。（可以查查软件数据缓存目录。。</li>
 </ol>
 <div style="width: 90px; text-align:center;" >
 <figure data-type="image" tabindex="1"><img src="https://alittlewhiter.github.io/post-images/1586603813353.jpg" alt="" loading="lazy"></figure>
