@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://alittlewhiter.github.io</id>
     <title>君の知らない物语</title>
-    <updated>2020-05-02T02:51:49.253Z</updated>
+    <updated>2020-05-21T01:27:35.750Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://alittlewhiter.github.io"/>
     <link rel="self" href="https://alittlewhiter.github.io/atom.xml"/>
@@ -404,10 +404,12 @@ vector&lt;vector&lt;int&gt;&gt; DFA;            // DFA状态转换表
 <img src="https://alittlewhiter.github.io/post-images/1586603173958.png" alt="" loading="lazy"></p>
 </li>
 <li>
-<p>.复制这个objectid后面对应的id字符串，此页面上放了几个课件就有几个id。</p>
+<p>.复制这个objectid后面对应的id字符串，此页面上放了几个课件就有几个id。一个简单方法：找到mArg，并点击这块区域，在控制台输入<code>mArg.attachments[0].property.objectid</code>， 回车即可返回objectid字符串，操作如下：<br>
+<img src="https://alittlewhiter.github.io/post-images/1590024213108.png" alt="" loading="lazy"><br>
+<img src="https://alittlewhiter.github.io/post-images/1590024357287.png" alt="" loading="lazy"></p>
 </li>
 <li>
-<p>在浏览器的地址栏输入http://d0.ananas.chaoxing.com/download/YOUR_ID ，将复制的id连接在后面，回车会弹出该课件的下载框（一般为ppt, pdf 格式），选择你保存课件的位置，点击下载即可。<br>
+<p>在浏览器的地址栏输入<code>http://d0.ananas.chaoxing.com/download/YOUR_ID</code> ，将复制的id连接在后面，回车会弹出该课件的下载框（一般为ppt, pdf 文档格式或mp4视频格式），选择你保存课件的位置，点击保存即可。<br>
 <img src="https://alittlewhiter.github.io/post-images/1586603382563.png" alt="" loading="lazy"><br>
 <img src="https://alittlewhiter.github.io/post-images/1586603371738.png" alt="" loading="lazy"></p>
 </li>
