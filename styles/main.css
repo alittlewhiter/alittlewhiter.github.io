@@ -1986,7 +1986,7 @@ body {
       color: #fa5252;
       border-bottom-color: #fa5252;
     }.site-nav, .sidebar-wrapper, .section-box, .sidebar-box, .site-nav, .blog-header {
-        opacity: 0.9;
+        opacity: 0.84;
       }
       .site-meta {
         background: #000 !important;
@@ -2002,9 +2002,13 @@ body {
     }
     .mist .site-title i {
       background: #FFF;
-    }.bg-img img {
-        filter: blur(0.3px)
-      }.box-scale > #landlord {
+    }next-md-body pre>code {
+	word-wrap: break-word;
+	font-size: 14px;
+}
+.valine .vinputs-area {
+	border: 1px solid #c8c8c8;
+}.box-scale > #landlord {
       transform: scale(1);
     }.box-shadow-wrapper {
       padding: 10px;
